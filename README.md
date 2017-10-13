@@ -43,8 +43,6 @@ Below will be our reference on how to set up the server and libraries needed for
 5. Click User libraries
 6. Click new
 7. IMPORTANT, Name the library: **Web-Libraries**.
-
-Libraries are case sensitive, so if you placed the wrong library name, it'll cause an error and it won't run the server.
 8. Select Web-Libraries and click "add jars"
 9. Select "jstl-1.2"
 10. Click apply and close.

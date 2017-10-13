@@ -1,5 +1,5 @@
 # SOFENGG GUIDES (IMPORTANT PLEASE READ)
-
+Below will be our reference on how to set up the server and libraries needed for the project.
 
 ## Hibernate Related
 ### Downloading Hibernate
@@ -59,6 +59,7 @@ Libraries are case sensitive, so if you placed the wrong library name, it'll cau
 
 ## How to use JSTL:
 To use jstl, place this on the very top of your JSP page (Before the !DOCTYPE):
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core %>
 
 

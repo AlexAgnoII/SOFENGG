@@ -1,6 +1,9 @@
 # SOFENGG GUIDES (IMPORTANT PLEASE READ)
 Below will be our reference on how to set up the server and libraries needed for the project.
 
+Please follow them THOROUGHLY. Especially the "Web-Libraries" name as our User library. Having different user library name would cause problems with the server.
+
+
 ## Hibernate Related
 ### Downloading Hibernate
 1. Download it here: https://tomcat.apache.org/download-80.cgi#8.0.47
@@ -30,6 +33,8 @@ Below will be our reference on how to set up the server and libraries needed for
 3. Click add library
 4. click server runtime, then click Apache tomcat v8.0
 5. click finish.
+
+
 6.Click apply and close.
 
 

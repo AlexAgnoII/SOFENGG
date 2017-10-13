@@ -4,6 +4,9 @@ Below will be our reference on how to set up the server and libraries needed for
 Please follow them THOROUGHLY. Especially the "Web-Libraries" name as our User library. Having different user library name would cause problems with the server.
 
 
+Note: Before doing Mysql related guide, follow JSTL guide first.
+
+
 ## Hibernate Related
 ### Downloading Hibernate
 1. Download it here: https://tomcat.apache.org/download-80.cgi#8.0.47

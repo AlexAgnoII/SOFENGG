@@ -76,10 +76,15 @@ Download the connector here: https://dev.mysql.com/downloads/connector/j/5.1.htm
 12. click finish.
 
 
+Great MYSQL guide: https://www.youtube.com/watch?v=2i4t-SL1VsU&t=7s
+
+
 
 ## How to use JSTL:
 To use jstl, place this on the very top of your JSP page (Before the !DOCTYPE):
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core %>
+
+Full JSTL tags guide: https://www.tutorialspoint.com/jsp/jsp_standard_tag_library.htm
 
 

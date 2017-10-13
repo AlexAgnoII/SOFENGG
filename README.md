@@ -53,6 +53,19 @@ Below will be our reference on how to set up the server and libraries needed for
 
 ## MySql Related
 **MySql Connector**
+Download the connector here: https://dev.mysql.com/downloads/connector/j/5.1.html
+1. Extract zip file.
+2. Copy mysql-connector-java.5.1.44-bin.jar to SOFENGG>WebContent>WEB-INF>lib
+3. Right click SOFENGG
+4. click build path
+5. click configure build path
+6. click libraries
+7. Click Web-Libraries
+8. click edit
+9. click user libraries
+10. click add external JARS
+11. add the mysql-connector-java.5.1.44-bin.jar, then click apply and close
+12. click finish.
 
 
 

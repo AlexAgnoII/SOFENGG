@@ -83,7 +83,7 @@ public class userServlet extends HttpServlet {
 		//If existing redirect to website.:
 		if(value != null) {
 			session.setAttribute("UN", value);
-			response.sendRedirect("result.jsp");
+			response.sendRedirect("UserHomePage.jsp");
 		}
 		
 		//If not existing, back to homepage.
@@ -168,7 +168,7 @@ public class userServlet extends HttpServlet {
 			response.addCookie(theCookie);
 
 			//Redirect inside website
-			response.sendRedirect("result.jsp");
+			response.sendRedirect("UserHomePage.jsp");
 			
 		}
 		

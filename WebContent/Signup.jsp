@@ -5,12 +5,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	    <link rel = "stylesheet" type="text/css" href="css/signup.css">
+	    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
 		<title>Signup</title>
 	</head>
 	
 	<body>
         <div id= sufeed>
-            <form action="signUp" method="POST">
+            <form action="signUp" method="POST" ">
                 <p id="idn">ID Number</p> 
                 <input type="text" id="idNum" name="idNum"><br> 
                 
@@ -47,10 +48,13 @@
                 <input type="password" id="password2" name="password2"><br><br> 
                 
                 
-                <button id="backb">BACK</button> 
+                <button id="backb" type="button">BACK</button> 
                 <input id = "signupb" type="submit" value="SIGNUP"> 
             </form>
+
         </div>
+        
+        <script src="script/Signup.js"></script>
         
 	</body>
 </html>

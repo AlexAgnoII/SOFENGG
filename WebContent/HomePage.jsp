@@ -37,16 +37,13 @@
                     <input id="password" type="password" class="validate" name="password">
                     <label for="password">Password</label>
                  </div>
-                 
-                 <input type="submit">
             </form>
             
             <br>
             <br>
-            <a class="waves-effect waves-light btn" id="loginb" href="UserHomePage.jsp">login</a>
+            <a class="waves-effect waves-light btn" id="loginb" href="login">login</a>
             <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
         </div>
-        
-	
+
 	</body>
 </html>

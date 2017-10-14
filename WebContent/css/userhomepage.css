@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
- 
+
+body {
+    margin: 0;
+}
+
 html {
     font-family: "Montserrat";
     background: linear-gradient(to top, #093028, #237a57); 
@@ -16,6 +20,7 @@ ul {
 li {
     float: left;
     border-right: 1px solid #BBB;
+    overflow: hidden;
 }
 
 li:last-child {
@@ -30,8 +35,9 @@ li a, .dropbtn{
     display: block;
     color: white;
     text-align: center;
-    padding: 25px 67.4px;
+    padding: 25px 10px;
     text-decoration: none;
+    width: 150px;
 }
 
 li.dropdown {
@@ -43,16 +49,12 @@ li.dropdown {
 }
 
 .notices {
-    margin-top: 2%;
+    margin-top: 10px;
     width: 650px;
     height: 750px;
     border: 1px solid transparent;
     background: #E0E0E0;
     border-radius: 5px;
-}
-
-.navBar {
-    width: 650px;
 }
 
 .dropdown-content a {

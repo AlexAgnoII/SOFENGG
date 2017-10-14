@@ -17,7 +17,7 @@
 		
 		<link rel = "stylesheet" type="text/css" href="css/homepage.css">
 		
-		<title>Home</title>
+		<title>Login</title>
 	</head>
 	
 	<body>
@@ -39,7 +39,7 @@
                  </div>
             </form>
             
-            <a class="waves-effect waves-light btn" id="loginb">login</a>
+            <a class="waves-effect waves-light btn" id="loginb" href="UserHomePage.jsp">login</a>
             <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
         </div>
 	

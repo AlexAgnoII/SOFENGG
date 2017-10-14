@@ -7,8 +7,8 @@ Please follow them THOROUGHLY. Especially the "Web-Libraries" name as our User l
 Note: Before doing Mysql related guide, follow JSTL guide first.
 
 
-## Hibernate Related
-### Downloading Hibernate
+## TOMCAT Related
+### Downloading TOMCAT
 1. Download it here: https://tomcat.apache.org/download-80.cgi#8.0.47
 2. Scroll down till "8.0.47"
 3. Click the zip under CORE to download it.
@@ -16,7 +16,7 @@ Note: Before doing Mysql related guide, follow JSTL guide first.
 
 
 
-### Installing Hibernate
+### Installing TOMCAT
 1. Right click SOFENGG
 2. Click run as
 3. Click run on server

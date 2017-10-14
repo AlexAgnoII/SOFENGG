@@ -17,14 +17,14 @@
 		
 		<link rel = "stylesheet" type="text/css" href="css/homepage.css">
 		
-		<title>Home</title>
+		<title>Login</title>
 	</head>
 	
 	<body>
         
         <div id="logindiv">
             <div id= "wrapper">
-                <img src="css/logo.png" id="arrow">
+                <img src="css/arrow.png" id="arrow">
                 <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
             </div><br>
             <form action="login" method="POST">
@@ -41,7 +41,9 @@
                  <input type="submit">
             </form>
             
-            <a class="waves-effect waves-light btn" id="loginb">login</a>
+            <br>
+            <br>
+            <a class="waves-effect waves-light btn" id="loginb" href="UserHomePage.jsp">login</a>
             <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
         </div>
         

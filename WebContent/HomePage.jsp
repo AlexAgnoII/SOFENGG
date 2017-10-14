@@ -27,7 +27,7 @@
                 <img src="css/arrow.png" id="arrow">
                 <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
             </div><br>
-            <form action="login" method="POST">
+            <form action="login" method="POST" id="loginForm">
                 <div class="input-field col s12">
                     <input id="username" type="email" class="validate" name="email">
                     <label for="username">Email</label>
@@ -41,9 +41,10 @@
             
             <br>
             <br>
-            <a class="waves-effect waves-light btn" id="loginb" href="login">login</a>
+            <a class="waves-effect waves-light btn" id="loginb">login</a>
             <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
         </div>
-
+        
+		<script src="script/HomePage.js"></script>
 	</body>
 </html>

@@ -40,7 +40,7 @@
             </form>
             
             <a class="waves-effect waves-light btn" id="loginb">login</a>
-            <a class="waves-effect waves-light btn" id="signupb" href="signup.html">signup</a>
+            <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
         </div>
 	
 	</body>

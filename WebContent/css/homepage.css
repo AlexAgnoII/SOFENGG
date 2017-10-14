@@ -1,0 +1,57 @@
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700')
+	;
+
+html {
+	font-family: "Montserrat";
+}
+
+#logindiv {
+	position: relative;
+	top: 5%;
+	height: 300px;
+	width: 350px;
+	float: right;
+	right: 2%;
+}
+
+#wrapper {
+	display: inline-flex;
+	padding: 10px;
+	height: 100px;
+	width: 250px;
+}
+
+#title {
+	font-size: 20px;
+	width: 40px;
+	line-height: 105%;
+	font-weight: 500;
+	margin-top: -1px;
+	margin-left: 10px;
+}
+
+#arrow {
+	height: 70px;
+}
+
+form {
+	margin: 0 auto;
+	width: 275px;
+	font-size: 11px;
+}
+
+#loginb, #signupb {
+	font-family: "Montserrat";
+	height: 25px;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-top: 20px;
+	font-size: 10px;
+	line-height: 265%;
+	background-color: #006a4a;
+	color: snow;
+	font-weight: 400;
+	border-radius: 2px;
+	left: 22%;
+}

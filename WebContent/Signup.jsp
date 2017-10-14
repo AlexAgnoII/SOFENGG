@@ -10,7 +10,7 @@
 	
 	<body>
         <div id= sufeed>
-            <form>
+            <form action="signUp" method="POST">
                 <p id="idn">ID Number</p> 
                 <input type="text" id="idNum" name="idNum"><br> 
                 

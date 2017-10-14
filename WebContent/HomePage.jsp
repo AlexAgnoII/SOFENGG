@@ -27,21 +27,24 @@
                 <img src="css/logo.png" id="arrow">
                 <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
             </div><br>
-            <form>
+            <form action="login" method="POST">
                 <div class="input-field col s12">
-                    <input id="username" type="email" class="validate">
+                    <input id="username" type="email" class="validate" name="email">
                     <label for="username">Email</label>
                  </div>
                 
                 <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
+                    <input id="password" type="password" class="validate" name="password">
                     <label for="password">Password</label>
                  </div>
+                 
+                 <input type="submit">
             </form>
             
             <a class="waves-effect waves-light btn" id="loginb">login</a>
             <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
         </div>
+        
 	
 	</body>
 </html>

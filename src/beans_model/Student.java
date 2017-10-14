@@ -5,36 +5,42 @@ import java.util.Date;
 
 public class Student {
 	
-	private int studentId,
-				celNo,
-				telNo;
+	private int studentId;
 	private Date birthday;
 	private Year yEnrolled;
 	private String firstName,
 				   middleName,
 				   lastName,
+				   telNo,
+				   celNo,
 				   email,
 				   address,
 				   course,
 				   hashedPass;
 	
-	public Student(int studentId, int celNo, int telNo, Date birthday, Year yEnrolled, String firstName,
-			String middleName, String lastName, String email, String address, String course, String hashedPass) {
-		super();
+	public Student(int studentId, 
+			String lastname,
+			String firstname,
+			String middlename,
+			String mobNum,
+			String telNum,
+			String username,
+			String password
+			       ) {
 		this.studentId = studentId;
-		this.celNo = celNo;
-		this.telNo = telNo;
-		this.birthday = birthday;
-		this.yEnrolled = yEnrolled;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.email = email;
-		this.address = address;
-		this.course = course;
+		this.celNo = mobNum;
+		this.telNo = telNum;
+		this.firstName = firstname;
+		this.middleName = middlename;
+		this.lastName = lastname;
+		this.email = username;
+		this.address = null;
+		this.course = null;
+		this.yEnrolled = null;
+		this.birthday = null;
 		
 		// TODO hashing
-		this.hashedPass = hashedPass;
+		this.hashedPass = password;
 	}
 	
 	
@@ -50,16 +56,16 @@ public class Student {
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-	public int getCelNo() {
+	public String getCelNo() {
 		return celNo;
 	}
-	public void setCelNo(int celNo) {
+	public void setCelNo(String celNo) {
 		this.celNo = celNo;
 	}
-	public int getTelNo() {
+	public String getTelNo() {
 		return telNo;
 	}
-	public void setTelNo(int telNo) {
+	public void setTelNo(String telNo) {
 		this.telNo = telNo;
 	}
 	public Date getBirthday() {

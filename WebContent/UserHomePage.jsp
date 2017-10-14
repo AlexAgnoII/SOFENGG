@@ -29,7 +29,7 @@
             <button>Profile</button>
 -->
                 <ul>
-                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="UserHomePage.jsp">Home</a></li>
                     <li class="dropdown">
                         <a href="http:google.com" class="dropbtn">Apply for Awards</a>
                         <div class="dropdown-content">
@@ -46,6 +46,8 @@
         <div align="center">
             <div class="notices"></div>
         </div>
+        
+        <a href="logout">Click me to logout</a>
         
 	
 	</body>

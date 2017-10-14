@@ -14,9 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import service.UserService;
 
+//Important note: Temporarily removed relog in this servlet (Switched to authentication).
 @WebServlet(urlPatterns = {"/login",	
 		                   "/signUp", 
-		                   "/relog", 
+		                   //"/relog", 
 		                   "/logout"}
 )
 
@@ -33,7 +34,7 @@ public class userServlet extends HttpServlet {
 		System.out.println();
 		
 		switch(request.getServletPath()) {
-			case "/relog": performRelogin(request, response); break;
+			//case "/relog": performRelogin(request, response); break;
 			case "/logout": performLogout(request, response); break;
 			default: System.out.println("ERROR(Inside userServlet *doGet*): url pattern doesn't match existing patterns.");
 		}
@@ -60,40 +61,40 @@ public class userServlet extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void performRelogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("**********************Perform Relogin*********************");
-		Cookie[] cookies;
-		HttpSession session = request.getSession();
-		String value = null;
-		
-		//Get all cookies from browser:
-		cookies = request.getCookies();
-		if(cookies != null) {
-			//Traverse the whole cookie, and find this certain cookie = s2 of Cookie in loginServlet
-			for(Cookie c : cookies) {
-				if(c.getName().equals("USER")) {
-					System.out.println("Cookie found: " + c.getName());
-					System.out.println("The value of cookie: " + c.getValue());
-					value = c.getValue();
-					response.addCookie(c);
-				}
-			}
-		}
-		
-		//If existing redirect to website.:
-		if(value != null) {
-			session.setAttribute("UN", value);
-			response.sendRedirect("UserHomePage.jsp");
-		}
-		
-		//If not existing, back to homepage.
-		else {
-			System.out.println("No user found.");
-			response.sendRedirect("HomePage.jsp");
-		}
-		
-		System.out.println("******************************************\n");
-	}
+//	private void performRelogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		System.out.println("**********************Perform Relogin*********************");
+//		Cookie[] cookies;
+//		HttpSession session = request.getSession();
+//		String value = null;
+//		
+//		//Get all cookies from browser:
+//		cookies = request.getCookies();
+//		if(cookies != null) {
+//			//Traverse the whole cookie, and find this certain cookie = s2 of Cookie in loginServlet
+//			for(Cookie c : cookies) {
+//				if(c.getName().equals("USER")) {
+//					System.out.println("Cookie found: " + c.getName());
+//					System.out.println("The value of cookie: " + c.getValue());
+//					value = c.getValue();
+//					response.addCookie(c);
+//				}
+//			}
+//		}
+//		
+//		//If existing redirect to website.:
+//		if(value != null) {
+//			session.setAttribute("UN", value);
+//			response.sendRedirect("UserHomePage.jsp");
+//		}
+//		
+//		//If not existing, back to homepage.
+//		else {
+//			System.out.println("No user found.");
+//			response.sendRedirect("HomePage.jsp");
+//		}
+//		
+//		System.out.println("******************************************\n");
+//	}
 	
 	
 	/**
@@ -153,6 +154,7 @@ public class userServlet extends HttpServlet {
 			String userID = UserService.getUserID(email);
 			//set session attribute
 			s.setAttribute("UN", userID); 
+			System.out.println("Session(UN): " + s.getAttribute("UN"));
 			
 				
 			//This generates the cookie.

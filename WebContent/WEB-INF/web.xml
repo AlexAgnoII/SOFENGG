@@ -3,6 +3,6 @@
   <display-name>SOFENGG</display-name>
   <welcome-file-list>
   	<!--Relog is used as the welcome file to have relogin feature-->
-    <welcome-file>relog</welcome-file>
+    <welcome-file>UserHomePage.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

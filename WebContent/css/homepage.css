@@ -3,20 +3,30 @@
 html {
     font-family: "Montserrat";
 }
-/*
-body {
-    background-image: url(dlsu.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
+
+#top, #bottom, #left, #right {
+	background: #006f4a;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 10px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top{
+		left: 0; right: 0;
+		height: 10px;
+		}
+		#top { top: 0; }
 
 #logindiv {
     position: relative;
     margin: 0 auto;
     text-align: center;
-	height: 100%; 
+    height: 100%;   
     width: 500px;   
-    background-color: white;
 }
 
 #wrapper {
@@ -35,6 +45,7 @@ body {
     width: 60%;
     margin-top: 4px;
     margin-left: 2px;
+    text-shadow: 0 5px 5px -4px #333;
 }
 
 #arrow {
@@ -62,4 +73,5 @@ form {
     background-color: #006a4a;
     color: snow;
 }
+
 

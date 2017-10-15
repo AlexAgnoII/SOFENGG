@@ -21,6 +21,10 @@
 	</head>
 	
 	<body>
+		<div id="left"></div>
+		<div id="right"></div>
+		<div id="top"></div>
+		<div id="bottom"></div>
         
         <div id="logindiv">
             <div id= "wrapper">

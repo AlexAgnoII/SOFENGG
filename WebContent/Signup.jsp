@@ -4,12 +4,31 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<!--Import materialize.css-->
+        <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+		
 	    <link rel = "stylesheet" type="text/css" href="css/signup.css">
-	    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+
 		<title>Signup</title>
 	</head>
 	
 	<body>
+		<div id="left"></div>
+		<div id="right"></div>
+		<div id="top"></div>
+		<div id="bottom"></div>
+        
+        <div id="pulse">
+            <div id= "wrapper">
+                <i class="material-icons" id="arrow">near_me</i>
+                <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
+            </div>
+        </div>
+        
         <div id= sufeed>
             <form action="signUp" method="POST" ">
                 <p id="idn">ID Number</p> 
@@ -47,14 +66,30 @@
                 <p id="pw">Re-enter Password</p>
                 <input type="password" id="password2" name="password2"><br><br> 
                 
+                <!--    <button id="backb">BACK</button>  -->               
+             	<!--   <input id = "signupb" type="submit" value="SIGNUP">  -->
                 
-                <button id="backb" type="button">BACK</button> 
-                <input id = "signupb" type="submit" value="SIGNUP"> 
+                <a class="waves-effect waves-light btn" id="backb">BACK</a>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="signupb" type=submit>SIGNUP</a>
             </form>
+            
+            <div id="modal1" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                  <p id="modver">A verification link has been sent to the email address you used to create your account. Please click on the link to verify your account and proceed with the registration.</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Proceed</a>
+                </div>
+              </div>
 
         </div>
         
         <script src="script/Signup.js"></script>
+        <script>  
+	        $(document).ready(function(){
+	            $('.modal').modal();
+	        });
+  		</script>
         
 	</body>
 </html>

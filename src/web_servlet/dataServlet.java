@@ -68,8 +68,12 @@ public class dataServlet extends HttpServlet {
 		System.out.println(rePassword);
 		
 		if(password.equals(rePassword)) {
-			//Perform hashing here//
 			
+			//If email already placed, don't do anything.
+			
+			//Else, do this.
+			
+			//Perform hashing here//
 			Student student = new Student(idnum, 
 					  lastname,
 					  firstname,
@@ -78,7 +82,7 @@ public class dataServlet extends HttpServlet {
 					  telNum,
 					  username, //Username is email.
 					  password);
-			
+			//add the user.
 			UserService.addUser(student);
 			System.out.println("User added!");
 		}

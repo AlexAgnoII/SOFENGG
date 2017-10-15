@@ -30,7 +30,7 @@
         </div>
         
         <div id= sufeed>
-            <form action="signUp" method="POST" ">
+            <form action="signUp" method="POST" id = "signUpForm">
                 <p id="idn">ID Number</p> 
                 <input type="text" id="idNum" name="idNum"><br> 
                 

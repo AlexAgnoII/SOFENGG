@@ -119,6 +119,9 @@ public class userServlet extends HttpServlet {
 			if(c.getName().equals("USER")) {
 				c.setMaxAge(0);
 				response.addCookie(c);
+			} else if(c.getName().equals("ADMIN")) {
+				c.setMaxAge(0);
+				response.addCookie(c);
 			}
 		}
 		
@@ -150,7 +153,7 @@ public class userServlet extends HttpServlet {
 		System.out.println("Password: "+password);
 		
 		//Validate.
-		if(UserService.validateUser(email, password) || UserService.validateAdmin(email, password)) { 
+		if(UserService.validateUser(email, password)) { 
 			String userID = UserService.getUserID(email);
 			//set session attribute
 			s.setAttribute("UN", userID); 
@@ -170,9 +173,29 @@ public class userServlet extends HttpServlet {
 			response.addCookie(theCookie);
 
 			//Redirect inside website
-			if(UserService.validateAdmin(email, password))
-				 response.sendRedirect("AdminHomePage.jsp");
-			else response.sendRedirect("UserHomePage.jsp");
+			response.sendRedirect("UserHomePage.jsp");
+			
+		} else if(UserService.validateAdmin(email, password)) { 
+			String userID = UserService.getUserID(email);
+			//set session attribute
+			s.setAttribute("UN", userID); 
+			System.out.println("Session(UN): " + s.getAttribute("UN"));
+			
+				
+			//This generates the cookie.
+			Cookie theCookie;
+			theCookie = new Cookie("ADMIN", userID); 
+			theCookie.setMaxAge(604800); //1 week expirey.
+				
+			//Checking
+			System.out.println("Cookie placed: " + theCookie.getName());
+			System.out.println("Cookie value: " + theCookie.getValue());
+
+			//Add cookie
+			response.addCookie(theCookie);
+
+			//Redirect inside website
+			 response.sendRedirect("AdminHomePage.jsp");
 			
 		}
 		

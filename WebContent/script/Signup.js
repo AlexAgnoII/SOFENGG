@@ -30,14 +30,14 @@ $("document").ready(function() {
             $('.modal').modal();
 	       
 	        
-	        // TODO update once verified mail
-        	 $("form#loginForm").submit();		
         } else{
         	// TODO front end notif
         }
 	});
 	
 	$("#proceedModal").click(function() {
+        // TODO update once verified mail
+		$("form#signUpForm").submit();		
 		window.location.href='HomePage.jsp';
 	});
 

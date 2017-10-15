@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  */
 public class DatabaseManager {
-	private static final String url = "jdbc:mysql://localhost:3306/sofengg";
+	private static final String url = "jdbc:mysql://localhost:3306/sofengg?autoReconnect=true&useSSL=false";
 	private static final String user = "root";
 	private static final String pass= "1234";
 	

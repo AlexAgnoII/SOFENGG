@@ -150,7 +150,7 @@ public class userServlet extends HttpServlet {
 		System.out.println("Password: "+password);
 		
 		//Validate.
-		if(UserService.validateUser(email, password)) { 
+		if(UserService.validateUser(email, password) || UserService.validateAdmin(email, password)) { 
 			String userID = UserService.getUserID(email);
 			//set session attribute
 			s.setAttribute("UN", userID); 
@@ -170,7 +170,9 @@ public class userServlet extends HttpServlet {
 			response.addCookie(theCookie);
 
 			//Redirect inside website
-			response.sendRedirect("UserHomePage.jsp");
+			if(UserService.validateAdmin(email, password))
+				 response.sendRedirect("AdminHomePage.jsp");
+			else response.sendRedirect("UserHomePage.jsp");
 			
 		}
 		

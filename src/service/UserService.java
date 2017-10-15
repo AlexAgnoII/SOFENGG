@@ -20,7 +20,7 @@ public class UserService {
 	public UserService() {
 		
 	}
-	
+
 	/**
 	 * Validates if the user is existing or not.
 	 * @param username
@@ -29,24 +29,75 @@ public class UserService {
 	 */
 	public static boolean validateUser(String username, String password) {
 		boolean found = false;
+		PasswordAuthentication p = new PasswordAuthentication();
+		
 		System.out.println();
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
-			String query = "SELECT * FROM student";
+			String query = "SELECT * FROM student WHERE email = '" + username + "'";
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(query);
-			
-			PasswordAuthentication p = new PasswordAuthentication();
 		
 			while(rs.next()) {
-				String user_id = rs.getString("email");
-				String user_pass = rs.getString("hashedPass");
-				System.out.println(user_id + " " + user_pass);
-				if(username.equals(user_id) && p.authenticate(password.toCharArray(), user_pass)) {
+				if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
 					System.out.println("User found, valid!");
+					found = true;
+					break;
+				}
+			}
+			
+			if(!found){
+				query = "SELECT * FROM admin WHERE email = '" + username + "'";
+				rs = st.executeQuery(query);
+			
+				while(rs.next()) {
+					if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
+						System.out.println("Admin found, valid!");
+						found = true;
+						break;
+					}
+				}
+			}
+			
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return found;
+		
+	}
+	
+
+	/**
+	 * Validates if the admin is existing or not.
+	 * @param username
+	 * @param password
+	 * @return true or false
+	 */
+	public static boolean validateAdmin(String username, String password) {
+		boolean found = false;
+		PasswordAuthentication p = new PasswordAuthentication();
+		
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			String query = "SELECT * FROM admin WHERE email = '" + username + "'";
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+		
+			while(rs.next()) {
+				if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
+					System.out.println("Admin found, valid!");
 					found = true;
 					break;
 				}

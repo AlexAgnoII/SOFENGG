@@ -45,7 +45,6 @@ public class userServlet extends HttpServlet {
 		
 		switch(request.getServletPath()) {
 			case "/login": performLogin(request, response); break;
-//			case "/logout": performLogout(request, response); break;
 			case "/signUp": performSignup(request, response); break;
 			default: System.out.println("ERROR(Inside userServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
@@ -55,7 +54,7 @@ public class userServlet extends HttpServlet {
 
 	/**
 	 * Performs relogin.
-	 * If the cookiie exists, user will be relogin to the website.
+	 * If the cookie exists, user will be relogin to the website.
 	 * If not, user is redirected to the homepage.
 	 * @param request - request object from client
 	 * @param response - response object returned to client

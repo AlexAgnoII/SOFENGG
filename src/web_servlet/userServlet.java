@@ -178,6 +178,7 @@ public class userServlet extends HttpServlet {
 			System.out.println("inValid");
 			//send error code.
 			// TODO front end notif
+			response.sendRedirect("HomePage.jsp");
 		}
 		System.out.println("****************************************\n");
 		

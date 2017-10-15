@@ -66,37 +66,28 @@ public class dataServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String rePassword = request.getParameter("password2");
 		int idnum = Integer.parseInt(idNum);
-		System.out.println(rePassword);
 		
-		if(password.equals(rePassword)) {
 			
-			//If email already placed, don't do anything.
-			
-			//Else, do this.
-			
-			//Perform hashing here//
+		//If email already placed, don't do anything. <- ???
 
-			//Perform hashing here//
-			PasswordAuthentication p = new PasswordAuthentication();
-            
-			String newPass = p.hash(password.toCharArray());
-			Student student = new Student(idnum, 
-					  lastname,
-					  firstname,
-					  middlename,
-					  mobNum,
-					  telNum,
-					  username, //Username is email.
-					  newPass);
-			
-			UserService.addUser(student);
-			System.out.println("User added!");
-		}
+		//Else, do this.
 		
-		else {
-			//send error code that password did not match.
-			// TODO front end 
-		}
+		//Perform hashing here//
+		PasswordAuthentication p = new PasswordAuthentication();
+        
+		String newPass = p.hash(password.toCharArray());
+		Student student = new Student(idnum, 
+				  lastname,
+				  firstname,
+				  middlename,
+				  mobNum,
+				  telNum,
+				  username, //Username is email.
+				  newPass);
+		
+		UserService.addUser(student);
+		System.out.println("User added!");
+		
 		System.out.println("*******************************************");
 	}
 

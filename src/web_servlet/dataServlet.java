@@ -79,7 +79,7 @@ public class dataServlet extends HttpServlet {
 			//Perform hashing here//
 			PasswordAuthentication p = new PasswordAuthentication();
             
-			String newPass = p.hash(password);
+			String newPass = p.hash(password.toCharArray());
 			Student student = new Student(idnum, 
 					  lastname,
 					  firstname,

@@ -73,6 +73,21 @@ public class authentication implements Filter {
 						System.out.println("Session(UN): " + theSession.getAttribute("UN"));
 					}
 					
+				} else if(c.getName().equals("ADMIN")) {
+					System.out.println("ADMIN Cookie found!");
+						
+					if(c.getMaxAge() != 0)
+						proceed = true; //if it exists, proceed.
+					
+					//Allows session attribute to stay in the website
+					//When user enters exact url.
+					if(theSession.getAttribute("UN") == null) {
+						temp = c.getValue();
+						System.out.println("(Authenticate) Cookie value: " + temp);
+						theSession.setAttribute("UN",temp);
+						System.out.println("Session(UN): " + theSession.getAttribute("UN"));
+					}
+					
 				}
 			}
 		}
@@ -94,17 +109,38 @@ public class authentication implements Filter {
 								 }
 								 break; 
 			case "/UserHomePage.jsp": //if cookie exists, continue
-				                     if(proceed) {
-				                    	 System.out.println("Continue on this page..");
-				                        chain.doFilter(request, response);
-									 }
-				                     //If not, go to homepage
-				                     else {
-				                    	 System.out.println("Redirecting to HomePage.jsp..");
-				                    	 res.sendRedirect("HomePage.jsp");
-				                     }
-									 break;
-									 
+				                if(proceed) {
+				               	 System.out.println("Continue on this page..");
+				                   chain.doFilter(request, response);
+								 }
+				                //If not, go to homepage
+				                else {
+				               	 System.out.println("Redirecting to HomePage.jsp..");
+				               	 res.sendRedirect("HomePage.jsp");
+				                }
+								 break; 
+			case "/AdminHomePage.jsp": //if cookie exists, continue
+				                if(proceed) {
+				               	 System.out.println("Continue on this page..");
+				                   chain.doFilter(request, response);
+								 }
+				                //If not, go to homepage
+				                else {
+				               	 System.out.println("Redirecting to HomePage.jsp..");
+				               	 res.sendRedirect("HomePage.jsp");
+				                }
+								 break;
+			case "/ViewStudents.jsp": //if cookie exists, continue
+				                if(proceed) {
+				               	 System.out.println("Continue on this page..");
+				                   chain.doFilter(request, response);
+								 }
+				                //If not, go to homepage
+				                else {
+				               	 System.out.println("Redirecting to HomePage.jsp..");
+				               	 res.sendRedirect("HomePage.jsp");
+				                }
+								 break;						 
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
 		}
 		

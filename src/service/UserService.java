@@ -48,20 +48,7 @@ public class UserService {
 					break;
 				}
 			}
-			
-			if(!found){
-				query = "SELECT * FROM admin WHERE email = '" + username + "'";
-				rs = st.executeQuery(query);
-			
-				while(rs.next()) {
-					if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
-						System.out.println("Admin found, valid!");
-						found = true;
-						break;
-					}
-				}
-			}
-			
+
 			conn.close();
 			
 		} catch (ClassNotFoundException e) {
@@ -128,20 +115,29 @@ public class UserService {
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
-			
-			String query = "SELECT * FROM student";
+
+			String query = "SELECT * FROM student WHERE email = '" + email + "'";
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
 
 			while(rs.next()) {
-				String retrieveEmail = rs.getString("email");
-				System.out.println("Email in db: " + retrieveEmail);
-				if(email.equals(retrieveEmail)) {
+				System.out.println("Id found!");
+				id = rs.getInt("id");
+				break;
+			} 
+			
+			if (id == 0){
+				query = "SELECT * FROM admin WHERE email = '" + email + "'";
+				rs = st.executeQuery(query);
+				
+	
+				while(rs.next()) {
 					System.out.println("Id found!");
 					id = rs.getInt("id");
 					break;
-				}
+				} 
+				
 			}
 			
 			conn.close();

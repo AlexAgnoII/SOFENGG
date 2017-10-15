@@ -164,7 +164,7 @@ public class userServlet extends HttpServlet {
 			Cookie theCookie;
 			theCookie = new Cookie("USER", userID); 
 			theCookie.setMaxAge(604800); //1 week expirey.
-				
+		
 			//Checking
 			System.out.println("Cookie placed: " + theCookie.getName());
 			System.out.println("Cookie value: " + theCookie.getValue());

@@ -18,9 +18,9 @@
         
         <div>
                 <ul>
-                    <li><a href="UserHomePage.jsp">Home</a></li>
+                    <li><a href="AdminHomePage.jsp">Home</a></li>
                     <li class="dropdown">
-                        <a href="http:google.com">View Students</a>
+                        <a href="ViewStudents.jsp">View Students</a>
                     </li>
                     <li><a href="http:google.com">Profile</a></li>
                    <li style="float:right"><a>Log Out</a></li>

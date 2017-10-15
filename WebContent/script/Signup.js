@@ -18,14 +18,12 @@ $("document").ready(function() {
         var fName = document.getElementById('firstName').value;
 		var mName = document.getElementById('middleName').value;
         var lName = document.getElementById('lastName').value;
-		var celNo = document.getElementById('celNo').value;
-        var telNo = document.getElementById('telNo').value;
 		var email = document.getElementById('email').value;
         var password2 = document.getElementById('password2').value;
         
         if(validateEmail(email) && password &&
     	   idNum && fName && mName && lName &&
-    	   celNo && telNo && password2 === password){
+    	    password2 === password){
     
             $('.modal').modal();
 

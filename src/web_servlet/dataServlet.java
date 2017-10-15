@@ -60,8 +60,8 @@ public class dataServlet extends HttpServlet {
 		String lastname = request.getParameter("lastName");
 		String firstname = request.getParameter("firstName");
 		String middlename = request.getParameter("middleName");
-		String mobNum = request.getParameter("celNo");
-		String telNum = request.getParameter("telNo");
+//		String mobNum = request.getParameter("celNo");
+//		String telNum = request.getParameter("telNo");
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
 		String rePassword = request.getParameter("password2");
@@ -80,8 +80,6 @@ public class dataServlet extends HttpServlet {
 				  lastname,
 				  firstname,
 				  middlename,
-				  mobNum,
-				  telNum,
 				  username, //Username is email.
 				  newPass);
 		

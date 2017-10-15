@@ -22,14 +22,12 @@ public class Student {
 			String lastname,
 			String firstname,
 			String middlename,
-			String mobNum,
-			String telNum,
 			String username,
 			String password
 			       ) {
 		this.studentId = studentId;
-		this.celNo = mobNum;
-		this.telNo = telNum;
+		this.celNo = /*mobNum*/null;
+		this.telNo = /*telNum*/null;
 		this.firstName = firstname;
 		this.middleName = middlename;
 		this.lastName = lastname;

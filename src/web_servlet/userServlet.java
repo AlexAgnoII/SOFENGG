@@ -45,6 +45,7 @@ public class userServlet extends HttpServlet {
 		
 		switch(request.getServletPath()) {
 			case "/login": performLogin(request, response); break;
+//			case "/logout": performLogout(request, response); break;
 			case "/signUp": performSignup(request, response); break;
 			default: System.out.println("ERROR(Inside userServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
@@ -177,6 +178,7 @@ public class userServlet extends HttpServlet {
 		else {
 			System.out.println("inValid");
 			//send error code.
+			// TODO front end notif
 		}
 		System.out.println("****************************************\n");
 		
@@ -192,7 +194,32 @@ public class userServlet extends HttpServlet {
 	 */
 	private void performSignup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//Forwards the work to dataServlet url pattern "add"
-		request.getRequestDispatcher("add").forward(request, response);
+		
+		String idNum = request.getParameter("idNum");
+		String lastname = request.getParameter("lastName");
+		String firstname = request.getParameter("firstName");
+		String middlename = request.getParameter("middleName");
+		String mobNum = request.getParameter("celNo");
+		String telNum = request.getParameter("telNo");
+		String username = request.getParameter("email");
+
+		String password = request.getParameter("password");
+		String rePassword = request.getParameter("password2");
+		int idnum = Integer.parseInt(idNum);
+		System.out.println(rePassword);
+		
+		if({
+		// TODO verify if username is really and email
+		// TODO check if there is an input ??? 
+		if (idNum.matches("[0-9]+") 	  && idNum.length() == 8		    &&
+			mobNum.matches("[0-9]+") 	  && telNum.matches("[0-9]+") 		&& 
+			lastname.matches("[a-zA-Z]+") && firstname.matches("[a-zA-Z]+") &&
+			middlename.matches("[a-zA-Z]+") && password.equals(rePassword) ) 
+			request.getRequestDispatcher("add").forward(request, response);
+		else {
+			System.out.println("Invalid input");
+			// TODO front end notif
+		}
 	}
 
 

@@ -39,6 +39,7 @@
                         </div>
                     </li>
                     <li><a href="http:google.com">Profile</a></li>
+                    <li style="float:right"><a href="http:google.com"">Log Out</a></li>
                 </ul>
         
         </div>
@@ -46,8 +47,6 @@
         <div align="center">
             <div class="notices"></div>
         </div>
-        
-        <a href="logout">Click me to logout</a>
         
 	
 	</body>

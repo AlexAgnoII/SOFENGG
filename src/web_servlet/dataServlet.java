@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans_model.Student;
+import service.PasswordAuthentication;
 import service.UserService;
 
 /**
@@ -69,7 +70,9 @@ public class dataServlet extends HttpServlet {
 		
 		if(password.equals(rePassword)) {
 			//Perform hashing here//
-			
+			PasswordAuthentication p = new PasswordAuthentication();
+            
+			String newPass = p.hash(password);
 			Student student = new Student(idnum, 
 					  lastname,
 					  firstname,
@@ -77,7 +80,7 @@ public class dataServlet extends HttpServlet {
 					  mobNum,
 					  telNum,
 					  username, //Username is email.
-					  password);
+					  newPass);
 			
 			UserService.addUser(student);
 			System.out.println("User added!");
@@ -85,6 +88,7 @@ public class dataServlet extends HttpServlet {
 		
 		else {
 			//send error code that password did not match.
+			// TODO front end 
 		}
 		System.out.println("*******************************************");
 	}

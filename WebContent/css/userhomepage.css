@@ -41,6 +41,7 @@ li a, .dropbtn{
 }
 
 li.dropdown {
+	position: relative;
     display: inline-block;
 }
 
@@ -62,7 +63,7 @@ li.dropdown {
     padding: auto;
     text-decoration: none;
     display: block;
-    text-align: left;
+    text-align: center;
 }
 
 .dropdown-content a:hover {

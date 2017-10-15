@@ -45,7 +45,7 @@ public class UserService {
 				String user_id = rs.getString("email");
 				String user_pass = rs.getString("hashedPass");
 				System.out.println(user_id + " " + user_pass);
-				if(username.equals(user_id) && p.authenticate(password, user_pass)) {
+				if(username.equals(user_id) && p.authenticate(password.toCharArray(), user_pass)) {
 					System.out.println("User found, valid!");
 					found = true;
 					break;

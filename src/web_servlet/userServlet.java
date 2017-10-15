@@ -208,7 +208,6 @@ public class userServlet extends HttpServlet {
 		int idnum = Integer.parseInt(idNum);
 		System.out.println(rePassword);
 		
-		if({
 		// TODO verify if username is really and email
 		// TODO check if there is an input ??? 
 		if (idNum.matches("[0-9]+") 	  && idNum.length() == 8		    &&

@@ -104,7 +104,7 @@ public class UserService {
 		return Integer.toString(id);
 		
 	}
-	
+
 	public static void addUser(Student student) {
 		System.out.println();
 		try{
@@ -134,6 +134,29 @@ public class UserService {
 			e.printStackTrace();
 		}
 		System.out.println();
+	}
+	
+
+	// TODO Remove this temporary class of adding admin class
+	public static void addAdmin(int id, String pass, String email) {
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			PasswordAuthentication p = new PasswordAuthentication();
+			
+			PreparedStatement stmt =  conn.prepareStatement("INSERT INTO admin (adminId, hashedPass, email) VALUES (?, ?, ?)");
+
+			stmt.setInt(1, id);
+			stmt.setString(2, p.hash(pass.toCharArray()));
+			stmt.setString(3, email);
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println("Added 11526491 admin");
 	}
 	
 }

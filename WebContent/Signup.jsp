@@ -42,20 +42,6 @@
                 
                 <p id="mname">Middle Name</p>
                 <input type="text" id="middleName" name="middleName"><br> 
-                
-                <div id="nums">
-                    <div id="m">
-                        <p id="cnum">Mobile Number</p>
-                        <input type="text" id="celNo" name="celNo"> 
-                    </div>
-                
-                    <div id="t">
-                        <p id="tnum">Telephone Number</p>
-                        <input type="text" id="telNo" name="telNo"><br> 
-                    
-                    </div>
-                    
-                </div>
 
                 <p id="emailt">Email Address</p>
                 <input type="text" id="email" name="email"><br> 

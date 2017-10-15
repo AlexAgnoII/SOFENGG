@@ -5,11 +5,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<!--Import materialize.css-->
-        <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		
 	    <link rel = "stylesheet" type="text/css" href="css/signup.css">
 
@@ -78,18 +78,12 @@
                   <p id="modver">A verification link has been sent to the email address you used to create your account. Please click on the link to verify your account and proceed with the registration.</p>
                 </div>
                 <div class="modal-footer">
-                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Proceed</a>
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
                 </div>
               </div>
 
         </div>
-        
-        <script src="script/Signup.js"></script>
-        <script>  
-	        $(document).ready(function(){
-	            $('.modal').modal();
-	        });
-  		</script>
-        
-	</body>
+             
+		<script src="script/Signup.js"></script>
+   	</body>
 </html>

@@ -195,30 +195,7 @@ public class userServlet extends HttpServlet {
 	private void performSignup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//Forwards the work to dataServlet url pattern "add"
 		
-		String idNum = request.getParameter("idNum");
-		String lastname = request.getParameter("lastName");
-		String firstname = request.getParameter("firstName");
-		String middlename = request.getParameter("middleName");
-		String mobNum = request.getParameter("celNo");
-		String telNum = request.getParameter("telNo");
-		String username = request.getParameter("email");
-
-		String password = request.getParameter("password");
-		String rePassword = request.getParameter("password2");
-		int idnum = Integer.parseInt(idNum);
-		System.out.println(rePassword);
-		
-		// TODO verify if username is really and email
-		// TODO check if there is an input ??? 
-		if (idNum.matches("[0-9]+") 	  && idNum.length() == 8		    &&
-			mobNum.matches("[0-9]+") 	  && telNum.matches("[0-9]+") 		&& 
-			lastname.matches("[a-zA-Z]+") && firstname.matches("[a-zA-Z]+") &&
-			middlename.matches("[a-zA-Z]+") && password.equals(rePassword) ) 
-			request.getRequestDispatcher("add").forward(request, response);
-		else {
-			System.out.println("Invalid input");
-			// TODO front end notif
-		}
+		request.getRequestDispatcher("add").forward(request, response);
 	}
 
 

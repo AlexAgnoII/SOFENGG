@@ -39,7 +39,7 @@
                         </div>
                     </li>
                     <li><a href="http:google.com">Profile</a></li>
-                   <li style="float:right"><a href="http:google.com"">Log Out</a></li>
+                   <li style="float:right"><a href="logout"">Log Out</a></li>
                 </ul>
         
         </div>

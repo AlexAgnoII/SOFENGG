@@ -54,7 +54,7 @@ public class dataServlet extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void addUser(HttpServletRequest request, HttpServletResponse response)  {
+	private void addUser(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("*****************ADD USER ************************");
 		String idNum = request.getParameter("idNum");
 		String lastname = request.getParameter("lastName");
@@ -88,6 +88,7 @@ public class dataServlet extends HttpServlet {
 		UserService.addUser(student);
 		System.out.println("User added!");
 		
+		response.sendRedirect("HomePage.jsp");
 		System.out.println("*******************************************");
 	}
 
@@ -123,6 +124,7 @@ public class dataServlet extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
 	}
 
 }

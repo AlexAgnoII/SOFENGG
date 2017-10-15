@@ -28,8 +28,7 @@ $("document").ready(function() {
     	   celNo && telNo && password2 === password){
     
             $('.modal').modal();
-	       
-	        
+
         } else{
         	// TODO front end notif
         }
@@ -37,8 +36,7 @@ $("document").ready(function() {
 	
 	$("#proceedModal").click(function() {
         // TODO update once verified mail
-		$("form#signUpForm").submit();		
-		window.location.href='HomePage.jsp';
+		$("form#signUpForm").submit();
 	});
 
 });

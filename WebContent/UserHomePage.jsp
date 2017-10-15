@@ -33,9 +33,9 @@
                     <li class="dropdown">
                         <a href="http:google.com" class="dropbtn">Apply for Awards</a>
                         <div class="dropdown-content">
-                            <a href="http:google.com">Reward 1</a>
-                            <a href="http:google.com">Reward 2</a>
-                            <a href="http:google.com">Reward 3</a>
+                            <a href="http:google.com">Award 1</a>
+                            <a href="http:google.com">Award 2</a>
+                            <a href="http:google.com">Award 3</a>
                         </div>
                     </li>
                     <li><a href="http:google.com">Profile</a></li>

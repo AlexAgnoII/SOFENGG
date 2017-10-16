@@ -90,7 +90,7 @@ html {
     box-shadow: 0 5px 5px -5px #333;
 }
 
-#lastName, #firstName, #middleName, #password, #password2, #email {
+#lastName, #firstName, #middleName, #password, #password2, #email, #courseName {
     width: 300px;
     height: 23px;
     margin-top: -10px;
@@ -153,3 +153,26 @@ p {
     font-weight: 400;
 }
 
+/*This changes the text color of the select options.*/
+ul.dropdown-content.select-dropdown li span {
+    color: #1f1f1f;
+    font-family: "Montserrat";
+}
+
+/*This changes the FIRST option of the select (its disabled, so it should be gray)*/
+ul.dropdown-content.select-dropdown li.disabled span {
+    color: #888888; 
+    font-family: "Montserrat";
+
+}
+
+/*This is for the select tag size customization.*/
+div.input-field {
+	width:300px;
+	height:50px;
+    margin-top: -10px;
+    margin-bottom: 2px;
+    margin-left: 4px;
+
+
+}

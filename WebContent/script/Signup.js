@@ -6,6 +6,9 @@ function validateEmail(email) {
 }
 
 $("document").ready(function() {
+	//To show the select(Dropdown).
+	console.log("This happened II");
+	$('select#dropDownCollege').material_select();
 
 	$("a#backb").click(function() {
 		window.location.href='HomePage.jsp';

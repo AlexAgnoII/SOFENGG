@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Student {
 	
-	private int studentId;
+	private int studentId, zip;
 	private Date birthday;
 	private Year yEnrolled;
 	private String firstName,
@@ -16,10 +16,14 @@ public class Student {
 				   email,
 				   address,
 				   course,
+				   college,
 				   hashedPass,
 				   civil,
 				   citizen,
-				   gender;
+				   gender,
+				   city,
+				   province,
+				   country;
 	
 
 	public Student(int studentId, 
@@ -32,6 +36,7 @@ public class Student {
 				   String celNo, 
 				   String email, 
 				   String address, 
+				   //String college,
 				   String course, 
 				   String hashedPass, 
 				   String civil,
@@ -48,6 +53,7 @@ public class Student {
 		this.celNo = celNo;
 		this.email = email;
 		this.address = address;
+		//this.college = college;
 		this.course = course;
 		this.hashedPass = hashedPass;
 		this.civil = civil;
@@ -61,18 +67,21 @@ public class Student {
 			String firstname,
 			String middlename,
 			String username,
-			String password) {
+			String password,
+			String college,
+			String course) {
 		this.studentId = studentId;
-		this.celNo = /*mobNum*/null;
-		this.telNo = /*telNum*/null;
+		this.celNo = null;
+		this.telNo = null;
 		this.firstName = firstname;
 		this.middleName = middlename;
 		this.lastName = lastname;
 		this.email = username;
 		this.address = null;
-		this.course = null;
+		this.course = course;
 		this.yEnrolled = null;
 		this.birthday = null;
+		this.college = college;
 		
 		// TODO hashing
 		this.hashedPass = password;
@@ -189,5 +198,57 @@ public class Student {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
+
+	public String getCollege() {
+		return college;
+	}
+
+
+	public void setCollege(String college) {
+		this.college = college;
+	}
+
+
+	public int getZip() {
+		return zip;
+	}
+
+
+	public void setZip(int zip) {
+		this.zip = zip;
+	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+	public String getProvince() {
+		return province;
+	}
+
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+
+	public String getCountry() {
+		return country;
+	}
+
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	
 
 }

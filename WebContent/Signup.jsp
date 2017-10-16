@@ -8,8 +8,7 @@
         <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+		<!-- Moved some scripts right before the end of body. -->
 		
 	    <link rel = "stylesheet" type="text/css" href="css/signup.css">
 
@@ -42,6 +41,25 @@
                 
                 <p id="mname">Middle Name</p>
                 <input type="text" id="middleName" name="middleName"><br> 
+                
+                <p id="college">College</p>
+                
+                <div class="input-field">
+	                <select id="dropDownCollege" name="college">
+	                    <option value="" disabled selected>Select your College:</option>
+	                	<option value="1">College of Computer Studies</option>
+	                	<option value="2">College of Business</option>
+	                	<option value="3">College of Education</option>
+	                	<option value="4">College of Engineering</option>
+	                	<option value="5">College of Liberal Arts</option>
+	                	<option value="6">College of Science</option>
+	                	<option value="7">School of Economics</option>
+	                </select>
+                </div>
+                
+                
+                <p id="course">Course</p>
+                <input type="text" id="courseName" name="course"> <br>
 
                 <p id="emailt">Email Address</p>
                 <input type="text" id="email" name="email"><br> 
@@ -69,7 +87,10 @@
                   <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
                 </div>
               </div>
-             
+         
+         <!-- Originally from head. -->
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		<script src="script/Signup.js"></script>
    	</body>
 </html>

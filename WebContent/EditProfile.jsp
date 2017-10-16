@@ -63,24 +63,24 @@
                     <div class="dwrap">
                         <div class = "f">
                             <p>City</p>
-                            <input type="text" id="city" name="city" value="${loggedUser.address}">
+                            <input type="text" id="city" name="city" value="${loggedUser.city}">
                         </div>
                         
                         <div class = "m">
                             <p>Province</p>
-                            <input type="text" id="prov" name="prov" value="${loggedUser.address}">
+                            <input type="text" id="prov" name="prov" value="${loggedUser.province}">
                         </div>
                     </div>
                     
                     <div class="dwrap">
                         <div class = "f">
                             <p>Country</p>
-                            <input type = "text" id="country" name="country" value="${loggedUser.address}">
+                            <input type = "text" id="country" name="country" value="${loggedUser.country}">
                         </div>
                         
                         <div class = "m">
                             <p>Zip Code</p>
-                            <input type="text" id="zip" name="zip" value="${loggedUser.address}"> 
+                            <input type="text" id="zip" name="zip" value="${loggedUser.zip}"> 
                         </div>
                     </div>
                     
@@ -224,7 +224,7 @@
                         
                     <div class = "m">
                         <p>College</p>
-                        <input type="text" id="college" name="college" value="">
+                        <input type="text" id="college" name="college" value="${loggedUser.college}">
                     </div>
                       
                     <div class = "m">

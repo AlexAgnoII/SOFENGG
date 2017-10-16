@@ -61,11 +61,11 @@ public class dataServlet extends HttpServlet {
 		String lastname = request.getParameter("lastName");
 		String firstname = request.getParameter("firstName");
 		String middlename = request.getParameter("middleName");
-//		String mobNum = request.getParameter("celNo");
-//		String telNum = request.getParameter("telNo");
 		String username = request.getParameter("email");
 		String password = request.getParameter("password");
 		String rePassword = request.getParameter("password2");
+		String college = request.getParameter("college");
+		String course = request.getParameter("course");
 		int idnum = Integer.parseInt(idNum);
 		
 			
@@ -82,7 +82,9 @@ public class dataServlet extends HttpServlet {
 				  firstname,
 				  middlename,
 				  username, //Username is email.
-				  newPass);
+				  newPass,
+				  college,
+				  course);
 		
 		UserService.addUser(student);
 		System.out.println("User added!");

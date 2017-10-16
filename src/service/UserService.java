@@ -175,13 +175,20 @@ public class UserService {
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
-				students.add(new Student(rs.getInt("studentId"), rs.getDate("birthday"),
-										 Year.of(rs.getDate("dateEnrolled").getYear()), rs.getString("firstName"),
-										 rs.getString("middleName"), rs.getString("lastName"),
-										 rs.getString("celNo"), rs.getString("telNo"), 
-										 rs.getString("email"), rs.getString("address"), 
-										 rs.getString("course"), rs.getString("hashedPass"),
-										 rs.getString("civil"), rs.getString("citizen"),
+				students.add(new Student(rs.getInt("studentId"), 
+						                 rs.getDate("birthday"),
+										 Year.of(rs.getDate("dateEnrolled").getYear()), 
+										 rs.getString("firstName"),
+										 rs.getString("middleName"),
+										 rs.getString("lastName"),
+										 rs.getString("celNo"), 
+										 rs.getString("telNo"), 
+										 rs.getString("email"), 
+										 rs.getString("address"), 
+										 rs.getString("course"),
+										 rs.getString("hashedPass"),
+										 rs.getString("civil"),
+										 rs.getString("citizen"),
 										 rs.getString("gender")));
 				System.out.println("Student Found!");
 				break;
@@ -308,7 +315,7 @@ public class UserService {
 						
 					} else{
 						// Update previous project
-						Involvement involvement = projects.get(projects.size() - 1));
+						Involvement involvement = projects.get(projects.size() - 1);
 						involvement.setHandler(handler);
 						projects.remove(projects.size() - 1);
 						projects.add(involvement);
@@ -362,7 +369,7 @@ public class UserService {
 								
 							} else{
 								// Update previous project
-								Involvement involvement = projects.get(projects.size() - 1));
+								Involvement involvement = projects.get(projects.size() - 1);
 								involvement.setHandler(handler);
 								projects.remove(projects.size() - 1);
 								projects.add(involvement);
@@ -404,7 +411,7 @@ public class UserService {
 			Connection conn = DatabaseManager.getConnection();
 			
 			PreparedStatement stmt =  conn.prepareStatement(
-					"INSERT INTO student (studentId, firstName, middleName, lastName, celNo, telNo, email, hashedPass) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+					"INSERT INTO student (studentId, firstName, middleName, lastName, celNo, telNo, email, hashedPass, collegeId, course) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 					);
 			
 			stmt.setInt(1, student.getStudentId());
@@ -415,6 +422,8 @@ public class UserService {
 			stmt.setString(6, student.getTelNo());
 			stmt.setString(7, student.getEmail());
 			stmt.setString(8, student.getHashedPass());
+			stmt.setInt(9, Integer.parseInt(student.getCollege()));
+			stmt.setString(10,student.getCourse());
 			
 			stmt.executeUpdate();
 			
@@ -464,7 +473,7 @@ public class UserService {
 			Connection conn = DatabaseManager.getConnection();
 			
 			
-			PreparedStatement stmt =  conn.prepareStatement("SELECT * FROM Student WHERE id=?");
+			PreparedStatement stmt =  conn.prepareStatement("SELECT * FROM Student natural join college WHERE id=?");
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			
@@ -485,6 +494,11 @@ public class UserService {
 						              rs.getString("civil"), 
 						              rs.getString("citizen"),
 						              rs.getString("gender"));
+				student.setCollege(rs.getString("cName"));
+				student.setCity(rs.getString("city"));
+				student.setProvince(rs.getString("province"));
+				student.setCountry(rs.getString("country"));
+				student.setZip(rs.getInt("zip"));
 			}
 			
 			conn.close();

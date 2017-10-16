@@ -219,7 +219,6 @@ public class userServlet extends HttpServlet {
 	 */
 	private void performSignup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//Forwards the work to dataServlet url pattern "add"
-		
 		request.getRequestDispatcher("add").forward(request, response);
 	}
 

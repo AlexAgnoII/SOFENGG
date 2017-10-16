@@ -40,93 +40,93 @@
             <div id="perinfo" class="col s12 forms">
                 <form>
                     <p>Last Name</p>
-                    <input type="text" id="lastName" name="lastName"><br>
+                    <input type="text" id="lastName" name="lastName" value="${loggedUser.lastName}"><br>
                     
                     <div class = "dwrap">
                         <div class = "f">
                             <p>First Name</p>
-                            <input type="text" id="firstName" name="firstName"><br>
+                            <input type="text" id="firstName" name="firstName" value="${loggedUser.firstName}"><br>
                         
                         </div>
                         
                         <div class = "m">
                             <p>Middle Name</p>
-                            <input type="text" id="middleName" name="middleName"><br>
+                            <input type="text" id="middleName" name="middleName" value="${loggedUser.middleName}"><br>
                         </div>
                     </div>
                 
                     <ul><li><div class="divider"></div></li></ul>
                     
                     <p>Address</p>
-                    <input type="text" id="address" name="address">
+                    <input type="text" id="address" name="address" value="${loggedUser.address}">
                     
                     <div class="dwrap">
                         <div class = "f">
                             <p>City</p>
-                            <input type="text" id="city" name="city">
+                            <input type="text" id="city" name="city" value="${loggedUser.address}">
                         </div>
                         
                         <div class = "m">
                             <p>Province</p>
-                            <input type="text" id="prov" name="prov">
+                            <input type="text" id="prov" name="prov" value="${loggedUser.address}">
                         </div>
                     </div>
                     
                     <div class="dwrap">
                         <div class = "f">
                             <p>Country</p>
-                            <input type = "text" id="country" name="country">
+                            <input type = "text" id="country" name="country" value="${loggedUser.address}">
                         </div>
                         
                         <div class = "m">
                             <p>Zip Code</p>
-                            <input type="text" id="zip" name="zip"> 
+                            <input type="text" id="zip" name="zip" value="${loggedUser.address}"> 
                         </div>
                     </div>
                     
                     <ul><li><div class="divider"></div></li></ul>
                     
                     <p>Email Address</p>
-                    <input type="text" id="email" name="email" >
+                    <input type="text" id="email" name="email" value="${loggedUser.email}">
 
                     <div class="dwrap">
                         <div class = "f">
                             <p>Mobile Number</p>
-                            <input type ="text" id="cell" name="cell">
+                            <input type ="text" id="cell" name="cell" value="${loggedUser.celNo}">
                         </div>
                         
                         <div class = "m">
                             <p>Telephone Number</p>
-                            <input type = "text" id="tel" name="tel">
+                            <input type = "text" id="tel" name="tel" value="${loggedUser.telNo}">
                         </div>
                     </div>
                     
                     <div class="dwrap">
                         <div class = "f">
                              <p>Birthday</p>
-                             <input type="date" id="bday" name="bday">
+                             <input type="date" id="bday" name="bday" value="${loggedUser.birthday}">
                         </div>
                         
                         <div class = "m">
                             <p>Age</p>
-			                <input type="text" id="age" name="age">
+			                <input type="text" id="age" name="age" value="${loggedUser.birthday}">
                         </div>
                         
                         <div class = "m">
                             <p>Civil Status</p>
-			                <input type="text" id="civil" name="civil"><br>
+			                <input type="text" id="civil" name="civil" value="${loggedUser.civil}"><br>
                         </div>
                     </div> 
                     
                     <div class="dwrap">
                         <div class = "f">
                             <p>Citizenship</p>
-                            <input type="text" id="citizen" name="citizen">
+                            <input type="text" id="citizen" name="${loggedUser.citizen}">
                         </div>
                         
                         <div class = "m">
                             <p>Gender</p>
-			                <input type="text" id="gender" name="gender">
+			                <input type="text" id="gender" name="${loggedUser.gender}">
                         </div>
                     </div>
                 
@@ -168,7 +168,7 @@
                              <input type="date" id="mbday" name="mbday">
                         </div>    
                     </div>
-                
+                <!-- DYNAMIC -->
                 <p class="family">Sister/s</p>
                 <div class="dwrap">
                         <div class = "f">
@@ -186,7 +186,7 @@
                              <input type="date" id="sbday" name="sbday">
                         </div>    
                     </div>
-                
+                <!-- DYNAMIC -->
                 <p class="family">Brother/s</p>
                 <div class="dwrap">
                         <div class = "f">
@@ -214,28 +214,29 @@
             <!-- ACADEMIC INFORMATION -->
             <div id="acadinfo" class="col s12 forms">
                 <p>ID Number</p>
-                <input type="text" id="idNum" name="idNum"><br> 
+                <input type="text" id="idNum" name="idNum" value="${loggedUser.studentId}"><br> 
                 
                 <div class="dwrap">
                     <div class = "f">
                         <p>Course</p>
-                        <input type="text" id="course" name="course">
+                        <input type="text" id="course" name="course" value="${loggedUser.course}">
                     </div>
                         
                     <div class = "m">
                         <p>College</p>
-                        <input type="text" id="college" name="college">
+                        <input type="text" id="college" name="college" value="">
                     </div>
                       
                     <div class = "m">
                         <p>No. of Units Failed</p>
-                        <input type="text" id="failed" name="failed">
+                        <input type="text" id="failed" name="failed" value="">
                     </div>    
                 </div>
                 
                 <ul><li><div class="divider"></div></li></ul>
                 <h5>Academic Achievements</h5>
                 
+                <!-- DYNAMIC -->
                  <div class="dwrap">
                     <div class = "f">
                         <p>Year</p>
@@ -261,6 +262,7 @@
             </div>
             
             <!-- INTERNAL INVOLVEMENTS -->
+            <!-- DYNAMIC -->
             <div id="inin" class="col s12 forms">
                 <div class="dwrap">
                     <div class = "f">
@@ -284,6 +286,7 @@
             
             </div>
             
+            <!-- DYNAMIC -->
             <!-- EXTERNAL INVOLVEMENTS -->
             <div id="exin" class="col s12 forms">
                 <div class="dwrap">

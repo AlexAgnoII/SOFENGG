@@ -41,7 +41,7 @@
                         <a href="http:google.com">Award 3</a>
                     </div>
                 </li>
-                <li><a href="retrieve">Profile</a></li>
+                <li><a href="view">Profile</a></li>
                <li style="float:right"><a href="logout">Log Out</a></li>
             </ul>
         </div>

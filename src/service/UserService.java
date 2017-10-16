@@ -40,10 +40,10 @@ public class UserService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
-			String query = "SELECT * FROM student WHERE email = '" + username + "'";
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(query);
-		
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ?");
+			st.setString(1, username);
+			ResultSet rs = st.executeQuery();
+			
 			while(rs.next()) {
 				if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
 					System.out.println("User found, valid!");
@@ -81,9 +81,9 @@ public class UserService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
-			String query = "SELECT * FROM admin WHERE email = '" + username + "'";
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(query);
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM admin WHERE email = ?");
+			st.setString(1, username);
+			ResultSet rs = st.executeQuery();
 		
 			while(rs.next()) {
 				if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
@@ -109,7 +109,7 @@ public class UserService {
 	 * Retrieves the user ID.
 	 * @param username
 	 * @param password
-	 * @return true or false
+	 * @return String userID
 	 */
 	public static String getUserID(String email) {
 		System.out.println();
@@ -119,11 +119,10 @@ public class UserService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
-			String query = "SELECT * FROM student WHERE email = '" + email + "'";
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(query);
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ?");
+			st.setString(1, email);
+			ResultSet rs = st.executeQuery();
 			
-
 			while(rs.next()) {
 				System.out.println("Id found!");
 				id = rs.getInt("id");
@@ -131,9 +130,9 @@ public class UserService {
 			} 
 			
 			if (id == 0){
-				query = "SELECT * FROM admin WHERE email = '" + email + "'";
-				rs = st.executeQuery(query);
-				
+				st = conn.prepareStatement("SELECT * FROM admin WHERE email = ?");
+				st.setString(1, email);
+				rs = st.executeQuery();
 	
 				while(rs.next()) {
 					System.out.println("Id found!");
@@ -168,11 +167,11 @@ public class UserService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
-			String query = "SELECT * FROM student WHERE firstName LIKE '" + name +
-						    "%' OR middleName LIKE '" + name +
-						    "%' OR lastName LIKE '" + name + "%'";
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery(query);
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE firstName LIKE ? OR middleName LIKE ? OR lastName LIKE ?");
+			st.setString(1, name);
+			st.setString(2, name);
+			st.setString(3, name);
+			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
 				students.add(new Student(rs.getInt("studentId"), rs.getDate("birthday"),

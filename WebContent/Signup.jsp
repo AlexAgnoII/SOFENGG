@@ -58,7 +58,9 @@
                 <a class="waves-effect waves-light btn" id="backb">BACK</a>
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="signupb" type=submit>SIGNUP</a>
             </form>
-            
+
+        </div>
+                    
             <div id="modal1" class="modal modal-fixed-footer">
                 <div class="modal-content">
                   <p id="modver">A verification link has been sent to the email address you used to create your account. Please click on the link to verify your account and proceed with the registration.</p>
@@ -67,8 +69,6 @@
                   <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
                 </div>
               </div>
-
-        </div>
              
 		<script src="script/Signup.js"></script>
    	</body>

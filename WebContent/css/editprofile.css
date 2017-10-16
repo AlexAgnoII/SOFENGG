@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+ 
+html {
+    font-family: "Montserrat";
+}
+
+#top, #bottom, #left, #right {
+	background: #006f4a;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 10px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top{
+		left: 0; right: 0;
+		height: 10px;
+		}
+		#top { top: 0; }
+
+#pulse {
+    background-color: #006f4a; 
+    height: 70px;
+    width: 180px;
+    position: fixed;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+    border-color: #006f4a;
+}
+
+#pulse:hover {
+    background-color: white;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+}
+
+#wrapper {
+    display: inline-flex;
+    padding: 4px;
+    width: 150px;
+}
+
+#title {
+    font-family: "Montserrat";
+    font-size: 15.5px;
+    text-align: left;
+    line-height: 95%;
+    font-weight: 400;
+    width: 60%;
+    margin-top: 0px;
+    margin-left: -2px;
+    color: white;
+}
+
+#pulse:hover #title {
+    color: #1e1e1e;
+    font-weight: 500;
+}
+
+#arrow {
+    font-size: 60px;
+    margin-left: -5px;
+    color: #1e1e1e;
+}
+
+#pulse:hover #arrow {
+    color: #006f4a;
+}
+
+#epfeed {
+    position: relative;
+    top: 5%;
+    background-color: azure;
+    width: 680px;
+    margin: 0 auto;
+}
+
+.forms {
+    padding: 10px;
+}
+
+.dwrap {
+    display: inline-flex;
+}
+
+p {
+    font-size: 12px;
+}
+
+.m {
+    margin-left: 30px;
+}
+
+#lastName, #firstName, #middleName, #city, #prov, #country, #zip,
+#tel, #cell {
+    width: 300px;
+    height: 20px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 3px;
+    font-size: 12px; 
+}
+
+#address, #email {
+    width: 640px;
+    height: 20px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 3px;
+    font-size: 12px;  
+}
+
+#bday, #age, #civil, #citizen {
+    width: 187px;
+    height: 20px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 3px;
+    font-size: 12px; 
+}
+
+#gender {
+    width: 100px;
+    height: 20px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 3px;
+    font-size: 12px; 
+}
+
+
+
+

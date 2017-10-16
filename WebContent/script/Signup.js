@@ -24,8 +24,8 @@ $("document").ready(function() {
         if(validateEmail(email) && password &&
     	   idNum && fName && mName && lName &&
     	    password2 === password){
-    
-            $('.modal').modal();
+        	$("form#signUpForm").submit();
+            //$('.modal').modal();
 
         } else{
         	// TODO front end notif
@@ -34,7 +34,7 @@ $("document").ready(function() {
 	
 	$("#proceedModal").click(function() {
         // TODO update once verified mail
-		$("form#signUpForm").submit();
+		//$("form#signUpForm").submit();
 	});
 
 });

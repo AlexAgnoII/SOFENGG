@@ -3,6 +3,7 @@ package web_servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -98,7 +99,25 @@ public class dataServlet extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void retrieveUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie[] cookies = request.getCookies();
+		Cookie userCookie = null;
+		Student student = null;
 		
+		System.out.println("************************************Retrieve User**********************************");
+		for (Cookie c: cookies) {
+			if(c.getName().equals("USER")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
+			}
+		}
+		
+		student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
+		request.setAttribute("loggedUser", student);
+		request.getRequestDispatcher("testView.jsp").forward(request, response);
+		
+		System.out.println("***********************************************************************************");
 	}
 	
 

@@ -1,11 +1,14 @@
 package service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Year;
+import java.util.ArrayList;
 
 import beans_model.Student;
 
@@ -152,6 +155,49 @@ public class UserService {
 		
 	}
 
+	/**
+	 * Retrieves a list of student using their name.
+	 * @param name
+	 * @return List of student
+	 */
+	public static ArrayList<Student> getStudentByName(String name) {
+		System.out.println();
+		ArrayList<Student> students = new ArrayList<>();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			String query = "SELECT * FROM student WHERE firstName LIKE '" + name +
+						    "%' OR middleName LIKE '" + name +
+						    "%' OR lastName LIKE '" + name + "%'";
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				students.add(new Student(rs.getInt("studentId"), rs.getDate("birthday"),
+										 Year.of(rs.getDate("dateEnrolled").getYear()), rs.getString("firstName"),
+										 rs.getString("middleName"), rs.getString("lastName"),
+										 rs.getString("celNo"), rs.getString("telNo"), 
+										 rs.getString("email"), rs.getString("address"), 
+										 rs.getString("course"), rs.getString("hashedPass"),
+										 rs.getString("civil"), rs.getString("citizen"),
+										 rs.getString("gender")));
+				System.out.println("Student Found!");
+				break;
+			} 
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return students;
+		
+	}
+	
 	public static void addUser(Student student) {
 		System.out.println();
 		try{

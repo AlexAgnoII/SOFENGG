@@ -16,15 +16,42 @@ public class Student {
 				   email,
 				   address,
 				   course,
-				   hashedPass;
+				   hashedPass,
+				   civil,
+				   citizen,
+				   gender;
 	
+
+	public Student(int studentId, Date birthday, Year yEnrolled, 
+				   String firstName, String middleName, String lastName,
+				   String telNo, String celNo, String email, String address, 
+				   String course, String hashedPass, String civil,
+				   String citizen, String gender) {
+		super();
+		this.studentId = studentId;
+		this.birthday = birthday;
+		this.yEnrolled = yEnrolled;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.telNo = telNo;
+		this.celNo = celNo;
+		this.email = email;
+		this.address = address;
+		this.course = course;
+		this.hashedPass = hashedPass;
+		this.civil = civil;
+		this.citizen = citizen;
+		this.gender = gender;
+	}
+
+
 	public Student(int studentId, 
 			String lastname,
 			String firstname,
 			String middlename,
 			String username,
-			String password
-			       ) {
+			String password) {
 		this.studentId = studentId;
 		this.celNo = /*mobNum*/null;
 		this.telNo = /*telNum*/null;

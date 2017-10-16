@@ -216,12 +216,98 @@
                 <p>ID Number</p>
                 <input type="text" id="idNum" name="idNum"><br> 
                 
-                <p>Course</p>
-                <input type="date" id="course" name="course">
+                <div class="dwrap">
+                    <div class = "f">
+                        <p>Course</p>
+                        <input type="text" id="course" name="course">
+                    </div>
+                        
+                    <div class = "m">
+                        <p>College</p>
+                        <input type="text" id="college" name="college">
+                    </div>
+                      
+                    <div class = "m">
+                        <p>No. of Units Failed</p>
+                        <input type="text" id="failed" name="failed">
+                    </div>    
+                </div>
+                
+                <ul><li><div class="divider"></div></li></ul>
+                <h5>Academic Achievements</h5>
+                
+                 <div class="dwrap">
+                    <div class = "f">
+                        <p>Year</p>
+                        <input type="date" id="ayear" name="ayear">
+                    </div>
+                        
+                    <div class = "m">
+                         <p>Award</p>
+                         <input type="text" id="award" name="award">
+                    </div>
+                      
+                    <div class = "m">
+                        <p>Level</p>
+                        <input type="text" id="alev" name="alev">
+                    </div>    
+                </div>
+                
+                <p>Given by</p>
+                <input type="text" id="agive" name="agive">
+                
+                <p>Description</p>
+                <input type="text" id="adesc" name="adesc">
+            </div>
+            
+            <!-- INTERNAL INVOLVEMENTS -->
+            <div id="inin" class="col s12 forms">
+                <div class="dwrap">
+                    <div class = "f">
+                        <p>Year</p>
+                        <input type="date" id="inyear" name="inyear">
+                    </div>
+                        
+                    <div class = "m">
+                         <p>Organization</p>
+                         <input type="text" id="inorgname" name="inorgname">
+                    </div>
+                      
+                    <div class = "m">
+                        <p>Position</p>
+                        <input type="text" id="inorgpos" name="inorgpos">
+                    </div>    
+                </div>
+            
+                <p>Description</p>
+                <input type="text" id="inorgdesc" name="inrogsdesc">
             
             </div>
-            <div id="inin" class="col s12 forms">Test 3</div>
-            <div id="exin" class="col s12 forms">Test 4</div>
+            
+            <!-- EXTERNAL INVOLVEMENTS -->
+            <div id="exin" class="col s12 forms">
+                <div class="dwrap">
+                    <div class = "f">
+                        <p>Year</p>
+                        <input type="date" id="exyear" name="exyear">
+                    </div>
+                        
+                    <div class = "m">
+                         <p>Organization</p>
+                         <input type="text" id="exorgname" name="exorgname">
+                    </div>
+                      
+                    <div class = "m">
+                        <p>Position</p>
+                        <input type="text" id="exorgpos" name="exorgpos">
+                    </div>    
+                </div>
+            
+                <p>Description</p>
+                <input type="text" id="exorgdesc" name="exorgdesc">
+            
+            
+            </div>
         </div>
     </body>
 </html>

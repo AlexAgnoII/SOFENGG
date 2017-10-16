@@ -200,34 +200,41 @@ public class UserService {
 	
 
 	/**
-	 * Retrieves a list of organization or project using their full title or acronym.
+	 * Retrieves a list of organization using their full title or acronym.
 	 * @param title
-	 * @return List of org or project
+	 * @return List of organization 
 	 */
-	public static ArrayList<Involvement> getInvolvementList(String title) {
+	public static ArrayList<Involvement> getOrgList(String title) {
 		System.out.println();
-		ArrayList<Involvement> involvements = new ArrayList<>();
+		ArrayList<Involvement> orgs = new ArrayList<>();
 		Boolean found = false;
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM involvement WHERE iName LIKE ? GROUP BY iName");
+			
+			PreparedStatement st = conn.prepareStatement("SELECT i.* FROM sofengg.involvementhandler iH"     + 
+													     "RIGHT JOIN involvement i ON iH.involvementID"      +
+													     " = i.involvementId WHERE iH.involvementID IS NULL" +
+													     " AND i.iName LIKE ? GROUP BY i.iName");
 			st.setString(1, title);
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
 				found = true;
-				involvements.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+				orgs.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
 												 rs.getString("iName"), rs.getString("position"), 
 												 Year.of(rs.getDate("acadYear").getYear())));
-				System.out.println("Involvement Found!");
+				System.out.println("Org Found!");
 				break;
 			} 
 			
 			if (!found){
-				st = conn.prepareStatement("SELECT * FROM involvement GROUP BY iName");
+				st = conn.prepareStatement("SELECT i.* FROM sofengg.involvementhandler iH" 	   + 
+										   "RIGHT JOIN involvement i ON iH.involvementID"      +
+										   " = i.involvementId WHERE iH.involvementID IS NULL" +
+										   " GROUP BY iName");
 				rs = st.executeQuery();
 				
 				while(rs.next()) {
@@ -241,10 +248,10 @@ public class UserService {
 					}
 					
 					if(found){
-						involvements.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+						orgs.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
 								 rs.getString("iName"), rs.getString("position"), 
 								 Year.of(rs.getDate("acadYear").getYear())));
-						System.out.println("involvement Found!");
+						System.out.println("Org Found!");
 					}
 					break;
 				} 
@@ -257,7 +264,75 @@ public class UserService {
 			e.printStackTrace();
 		}
 		System.out.println();
-		return involvements;
+		return orgs;
+		
+	}
+	
+
+	/**
+	 * Retrieves a list of project using their full title or acronym.
+	 * @param title
+	 * @return List of project
+	 */
+	public static ArrayList<Involvement> getProjList(String title) {
+		System.out.println();
+		ArrayList<Involvement> projects = new ArrayList<>();
+		Boolean found = false;
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT i.*, ih.handler FROM sofengg.involvementhandler iH" + 
+													     "INNER JOIN involvement i ON iH.involvementID"     		 +
+													     " = i.involvementId WHERE i.iName LIKE ? GROUP BY i.iName");
+			st.setString(1, title);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				found = true;
+				projects.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+												 rs.getString("iName"), rs.getString("position"), 
+												 Year.of(rs.getDate("acadYear").getYear())));
+				System.out.println("Projects Found!");
+				break;
+			} 
+			
+			if (!found){
+				st = conn.prepareStatement("SELECT i.*, ih.handler FROM sofengg.involvementhandler iH" + 
+									       "INNER JOIN involvement i ON iH.involvementID"     		 +
+									       " = i.involvementId GROUP BY i.iName");
+				rs = st.executeQuery();
+				
+				while(rs.next()) {
+					String[] iName = rs.getString("iName").split(" ");
+					found = false;
+					
+					for(int i = 0; i < title.length() && iName.length != i; i++){
+						if(title.charAt(i) == iName[i].charAt(0))
+							 found = true;
+						else found = false;
+					}
+					
+					if(found){
+						// TODO Not yet adding the handlers of event
+						projects.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+								 					 rs.getString("iName"), rs.getString("position"), 
+								 Year.of(rs.getDate("acadYear").getYear())));
+						System.out.println("Project Found!");
+					}
+					break;
+				} 
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return projects;
 		
 	}
 	

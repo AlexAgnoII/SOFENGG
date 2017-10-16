@@ -215,7 +215,7 @@ public class UserService {
 
 			
 			PreparedStatement st = conn.prepareStatement("SELECT i.* FROM sofengg.involvementhandler iH"     + 
-													     "RIGHT JOIN involvement i ON iH.involvementID"      +
+													     " RIGHT JOIN involvement i ON iH.involvementID"      +
 													     " = i.involvementId WHERE iH.involvementID IS NULL" +
 													     " AND i.iName LIKE ? GROUP BY i.iName");
 			st.setString(1, title);
@@ -232,7 +232,7 @@ public class UserService {
 			
 			if (!found){
 				st = conn.prepareStatement("SELECT i.* FROM sofengg.involvementhandler iH" 	   + 
-										   "RIGHT JOIN involvement i ON iH.involvementID"      +
+										   " RIGHT JOIN involvement i ON iH.involvementID"      +
 										   " = i.involvementId WHERE iH.involvementID IS NULL" +
 										   " GROUP BY iName");
 				rs = st.executeQuery();
@@ -274,34 +274,66 @@ public class UserService {
 	 * @param title
 	 * @return List of project
 	 */
-	public static ArrayList<Involvement> getProjList(String title) {
+	public static ArrayList<Involvement> getProjList(String title) {	// TODO debug
 		System.out.println();
 		ArrayList<Involvement> projects = new ArrayList<>();
-		Boolean found = false;
+		ArrayList<String> handler = new ArrayList<>();
+		Boolean found = false,
+				initial = false;
+		String initialName = "";
+		
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
 			PreparedStatement st = conn.prepareStatement("SELECT i.*, ih.handler FROM sofengg.involvementhandler iH" + 
-													     "INNER JOIN involvement i ON iH.involvementID"     		 +
-													     " = i.involvementId WHERE i.iName LIKE ? GROUP BY i.iName");
+													     " INNER JOIN involvement i ON iH.involvementID"     		 +
+													     " = i.involvementId WHERE i.iName LIKE ? GROUP BY i.iName"  +
+													     " ORDER BY i.iName");
 			st.setString(1, title);
 			ResultSet rs = st.executeQuery();
-			
 			while(rs.next()) {
+				
 				found = true;
-				projects.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
-												 rs.getString("iName"), rs.getString("position"), 
-												 Year.of(rs.getDate("acadYear").getYear())));
-				System.out.println("Projects Found!");
+				if(!initialName.equals(rs.getString("iName"))){
+					
+					if(projects.size() == 0) {
+						handler.add(rs.getString("handler")); 
+						Involvement involvement = new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+																 rs.getString("iName"), rs.getString("position"), 
+																 Year.of(rs.getDate("acadYear").getYear()));
+						involvement.setHandler(handler);
+						projects.add(involvement);
+						
+					} else{
+						// Update previous project
+						Involvement involvement = projects.get(projects.size() - 1));
+						involvement.setHandler(handler);
+						projects.remove(projects.size() - 1);
+						projects.add(involvement);
+						
+						// Add new project
+						handler = new ArrayList<>();
+						handler.add(rs.getString("handler")); 
+						involvement = new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+												 	  rs.getString("iName"), rs.getString("position"), 
+													  Year.of(rs.getDate("acadYear").getYear()));
+						handler.add(rs.getString("handler")); 
+						projects.add(involvement);
+					}
+					
+					System.out.println("Projects Found!");
+					initialName = rs.getString("iName");
+				} else handler.add(rs.getString("handler"));	// More than 1 handler
+				
 				break;
 			} 
 			
 			if (!found){
 				st = conn.prepareStatement("SELECT i.*, ih.handler FROM sofengg.involvementhandler iH" + 
-									       "INNER JOIN involvement i ON iH.involvementID"     		 +
-									       " = i.involvementId GROUP BY i.iName");
+									       " INNER JOIN involvement i ON iH.involvementID"     		 +
+									       " = i.involvementId GROUP BY i.iName ORDER BY i.iName");
 				rs = st.executeQuery();
 				
 				while(rs.next()) {
@@ -315,11 +347,39 @@ public class UserService {
 					}
 					
 					if(found){
-						// TODO Not yet adding the handlers of event
-						projects.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
-								 					 rs.getString("iName"), rs.getString("position"), 
-								 Year.of(rs.getDate("acadYear").getYear())));
-						System.out.println("Project Found!");
+						
+
+						found = true;
+						if(!initialName.equals(rs.getString("iName"))){
+							
+							if(projects.size() == 0) {
+								handler.add(rs.getString("handler")); 
+								Involvement involvement = new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+																		 rs.getString("iName"), rs.getString("position"), 
+																		 Year.of(rs.getDate("acadYear").getYear()));
+								involvement.setHandler(handler);
+								projects.add(involvement);
+								
+							} else{
+								// Update previous project
+								Involvement involvement = projects.get(projects.size() - 1));
+								involvement.setHandler(handler);
+								projects.remove(projects.size() - 1);
+								projects.add(involvement);
+								
+								// Add new project
+								handler = new ArrayList<>();
+								handler.add(rs.getString("handler")); 
+								involvement = new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+														 	  rs.getString("iName"), rs.getString("position"), 
+															  Year.of(rs.getDate("acadYear").getYear()));
+								handler.add(rs.getString("handler")); 
+								projects.add(involvement);
+							}
+							
+							System.out.println("Projects Found!");
+							initialName = rs.getString("iName");
+						} else handler.add(rs.getString("handler"));	// More than 1 handler
 					}
 					break;
 				} 

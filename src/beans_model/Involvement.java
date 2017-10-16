@@ -1,6 +1,7 @@
 package beans_model;
 
 import java.time.Year;
+import java.util.ArrayList;
 
 public class Involvement {
 
@@ -9,6 +10,7 @@ public class Involvement {
 	private String iName;
 	private String position;
 	private Year acadYear;
+	private ArrayList<String> handler = new ArrayList<>();
 	
 	public Involvement(int id, int num, String name, String pos, Year year){
 		this.id = id;
@@ -54,6 +56,16 @@ public class Involvement {
 	public String toString() {
 		return "Involvement [id=" + id + ", idNum=" + idNum + ", iName=" + iName + ", position=" + position
 				+ ", acadYear=" + acadYear + "]";
+	}
+
+
+	public ArrayList<String> getHandler() {
+		return handler;
+	}
+
+
+	public void setHandler(ArrayList<String> handler) {
+		this.handler = handler;
 	}
 	
 	

@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.time.Year;
 import java.util.ArrayList;
 
+import beans_model.Involvement;
 import beans_model.Student;
 
 /**
@@ -194,6 +195,69 @@ public class UserService {
 		}
 		System.out.println();
 		return students;
+		
+	}
+	
+
+	/**
+	 * Retrieves a list of organization or project using their full title or acronym.
+	 * @param title
+	 * @return List of org or project
+	 */
+	public static ArrayList<Involvement> getInvolvementList(String title) {
+		System.out.println();
+		ArrayList<Involvement> involvements = new ArrayList<>();
+		Boolean found = false;
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM involvement WHERE iName LIKE ? GROUP BY iName");
+			st.setString(1, title);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				found = true;
+				involvements.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+												 rs.getString("iName"), rs.getString("position"), 
+												 Year.of(rs.getDate("acadYear").getYear())));
+				System.out.println("Involvement Found!");
+				break;
+			} 
+			
+			if (!found){
+				st = conn.prepareStatement("SELECT * FROM involvement GROUP BY iName");
+				rs = st.executeQuery();
+				
+				while(rs.next()) {
+					String[] iName = rs.getString("iName").split(" ");
+					found = false;
+					
+					for(int i = 0; i < title.length() && iName.length != i; i++){
+						if(title.charAt(i) == iName[i].charAt(0))
+							 found = true;
+						else found = false;
+					}
+					
+					if(found){
+						involvements.add(new Involvement(rs.getInt("involvementId"), rs.getInt("idNum"), 
+								 rs.getString("iName"), rs.getString("position"), 
+								 Year.of(rs.getDate("acadYear").getYear())));
+						System.out.println("involvement Found!");
+					}
+					break;
+				} 
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return involvements;
 		
 	}
 	

@@ -22,11 +22,21 @@ public class Student {
 				   gender;
 	
 
-	public Student(int studentId, Date birthday, Year yEnrolled, 
-				   String firstName, String middleName, String lastName,
-				   String telNo, String celNo, String email, String address, 
-				   String course, String hashedPass, String civil,
-				   String citizen, String gender) {
+	public Student(int studentId, 
+			       Date birthday, 
+			       Year yEnrolled, 
+				   String firstName, 
+				   String middleName, 
+				   String lastName,
+				   String telNo, 
+				   String celNo, 
+				   String email, 
+				   String address, 
+				   String course, 
+				   String hashedPass, 
+				   String civil,
+				   String citizen, 
+				   String gender) {
 		super();
 		this.studentId = studentId;
 		this.birthday = birthday;
@@ -148,6 +158,36 @@ public class Student {
 	public void setHashedPass(String hashedPass) {
 		// TODO hashing
 		this.hashedPass = hashedPass;
+	}
+
+
+	public String getCivil() {
+		return civil;
+	}
+
+
+	public void setCivil(String civil) {
+		this.civil = civil;
+	}
+
+
+	public String getCitizen() {
+		return citizen;
+	}
+
+
+	public void setCitizen(String citizen) {
+		this.citizen = citizen;
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 }

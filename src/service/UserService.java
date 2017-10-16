@@ -238,7 +238,7 @@ public class UserService {
 			PasswordAuthentication p = new PasswordAuthentication();
 			
 			PreparedStatement stmt =  conn.prepareStatement("INSERT INTO admin (adminId, hashedPass, email) VALUES (?, ?, ?)");
-
+		
 			stmt.setInt(1, id);
 			stmt.setString(2, p.hash(pass.toCharArray()));
 			stmt.setString(3, email);
@@ -249,6 +249,54 @@ public class UserService {
 			e.printStackTrace();
 		}
 		System.out.println("Added 11526491 admin");
+	}
+	
+	/**
+	 * 
+	 * @param id - id placed in cookie.
+	 * @return the student object containing his/her information.
+	 */
+	public static Student getLoggedStudent(int id) {
+		Student student = null;
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			
+			PreparedStatement stmt =  conn.prepareStatement("SELECT * FROM Student WHERE id=?");
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println("Get logged student loop.");
+				student = new Student(rs.getInt("studentId"), 
+						              rs.getDate("birthday"),
+						              Year.of(rs.getDate("yearEnrolled").getYear()), 
+						              rs.getString("firstName"),
+						              rs.getString("middleName"), 
+						              rs.getString("lastName"),
+						              rs.getString("celNo"), 
+						              rs.getString("telNo"), 
+						              rs.getString("email"), 
+						              rs.getString("address"), 
+						              rs.getString("course"), 
+						              rs.getString("hashedPass"),
+						              rs.getString("civil"), 
+						              rs.getString("citizen"),
+						              rs.getString("gender"));
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println("Student retrieved!");
+		return student;
 	}
 	
 }

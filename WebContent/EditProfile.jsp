@@ -121,12 +121,12 @@
                     <div class="dwrap">
                         <div class = "f">
                             <p>Citizenship</p>
-                            <input type="text" id="citizen" name="${loggedUser.citizen}">
+                            <input type="text" id="citizen" name="citizen" value="${loggedUser.citizen}">
                         </div>
                         
                         <div class = "m">
                             <p>Gender</p>
-			                <input type="text" id="gender" name="${loggedUser.gender}">
+			                <input type="text" id="gender" name="gender" value="${loggedUser.gender}">
                         </div>
                     </div>
                 

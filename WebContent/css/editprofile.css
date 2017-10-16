@@ -132,7 +132,7 @@ p {
     font-size: 12px;  
 }
 
-#bday, #age, #civil, #citizen {
+#bday, #age, #civil, #citizen, #dname, #dprof, #dbday, #mname, #mprof, #mbday, #sname, #sprof, #sbday, #bname, #bprof, #bbday {
     width: 187px;
     height: 20px;
     margin-top: -10px;
@@ -162,6 +162,28 @@ p {
     font-size: 12px; 
 }
 
+h5 {
+    font-size: 15px;
+}
 
+.family {
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: -10px;
+}
 
-
+#nextb {
+    margin: 15px;
+    float: right;
+    position: relative;
+    font-family: "Montserrat";
+    height: 26px;
+    width: 100px;
+    font-size: 10px;
+    line-height: 250%;
+    background-color: #1f1f1f;
+    color: snow;
+    border-style: none;
+    border-radius: 3px;
+    box-shadow: 0 5px 5px -3.5px #333;
+}

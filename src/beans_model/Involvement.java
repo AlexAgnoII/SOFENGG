@@ -10,14 +10,24 @@ public class Involvement {
 	private String iName;
 	private String position;
 	private Year acadYear;
+	private int internal;
 	private ArrayList<String> handler = new ArrayList<>();
 	
-	public Involvement(int id, int num, String name, String pos, Year year){
+	public Involvement(int id, int num, String name, String pos, Year year, int internal){
 		this.id = id;
 		idNum = num;
 		iName = name;
 		position = pos;
 		acadYear = year;
+		internal = internal;
+	}
+	
+	public Involvement(int num, String name, String pos, Year year, int internal) {
+		idNum = num;
+		iName = name;
+		position = pos;
+		acadYear = year;
+		internal = internal;
 	}
 	
 
@@ -50,6 +60,12 @@ public class Involvement {
 	}
 	public void setAcadYear(Year acadYear) {
 		this.acadYear = acadYear;
+	}
+	public int getInternal() {
+		return internal;
+	}
+	public void setInternal(int internal) {
+		this.internal = internal;
 	}
 	
 	@Override

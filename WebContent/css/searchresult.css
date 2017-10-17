@@ -126,5 +126,21 @@ html {
     margin: 5px;
     margin-top: 12px;
     color: snow;
-    float: right;   
+    float: right;  
+}
+
+/** start below **/
+
+#srfeed {
+    background-color: azure;
+    margin: 0 auto;
+    position: relative;
+    top: 15%;
+    width: 50%;
+}
+
+#studentres, #projres, #orgres {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: cadetblue;
 }

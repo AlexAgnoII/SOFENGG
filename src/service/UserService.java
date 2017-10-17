@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 
@@ -512,14 +513,55 @@ public class UserService {
 		return student;
 	}
 	
+<<<<<<< HEAD
 	public static void updateStudent(Student student) {
 		System.out.println();
+=======
+	public static int getUserIDNum(int id) {
+		int idNum = 0;
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			
+			PreparedStatement stmt =  conn.prepareStatement("SELECT * FROM Student natural join college WHERE id=?");
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println("Get logged student id loop.");
+				idNum = rs.getInt("idnum");
+				
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println("ID retrieved!");
+		return idNum;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void addInvolvements(Involvement involvement) {
+		System.out.println();
+		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+		String formatYear = yearFormat.format(involvement.getAcadYear());
+
+		
+>>>>>>> 15bf08683148f6bc9810544dfc1104d9cc010802
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
 			PreparedStatement stmt =  conn.prepareStatement(
+<<<<<<< HEAD
 					"UPDATE student "
 				  + "SET studentId=?, "//1
 				      + "firstName=?, " //2
@@ -561,6 +603,17 @@ public class UserService {
 			stmt.setInt(17, student.getZip());
 			stmt.setString(18,  student.getCity());
 			stmt.setInt(19, student.getDbID());
+=======
+					"INSERT INTO involvement (iName, idNum, position, acadYear, internal) VALUES (?, ?, ?, ?, ?)"
+					);
+			
+			stmt.setString(1, involvement.getiName());
+			stmt.setInt(2, involvement.getIdNum());
+			stmt.setString(3, involvement.getPosition());
+			stmt.setDate(4, Date.valueOf(formatYear));
+			stmt.setInt(5, involvement.getInternal());
+			
+>>>>>>> 15bf08683148f6bc9810544dfc1104d9cc010802
 			
 			stmt.executeUpdate();
 			

@@ -1,6 +1,7 @@
 package web_servlet;
 
 import java.io.IOException;
+
 import java.time.Year;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,6 @@ import service.UserService;
 @WebServlet(urlPatterns = {"/update",
 		                   "/delete",
 		                   "/add",
-		                   "/view",
 		                   "/view",
 		                   "/addIntInv",
 		                   "/addExtInv",

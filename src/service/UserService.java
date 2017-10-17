@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 
@@ -510,6 +511,119 @@ public class UserService {
 		
 		System.out.println("Student retrieved!");
 		return student;
+	}
+	
+<<<<<<< HEAD
+	public static void updateStudent(Student student) {
+		System.out.println();
+=======
+	public static int getUserIDNum(int id) {
+		int idNum = 0;
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			
+			PreparedStatement stmt =  conn.prepareStatement("SELECT * FROM Student natural join college WHERE id=?");
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println("Get logged student id loop.");
+				idNum = rs.getInt("idnum");
+				
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println("ID retrieved!");
+		return idNum;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void addInvolvements(Involvement involvement) {
+		System.out.println();
+		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+		String formatYear = yearFormat.format(involvement.getAcadYear());
+
+		
+>>>>>>> 15bf08683148f6bc9810544dfc1104d9cc010802
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+<<<<<<< HEAD
+					"UPDATE student "
+				  + "SET studentId=?, "//1
+				      + "firstName=?, " //2
+					  + "middleName=?,"//3
+					  + "lastName=?, "//4
+					  + "celNo=?, "//5
+					  + "telNo=?, "//6
+					  + "email=?, "//7
+					  + "collegeId=?, " //8
+	   				  + "course=?, " //9
+					  + "address=?, " //10
+					  + "birthday=?, " //11
+					  + "civil=?, " //12
+					  + "citizen=?, " //13
+					  + "gender=?, " //14
+					  + "country=?, " //15
+					  + "province=?, " //16 
+					  + "zip=?, " //17
+					  + "city=? "//18
+				 + "WHERE id=?" //19					
+					);
+			
+			stmt.setInt(1, student.getStudentId());
+			stmt.setString(2, student.getFirstName());
+			stmt.setString(3, student.getMiddleName());
+			stmt.setString(4, student.getLastName());
+			stmt.setString(5, student.getCelNo());
+			stmt.setString(6, student.getTelNo());
+			stmt.setString(7, student.getEmail());
+			stmt.setInt(8, Integer.parseInt(student.getCollege()));
+			stmt.setString(9,student.getCourse());
+			stmt.setString(10, student.getAddress());
+			stmt.setDate(11, student.getTempDate());
+			stmt.setString(12, student.getCivil());
+			stmt.setString(13, student.getCitizen());
+			stmt.setString(14, student.getGender());
+			stmt.setString(15,student.getCountry());
+			stmt.setString(16, student.getProvince());
+			stmt.setInt(17, student.getZip());
+			stmt.setString(18,  student.getCity());
+			stmt.setInt(19, student.getDbID());
+=======
+					"INSERT INTO involvement (iName, idNum, position, acadYear, internal) VALUES (?, ?, ?, ?, ?)"
+					);
+			
+			stmt.setString(1, involvement.getiName());
+			stmt.setInt(2, involvement.getIdNum());
+			stmt.setString(3, involvement.getPosition());
+			stmt.setDate(4, Date.valueOf(formatYear));
+			stmt.setInt(5, involvement.getInternal());
+			
+>>>>>>> 15bf08683148f6bc9810544dfc1104d9cc010802
+			
+			stmt.executeUpdate();
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
 	}
 	
 }

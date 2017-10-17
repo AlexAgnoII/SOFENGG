@@ -19,7 +19,8 @@ import service.UserService;
 @WebServlet(urlPatterns = {"/update",
 		                   "/delete",
 		                   "/add",
-		                   "/view"}
+		                   "/view",
+		                   "/search"}
 )
 public class dataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,9 +45,29 @@ public class dataServlet extends HttpServlet {
 			case "/add": addUser(request, response); break;
 			case "/update": updateUser(request, response); break;
 			case "/delete": deleteUser(request, response); break;
+			case "/search": search(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
+	
+
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void search(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+		System.out.println("***************** SEARCH ************************");
+		String name = request.getParameter("idNum");
+		
+//		UserService.addUser(student);
+		
+		response.sendRedirect("SearchResult.jsp");
+		System.out.println("*******************************************");
+	}
+
 
 	/**
 	 * 

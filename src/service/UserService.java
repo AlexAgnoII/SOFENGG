@@ -169,7 +169,8 @@ public class UserService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE firstName LIKE ? OR middleName LIKE ? OR lastName LIKE ?");
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.student WHERE firstName "
+													   + "LIKE ? OR middleName LIKE ? OR lastName LIKE ?");
 			st.setString(1, name + "%");
 			st.setString(2, name + "%");
 			st.setString(3, name + "%");
@@ -193,8 +194,7 @@ public class UserService {
 										 rs.getString("civil"),
 										 rs.getString("citizen"),
 										 rs.getString("gender")));
-				System.out.println("Student Found!");
-				break;
+				System.out.println("Student " + rs.getString("firstName") + " Found!");
 			} 
 			
 			conn.close();
@@ -228,7 +228,7 @@ public class UserService {
 													     " RIGHT JOIN involvement i ON iH.involvementID"      +
 													     " = i.involvementId WHERE iH.involvementID IS NULL" +
 													     " AND i.iName LIKE ? GROUP BY i.iName");
-			st.setString(1, title);
+			st.setString(1, title + "%");
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
@@ -237,7 +237,6 @@ public class UserService {
 												 rs.getString("iName"), rs.getString("position"), 
 												 Year.of(rs.getDate("acadYear").getYear())));
 				System.out.println("Org Found!");
-				break;
 			} 
 			
 			if (!found){
@@ -263,7 +262,6 @@ public class UserService {
 								 Year.of(rs.getDate("acadYear").getYear())));
 						System.out.println("Org Found!");
 					}
-					break;
 				} 
 			}
 			
@@ -301,7 +299,7 @@ public class UserService {
 													     " INNER JOIN involvement i ON iH.involvementID"     		 +
 													     " = i.involvementId WHERE i.iName LIKE ? GROUP BY i.iName"  +
 													     " ORDER BY i.iName");
-			st.setString(1, title);
+			st.setString(1, title + "%");
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
 				
@@ -337,7 +335,6 @@ public class UserService {
 					initialName = rs.getString("iName");
 				} else handler.add(rs.getString("handler"));	// More than 1 handler
 				
-				break;
 			} 
 			
 			if (!found){
@@ -391,7 +388,6 @@ public class UserService {
 							initialName = rs.getString("iName");
 						} else handler.add(rs.getString("handler"));	// More than 1 handler
 					}
-					break;
 				} 
 			}
 			

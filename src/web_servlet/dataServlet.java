@@ -68,14 +68,14 @@ public class dataServlet extends HttpServlet {
 	 */
 	private void search(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** SEARCH ************************");
-		String name = request.getParameter("idNum");
+		String name = request.getParameter("searchBar");
+		System.out.println("SEARCHING: " + name);
 		
-//		UserService.addUser(student);
+		UserService.getStudentByName(name);
 		
 		response.sendRedirect("SearchResult.jsp");
 		System.out.println("*******************************************");
 	}
-
 
 	/**
 	 * 

@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 
@@ -510,6 +511,73 @@ public class UserService {
 		
 		System.out.println("Student retrieved!");
 		return student;
+	}
+	
+	public static int getUserIDNum(int id) {
+		int idNum = 0;
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			
+			PreparedStatement stmt =  conn.prepareStatement("SELECT * FROM Student natural join college WHERE id=?");
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println("Get logged student id loop.");
+				idNum = rs.getInt("idnum");
+				
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		System.out.println("ID retrieved!");
+		return idNum;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void addInvolvements(Involvement involvement) {
+		System.out.println();
+		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+		String formatYear = yearFormat.format(involvement.getAcadYear());
+		int year = Integer.parseInt(formatYear);
+		
+		Date d = new Date(0);
+		d.setYear(year);
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"INSERT INTO involvement (iName, idNum, position, acadYear, internal) VALUES (?, ?, ?, ?, ?)"
+					);
+			
+			stmt.setString(1, involvement.getiName());
+			stmt.setInt(2, involvement.getIdNum());
+			stmt.setString(3, involvement.getPosition());
+			stmt.setDate(4, d.getYear());
+			stmt.setInt(5, involvement.getInternal());
+			
+			
+			stmt.executeUpdate();
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
 	}
 	
 }

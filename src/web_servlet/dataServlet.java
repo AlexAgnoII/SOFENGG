@@ -72,9 +72,9 @@ public class dataServlet extends HttpServlet {
 		String name = request.getParameter("searchbar");
 		System.out.println("SEARCHING: " + name);
 		
-		ArrayList<Student> students = UserService.getStudentByName(name);
+		ArrayList<Student> studentList = UserService.getStudentByName(name);
 		
-		System.out.println(students);
+		System.out.println(studentList);
 		
 		response.sendRedirect("SearchResult.jsp");
 		System.out.println("*******************************************");

@@ -38,6 +38,7 @@
         </div>
         
         <div id="srfeed">
+<%-- 	        <jsp:include page='<%=(String) request.getAttribute("students")%>' /> --%>
             <div id="studentres">
                 <p id="srname" name="srname">Student Result Goes Here</p>
                 <p id="sridnum" name="sridnum">114xxxxx</p>

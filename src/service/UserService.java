@@ -170,9 +170,9 @@ public class UserService {
 			Connection conn = DatabaseManager.getConnection();
 
 			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE firstName LIKE ? OR middleName LIKE ? OR lastName LIKE ?");
-			st.setString(1, name);
-			st.setString(2, name);
-			st.setString(3, name);
+			st.setString(1, name + "%");
+			st.setString(2, name + "%");
+			st.setString(3, name + "%");
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {

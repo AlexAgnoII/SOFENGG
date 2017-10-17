@@ -75,8 +75,10 @@ public class dataServlet extends HttpServlet {
 		ArrayList<Student> studentList = UserService.getStudentByName(name);
 		
 		System.out.println(studentList);
+
+		request.setAttribute("studentList", studentList);
+		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
 		
-		response.sendRedirect("SearchResult.jsp");
 		System.out.println("*******************************************");
 	}
 

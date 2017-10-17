@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -38,14 +40,14 @@
         </div>
         
         <div id="srfeed">
-<%-- 	        <jsp:include page='<%=(String) request.getAttribute("students")%>' /> --%>
-            <div id="studentres">
-                <p id="srname" name="srname">Student Result Goes Here</p>
-                <p id="sridnum" name="sridnum">114xxxxx</p>
-                <p id="srcol" name="srcol">CCS</p>
-            
-            </div>
-            
+        	<c:forEach items = "${studentList}" var = "s">
+	        	<div id="studentres">
+	                <p id="srname" name="srname">${s.firstName} ${s.middleName} ${s.lastName}</p>
+	                <p id="sridnum" name="sridnum">${s.studentId}</p>
+	                <p id="srcol" name="srcol">${s.college}</p>
+	            </div>
+            </c:forEach>
+            <!-- 
             <div id="orgres">
                 <p id="or" name="or">Org Result Goes Here</p>
  
@@ -53,7 +55,7 @@
             
             <div id="projres">
                 <p id="pr" name="pr">Project Result Goes Here</p>
-            </div>
+            </div> -->
             
         </div>
         

@@ -548,10 +548,7 @@ public class UserService {
 		System.out.println();
 		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
 		String formatYear = yearFormat.format(involvement.getAcadYear());
-		int year = Integer.parseInt(formatYear);
-		
-		Date d = new Date(0);
-		d.setYear(year);
+
 		
 		try{
 			String driver = "com.mysql.jdbc.Driver";
@@ -565,7 +562,7 @@ public class UserService {
 			stmt.setString(1, involvement.getiName());
 			stmt.setInt(2, involvement.getIdNum());
 			stmt.setString(3, involvement.getPosition());
-			stmt.setDate(4, d.getYear());
+			stmt.setDate(4, Date.valueOf(formatYear));
 			stmt.setInt(5, involvement.getInternal());
 			
 			

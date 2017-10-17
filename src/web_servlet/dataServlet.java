@@ -1,6 +1,8 @@
 package web_servlet;
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -131,7 +133,73 @@ public class dataServlet extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		Student student = new Student();
+		String dbID = (String) request.getSession().getAttribute("UN");
+		String lastName = request.getParameter("lastName");
+		String firstName = request.getParameter("firstName");
+		String middleName = request.getParameter("middleName");
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String prov = request.getParameter("prov");
+		String country = request.getParameter("country");
+		int zip = Integer.parseInt(request.getParameter("zip"));
+		String email = request.getParameter("email");
+		String cell = request.getParameter("cell");
+		String tel = request.getParameter("tel");
+		String bday = request.getParameter("bday");
+		String civil = request.getParameter("civil");
+		String citizen = request.getParameter("citizen");
+		String gender = request.getParameter("gender");
+		int idNum = Integer.parseInt(request.getParameter("idNum"));
+		String course = request.getParameter("course");
+		String college = request.getParameter("college");
 		
+		student.setSQLDate(bday);
+		
+		System.out.println("SessionID: " + dbID);
+		System.out.println("lastname: " + lastName);
+		System.out.println("firstname: " + firstName);
+		System.out.println("middleName: " + middleName);
+		System.out.println("address: " + address);
+		System.out.println("City: " + city);
+		System.out.println("prov:  " + prov);
+		System.out.println("country: " + country);
+		System.out.println("zip: " + zip);
+		System.out.println("email: " + email);
+		System.out.println("cell: " + cell);
+		System.out.println("tel: " + tel);
+		System.out.println("bday: " + student.getTempDate());
+		System.out.println("civil: " + civil);
+		System.out.println("citizen: " + citizen);
+		System.out.println("gender: " + gender);
+		System.out.println("idNum: " + idNum);
+		System.out.println("course: " + course);
+		System.out.println("college: " + college);
+		
+	    student.setDbID(Integer.parseInt(dbID));
+		student.setStudentId(idNum);
+	    student.setFirstName(firstName);
+	    student.setMiddleName(middleName);
+		student.setLastName(lastName);
+		student.setCelNo(cell);
+		student.setTelNo(tel);
+	    student.setEmail(email);
+        student.setCollege(college);
+		student.setCourse(course);
+	    student.setAddress(address);
+		
+		student.setCivil(civil);
+		student.setCitizen(citizen);
+		student.setGender(gender);
+		student.setCountry(country);
+		student.setProvince(prov);
+		student.setZip(zip);
+	    student.setCity(city);
+	    
+	    UserService.updateStudent(student);
+	    
+	    //After updating, go back to view.
+	    response.sendRedirect("view");
 	}
 	
 	

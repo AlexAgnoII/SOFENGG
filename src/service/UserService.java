@@ -512,4 +512,65 @@ public class UserService {
 		return student;
 	}
 	
+	public static void updateStudent(Student student) {
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE student "
+				  + "SET studentId=?, "//1
+				      + "firstName=?, " //2
+					  + "middleName=?,"//3
+					  + "lastName=?, "//4
+					  + "celNo=?, "//5
+					  + "telNo=?, "//6
+					  + "email=?, "//7
+					  + "collegeId=?, " //8
+	   				  + "course=?, " //9
+					  + "address=?, " //10
+					  + "birthday=?, " //11
+					  + "civil=?, " //12
+					  + "citizen=?, " //13
+					  + "gender=?, " //14
+					  + "country=?, " //15
+					  + "province=?, " //16 
+					  + "zip=?, " //17
+					  + "city=? "//18
+				 + "WHERE id=?" //19					
+					);
+			
+			stmt.setInt(1, student.getStudentId());
+			stmt.setString(2, student.getFirstName());
+			stmt.setString(3, student.getMiddleName());
+			stmt.setString(4, student.getLastName());
+			stmt.setString(5, student.getCelNo());
+			stmt.setString(6, student.getTelNo());
+			stmt.setString(7, student.getEmail());
+			stmt.setInt(8, Integer.parseInt(student.getCollege()));
+			stmt.setString(9,student.getCourse());
+			stmt.setString(10, student.getAddress());
+			stmt.setDate(11, student.getTempDate());
+			stmt.setString(12, student.getCivil());
+			stmt.setString(13, student.getCitizen());
+			stmt.setString(14, student.getGender());
+			stmt.setString(15,student.getCountry());
+			stmt.setString(16, student.getProvince());
+			stmt.setInt(17, student.getZip());
+			stmt.setString(18,  student.getCity());
+			stmt.setInt(19, student.getDbID());
+			
+			stmt.executeUpdate();
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+	}
+	
 }

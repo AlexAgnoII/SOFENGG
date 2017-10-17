@@ -4,7 +4,7 @@ import java.time.Year;
 import java.util.Date;
 
 public class Student {
-	
+	private int dbID;
 	private int studentId, zip;
 	private Date birthday;
 	private Year yEnrolled;
@@ -24,6 +24,9 @@ public class Student {
 				   city,
 				   province,
 				   country;
+	
+	//This is used for updating date.
+	private java.sql.Date tempDate;
 	
 
 	public Student(int studentId, 
@@ -61,7 +64,7 @@ public class Student {
 		this.gender = gender;
 	}
 
-
+	//This one is used for signup.
 	public Student(int studentId, 
 			String lastname,
 			String firstname,
@@ -88,12 +91,26 @@ public class Student {
 	}
 	
 	
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	@Override
 	public String toString() {
 		return "Student [studentId=" + studentId + ", celNo=" + celNo + ", telNo=" + telNo + ", birthday=" + birthday
 				+ ", yEnrolled=" + yEnrolled + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
 				+ lastName + ", email=" + email + ", address=" + address + ", course=" + course + "]";
 	}
+	
+	public void setSQLDate(String date) {
+		this.tempDate = java.sql.Date.valueOf(date);
+	}
+	
+	public java.sql.Date getTempDate() {
+		return tempDate;
+	}
+	
 	public int getStudentId() {
 		return studentId;
 	}
@@ -115,9 +132,14 @@ public class Student {
 	public Date getBirthday() {
 		return birthday;
 	}
+	
+
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
+	
+	
 	public Year getyEnrolled() {
 		return yEnrolled;
 	}
@@ -248,7 +270,15 @@ public class Student {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
+	public int getDbID() {
+		return dbID;
+	}
+
+	public void setDbID(int dbID) {
+		this.dbID = dbID;
+	}
+
 	
 
 }

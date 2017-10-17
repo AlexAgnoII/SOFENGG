@@ -160,18 +160,6 @@ public class dataServlet extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
-	}
-	
-	
-	/**
-	 * 
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Student student = new Student();
 		String dbID = (String) request.getSession().getAttribute("UN");
 		String lastName = request.getParameter("lastName");
@@ -239,6 +227,18 @@ public class dataServlet extends HttpServlet {
 	    
 	    //After updating, go back to view.
 	    response.sendRedirect("view");
+	}
+	
+	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
 	}
 
 	/**

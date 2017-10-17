@@ -31,6 +31,10 @@ public class Involvement {
 	}
 	
 
+	public Involvement(int int1, int int2, String string, String string2, Year of) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

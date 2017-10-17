@@ -513,10 +513,8 @@ public class UserService {
 		return student;
 	}
 	
-<<<<<<< HEAD
-	public static void updateStudent(Student student) {
-		System.out.println();
-=======
+	
+
 	public static int getUserIDNum(int id) {
 		int idNum = 0;
 		
@@ -553,15 +551,40 @@ public class UserService {
 		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
 		String formatYear = yearFormat.format(involvement.getAcadYear());
 
-		
->>>>>>> 15bf08683148f6bc9810544dfc1104d9cc010802
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
 			PreparedStatement stmt =  conn.prepareStatement(
-<<<<<<< HEAD
+					"INSERT INTO involvement (iName, idNum, position, acadYear, internal) VALUES (?, ?, ?, ?, ?)"
+					);
+			
+			stmt.setString(1, involvement.getiName());
+			stmt.setInt(2, involvement.getIdNum());
+			stmt.setString(3, involvement.getPosition());
+			stmt.setDate(4, Date.valueOf(formatYear));
+			stmt.setInt(5, involvement.getInternal());
+
+			stmt.executeUpdate();
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+	}
+	
+	public static void updateStudent(Student student) {
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
 					"UPDATE student "
 				  + "SET studentId=?, "//1
 				      + "firstName=?, " //2
@@ -603,17 +626,6 @@ public class UserService {
 			stmt.setInt(17, student.getZip());
 			stmt.setString(18,  student.getCity());
 			stmt.setInt(19, student.getDbID());
-=======
-					"INSERT INTO involvement (iName, idNum, position, acadYear, internal) VALUES (?, ?, ?, ?, ?)"
-					);
-			
-			stmt.setString(1, involvement.getiName());
-			stmt.setInt(2, involvement.getIdNum());
-			stmt.setString(3, involvement.getPosition());
-			stmt.setDate(4, Date.valueOf(formatYear));
-			stmt.setInt(5, involvement.getInternal());
-			
->>>>>>> 15bf08683148f6bc9810544dfc1104d9cc010802
 			
 			stmt.executeUpdate();
 			
@@ -625,5 +637,4 @@ public class UserService {
 		}
 		System.out.println();
 	}
-	
 }

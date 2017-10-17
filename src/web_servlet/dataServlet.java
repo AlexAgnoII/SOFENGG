@@ -1,6 +1,8 @@
 package web_servlet;
 
 import java.io.IOException;
+import java.time.Year;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans_model.Involvement;
 import beans_model.Student;
 import service.PasswordAuthentication;
 import service.UserService;
@@ -20,6 +23,9 @@ import service.UserService;
 		                   "/delete",
 		                   "/add",
 		                   "/view",
+		                   "/view",
+		                   "/addIntInv",
+		                   "/addExtInv",
 		                   "/search"}
 )
 public class dataServlet extends HttpServlet {
@@ -45,6 +51,8 @@ public class dataServlet extends HttpServlet {
 			case "/add": addUser(request, response); break;
 			case "/update": updateUser(request, response); break;
 			case "/delete": deleteUser(request, response); break;
+			case "/addIntInv": addInternalInvolvements(request, response); break;
+			case "/addExtInv": addExternalInvolvements(request, response); break;
 			case "/search": search(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
@@ -165,6 +173,83 @@ public class dataServlet extends HttpServlet {
 	 */
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
+	}
+
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void addInternalInvolvements(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie[] cookies = request.getCookies();
+		Cookie userCookie = null;
+		int idnum;
+		
+		System.out.println("***************** ADD INVOLVEMENTS ************************");
+		String inyear = request.getParameter("inyear");
+		String org = request.getParameter("inorgname");
+		String pos = request.getParameter("inorgpos");
+		
+		Year year = Year.parse(inyear);
+		
+		for (Cookie c: cookies) {
+			if(c.getName().equals("USER")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
+			}
+		}
+		
+		idnum = UserService.getUserIDNum(Integer.parseInt(userCookie.getValue()));
+		
+		Involvement involvement = new Involvement(idnum, org, pos, year, 1);
+		
+		UserService.addInvolvements(involvement);
+		
+		System.out.println("***********************************************************************************");
+		
+	}
+	
+	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void addExternalInvolvements(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie[] cookies = request.getCookies();
+		Cookie userCookie = null;
+		int idnum;
+		
+		System.out.println("***************** ADD INVOLVEMENTS ************************");
+		String inyear = request.getParameter("inyear");
+		String org = request.getParameter("inorgname");
+		String pos = request.getParameter("inorgpos");
+		
+		Year year = Year.parse(inyear);
+		
+		for (Cookie c: cookies) {
+			if(c.getName().equals("USER")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
+			}
+		}
+		
+		idnum = UserService.getUserIDNum(Integer.parseInt(userCookie.getValue()));
+		
+		Involvement involvement = new Involvement(idnum, org, pos, year, 0);
+		
+		UserService.addInvolvements(involvement);
+		
+		System.out.println("***********************************************************************************");
+		
 	}
 
 }

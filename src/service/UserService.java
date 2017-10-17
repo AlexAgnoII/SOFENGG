@@ -178,7 +178,9 @@ public class UserService {
 			while(rs.next()) {
 				students.add(new Student(rs.getInt("studentId"), 
 						                 rs.getDate("birthday"),
-										 Year.of(rs.getDate("dateEnrolled").getYear()), 
+										 rs.getDate("yearEnrolled") == null ?
+												 null :
+												 Year.of(rs.getDate("yearEnrolled").getYear()), 
 										 rs.getString("firstName"),
 										 rs.getString("middleName"),
 										 rs.getString("lastName"),

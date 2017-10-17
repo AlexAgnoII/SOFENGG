@@ -31,7 +31,7 @@
         </ul>
         
         <div id="searchdiv">
-            <form>
+            <form action="search" method="POST" id = "searchForm">
                 <input type="text" id="searchbar" name="searchbar" placeholder="search">
                 <a><i class="material-icons" id="magglass">search</i></a>
             </form>

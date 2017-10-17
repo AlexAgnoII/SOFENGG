@@ -3,6 +3,7 @@ package web_servlet;
 import java.io.IOException;
 
 import java.time.Year;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,10 +69,12 @@ public class dataServlet extends HttpServlet {
 	 */
 	private void search(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** SEARCH ************************");
-		String name = request.getParameter("searchBar");
+		String name = request.getParameter("searchbar");
 		System.out.println("SEARCHING: " + name);
 		
-		UserService.getStudentByName(name);
+		ArrayList<Student> students = UserService.getStudentByName(name);
+		
+		System.out.println(students);
 		
 		response.sendRedirect("SearchResult.jsp");
 		System.out.println("*******************************************");

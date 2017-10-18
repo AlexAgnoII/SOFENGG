@@ -17,26 +17,39 @@ html {
 		
 	#top{
 		left: 0; right: 0;
-		height: 0px;
+		height: 10px;
 		}
 		#top { top: 0; }
 
-#pulse {
+#navbar {
+    height: 55px;
+    width: 100%;
+    left: 0;
+    display: inline;
+    position: fixed;
+    border-style: solid;
+    border-color: #006f4a;
+    border-width: 10px;
+    border-bottom: 0px;
+    z-index: 5;   
+}
+
+#tbox {
     background-color: #006f4a; 
     height: 70px;
     width: 180px;
     position: fixed;
-    margin-left: 10px;
     margin-top: 20px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0px;
     border-style: solid;
     border-width: 2px;
     border-left: 0px;
     border-color: #006f4a;
 }
 
-#pulse:hover {
+#tbox:hover {
     background-color: white;
     border-color: #1e1e1e;
     border-style: solid;
@@ -46,51 +59,60 @@ html {
 
 #wrapper {
     display: inline-flex;
-    padding: 4px;
-    width: 150px;
+    margin-left: -25px;
+    margin-top: 5px;
 }
 
 #title {
     font-family: "Montserrat";
-    font-size: 15px;
+    font-size: 15.5px;
     text-align: left;
     line-height: 95%;
     font-weight: 400;
     width: 60%;
-    margin-left: -2px;
+    margin-top: 0px;
+    margin-left: -3px;
     color: white;
 }
 
-#pulse:hover #title {
-    color: #1e1e1e;
+#tbox:hover #title {
+    color: #006f4a;
     font-weight: 500;
 }
 
 #arrow {
     font-size: 60px;
     margin-left: -5px;
+    margin-top: 8px;
     color: #1e1e1e;
 }
 
-#pulse:hover #arrow {
-    color: #006f4a;
+#menu {
+    margin-top: 80px;
+    margin-left: -10px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #006f4a;
 }
 
 #sufeed {
+    position: relative;
     margin: 0 auto;
-    position: fixed;
-    top: 15%;
-    left: 36%;
     text-align: left;
+    top: 40px;
     width: 400px;
-    padding-top: 20px;
+    padding-top: 40px;
     padding-left: 40px;
     border-radius: 5px;
+    border-style: solid;
+    border-width: 0px;
+    border-color: snow;
     background-color: rgba(241, 241, 241, 1);
     box-shadow: 0 5px 5px -5px #333;
 }
 
-#lastName, #firstName, #middleName, #password, #password2, #email, #courseName {
+#lastName, #firstName, #middleName, #password, #password2, #email {
     width: 300px;
     height: 23px;
     margin-top: -10px;
@@ -101,12 +123,14 @@ html {
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.3);
     opacity: 0.9;
-
+    font-size: 12px;
+    padding-left: 2px;
 }
 
-#idNum {
+#idNum, #courseName {
     width: 147px;
     height: 23px;
+    margin-top: -10px;
     margin-bottom: 5px;
     margin-left: 4px;
     border-radius: 2px;
@@ -114,6 +138,8 @@ html {
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.3);
     opacity: 0.9;
+    font-size: 12px;
+    padding-left: 2px;
 }
 
 p {
@@ -121,6 +147,7 @@ p {
     font-size: 12px;
     padding: 0px;
     margin-top: 1px;
+    margin-bottom: 1.5px;
     font-weight: 500;
     color: snow;
     color: black;
@@ -137,10 +164,30 @@ p {
     color: snow;
     border-style: none;
     border-radius: 3px;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 10px;
     left: 15%;
     box-shadow: 0 5px 5px -3.5px #333;
+}
+
+#signupb:hover {
+	opacity: 0.9;
+}
+
+#backb:hover {
+	opacity: 0.9;
+}
+
+.footer-copyright {
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    color: snow;
+    font-size: 11px;
+    margin: 0px;
+    background-color: #1e1e1e;
 }
 
 #modal1 {
@@ -153,26 +200,42 @@ p {
     font-weight: 400;
 }
 
+
 /*This changes the text color of the select options.*/
 ul.dropdown-content.select-dropdown li span {
+	font-size: 11px;
     color: #1f1f1f;
     font-family: "Montserrat";
 }
 
 /*This changes the FIRST option of the select (its disabled, so it should be gray)*/
 ul.dropdown-content.select-dropdown li.disabled span {
+	font-size: 11px;
     color: #888888; 
     font-family: "Montserrat";
-
+ 
 }
 
 /*This is for the select tag size customization.*/
 div.input-field {
-	width:300px;
-	height:50px;
-    margin-top: -10px;
-    margin-bottom: 2px;
+	width: 255px;
+	height: 45px;
+    margin-top: -8px;
     margin-left: 4px;
+}
 
-
+.select-wrapper input.select-dropdown {
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+    height: 2rem;
+    line-height: 2rem;
+    width: 100%;
+    font-size: 12px;
+    margin: 0 0 20px 0;
+    padding: 0;
+    display: block;
 }

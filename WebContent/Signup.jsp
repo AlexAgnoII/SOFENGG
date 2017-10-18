@@ -20,37 +20,39 @@
 		<div id="right"></div>
 		<div id="top"></div>
 		<div id="bottom"></div>
-        
-        <div id="pulse">
-            <div id= "wrapper">
+		
+       <div id="navbar">
+            <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
+            <div id="wrapper">
                 <i class="material-icons" id="arrow">near_me</i>
                 <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
-            </div>
+            </div>   
+            </a>
         </div>
         
         <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
-                <p id="idn">ID Number</p> 
+                <p>ID Number</p> 
                 <input type="text" id="idNum" name="idNum"><br> 
                 
-                <p id="lname">Last Name</p>
+                <p>Last Name</p>
                 <input type="text" id="lastName" name="lastName"><br> 
                 
-                <p id="fname">First Name</p>
+                <p>First Name</p>
                 <input type="text" id="firstName" name="firstName"><br> 
                 
-                <p id="mname">Middle Name</p>
+                <p>Middle Name</p>
                 <input type="text" id="middleName" name="middleName"><br> 
                 
-                <p id="college">College</p>
+                <p>College</p>
                 
                 <div class="input-field">
-	                <select id="dropDownCollege" name="college">
+	                <select id="dropDownCollege" name="college" class="ddcollege">
 	                    <option value="" disabled selected>Select your College:</option>
 	                	<option value="1">College of Computer Studies</option>
-	                	<option value="2">College of Business</option>
-	                	<option value="3">College of Education</option>
-	                	<option value="4">College of Engineering</option>
+	                	<option value="2">Ramon V. del Rosario College of Business</option>
+	                	<option value="3">Br. Andrew Gonzales College of Education</option>
+	                	<option value="4">Gokongwei College of Engineering</option>
 	                	<option value="5">College of Liberal Arts</option>
 	                	<option value="6">College of Science</option>
 	                	<option value="7">School of Economics</option>
@@ -58,16 +60,16 @@
                 </div>
                 
                 
-                <p id="course">Course</p>
+                <p>Course</p>
                 <input type="text" id="courseName" name="course"> <br>
 
-                <p id="emailt">Email Address</p>
+                <p>Email Address</p>
                 <input type="text" id="email" name="email"><br> 
                 
-                <p id="pw">Password</p>
+                <p>Password</p>
                 <input type="password" id="password" name="password"><br>
                 
-                <p id="pw">Re-enter Password</p>
+                <p>Re-enter Password</p>
                 <input type="password" id="password2" name="password2"><br><br> 
                 
                 <!--    <button id="backb">BACK</button>  -->               

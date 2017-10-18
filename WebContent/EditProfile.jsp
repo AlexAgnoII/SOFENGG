@@ -18,12 +18,21 @@
 	<div id="top"></div>
 	<div id="bottom"></div>
 
-	<div id="pulse">
-		<div id="wrapper">
-			<i class="material-icons" id="arrow">near_me</i>
-			<p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
-		</div>
-	</div>
+	<div id="navbar">
+            <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
+            <div id="wrapper">
+                <i class="material-icons" id="arrow">near_me</i>
+                <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
+            </div>   
+            </a>
+            
+            <!-- please update correct hrefs hehe -->
+            <ul id="menu" class='dropdown-content'>
+                <li><a href="#!" id="profileb">profile</a></li>
+                <li><a href="#!" id="settingsb">settings</a></li>
+                <li><a href="#!" id="logoutb">logout</a></li>
+            </ul>
+        </div>
 	
 	<div id="epfeed">
 		<div class="col s12">
@@ -215,6 +224,7 @@
 						<input type="date" id="sbday" name="sbday">
 					</div>
 				</div>
+				
 				<!-- DYNAMIC -->
 				<p class="family">Brother/s</p>
 				<div class="dwrap">
@@ -233,9 +243,6 @@
 						<input type="date" id="bbday" name="bbday">
 					</div>
 				</div>
-
-				<a class="waves-effect waves-light btn" id="nextb">NEXT</a>
-
 
 			</div>
 

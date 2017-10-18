@@ -59,20 +59,20 @@
 
 				<p>Last Name</p>
 				<input type="text" id="lastName" name="lastName"
-					disabled value="${loggedUser.lastName}"><br>
+					 value="${loggedUser.lastName}"><br>
 
 				<div class="dwrap">
 					<div class="f">
 						<p>First Name</p>
 						<input type="text" id="firstName" name="firstName"
-							disabled value="${loggedUser.firstName}"><br>
+							 value="${loggedUser.firstName}"><br>
 
 					</div>
 
 					<div class="m">
 						<p>Middle Name</p>
 						<input type="text" id="middleName" name="middleName"
-							disabled value="${loggedUser.middleName}"><br>
+							 value="${loggedUser.middleName}"><br>
 					</div>
 				</div>
 
@@ -142,7 +142,7 @@
 					<div class="m">
 						<p>Age</p>
 						<input type="text" id="age" name="age"
-							disabled value="${loggedUser.age}">
+							 value="${loggedUser.age}">
 					</div>
 
 					<div class="m">
@@ -169,6 +169,8 @@
 				<ul>
 					<li><div class="divider"></div></li>
 				</ul>
+				
+				<!-- CONTINUED IN ITERATION 2
 				<h5>Family Background</h5>
 
 				<p class="family">Father</p>
@@ -206,7 +208,8 @@
 						<input type="date" id="mbday" name="mbday">
 					</div>
 				</div>
-				<!-- DYNAMIC -->
+				
+				
 				<p class="family">Sister/s</p>
 				<div class="dwrap">
 					<div class="f">
@@ -225,7 +228,7 @@
 					</div>
 				</div>
 				
-				<!-- DYNAMIC -->
+				
 				<p class="family">Brother/s</p>
 				<div class="dwrap">
 					<div class="f">
@@ -245,6 +248,7 @@
 				</div>
 
 			</div>
+			 -->
 			<button>EDIT</button>
 		</form>
 

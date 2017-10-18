@@ -151,22 +151,36 @@ public class dataServlet extends HttpServlet {
 				System.out.println("Cookie name: " +  c.getName());
 				System.out.println("Cookie Value: " + c.getValue());
 				userCookie = c;
+			} else if(c.getName().equals("ADMIN")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
 			}
 		}
 		
-		student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
-		request.setAttribute("loggedUser", student);
-		
-		if(request.getServletPath().contentEquals("/view")) {
-			System.out.println("Viewing via viewprofile..");
-			request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+		if(userCookie == null || userCookie.getName().equals("USER")){
+			student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
+			request.setAttribute("loggedUser", student);
+			
+			if(request.getServletPath().contentEquals("/view")) {
+				System.out.println("Viewing via viewprofile..");
+				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+			}
+	
+			else {
+				System.out.println("Viewing via editprofile..");
+				request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
+			}
+		} else if(userCookie.getName().equals("ADMIN")){
+			student = UserService.getStudentByIdNum((Integer)request.getAttribute("idNum"));
+			request.setAttribute("loggedUser", student);
+			
+			if(request.getServletPath().contentEquals("/view")) {
+				System.out.println("Viewing via viewprofile..");
+				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+			}	
 		}
-
-		else {
-			System.out.println("Viewing via editprofile..");
-			request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
-		}
-		
 		System.out.println("***********************************************************************************");
 	}
 	
@@ -278,9 +292,9 @@ public class dataServlet extends HttpServlet {
 		sister.setSQLDate(sisterBday);
 		
 		System.out.println("Session ID: " + dbID);
-		System.out.println("Mother name: " + sisterName);
-		System.out.println("Mother Occupation: " + sisterOccu);
-		System.out.println("Mother Bday: " + sister.getTempDate());
+		System.out.println("Sister name: " + sisterName);
+		System.out.println("Sister Occupation: " + sisterOccu);
+		System.out.println("Sister Bday: " + sister.getTempDate());
 		
 		sister.setStudentId(Integer.parseInt(dbID));
 		sister.setName(sisterName);
@@ -294,9 +308,9 @@ public class dataServlet extends HttpServlet {
 		brother.setSQLDate(brotherBday);
 		
 		System.out.println("Session ID: " + dbID);
-		System.out.println("Mother name: " + brotherName);
-		System.out.println("Mother Occupation: " + brotherOccu);
-		System.out.println("Mother Bday: " + brother.getTempDate());
+		System.out.println("Brother name: " + brotherName);
+		System.out.println("Brother Occupation: " + brotherOccu);
+		System.out.println("Brother Bday: " + brother.getTempDate());
 		
 		brother.setStudentId(Integer.parseInt(dbID));
 		brother.setName(brotherName);

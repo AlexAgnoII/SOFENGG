@@ -136,7 +136,7 @@
 					<div class="f">
 						<p>Birthday</p>
 						<input type="date" id="bday" name="bday"
-							disabled value="${loggedUser.birthday}">
+							 value="${loggedUser.birthday}">
 					</div>
 
 					<div class="m">

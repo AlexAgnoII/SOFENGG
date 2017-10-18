@@ -27,7 +27,7 @@
         </a>
            
         <ul id="menu" class='dropdown-content'>
-            <li><a href="homepage.jsp" id="logoutb">logout</a></li>
+            <li><a href="logout" id="logoutb">logout</a></li>
         </ul>
         
         <div id="searchdiv">

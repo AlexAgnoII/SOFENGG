@@ -193,9 +193,6 @@ public class dataServlet extends HttpServlet {
 		String civil = request.getParameter("civil");
 		String citizen = request.getParameter("citizen");
 		String gender = request.getParameter("gender");
-		int idNum = Integer.parseInt(request.getParameter("idNum"));
-		String course = request.getParameter("course");
-		String college = request.getParameter("college");
 		
 		student.setSQLDate(bday);
 		
@@ -215,20 +212,14 @@ public class dataServlet extends HttpServlet {
 		System.out.println("civil: " + civil);
 		System.out.println("citizen: " + citizen);
 		System.out.println("gender: " + gender);
-		System.out.println("idNum: " + idNum);
-		System.out.println("course: " + course);
-		System.out.println("college: " + college);
 		
 	    student.setDbID(Integer.parseInt(dbID));
-		student.setStudentId(idNum);
 	    student.setFirstName(firstName);
 	    student.setMiddleName(middleName);
 		student.setLastName(lastName);
 		student.setCelNo(cell);
 		student.setTelNo(tel);
 	    student.setEmail(email);
-        student.setCollege(college);
-		student.setCourse(course);
 	    student.setAddress(address);
 		
 		student.setCivil(civil);
@@ -242,7 +233,7 @@ public class dataServlet extends HttpServlet {
 	    UserService.updateStudent(student);
 	    
 	    //After updating, go back to view.
-	    response.sendRedirect("view");
+	    response.sendRedirect("view2edit");
 	}
 	
 	

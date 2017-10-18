@@ -263,17 +263,35 @@
 								value="${loggedUser.course}">
 						</div>
 		
-						<div class="m">
+						<%-- <div class="m">
 							<p>College</p>
 							<input type="text" id="college" name="college"
 								value="${loggedUser.college}">
-						</div>
+						</div> --%>
 		
+						<div class="m">
+							<p>College</p>
+							<div class="input-field">
+				                <select id="dropDownCollege" name="college" class="ddcollege">
+				                    <!--<option value="" disabled selected>Select your College:</option>-->
+				                	<option value="1" selected>College of Computer Studies</option>
+				                	<option value="2">Ramon V. del Rosario College of Business</option>
+				                	<option value="3">Br. Andrew Gonzales College of Education</option>
+				                	<option value="4">Gokongwei College of Engineering</option>
+				                	<option value="5">College of Liberal Arts</option>
+				                	<option value="6">College of Science</option>
+				                	<option value="7">School of Economics</option>
+				                </select>
+		              		</div>
+	                	</div>
+	
 						<div class="m">
 							<p>No. of Units Failed</p>
 							<input type="text" id="failed" name="failed" value="">
 						</div>
 					</div>
+					<button class="waves-effect waves-light btn modal-trigger" type="submit" id="submit">SAVE</button>	
+				</form>
 		
 					<ul>
 						<li><div class="divider"></div></li>

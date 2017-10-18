@@ -22,7 +22,7 @@ import service.UserService;
  * updating, deleting, adding data etc.
  */
 @WebServlet(urlPatterns = {"/updatePersonal",
-				   		   "/updateAcadInfo",
+				   		   "/updateAcadInfo1",
 				   		   "/delete",
 		                   "/add",
 		                   "/view",
@@ -54,7 +54,7 @@ public class dataServlet extends HttpServlet {
 		switch(request.getServletPath()) {
 			case "/add": addUser(request, response); break;
 			case "/updatePersonal": updatePersonal(request, response); break;
-			case "/updateAcadInfo": updatePersonal(request, response); break;
+			case "/updateAcadInfo1": updateAcadInfo(request, response); break;
 			case "/delete": deleteUser(request, response); break;
 			case "/addIntInv": addInternalInvolvements(request, response); break;
 			case "/addExtInv": addExternalInvolvements(request, response); break;

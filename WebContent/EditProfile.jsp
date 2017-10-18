@@ -249,61 +249,62 @@
 		</form>
 
 		<!-- ACADEMIC INFORMATION -->
-		<div id="acadinfo" class="col s12 forms">
-			<form>
-				<p>ID Number</p>
-				<input type="text" id="idNum" name="idNum"
-					value="${loggedUser.studentId}"><br>
-	
-				<div class="dwrap">
-					<div class="f">
-						<p>Course</p>
-						<input type="text" id="course" name="course"
-							value="${loggedUser.course}">
+		<form action="updateAcadInfo" method="POST">
+			<div id="acadinfo" class="col s12 forms">
+				<form>
+					<p>ID Number</p>
+					<input type="text" id="idNum" name="idNum"
+						value="${loggedUser.studentId}"><br>
+		
+					<div class="dwrap">
+						<div class="f">
+							<p>Course</p>
+							<input type="text" id="course" name="course"
+								value="${loggedUser.course}">
+						</div>
+		
+						<div class="m">
+							<p>College</p>
+							<input type="text" id="college" name="college"
+								value="${loggedUser.college}">
+						</div>
+		
+						<div class="m">
+							<p>No. of Units Failed</p>
+							<input type="text" id="failed" name="failed" value="">
+						</div>
 					</div>
-	
-					<div class="m">
-						<p>College</p>
-						<input type="text" id="college" name="college"
-							value="${loggedUser.college}">
+		
+					<ul>
+						<li><div class="divider"></div></li>
+					</ul>
+					<h5>Academic Achievements</h5>
+					<!-- DYNAMIC -->
+					<div class="dwrap">
+						<div class="f">
+							<p>Year</p>
+							<input type="date" id="ayear" name="ayear">
+						</div>
+		
+						<div class="m">
+							<p>Award</p>
+							<input type="text" id="award" name="award">
+						</div>
+		
+						<div class="m">
+							<p>Level</p>
+							<input type="text" id="alev" name="alev">
+						</div>
 					</div>
-	
-					<div class="m">
-						<p>No. of Units Failed</p>
-						<input type="text" id="failed" name="failed" value="">
-					</div>
-				</div>
-	
-				<ul>
-					<li><div class="divider"></div></li>
-				</ul>
-				<h5>Academic Achievements</h5>
-				<!-- DYNAMIC -->
-				<div class="dwrap">
-					<div class="f">
-						<p>Year</p>
-						<input type="date" id="ayear" name="ayear">
-					</div>
-	
-					<div class="m">
-						<p>Award</p>
-						<input type="text" id="award" name="award">
-					</div>
-	
-					<div class="m">
-						<p>Level</p>
-						<input type="text" id="alev" name="alev">
-					</div>
-				</div>
-	
-				<p>Given by</p>
-				<input type="text" id="agive" name="agive">
-	
-				<p>Description</p>
-				<input type="text" id="adesc" name="adesc">
-				<button>EDIT</button>
-			</form>
-		</div>
+		
+					<p>Given by</p>
+					<input type="text" id="agive" name="agive">
+		
+					<p>Description</p>
+					<input type="text" id="adesc" name="adesc">
+					<button>EDIT</button>
+				</form>
+			</div>
 
 		<!-- INTERNAL INVOLVEMENTS -->
 		<!-- DYNAMIC -->

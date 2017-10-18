@@ -22,7 +22,8 @@ import service.UserService;
  * updating, deleting, adding data etc.
  */
 @WebServlet(urlPatterns = {"/updatePersonal",
-		                   "/delete",
+				   		   "/updateAcadInfo",
+				   		   "/delete",
 		                   "/add",
 		                   "/view",
 		                   "/view2edit",
@@ -53,6 +54,7 @@ public class dataServlet extends HttpServlet {
 		switch(request.getServletPath()) {
 			case "/add": addUser(request, response); break;
 			case "/updatePersonal": updatePersonal(request, response); break;
+			case "/updateAcadInfo": updatePersonal(request, response); break;
 			case "/delete": deleteUser(request, response); break;
 			case "/addIntInv": addInternalInvolvements(request, response); break;
 			case "/addExtInv": addExternalInvolvements(request, response); break;
@@ -232,6 +234,39 @@ public class dataServlet extends HttpServlet {
 	    student.setCity(city);
 	    
 	    UserService.updateStudent(student);
+	    System.out.println("***********************************************************************************");
+	    //After updating, go back to edit.
+	    response.sendRedirect("view2edit");
+	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void updateAcadInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		System.out.println("****************************UPDATE PERSONAL*******************************************");
+		
+		Student student = new Student();
+		String dbID 	= (String) request.getSession().getAttribute("UN");
+		String course   = request.getParameter("course");
+		String college  = request.getParameter("college");
+		String idNum	= request.getParameter("idNum");
+		int idnum 		= Integer.parseInt(idNum);
+		
+		System.out.println("SessionID: " + dbID);
+		System.out.println("idNum: " + idNum);
+		System.out.println("course: " + course);
+		System.out.println("college: " + college);
+		
+	    student.setDbID(Integer.parseInt(dbID));
+	    student.setStudentId(idnum);
+	    student.setCourse(course);
+		student.setCollege(college);
+		
+	    UserService.updateStudentAcadInfo(student);
 	    System.out.println("***********************************************************************************");
 	    //After updating, go back to edit.
 	    response.sendRedirect("view2edit");

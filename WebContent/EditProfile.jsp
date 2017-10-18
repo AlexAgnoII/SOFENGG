@@ -28,9 +28,9 @@
             
             <!-- please update correct hrefs hehe -->
             <ul id="menu" class='dropdown-content'>
-                <li><a href="view" id="profileb">profile</a></li>
-                <li><a href="#!" id="settingsb">settings</a></li>
-                <li><a href="logout" id="logoutb">logout</a></li>
+                <li><a href="view" id="profileb">Profile</a></li>
+                <li><a href="#!" id="settingsb">Settings</a></li>
+                <li><a href="logout" id="logoutb">Logout</a></li>
             </ul>
         </div>
 	
@@ -380,6 +380,13 @@
 		</form>
 		-->
 	</div>
+	
+	<script>
+	 $('.dropdown-button').dropdown({
+         hover: true, // Activate on hover
+       }
+     );
+	</script>
 	 
 
 </body>

@@ -292,9 +292,9 @@ public class dataServlet extends HttpServlet {
 		sister.setSQLDate(sisterBday);
 		
 		System.out.println("Session ID: " + dbID);
-		System.out.println("Mother name: " + sisterName);
-		System.out.println("Mother Occupation: " + sisterOccu);
-		System.out.println("Mother Bday: " + sister.getTempDate());
+		System.out.println("Sister name: " + sisterName);
+		System.out.println("Sister Occupation: " + sisterOccu);
+		System.out.println("Sister Bday: " + sister.getTempDate());
 		
 		sister.setStudentId(Integer.parseInt(dbID));
 		sister.setName(sisterName);
@@ -308,9 +308,9 @@ public class dataServlet extends HttpServlet {
 		brother.setSQLDate(brotherBday);
 		
 		System.out.println("Session ID: " + dbID);
-		System.out.println("Mother name: " + brotherName);
-		System.out.println("Mother Occupation: " + brotherOccu);
-		System.out.println("Mother Bday: " + brother.getTempDate());
+		System.out.println("Brother name: " + brotherName);
+		System.out.println("Brother Occupation: " + brotherOccu);
+		System.out.println("Brother Bday: " + brother.getTempDate());
 		
 		brother.setStudentId(Integer.parseInt(dbID));
 		brother.setName(brotherName);

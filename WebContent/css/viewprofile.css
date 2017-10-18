@@ -22,7 +22,6 @@ html {
 		#top { top: 0; }
 
 #navbar {
-    background-color: white;
     height: 55px;
     width: 100%;
     left: 0;
@@ -97,7 +96,7 @@ html {
     border-color: #006f4a;
 }
 
-#logoutb, #settingsb, #profileb, #editprofb {
+#logoutb, #settingsb, #editprofb {
     font-size: 12.5px;
     color: #1e1e1e;
     font-weight: 400;
@@ -107,20 +106,39 @@ html {
 /** other css below **/
 
 #profilefeed {
-    background-color: azure;
+    background-color: white;
     margin: 0 auto;
     position: relative;
     top: 15%;
-    width: 50%;
+    width: 60%;
     padding: 5px;
+}
+
+.collapsible-header {
+    display: block;
+    cursor: pointer;
+    min-height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    background-color: #006f4a;
+    color: snow;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
 }
 
 .hfeedp {
     font-size: 12px;
 }
 
+.labheads {
+	font-weight: 500;
+	font-size: 13px;
+	color: #006f4a;
+}
+
 .binfo {
     font-size: 13px;
+    padding-left: 2px;
 }
 
 .heads {

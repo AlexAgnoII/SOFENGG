@@ -21,22 +21,25 @@
 		<div id="top"></div>
 		<div id="bottom"></div>
         
-        <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
+         <div id="navbar">
+            <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
             <div id="wrapper">
                 <i class="material-icons" id="arrow">near_me</i>
                 <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
             </div>   
-        </a>
-           
-        <ul id="menu" class='dropdown-content'>
-            <li><a href="logout" id="logoutb">logout</a></li>
-        </ul>
-        
-        <div id="searchdiv">
-            <form action="search" method="POST" id = "searchForm">
-                <input type="text" id="searchbar" name="searchbar" placeholder="search">
-                <a><i class="material-icons" id="magglass">search</i></a>
-            </form>
+            </a>
+            
+            <ul id="menu" class='dropdown-content'>
+                <li><a href="#!" id="settingsb">Settings</a></li>
+                <li><a href="logout" id="logoutb">Logout</a></li>
+            </ul>
+            
+            <div id="searchdiv">
+                <form>
+                    <input type="text" id="searchbar" name="searchbar" placeholder="search">
+                    <a><i class="material-icons" id="magglass">search</i></a>
+                </form>
+            </div>
         </div>
         
         <div id="srfeed">

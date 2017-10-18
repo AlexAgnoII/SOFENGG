@@ -1,40 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
-        <link rel = "stylesheet" type="text/css" href="css/viewprofile.css">
+        <link rel = "stylesheet" type="text/css" href="/css/viewprofile.css">
     </head>
     <body>
         <div id="left"></div>
 		<div id="right"></div>
 		<div id="top"></div>
 		<div id="bottom"></div>
-
-        <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
+        
+        <div id="navbar">
+            <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
             <div id="wrapper">
                 <i class="material-icons" id="arrow">near_me</i>
                 <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
             </div>   
-        </a>
-           
-        <ul id="menu" class='dropdown-content'>
-            <li><a href="homepage.jsp" id="logoutb">logout</a></li>
-        </ul>
-        
-        <div id="searchdiv">
-            <form>
-                <input type="text" id="searchbar" name="searchbar" placeholder="search">
-                <a><i class="material-icons" id="magglass">search</i></a>
-            </form>
+            </a>
+            
+            <!-- please update correct hrefs hehe -->
+            <ul id="menu" class='dropdown-content'>
+                <li><a href="#!" id="profileb">profile</a></li>
+                <li><a href="#!" id="editprofb"> edit profile</a></li>
+                <li><a href="#!" id="settingsb">settings</a></li>
+                <li><a href="#!" id="logoutb">logout</a></li>
+            </ul>
         </div>
         
         <div id="profilefeed">
@@ -97,6 +92,17 @@
                 </li>
               </ul>
         </div>
+        
+        <script>
+             $(document).ready(function(){
+                $('.collapsible').collapsible();
+              });
+            
+             $('.dropdown-button').dropdown({
+                  hover: true, // Activate on hover
+                }
+              );
+        </script>
 
     </body>
 </html>

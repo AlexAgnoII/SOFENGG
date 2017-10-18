@@ -156,6 +156,59 @@ public class UserService {
 		return Integer.toString(id);
 		
 	}
+	
+	
+	/**
+	 * Retrieves a student using their idnum.
+	 * @param name
+	 * @return List of student
+	 */
+	public static Student getStudentByIdNum(int idNum) {
+		System.out.println();
+		Student student = null;
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.student WHERE studentId "
+													   + "= ? LIMIT 1");
+			st.setString(1, idNum );
+			
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				student = new Student(rs.getInt("studentId"), 
+						                 rs.getDate("birthday"),
+										 rs.getDate("yearEnrolled") == null ?
+												 null :
+												 Year.of(rs.getDate("yearEnrolled").getYear()), 
+										 rs.getString("firstName"),
+										 rs.getString("middleName"),
+										 rs.getString("lastName"),
+										 rs.getString("celNo"), 
+										 rs.getString("telNo"), 
+										 rs.getString("email"), 
+										 rs.getString("address"), 
+										 rs.getString("course"),
+										 rs.getString("hashedPass"),
+										 rs.getString("civil"),
+										 rs.getString("citizen"),
+										 rs.getString("gender"));
+				System.out.println("Student " + rs.getString("firstName") + " Found!");
+			} 
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return student;
+		
+	}
+	
 
 	/**
 	 * Retrieves a list of student using their name.

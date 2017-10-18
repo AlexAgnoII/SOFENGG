@@ -151,22 +151,36 @@ public class dataServlet extends HttpServlet {
 				System.out.println("Cookie name: " +  c.getName());
 				System.out.println("Cookie Value: " + c.getValue());
 				userCookie = c;
+			} else if(c.getName().equals("ADMIN")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
 			}
 		}
 		
-		student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
-		request.setAttribute("loggedUser", student);
-		
-		if(request.getServletPath().contentEquals("/view")) {
-			System.out.println("Viewing via viewprofile..");
-			request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+		if(userCookie == null || userCookie.getName().equals("USER")){
+			student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
+			request.setAttribute("loggedUser", student);
+			
+			if(request.getServletPath().contentEquals("/view")) {
+				System.out.println("Viewing via viewprofile..");
+				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+			}
+	
+			else {
+				System.out.println("Viewing via editprofile..");
+				request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
+			}
+		} else if(userCookie.getName().equals("ADMIN")){
+			student = UserService.getStudentByIdNum((Integer)request.getAttribute("idNum"));
+			request.setAttribute("loggedUser", student);
+			
+			if(request.getServletPath().contentEquals("/view")) {
+				System.out.println("Viewing via viewprofile..");
+				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+			}	
 		}
-
-		else {
-			System.out.println("Viewing via editprofile..");
-			request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
-		}
-		
 		System.out.println("***********************************************************************************");
 	}
 	

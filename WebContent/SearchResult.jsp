@@ -13,6 +13,27 @@
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
         <link rel = "stylesheet" type="text/css" href="css/searchresult.css">
+        
+        <script>
+	        $(".studentContainer").click(function(){
+	            $.ajax({
+	               url:'view',
+	               data:{idNum: $(this).find('p:second').attr('id')},	// Second <p>
+	               type:'get',
+	               cache:false,
+	               success:function(data){
+	               	console.log("Done searchResult.js");
+	               },
+	               error:function(){
+	               	console.log("error searchResult.js");
+	               }
+	            });
+		            
+		        System.out.println("ASKJLAKSLSALK");
+		        alert("ASAS");
+		   });
+		       
+        </script>
     </head>
     
     <body>
@@ -41,7 +62,7 @@
         
         <div id="srfeed">
         	<c:forEach items = "${studentList}" var = "s">
-	        	<div id="studentres">
+	        	<div id="studentres" class = "studentContainer">
 	                <p id="srname" name="srname">${s.firstName} ${s.middleName} ${s.lastName}</p>
 	                <p id="sridnum" name="sridnum">${s.studentId}</p>
 	                <p id="srcol" name="srcol">${s.college}</p>
@@ -61,5 +82,6 @@
         
         
         
+		<script src="script/SearchResult.js"></script>
     </body>
 </html>

@@ -173,7 +173,7 @@ public class UserService {
 
 			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.student WHERE studentId "
 													   + "= ? LIMIT 1");
-			st.setString(1, idNum );
+			st.setInt(1, idNum );
 			
 			ResultSet rs = st.executeQuery();
 			

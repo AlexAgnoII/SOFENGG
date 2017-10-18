@@ -17,10 +17,11 @@
         <script>
      		$(document).ready(function() {    
 		        $(".studentContainer").click(function(){
-		            $.ajax({
+		        	var idNum = $(this).children('p').eq(1).text();
+		        	$.ajax({
 	            	   context: this,
 		               url:'view',
-		               data:{idNum: $(this).children('p').eq(1)},	// Second <p>
+		               data:{idNum: idNum},
 		               type:'get',
 		               cache:false,
 		               success:function(data){
@@ -31,8 +32,6 @@
 		               }
 		            });
 			            
-			        System.out.println("ASKJLAKSLSALK");
-			        alert("ASAS");
 			   });
      		});
 		       

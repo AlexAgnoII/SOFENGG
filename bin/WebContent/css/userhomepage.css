@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+ 
+html {
+    font-family: "Montserrat";
+}
+
+#top, #bottom, #left, #right {
+	background: #006f4a;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 10px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top{
+		left: 0; right: 0;
+		height: 10px;
+		}
+		#top { top: 0; }
+
+#pulse {
+    background-color: #006f4a; 
+    height: 70px;
+    width: 180px;
+    position: fixed;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+    border-color: #006f4a;
+}
+
+#pulse:hover {
+    background-color: white;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+}
+
+#wrapper {
+    display: inline-flex;
+    padding: 4px;
+    width: 150px;
+}
+
+#title {
+    font-family: "Montserrat";
+    font-size: 15.5px;
+    text-align: left;
+    line-height: 95%;
+    font-weight: 400;
+    width: 60%;
+    margin-top: 0px;
+    margin-left: -2px;
+    color: white;
+}
+
+#pulse:hover #title {
+    color: #1e1e1e;
+    font-weight: 500;
+}
+
+#arrow {
+    font-size: 60px;
+    margin-left: -5px;
+    color: #1e1e1e;
+}
+
+#pulse:hover #arrow {
+    color: #006f4a;
+}
+
+/* add your css below! :) */
+
+body {
+  /*margin: 0px;*/
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #333;
+}
+
+li {
+    float: left;
+    border-right: 1px solid #BBB;
+    overflow: hidden;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li:hover {
+    background: #555;
+}
+
+li a, .dropbtn{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+    text-decoration: none;
+    width: 150px;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.notices {
+    margin-top: 10px;
+    width: 650px;
+    height: 750px;
+    border: 1px solid transparent;
+    background: #E0E0E0;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: auto;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background: #DDD;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}

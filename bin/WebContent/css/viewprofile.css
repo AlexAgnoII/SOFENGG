@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+ 
+html {
+    font-family: "Montserrat";
+}
+
+#top, #bottom, #left, #right {
+	background: #006f4a;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 10px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top{
+		left: 0; right: 0;
+		height: 10px;
+		}
+		#top { top: 0; }
+
+#navbar {
+    height: 55px;
+    width: 100%;
+    left: 0;
+    display: inline;
+    position: fixed;
+    border-style: solid;
+    border-color: #006f4a;
+    border-width: 10px;
+    border-bottom: 0px;
+    z-index: 5;   
+}
+
+#tbox {
+    background-color: #006f4a; 
+    height: 70px;
+    width: 180px;
+    position: fixed;
+    margin-top: 20px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+    border-color: #006f4a;
+}
+
+#tbox:hover {
+    background-color: white;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+}
+
+#wrapper {
+    display: inline-flex;
+    margin-left: -25px;
+    margin-top: 5px;
+}
+
+#title {
+    font-family: "Montserrat";
+    font-size: 15.5px;
+    text-align: left;
+    line-height: 95%;
+    font-weight: 400;
+    width: 60%;
+    margin-top: 0px;
+    margin-left: -3px;
+    color: white;
+}
+
+#tbox:hover #title {
+    color: #006f4a;
+    font-weight: 500;
+}
+
+#arrow {
+    font-size: 60px;
+    margin-left: -5px;
+    margin-top: 8px;
+    color: #1e1e1e;
+}
+
+#menu {
+	margin-top: 80px;
+    margin-left: -10px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #006f4a;
+}
+
+#logoutb, #settingsb, #editprofb {
+    font-size: 12.5px;
+    color: #1e1e1e;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+/** other css below **/
+
+#profilefeed {
+    background-color: white;
+    margin: 0 auto;
+    position: relative;
+    top: 15%;
+    width: 60%;
+    padding: 5px;
+}
+
+.collapsible-header {
+    display: block;
+    cursor: pointer;
+    min-height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    background-color: #006f4a;
+    color: snow;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.hfeedp {
+    font-size: 12px;
+}
+
+.labheads {
+	font-weight: 500;
+	font-size: 13px;
+	color: #006f4a;
+}
+
+.binfo {
+    font-size: 13px;
+    padding-left: 2px;
+}
+
+.heads {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.subheads {
+    font-size: 13.5px;
+    font-weight: 400;
+}
+
+p {
+    line-height: 10%
+}

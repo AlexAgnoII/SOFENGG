@@ -59,20 +59,20 @@
 
 				<p>Last Name</p>
 				<input type="text" id="lastName" name="lastName"
-					value="${loggedUser.lastName}"><br>
+					disabled value="${loggedUser.lastName}"><br>
 
 				<div class="dwrap">
 					<div class="f">
 						<p>First Name</p>
 						<input type="text" id="firstName" name="firstName"
-							value="${loggedUser.firstName}"><br>
+							disabled value="${loggedUser.firstName}"><br>
 
 					</div>
 
 					<div class="m">
 						<p>Middle Name</p>
 						<input type="text" id="middleName" name="middleName"
-							value="${loggedUser.middleName}"><br>
+							disabled value="${loggedUser.middleName}"><br>
 					</div>
 				</div>
 
@@ -136,13 +136,13 @@
 					<div class="f">
 						<p>Birthday</p>
 						<input type="date" id="bday" name="bday"
-							value="${loggedUser.birthday}">
+							disabled value="${loggedUser.birthday}">
 					</div>
 
 					<div class="m">
 						<p>Age</p>
 						<input type="text" id="age" name="age"
-							value="${loggedUser.age}">
+							disabled value="${loggedUser.age}">
 					</div>
 
 					<div class="m">
@@ -254,7 +254,7 @@
 				<form>
 					<p>ID Number</p>
 					<input type="text" id="idNum" name="idNum"
-						value="${loggedUser.studentId}"><br>
+						disabled value="${loggedUser.studentId}"><br>
 		
 					<div class="dwrap">
 						<div class="f">

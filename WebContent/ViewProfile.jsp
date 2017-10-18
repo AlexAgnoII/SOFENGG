@@ -28,7 +28,7 @@
                 <li><a href="#!" id="profileb">profile</a></li>
                 <li><a href="view2edit" id="editprofb"> edit profile</a></li>
                 <li><a href="#!" id="settingsb">settings</a></li>
-                <li><a href="#!" id="logoutb">logout</a></li>
+                <li><a href="logout" id="logoutb">logout</a></li>
             </ul>
         </div>
         

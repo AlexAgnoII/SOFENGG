@@ -510,8 +510,6 @@ public class UserService {
 		System.out.println("Student retrieved!");
 		return student;
 	}
-	
-	
 
 	public static int getUserIDNum(int id) {
 		int idNum = 0;

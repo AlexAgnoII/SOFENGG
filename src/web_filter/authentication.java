@@ -43,6 +43,7 @@ public class authentication implements Filter {
 		req = (HttpServletRequest) request;
 		res = (HttpServletResponse) response;
 		proceed = false; //Fixed infinite redirection
+		Boolean admin = false;
 		String url = req.getServletPath(); //
 		String temp;
 		HttpSession theSession;
@@ -76,8 +77,10 @@ public class authentication implements Filter {
 				} else if(c.getName().equals("ADMIN")) {
 					System.out.println("ADMIN Cookie found!");
 						
-					if(c.getMaxAge() != 0)
+					if(c.getMaxAge() != 0){
 						proceed = true; //if it exists, proceed.
+						admin = true;
+					}
 					
 					//Allows session attribute to stay in the website
 					//When user enters exact url.
@@ -96,7 +99,21 @@ public class authentication implements Filter {
 		System.out.println("Cookie exists: " + proceed);
 
 		switch(url) {
-			case "/HomePage.jsp"://if Cookie exists, proceed to userHomePage.
+			case "/HomePage.jsp":
+								if(!admin && proceed) {
+									 System.out.println("Redirecting to UserHomePage.jsp..");
+									 res.sendRedirect("UserHomePage.jsp");
+								 }
+								 //If not, continue to page.
+								 else if(admin && proceed) {
+									 System.out.println("Redirecting to AdminHomePage.jsp..");
+									 res.sendRedirect("AdminHomePage.jsp");
+								 }
+								 else {
+									 System.out.println("Continue on this page..");
+									 chain.doFilter(request, response);
+								 }
+								 break; 
 			case "/Signup.jsp":
 								 if(proceed) {
 									 System.out.println("Redirecting to UserHomePage.jsp..");

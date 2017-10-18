@@ -4,8 +4,9 @@ import java.time.Year;
 import java.util.Calendar;
 import java.util.Date;
 
+//TODO Need to fix student class (Especially how we use it) for consistent codes on other classes (Like userservice)
 public class Student {
-	private int dbID;
+	private int dbID; //the ID of user in the DB
 	private int studentId, zip, age;
 	private Date birthday;
 	private Year yEnrolled;
@@ -40,7 +41,6 @@ public class Student {
 				   String celNo, 
 				   String email, 
 				   String address, 
-				   //String college,
 				   String course, 
 				   String hashedPass, 
 				   String civil,
@@ -57,7 +57,6 @@ public class Student {
 		this.celNo = celNo;
 		this.email = email;
 		this.address = address;
-		//this.college = college;
 		this.course = course;
 		this.hashedPass = hashedPass;
 		this.civil = civil;
@@ -106,36 +105,41 @@ public class Student {
 	
 	//Calculates the age of the user.
 	public void calculateAge(Date date) {
-		int currYear = Calendar.getInstance().get(Calendar.YEAR);
-		int currMonth = Calendar.getInstance().get(Calendar.MONTH); //index 0 - 11
-		int currDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-		String temp[] = date.toString().split("-"); //first index must be the year, second is month.
-		int year = Integer.parseInt(temp[0]); //convert string to int.
-		int month = Integer.parseInt(temp[1]) - 1; //convert string to int
-		int day = Integer.parseInt(temp[2]); 
-		
-		int age = java.lang.Math.abs(currYear - year);
-		System.out.println("Year: " + year);
-		System.out.println("Curryear: " + currYear);
-		System.out.println("day: " + day);
-		System.out.println("Month: " + month);
-		System.out.println("currMonth: " + currMonth);
-		System.out.println("Age: " + age); //get age (ABS value)
-		
-		if(currMonth < month) {
-			age -= 1;
+
+		if (date != null) {	
+			int currYear = Calendar.getInstance().get(Calendar.YEAR);
+			int currMonth = Calendar.getInstance().get(Calendar.MONTH); //index 0 - 11
+			int currDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+			String temp[] = date.toString().split("-"); //first index must be the year, second is month.
+			int year = Integer.parseInt(temp[0]); //convert string to int.
+			int month = Integer.parseInt(temp[1]) - 1; //convert string to int
+			int day = Integer.parseInt(temp[2]); 
+			int age = java.lang.Math.abs(currYear - year);
+			
+			System.out.println("Year: " + year);
+			System.out.println("Curryear: " + currYear);
+			System.out.println("day: " + day);
+			System.out.println("Month: " + month);
+			System.out.println("currMonth: " + currMonth);
+			System.out.println("Age: " + age); //get age (ABS value)
+			
+			if(currMonth < month) {
+				age -= 1;
+			}
+			
+			else if(currDay < day) {
+				age -=1;
+			}
+			
+			if(age < 0) {
+				age = 0;
+			}
+			
+			System.out.println("Final age: " + age);
+			this.age = age;
 		}
+		else this.age = 0;
 		
-		else if(currDay < day) {
-			age -=1;
-		}
-		
-		if(age < 0) {
-			age = 0;
-		}
-		
-		System.out.println("Final age: " + age);
-		this.age = age;
 	}
 	
 	public void setSQLDate(String date) {
@@ -153,18 +157,30 @@ public class Student {
 		this.studentId = studentId;
 	}
 	public String getCelNo() {
+		
+		if (this.celNo == null)
+			return "";
+		
 		return celNo;
 	}
 	public void setCelNo(String celNo) {
 		this.celNo = celNo;
 	}
 	public String getTelNo() {
+		
+		if(this.telNo == null)
+			return "";
+		
 		return telNo;
 	}
 	public void setTelNo(String telNo) {
 		this.telNo = telNo;
 	}
 	public Date getBirthday() {
+		if(this.birthday == null) {
+			return java.sql.Date.valueOf("1990-01-01");
+		}
+		
 		return birthday;
 	}
 	
@@ -206,6 +222,8 @@ public class Student {
 		this.email = email;
 	}
 	public String getAddress() {
+		if(this.address == null)
+			return "";
 		return address;
 	}
 	public void setAddress(String address) {
@@ -228,6 +246,8 @@ public class Student {
 
 
 	public String getCivil() {
+		if(this.civil == null)
+			return "";
 		return civil;
 	}
 
@@ -238,6 +258,8 @@ public class Student {
 
 
 	public String getCitizen() {
+		if(this.citizen == null)
+			return "";
 		return citizen;
 	}
 
@@ -248,6 +270,8 @@ public class Student {
 
 
 	public String getGender() {
+		if(this.gender == null)
+			return "";
 		return gender;
 	}
 
@@ -278,6 +302,8 @@ public class Student {
 
 
 	public String getCity() {
+		if(this.city == null)
+			return "";
 		return city;
 	}
 
@@ -288,6 +314,8 @@ public class Student {
 
 
 	public String getProvince() {
+		if(this.province == null)
+			return "";
 		return province;
 	}
 
@@ -298,6 +326,8 @@ public class Student {
 
 
 	public String getCountry() {
+		if(this.country == null)
+			return "";
 		return country;
 	}
 

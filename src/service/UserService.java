@@ -519,7 +519,7 @@ public class UserService {
 	 */
 	public static Student getLoggedStudent(int id) {
 		Student student = null;
-		
+		int year;
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
@@ -532,9 +532,16 @@ public class UserService {
 			
 			while(rs.next()) {
 				System.out.println("Get logged student loop.");
+				
+				if (rs.getDate("yearEnrolled") == null) {
+					year = 0;
+				}
+				
+				else year = rs.getDate("yearEnrolled").getYear();
+				
 				student = new Student(rs.getInt("studentId"), 
 						              rs.getDate("birthday"),
-						              Year.of(rs.getDate("yearEnrolled").getYear()), 
+						              Year.of(year), 
 						              rs.getString("firstName"),
 						              rs.getString("middleName"), 
 						              rs.getString("lastName"),

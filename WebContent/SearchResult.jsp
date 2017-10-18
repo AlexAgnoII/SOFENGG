@@ -15,23 +15,26 @@
         <link rel = "stylesheet" type="text/css" href="css/searchresult.css">
         
         <script>
-	        $(".studentContainer").click(function(){
-	            $.ajax({
-	               url:'view',
-	               data:{idNum: $(this).find('p:second').attr('id')},	// Second <p>
-	               type:'get',
-	               cache:false,
-	               success:function(data){
-	               	console.log("Done searchResult.js");
-	               },
-	               error:function(){
-	               	console.log("error searchResult.js");
-	               }
-	            });
-		            
-		        System.out.println("ASKJLAKSLSALK");
-		        alert("ASAS");
-		   });
+     		$(document).ready(function() {    
+		        $(".studentContainer").click(function(){
+		            $.ajax({
+	            	   context: this,
+		               url:'view',
+		               data:{idNum: $(this).children('p').eq(1)},	// Second <p>
+		               type:'get',
+		               cache:false,
+		               success:function(data){
+		               	console.log("Done searchResult.js");
+		               },
+		               error:function(){
+		               	console.log("error searchResult.js");
+		               }
+		            });
+			            
+			        System.out.println("ASKJLAKSLSALK");
+			        alert("ASAS");
+			   });
+     		});
 		       
         </script>
     </head>
@@ -82,6 +85,6 @@
         
         
         
-		<script src="script/SearchResult.js"></script>
+		<!-- <script src="script/SearchResult.js"></script> -->
     </body>
 </html>

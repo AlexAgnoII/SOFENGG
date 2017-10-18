@@ -665,4 +665,38 @@ public class UserService {
 		}
 		System.out.println();
 	}
+	
+	
+
+	public static void updateStudentAcadInfo(Student student) {
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE student "
+				  + "SET studentId=?, " //1
+					  + "course=?,"//2
+					  + "college=?, "//3
+				 + "WHERE id=?" //4					
+					);
+			
+			stmt.setInt(1, student.getStudentId());
+			stmt.setString(2, student.getCourse());
+			stmt.setString(3, student.getCollege());
+			stmt.setInt(9, Integer.parseInt(student.getCollege()));
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Update acad info success for "+ student.getDbID() + "!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+	}
 }

@@ -101,8 +101,10 @@ public class authentication implements Filter {
 		switch(url) {
 			case "/HomePage.jsp":
 								if(!admin && proceed) {
-									 System.out.println("Redirecting to UserHomePage.jsp..");
-									 res.sendRedirect("UserHomePage.jsp");
+									 //System.out.println("Redirecting to UserHomePage.jsp..");
+									 //res.sendRedirect("UserHomePage.jsp");
+									 System.out.println("Redirecting to ViewProfile.jsp..");
+									 res.sendRedirect("view"); //Redirect to viewprofile for now.
 								 }
 								 //If not, continue to page.
 								 else if(admin && proceed) {
@@ -180,6 +182,17 @@ public class authentication implements Filter {
 					               	 res.sendRedirect("HomePage.jsp");
 					                }
 				                break;
+			case "/ViewProfile.jsp": //if cookie exists, continue
+					                if(proceed) {
+						               	 System.out.println("Continue on this page..");
+						                   chain.doFilter(request, response);
+										 }
+						                //If not, go to homepage
+						                else {
+						               	 System.out.println("Redirecting to HomePage.jsp..");
+						               	 res.sendRedirect("HomePage.jsp");
+						                }
+					               break;
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
 		}
 		

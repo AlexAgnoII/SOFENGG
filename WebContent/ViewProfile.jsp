@@ -1,20 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
-        <link rel = "stylesheet" type="text/css" href="/css/viewprofile.css">
+        <link rel = "stylesheet" type="text/css" href="css/viewprofile.css">
     </head>
     <body>
         <div id="left"></div>
 		<div id="right"></div>
 		<div id="top"></div>
 		<div id="bottom"></div>
-        
+
         <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
             <div id="wrapper">
                 <i class="material-icons" id="arrow">near_me</i>
@@ -38,30 +42,29 @@
                 <li>
                   <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
                   <div class="collapsible-body active">
-                      <p id="stname" >Azuka Kazama</p>
-                      <p id="stidnum" class="hfeedp">114xxxxx</p>
-                      <p id="stcourse" class="hfeedp">Software Technology</p>
-                      <p id="stcollege" class="hfeedp">College of Computer Studies</p>
+                      <p id="stname" >${loggedUser.firstName} ${loggedUser.middleName} ${loggedUser.lastName}</p>
+                      <p id="stidnum" class="hfeedp">${loggedUser.studentId}</p>
+                      <p id="stcourse" class="hfeedp">${loggedUser.course}</p>
+                      <p id="stcollege" class="hfeedp">${loggedUser.college}</p>
                   </div>
                 </li>
                 
                 <li>
                   <div class="collapsible-header"><i class="material-icons">place</i>Personal Information</div>
                   <div class="collapsible-body">
-                      <p id="staddress" class="binfo">19 Yemen St., Yemen</p>
-                      <p id="stcity" class="binfo">Yemen City</p>
-                      <p id="stprov" class="binfo">Yemen Province</p>
-                      <p id="stcountry" class="binfo">Yemen</p>
-                      <p id="stzip" class="binfo">1550</p>
-                      
-                      <p id="stemail" class="binfo">aszuka_kazama@dlsu.edu.ph</p>
-                      <p id="stmob" class="binfo">09xxxxxxxxx</p>
-                      <p id="sttel" class="binfo">5344129</p>
-                      <p id="stbday" class="binfo">01/19/1997</p>
-                      <p id="stage" class="binfo">20</p>
-                      <p id="stciv" class="binfo">Married</p>
-                      <p id="stcitzen" class="binfo">Japanese</p>
-                      <p id="gender" class="binfo">Female</p>
+                      <p id="staddress" class="binfo">${loggedUser.address}</p>
+                      <p id="stcity" class="binfo">${loggedUser.city}</p>
+                      <p id="stprov" class="binfo">${loggedUser.province}</p>
+                      <p id="stcountry" class="binfo">${loggedUser.country}</p>
+                      <p id="stzip" class="binfo">${loggedUser.zip}</p>
+                      <p id="stemail" class="binfo">${loggedUser.email}</p>
+                      <p id="stmob" class="binfo">${loggedUser.celNo}</p>
+                      <p id="sttel" class="binfo">${loggedUser.telNo}</p>
+                      <p id="stbday" class="binfo">${loggedUser.birthday}</p>
+                      <p id="stage" class="binfo">${loggedUser.age}</p>
+                      <p id="stciv" class="binfo">${loggedUser.civil}</p>
+                      <p id="stcitzen" class="binfo">${loggedUser.citizen}</p>
+                      <p id="gender" class="binfo">${loggedUser.gender}</p>
                   </div>
                 </li>
                 
@@ -94,12 +97,6 @@
                 </li>
               </ul>
         </div>
-        
-        <script>
-             $(document).ready(function(){
-                $('.collapsible').collapsible();
-              });
-        </script>
 
     </body>
 </html>

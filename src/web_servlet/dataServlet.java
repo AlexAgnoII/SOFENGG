@@ -1,7 +1,7 @@
 package web_servlet;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.time.Year;
 import java.util.ArrayList;
 
@@ -151,7 +151,7 @@ public class dataServlet extends HttpServlet {
 		
 		student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
 		request.setAttribute("loggedUser", student);
-		request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
+		request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
 		
 		System.out.println("***********************************************************************************");
 	}

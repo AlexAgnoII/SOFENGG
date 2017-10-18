@@ -498,6 +498,7 @@ public class UserService {
 				student.setProvince(rs.getString("province"));
 				student.setCountry(rs.getString("country"));
 				student.setZip(rs.getInt("zip"));
+				student.calculateAge(rs.getDate("birthday"));
 			}
 			
 			conn.close();

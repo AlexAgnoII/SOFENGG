@@ -1,11 +1,12 @@
 package beans_model;
 
 import java.time.Year;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Student {
 	private int dbID;
-	private int studentId, zip;
+	private int studentId, zip, age;
 	private Date birthday;
 	private Year yEnrolled;
 	private String firstName,
@@ -101,6 +102,40 @@ public class Student {
 		return "Student [studentId=" + studentId + ", celNo=" + celNo + ", telNo=" + telNo + ", birthday=" + birthday
 				+ ", yEnrolled=" + yEnrolled + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
 				+ lastName + ", email=" + email + ", address=" + address + ", course=" + course + "]";
+	}
+	
+	//Calculates the age of the user.
+	public void calculateAge(Date date) {
+		int currYear = Calendar.getInstance().get(Calendar.YEAR);
+		int currMonth = Calendar.getInstance().get(Calendar.MONTH); //index 0 - 11
+		int currDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+		String temp[] = date.toString().split("-"); //first index must be the year, second is month.
+		int year = Integer.parseInt(temp[0]); //convert string to int.
+		int month = Integer.parseInt(temp[1]) - 1; //convert string to int
+		int day = Integer.parseInt(temp[2]); 
+		
+		int age = java.lang.Math.abs(currYear - year);
+		System.out.println("Year: " + year);
+		System.out.println("Curryear: " + currYear);
+		System.out.println("day: " + day);
+		System.out.println("Month: " + month);
+		System.out.println("currMonth: " + currMonth);
+		System.out.println("Age: " + age); //get age (ABS value)
+		
+		if(currMonth < month) {
+			age -= 1;
+		}
+		
+		else if(currDay < day) {
+			age -=1;
+		}
+		
+		if(age < 0) {
+			age = 0;
+		}
+		
+		System.out.println("Final age: " + age);
+		this.age = age;
 	}
 	
 	public void setSQLDate(String date) {
@@ -278,6 +313,20 @@ public class Student {
 	public void setDbID(int dbID) {
 		this.dbID = dbID;
 	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void setTempDate(java.sql.Date tempDate) {
+		this.tempDate = tempDate;
+	}
+	
+	
 
 	
 

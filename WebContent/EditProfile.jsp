@@ -2,14 +2,14 @@
 <head>
 <!--Import materialize.css-->
 <link rel="stylesheet" type="text/css"
-	href="/materialize/css/materialize.min.css">
+	href="materialize/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
-<script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="/css/editprofile.css">
+<link rel="stylesheet" type="text/css" href="css/editprofile.css">
 
 </head>
 <body>

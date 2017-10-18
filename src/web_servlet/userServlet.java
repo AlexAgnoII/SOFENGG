@@ -127,7 +127,8 @@ public class userServlet extends HttpServlet {
 			response.addCookie(theCookie);
 
 			//Redirect inside website
-			response.sendRedirect("UserHomePage.jsp");
+			//response.sendRedirect("UserHomePage.jsp");
+			response.sendRedirect("view"); //redirect to view profile.jsp
 			
 		} else if(UserService.validateAdmin(email, password)) { 
 			String userID = UserService.getUserID(email);

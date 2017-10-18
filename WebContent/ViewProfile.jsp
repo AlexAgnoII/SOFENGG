@@ -25,17 +25,17 @@
             
             <!-- please update correct hrefs hehe -->
             <ul id="menu" class='dropdown-content'>
-                <li><a href="view" id="profileb">profile</a></li>
-                <li><a href="view2edit" id="editprofb"> edit profile</a></li>
-                <li><a href="#!" id="settingsb">settings</a></li>
-                <li><a href="logout" id="logoutb">logout</a></li>
+             <!--<li><a href="view" id="profileb">profile</a></li> -->
+                <li><a href="view2edit" id="editprofb"> Edit Profile</a></li>
+                <li><a href="#!" id="settingsb">Settings</a></li>
+                <li><a href="logout" id="logoutb">Logout</a></li>
             </ul>
         </div>
         
         <div id="profilefeed">
-            <ul class="collapsible" data-collapsible="accordion">
+            <ul class="collapsible" data-collapsible="expandable">
                 <li>
-                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                  <div class="collapsible-header active"><i class="material-icons">filter_drama</i>Profile Overview</div>
                   <div class="collapsible-body active">
                       <p id="stname" >${loggedUser.firstName} ${loggedUser.middleName} ${loggedUser.lastName}</p>
                       <p id="stidnum" class="hfeedp">${loggedUser.studentId}</p>
@@ -47,18 +47,31 @@
                 <li>
                   <div class="collapsible-header"><i class="material-icons">place</i>Personal Information</div>
                   <div class="collapsible-body">
+                  	  <p class="labheads">Address</p>	
                       <p id="staddress" class="binfo">${loggedUser.address}</p>
+                      <p class="labheads">City</p>	 
                       <p id="stcity" class="binfo">${loggedUser.city}</p>
+                      <p class="labheads">Province</p>	
                       <p id="stprov" class="binfo">${loggedUser.province}</p>
+                      <p class="labheads">Country</p>	
                       <p id="stcountry" class="binfo">${loggedUser.country}</p>
+                      <p class="labheads">Zip Code</p>	
                       <p id="stzip" class="binfo">${loggedUser.zip}</p>
+                      <p class="labheads">Email Address</p>	
                       <p id="stemail" class="binfo">${loggedUser.email}</p>
+                      <p class="labheads">Mobile Number</p>	
                       <p id="stmob" class="binfo">${loggedUser.celNo}</p>
+                      <p class="labheads">Telephone Number</p>	
                       <p id="sttel" class="binfo">${loggedUser.telNo}</p>
+                      <p class="labheads">Birthday</p>	
                       <p id="stbday" class="binfo">${loggedUser.birthday}</p>
+                      <p class="labheads">Age</p>	
                       <p id="stage" class="binfo">${loggedUser.age}</p>
+                      <p class="labheads">Civil Status</p>	
                       <p id="stciv" class="binfo">${loggedUser.civil}</p>
+                      <p class="labheads">Nationality</p>	
                       <p id="stcitzen" class="binfo">${loggedUser.citizen}</p>
+                      <p class="labheads">Gender</p>	
                       <p id="gender" class="binfo">${loggedUser.gender}</p>
                   </div>
                 </li>

@@ -1,27 +1,33 @@
 package beans_model;
 
+import java.sql.Date;
+
 public class Relative {
 	private int relativeId,
 				studentId;
 	
-	private String firstName,
-				   middleName,
-				   lastName,
+	private String name,
 				   type,
 				   occupation;
+	
+	private Date birthday;
+
+	private java.sql.Date tempDate;
 
 	
 	
-	public Relative(int relativeId, int studentId, String firstName, String middleName, String lastName, String type,
-			String occupation) {
+	public Relative(int relativeId, int studentId, String name, String type,
+			String occupation, Date birthday) {
 		super();
 		this.relativeId = relativeId;
 		this.studentId = studentId;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
+		//this.firstName = firstName;
+		//this.middleName = middleName;
+		//this.lastName = lastName;
+		this.name = name;
 		this.type = type;
 		this.occupation = occupation;
+		this.birthday = birthday;
 	}
 
 
@@ -47,10 +53,18 @@ public class Relative {
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
 
 
-	public String getFirstName() {
+	/*public String getFirstName() {
 		return firstName;
 	}
 
@@ -82,7 +96,7 @@ public class Relative {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
+	}*/
 
 
 
@@ -107,14 +121,39 @@ public class Relative {
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
+	
+	
+	public Date getBirthday() {
+		return birthday;
+	}
+	
 
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public Relative() {
+		// TODO Auto-generated constructor stub
+	}
 
 
 	@Override
 	public String toString() {
-		return "Relative [relativeId=" + relativeId + ", studentId=" + studentId + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName + ", type=" + type + ", occupation="
-				+ occupation + "]";
+		return "Relative [relativeId=" + relativeId + ", studentId=" + studentId + ", name=" + name
+				+ ",  type=" + type + ", occupation="
+				+ occupation + ", birthday=" + birthday + "]";
+	}
+	
+	public void setSQLDate(String date) {
+		this.tempDate = java.sql.Date.valueOf(date);
+	}
+	
+	public java.sql.Date getTempDate() {
+		return tempDate;
+	}
+	
+	public void setTempDate(java.sql.Date tempDate) {
+		this.tempDate = tempDate;
 	}
 
 	

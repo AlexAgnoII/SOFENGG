@@ -12,6 +12,7 @@ import java.time.Year;
 import java.util.ArrayList;
 
 import beans_model.Involvement;
+import beans_model.Relative;
 import beans_model.Student;
 
 /**
@@ -621,6 +622,41 @@ public class UserService {
 			stmt.executeUpdate();
 			
 			System.out.println("Update success for "+ student.getDbID() + "!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+	}
+	
+	public static void updateRelatives(Relative relative) {
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE relative "
+				  + "SET studentId=?, " //1
+					  + "name=?,"//2
+					  + "occupation=?, "//3
+					  + "birthday=? "//4
+				 + "WHERE id=?" + "AND type=?" //5 & 6					
+					);
+			
+			stmt.setInt(1, relative.getStudentId());
+			stmt.setString(2, relative.getName());
+			stmt.setString(3, relative.getOccupation());
+			stmt.setDate(4, relative.getTempDate());
+			stmt.setInt(5, relative.getRelativeId());
+			stmt.setString(6, relative.getType());
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Update success for "+ relative.getRelativeId() + "!");
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

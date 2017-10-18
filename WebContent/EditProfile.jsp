@@ -297,6 +297,7 @@
 
 		<!-- INTERNAL INVOLVEMENTS -->
 		<!-- DYNAMIC -->
+		<!-- 
 		<div id="inin" class="col s12 forms">
 			<div class="dwrap">
 				<div class="f">
@@ -319,9 +320,11 @@
 			<input type="text" id="inorgdesc" name="inrogsdesc">
 
 		</div>
-
+		 -->
+		
 		<!-- DYNAMIC -->
 		<!-- EXTERNAL INVOLVEMENTS -->
+		<!-- 
 		<div id="exin" class="col s12 forms">
 			<div class="dwrap">
 				<div class="f">
@@ -342,12 +345,12 @@
 
 			<p>Description</p>
 			<input type="text" id="exorgdesc" name="exorgdesc">
-
-
+			
 		</div>
 		<button type="submit">Edit</button>
 		</form>
 	</div>
+	 -->
 
 </body>
 </html>

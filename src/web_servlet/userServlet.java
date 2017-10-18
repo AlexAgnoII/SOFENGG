@@ -50,52 +50,6 @@ public class userServlet extends HttpServlet {
 		}
 	}
 	
-
-
-	/**
-	 * Performs relogin.
-	 * If the cookie exists, user will be relogin to the website.
-	 * If not, user is redirected to the homepage.
-	 * @param request - request object from client
-	 * @param response - response object returned to client
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-//	private void performRelogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("**********************Perform Relogin*********************");
-//		Cookie[] cookies;
-//		HttpSession session = request.getSession();
-//		String value = null;
-//		
-//		//Get all cookies from browser:
-//		cookies = request.getCookies();
-//		if(cookies != null) {
-//			//Traverse the whole cookie, and find this certain cookie = s2 of Cookie in loginServlet
-//			for(Cookie c : cookies) {
-//				if(c.getName().equals("USER")) {
-//					System.out.println("Cookie found: " + c.getName());
-//					System.out.println("The value of cookie: " + c.getValue());
-//					value = c.getValue();
-//					response.addCookie(c);
-//				}
-//			}
-//		}
-//		
-//		//If existing redirect to website.:
-//		if(value != null) {
-//			session.setAttribute("UN", value);
-//			response.sendRedirect("UserHomePage.jsp");
-//		}
-//		
-//		//If not existing, back to homepage.
-//		else {
-//			System.out.println("No user found.");
-//			response.sendRedirect("HomePage.jsp");
-//		}
-//		
-//		System.out.println("******************************************\n");
-//	}
-	
 	
 	/**
 	 * Performs logout.

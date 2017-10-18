@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+ 
+html {
+    font-family: "Montserrat";
+}
+
+#top, #bottom, #left, #right {
+	background: #006f4a;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 10px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top{
+		left: 0; right: 0;
+		height: 10px;
+		}
+		#top { top: 0; }
+
+#tbox {
+    background-color: #006f4a; 
+    height: 70px;
+    width: 180px;
+    position: fixed;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+    border-color: #006f4a;
+}
+
+#tbox:hover {
+    background-color: white;
+    border-color: #1e1e1e;
+    border-style: solid;
+    border-width: 2px;
+    border-left: 0px;
+}
+
+#wrapper {
+    display: inline-flex;
+    margin-left: -25px;
+    margin-top: 5px;
+}
+
+#title {
+    font-family: "Montserrat";
+    font-size: 15.5px;
+    text-align: left;
+    line-height: 95%;
+    font-weight: 400;
+    width: 60%;
+    margin-top: 0px;
+    margin-left: -3px;
+    color: white;
+}
+
+#tbox:hover #title {
+    color: #006f4a;
+    font-weight: 500;
+}
+
+#arrow {
+    font-size: 60px;
+    margin-left: -5px;
+    margin-top: 8px;
+    color: #1e1e1e;
+}
+
+#menu {
+    height: 40px;
+    margin-top: 90px;
+    margin-left: 10px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #006f4a;
+}
+
+#logoutb {
+    font-size: 12.5px;
+    color: #1e1e1e;
+    font-weight: 400;
+    line-height: 85%;
+}
+
+#searchdiv {
+    background-color: #006f4a;
+    width: 275px;
+    float: right;
+    height: 45px;
+    display: inline-flex;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#searchbar {
+    position: relative;
+    width: 220px;
+    height: 23px;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-left: 5px;    
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #005c3d;
+    border-radius: 3px;
+    font-size: 11px;
+    box-shadow: 0 5px 5px -7px #333;
+    background-color: white;
+    float: left;
+    opacity: 1;
+}
+
+#magglass {
+    margin: 5px;
+    margin-top: 12px;
+    color: snow;
+    float: right;   
+}
+
+/** other css below **/
+
+#profilefeed {
+    background-color: azure;
+    margin: 0 auto;
+    position: relative;
+    top: 15%;
+    width: 50%;
+    padding: 5px;
+}
+
+.hfeedp {
+    font-size: 12px;
+}
+
+.binfo {
+    font-size: 13px;
+}
+
+.heads {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.subheads {
+    font-size: 13.5px;
+    font-weight: 400;
+}
+
+p {
+    line-height: 10%
+}

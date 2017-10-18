@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+        
+        <!-- INSERT CORRECT STYLESHEET BELOW -->
+        <link rel = "stylesheet" type="text/css" href="/css/viewprofile.css">
+    </head>
+    <body>
+        <div id="left"></div>
+		<div id="right"></div>
+		<div id="top"></div>
+		<div id="bottom"></div>
+        
+        <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
+            <div id="wrapper">
+                <i class="material-icons" id="arrow">near_me</i>
+                <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
+            </div>   
+        </a>
+           
+        <ul id="menu" class='dropdown-content'>
+            <li><a href="homepage.jsp" id="logoutb">logout</a></li>
+        </ul>
+        
+        <div id="searchdiv">
+            <form>
+                <input type="text" id="searchbar" name="searchbar" placeholder="search">
+                <a><i class="material-icons" id="magglass">search</i></a>
+            </form>
+        </div>
+        
+        <div id="profilefeed">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                  <div class="collapsible-body active">
+                      <p id="stname" >Azuka Kazama</p>
+                      <p id="stidnum" class="hfeedp">114xxxxx</p>
+                      <p id="stcourse" class="hfeedp">Software Technology</p>
+                      <p id="stcollege" class="hfeedp">College of Computer Studies</p>
+                  </div>
+                </li>
+                
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">place</i>Personal Information</div>
+                  <div class="collapsible-body">
+                      <p id="staddress" class="binfo">19 Yemen St., Yemen</p>
+                      <p id="stcity" class="binfo">Yemen City</p>
+                      <p id="stprov" class="binfo">Yemen Province</p>
+                      <p id="stcountry" class="binfo">Yemen</p>
+                      <p id="stzip" class="binfo">1550</p>
+                      
+                      <p id="stemail" class="binfo">aszuka_kazama@dlsu.edu.ph</p>
+                      <p id="stmob" class="binfo">09xxxxxxxxx</p>
+                      <p id="sttel" class="binfo">5344129</p>
+                      <p id="stbday" class="binfo">01/19/1997</p>
+                      <p id="stage" class="binfo">20</p>
+                      <p id="stciv" class="binfo">Married</p>
+                      <p id="stcitzen" class="binfo">Japanese</p>
+                      <p id="gender" class="binfo">Female</p>
+                  </div>
+                </li>
+                
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">whatshot</i>Family Background</div>
+                  <div class="collapsible-body">
+                       <p class="heads">Family Background</p>
+                      <br>
+                      <p class="subheads">Father</p>
+                      <p id="stdad" class="binfo">Daddy Kazama</p>
+                      <p id="stdadprof" class="binfo">Fighter</p>
+                      <p id="stdadbday" class="binfo">01/01/1990</p>
+                      <br>
+                      <p class="subheads">Mother</p>
+                      <p id="stmom" class="binfo">Mommy Kazama</p>
+                      <p id="stmomprof" class="binfo">Fighter</p>
+                      <p id="stmombday" class="binfo">01/01/1990</p>
+                      <br>
+                      <p class="subheads">Brother/s</p>
+                      <p id="stbro" class="binfo">Kuya Kazama</p>
+                      <p id="stbroprof" class="binfo">Fighter</p>
+                      <p id="stbrobday" class="binfo">01/01/1990</p>
+                      <br>
+                      <p class="subheads">Sister/s</p>
+                      <p id="stsis" class="binfo">Ate Kazama</p>
+                      <p id="stsisprof" class="binfo">Fighter</p>
+                      <p id="stsisbday" class="binfo">01/01/1990</p>
+
+                  </div>
+                </li>
+              </ul>
+        </div>
+        
+        <script>
+             $(document).ready(function(){
+                $('.collapsible').collapsible();
+              });
+        </script>
+
+    </body>
+</html>

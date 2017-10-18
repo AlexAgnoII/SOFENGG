@@ -620,6 +620,7 @@ public class UserService {
 			
 			stmt.executeUpdate();
 			
+			System.out.println("Update success for "+ student.getDbID() + "!");
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -21,7 +21,7 @@ import service.UserService;
  * This servlet handles everything regarding data such as
  * updating, deleting, adding data etc.
  */
-@WebServlet(urlPatterns = {"/update",
+@WebServlet(urlPatterns = {"/updatePersonal",
 		                   "/delete",
 		                   "/add",
 		                   "/view",
@@ -52,7 +52,7 @@ public class dataServlet extends HttpServlet {
 		System.out.println("I am called. (DoPost data servlet)");
 		switch(request.getServletPath()) {
 			case "/add": addUser(request, response); break;
-			case "/update": updateUser(request, response); break;
+			case "/updatePersonal": updatePersonal(request, response); break;
 			case "/delete": deleteUser(request, response); break;
 			case "/addIntInv": addInternalInvolvements(request, response); break;
 			case "/addExtInv": addExternalInvolvements(request, response); break;
@@ -175,7 +175,8 @@ public class dataServlet extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	private void updatePersonal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		System.out.println("****************************UPDATE PERSONAL*******************************************");
 		Student student = new Student();
 		String dbID = (String) request.getSession().getAttribute("UN");
 		String lastName = request.getParameter("lastName");
@@ -231,8 +232,8 @@ public class dataServlet extends HttpServlet {
 	    student.setCity(city);
 	    
 	    UserService.updateStudent(student);
-	    
-	    //After updating, go back to view.
+	    System.out.println("***********************************************************************************");
+	    //After updating, go back to edit.
 	    response.sendRedirect("view2edit");
 	}
 	

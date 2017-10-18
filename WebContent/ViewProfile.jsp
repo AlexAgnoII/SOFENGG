@@ -1,13 +1,13 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
-        <link rel = "stylesheet" type="text/css" href="/css/viewprofile.css">
+        <link rel = "stylesheet" type="text/css" href="css/viewprofile.css">
     </head>
     <body>
         <div id="left"></div>
@@ -26,7 +26,7 @@
             <!-- please update correct hrefs hehe -->
             <ul id="menu" class='dropdown-content'>
                 <li><a href="#!" id="profileb">profile</a></li>
-                <li><a href="#!" id="editprofb"> edit profile</a></li>
+                <li><a href="view2edit" id="editprofb"> edit profile</a></li>
                 <li><a href="#!" id="settingsb">settings</a></li>
                 <li><a href="#!" id="logoutb">logout</a></li>
             </ul>

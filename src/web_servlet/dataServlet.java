@@ -25,6 +25,7 @@ import service.UserService;
 		                   "/delete",
 		                   "/add",
 		                   "/view",
+		                   "/view2edit",
 		                   "/addIntInv",
 		                   "/addExtInv",
 		                   "/search"}
@@ -40,6 +41,7 @@ public class dataServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoGet data servlet)");
 		switch(request.getServletPath()) {
+		    case "/view2edit":
 			case "/view": retrieveUser(request, response); break; 
 			default: System.out.println("ERROR(Inside dataServlet *doGet*): url pattern doesn't match existing patterns.");
 		}
@@ -151,7 +153,16 @@ public class dataServlet extends HttpServlet {
 		
 		student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
 		request.setAttribute("loggedUser", student);
-		request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+		
+		if(request.getServletPath().contentEquals("/view")) {
+			System.out.println("Viewing via viewprofile..");
+			request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+		}
+
+		else {
+			System.out.println("Viewing via editprofile..");
+			request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
+		}
 		
 		System.out.println("***********************************************************************************");
 	}

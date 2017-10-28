@@ -1,7 +1,7 @@
 package web_servlet;
 
 /**
- * This servlet handles Login, logout, relogin, and signup.
+ * This servlet handles Login, logout, and signup.
  */
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,20 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.UserService;
+import service.AdminService;
+import service.StudentService;
 
-//Important note: Temporarily removed relog in this servlet (Switched to authentication).
 @WebServlet(urlPatterns = {"/login",	
 		                   "/signUp", 
-		                   //"/relog", 
 		                   "/logout"}
 )
 
-public class userServlet extends HttpServlet {
+public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public userServlet() {
+    public UserServlet() {
         super();
     }
 
@@ -107,8 +106,8 @@ public class userServlet extends HttpServlet {
 		System.out.println("Password: "+password);
 		
 		//Validate.
-		if(UserService.validateUser(email, password)) { 
-			String userID = UserService.getUserID(email);
+		if(StudentService.validateStudent(email, password)) { 
+			String userID = StudentService.getStudentID(email);
 			//set session attribute
 			s.setAttribute("UN", userID); 
 			System.out.println("Session(UN): " + s.getAttribute("UN"));
@@ -128,10 +127,10 @@ public class userServlet extends HttpServlet {
 
 			//Redirect inside website
 			//response.sendRedirect("UserHomePage.jsp");
-			response.sendRedirect("view"); //redirect to view profile.jsp
+			response.sendRedirect("viewByStudent"); //redirect to view profile.jsp
 			
-		} else if(UserService.validateAdmin(email, password)) { 
-			String userID = UserService.getUserID(email);
+		} else if(AdminService.validateAdmin(email, password)) { 
+			String userID = AdminService.getAdminID(email);
 			//set session attribute
 			s.setAttribute("UN", userID); 
 			System.out.println("Session(UN): " + s.getAttribute("UN"));
@@ -155,6 +154,7 @@ public class userServlet extends HttpServlet {
 		}
 		
 		else {
+			/*Send error*/
 			System.out.println("inValid");
 			//send error code.
 			// TODO front end notif

@@ -16,27 +16,25 @@ import beans_model.Involvement;
 import beans_model.Relative;
 import beans_model.Student;
 import service.PasswordAuthentication;
-import service.UserService;
+import service.StudentService;
 
 /**
  * This servlet handles everything regarding data such as
  * updating, deleting, adding data etc.
  */
-@WebServlet(urlPatterns = {"/updatePersonal",
-				   		   "/updateAcadInfo1",
-				   		   "/delete",
-		                   "/add",
-		                   "/view",
-		                   "/view2edit",
-		                   "/addIntInv",
-		                   "/addExtInv",
-		                   "/search"}
+@WebServlet(urlPatterns = {"/updatePersonal", //Student
+				   		   "/updateAcadInfo1", //Student
+		                   "/add", //Student
+		                   "/viewByStudent",
+		                   "/view2edit", //Student
+		                   "/addIntInv", //Student
+		                   "/addExtInv"} //Student
 )
-public class dataServlet extends HttpServlet {
+public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
-    public dataServlet() {
+    public StudentServlet() {
         super();
     }
 
@@ -44,7 +42,7 @@ public class dataServlet extends HttpServlet {
 		System.out.println("I am called. (DoGet data servlet)");
 		switch(request.getServletPath()) {
 		    case "/view2edit":
-			case "/view": retrieveUser(request, response); break; 
+			case "/viewByStudent": retrieveStudent(request, response); break; 
 			default: System.out.println("ERROR(Inside dataServlet *doGet*): url pattern doesn't match existing patterns.");
 		}
 	}
@@ -53,48 +51,23 @@ public class dataServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoPost data servlet)");
 		switch(request.getServletPath()) {
-			case "/add": addUser(request, response); break;
+			case "/add": addStudents(request, response); break;
 			case "/updatePersonal": updatePersonal(request, response); break;
 			case "/updateAcadInfo1": updateAcadInfo(request, response); break;
-			case "/delete": deleteUser(request, response); break;
 			case "/addIntInv": addInternalInvolvements(request, response); break;
 			case "/addExtInv": addExternalInvolvements(request, response); break;
-			case "/search": search(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
-	
 
 	/**
-	 * 
+	 * Add students
 	 * @param request
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void search(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
-		System.out.println("***************** SEARCH ************************");
-		String name = request.getParameter("searchbar");
-		System.out.println("SEARCHING: " + name);
-		
-		ArrayList<Student> studentList = UserService.getStudentByName(name);
-		
-		System.out.println(studentList);
-
-		request.setAttribute("studentList", studentList);
-		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
-		
-		System.out.println("*******************************************");
-	}
-
-	/**
-	 * 
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void addUser(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+	private void addStudents(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("*****************ADD USER ************************");
 		String idNum = request.getParameter("idNum");
 		String lastname = request.getParameter("lastName");
@@ -125,7 +98,7 @@ public class dataServlet extends HttpServlet {
 				  college,
 				  course);
 		
-		UserService.addUser(student);
+		StudentService.addStudent(student);
 		System.out.println("User added!");
 		
 		response.sendRedirect("HomePage.jsp");
@@ -133,25 +106,20 @@ public class dataServlet extends HttpServlet {
 	}
 
 	/**
-	 * 
+	 * Retrieves the data of the user currently logged in.
 	 * @param request
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void retrieveUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void retrieveStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Cookie[] cookies = request.getCookies();
 		Cookie userCookie = null;
 		Student student = null;
 		
-		System.out.println("************************************Retrieve User**********************************");
+		System.out.println("************************************Retrieve User (User side)**********************************");
 		for (Cookie c: cookies) {
 			if(c.getName().equals("USER")) {
-				System.out.println("Cookie found!");
-				System.out.println("Cookie name: " +  c.getName());
-				System.out.println("Cookie Value: " + c.getValue());
-				userCookie = c;
-			} else if(c.getName().equals("ADMIN")) {
 				System.out.println("Cookie found!");
 				System.out.println("Cookie name: " +  c.getName());
 				System.out.println("Cookie Value: " + c.getValue());
@@ -160,10 +128,10 @@ public class dataServlet extends HttpServlet {
 		}
 		
 		if(userCookie == null || userCookie.getName().equals("USER")){
-			student = UserService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
+			student = StudentService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
 			request.setAttribute("loggedUser", student);
 			
-			if(request.getServletPath().contentEquals("/view")) {
+			if(request.getServletPath().contentEquals("/viewByStudent")) {
 				System.out.println("Viewing via viewprofile..");
 				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
 			}
@@ -172,21 +140,17 @@ public class dataServlet extends HttpServlet {
 				System.out.println("Viewing via editprofile..");
 				request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
 			}
-		} else if(userCookie.getName().equals("ADMIN")){
-			student = UserService.getStudentByIdNum((Integer)request.getAttribute("idNum"));
-			request.setAttribute("loggedUser", student);
-			
-			if(request.getServletPath().contentEquals("/view")) {
-				System.out.println("Viewing via viewprofile..");
-				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
-			}	
+		}
+		
+		else {
+			System.out.println("ERROR! (RETRIEVESTUDENT in studentserlvet");
 		}
 		System.out.println("***********************************************************************************");
 	}
 	
 
 	/**
-	 * 
+	 * updates the student's personal information.
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -316,7 +280,7 @@ public class dataServlet extends HttpServlet {
 //		brother.setType("brother");
 //		brother.setOccupation(brotherOccu);
 	    
-	    UserService.updateStudent(student);
+	    StudentService.updateStudent(student);
 	    
 //	    UserService.updateRelatives(father);
 //	    UserService.updateRelatives(mother);
@@ -329,7 +293,7 @@ public class dataServlet extends HttpServlet {
 	}
 	
 	/**
-	 * 
+	 * Updates the user's acade,mic information
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -355,26 +319,14 @@ public class dataServlet extends HttpServlet {
 	    student.setCourse(course);
 		student.setCollege(college);
 		
-	    UserService.updateStudentAcadInfo(student);
+	    StudentService.updateStudentAcadInfo(student);
 	    System.out.println("***********************************************************************************");
 	    //After updating, go back to edit.
 	    response.sendRedirect("view2edit");
 	}
-	
-	
-	/**
-	 * 
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-
-	}
 
 	/**
-	 * 
+	 * Adds internal involvement for the user
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -385,7 +337,7 @@ public class dataServlet extends HttpServlet {
 		Cookie userCookie = null;
 		int idnum;
 		
-		System.out.println("***************** ADD INVOLVEMENTS ************************");
+		System.out.println("***************** ADD INTERNAL INVOLVEMENTS ************************");
 		String inyear = request.getParameter("inyear");
 		String org = request.getParameter("inorgname");
 		String pos = request.getParameter("inorgpos");
@@ -401,11 +353,11 @@ public class dataServlet extends HttpServlet {
 			}
 		}
 		
-		idnum = UserService.getUserIDNum(Integer.parseInt(userCookie.getValue()));
+		idnum = StudentService.getStudentIDNum(Integer.parseInt(userCookie.getValue()));
 		
 		Involvement involvement = new Involvement(idnum, org, pos, year, 1);
 		
-		UserService.addInvolvements(involvement);
+		StudentService.addInvolvements(involvement);
 		
 		System.out.println("***********************************************************************************");
 		
@@ -413,7 +365,7 @@ public class dataServlet extends HttpServlet {
 	
 	
 	/**
-	 * 
+	 * Adds external involvement for user.
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -424,7 +376,7 @@ public class dataServlet extends HttpServlet {
 		Cookie userCookie = null;
 		int idnum;
 		
-		System.out.println("***************** ADD INVOLVEMENTS ************************");
+		System.out.println("***************** ADD EXTERNAL INVOLVEMENTS ************************");
 		String inyear = request.getParameter("inyear");
 		String org = request.getParameter("inorgname");
 		String pos = request.getParameter("inorgpos");
@@ -440,11 +392,11 @@ public class dataServlet extends HttpServlet {
 			}
 		}
 		
-		idnum = UserService.getUserIDNum(Integer.parseInt(userCookie.getValue()));
+		idnum = StudentService.getStudentIDNum(Integer.parseInt(userCookie.getValue()));
 		
 		Involvement involvement = new Involvement(idnum, org, pos, year, 0);
 		
-		UserService.addInvolvements(involvement);
+		StudentService.addInvolvements(involvement);
 		
 		System.out.println("***********************************************************************************");
 		

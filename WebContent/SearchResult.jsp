@@ -20,7 +20,7 @@
 		        	var idNum = $(this).children('p').eq(1).text();
 		        	$.ajax({
 	            	   context: this,
-		               url:'view',
+		               url:'viewByAdmin',
 		               data:{idNum: idNum},
 		               type:'get',
 		               cache:false,

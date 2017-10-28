@@ -28,7 +28,7 @@
             
             <!-- please update correct hrefs hehe -->
             <ul id="menu" class='dropdown-content'>
-                <li><a href="view" id="profileb">Profile</a></li>
+                <li><a href="viewByStudent" id="profileb">Profile</a></li>
                 <li><a href="#!" id="settingsb">Settings</a></li>
                 <li><a href="logout" id="logoutb">Logout</a></li>
             </ul>
@@ -246,9 +246,9 @@
 						<input type="date" id="bbday" name="bbday">
 					</div>
 				</div>
-
+			-->
 			</div>
-			 -->
+			 
 			<button>EDIT</button>
 		</form>
 
@@ -382,9 +382,9 @@
 		</div>
 		<button type="submit">Edit</button>
 		</form>
-		-->
+		
 	</div>
-	
+	-->
 	<script>
 	 $('.dropdown-button').dropdown({
          hover: true, // Activate on hover

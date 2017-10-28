@@ -104,7 +104,7 @@ public class authentication implements Filter {
 									 //System.out.println("Redirecting to UserHomePage.jsp..");
 									 //res.sendRedirect("UserHomePage.jsp");
 									 System.out.println("Redirecting to ViewProfile.jsp..");
-									 res.sendRedirect("view"); //Redirect to viewprofile for now.
+									 res.sendRedirect("viewByStudent"); //Redirect to viewprofile for now.
 								 }
 								 //If not, continue to page.
 								 else if(admin && proceed) {

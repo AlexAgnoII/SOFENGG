@@ -31,16 +31,9 @@
                 <li><a href="logout" id="logoutb">Logout</a></li>
             </ul>
             
-            <div id="searchdiv">
-                <form>
-                    <input type="text" id="searchbar" name="searchbar" placeholder="search">
-                    <a><i class="material-icons" id="magglass">search</i></a>
-                </form>
-            </div>
-        </div>
         
         <div id="searchdiv">
-            <form action="search" method="POST" id = "searchForm">
+            <form action="search" method="GET" id = "searchForm">
                 <input type="text" id="searchbar" name="searchbar" placeholder="search">
                 <a><i class="material-icons" id="magglass">search</i></a>
             </form>

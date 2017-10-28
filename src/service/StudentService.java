@@ -17,23 +17,22 @@ import beans_model.Student;
 
 /**
  * 
- *All services logic / business procces / business logic will be placed here. (That includes the database as well.)
+ *All services logic / business procces / business logic 
+ *for student's use will be placed here. (That includes the database as well.)
  *
  */
-public class UserService {
+public class StudentService {
 
 	
-	public UserService() {
-		
-	}
+	public StudentService() {}
 
 	/**
-	 * Validates if the user is existing or not.
-	 * @param username
-	 * @param password
+	 * Validates if the student is existing or not.
+	 * @param username - entered username(email)
+	 * @param password - entered password
 	 * @return true or false
 	 */
-	public static boolean validateUser(String username, String password) {
+	public static boolean validateStudent(String username, String password) {
 		boolean found = false;
 		PasswordAuthentication p = new PasswordAuthentication();
 		
@@ -64,57 +63,16 @@ public class UserService {
 		}
 		System.out.println();
 		return found;
-		
 	}
 	
-
-	/**
-	 * Validates if the admin is existing or not.
-	 * @param username
-	 * @param password
-	 * @return true or false
-	 */
-	public static boolean validateAdmin(String username, String password) {
-		boolean found = false;
-		PasswordAuthentication p = new PasswordAuthentication();
-		
-		System.out.println();
-		try{
-			String driver = "com.mysql.jdbc.Driver";
-			Class.forName(driver);
-			Connection conn = DatabaseManager.getConnection();
-			
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM admin WHERE email = ?");
-			st.setString(1, username);
-			ResultSet rs = st.executeQuery();
-		
-			while(rs.next()) {
-				if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
-					System.out.println("Admin found, valid!");
-					found = true;
-					break;
-				}
-			}
-			
-			conn.close();
-			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-		System.out.println();
-		return found;
-		
-	}
 	
 	/**
-	 * Retrieves the user ID.
+	 * Retrieves the user ID (on DB, not the same with ID number of student..
 	 * @param username
 	 * @param password
-	 * @return String userID
+	 * @return String userID OR 0 (not existing)
 	 */
-	public static String getUserID(String email) {
+	public static String getStudentID(String email) {
 		System.out.println();
 		int id = 0;
 		try{
@@ -131,20 +89,7 @@ public class UserService {
 				id = rs.getInt("id");
 				break;
 			} 
-			
-			if (id == 0){
-				st = conn.prepareStatement("SELECT * FROM admin WHERE email = ?");
-				st.setString(1, email);
-				rs = st.executeQuery();
-	
-				while(rs.next()) {
-					System.out.println("Id found!");
-					id = rs.getInt("id");
-					break;
-				} 
 				
-			}
-			
 			conn.close();
 			
 		} catch (ClassNotFoundException e) {
@@ -156,116 +101,12 @@ public class UserService {
 		return Integer.toString(id);
 		
 	}
-	
-	
-	/**
-	 * Retrieves a student using their idnum.
-	 * @param name
-	 * @return List of student
-	 */
-	public static Student getStudentByIdNum(int idNum) {
-		System.out.println();
-		Student student = null;
-		try{
-			String driver = "com.mysql.jdbc.Driver";
-			Class.forName(driver);
-			Connection conn = DatabaseManager.getConnection();
 
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.student WHERE studentId "
-													   + "= ? LIMIT 1");
-			st.setInt(1, idNum );
-			
-			ResultSet rs = st.executeQuery();
-			
-			while(rs.next()) {
-				student = new Student(rs.getInt("studentId"), 
-						                 rs.getDate("birthday"),
-										 rs.getDate("yearEnrolled") == null ?
-												 null :
-												 Year.of(rs.getDate("yearEnrolled").getYear()), 
-										 rs.getString("firstName"),
-										 rs.getString("middleName"),
-										 rs.getString("lastName"),
-										 rs.getString("celNo"), 
-										 rs.getString("telNo"), 
-										 rs.getString("email"), 
-										 rs.getString("address"), 
-										 rs.getString("course"),
-										 rs.getString("hashedPass"),
-										 rs.getString("civil"),
-										 rs.getString("citizen"),
-										 rs.getString("gender"));
-				System.out.println("Student " + rs.getString("firstName") + " Found!");
-			} 
-			
-			conn.close();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-		System.out.println();
-		return student;
-		
-	}
-	
-
-	/**
-	 * Retrieves a list of student using their name.
-	 * @param name
-	 * @return List of student
-	 */
-	public static ArrayList<Student> getStudentByName(String name) {
-		System.out.println();
-		ArrayList<Student> students = new ArrayList<>();
-		try{
-			String driver = "com.mysql.jdbc.Driver";
-			Class.forName(driver);
-			Connection conn = DatabaseManager.getConnection();
-
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.student WHERE firstName "
-													   + "LIKE ? OR middleName LIKE ? OR lastName LIKE ?");
-			st.setString(1, name + "%");
-			st.setString(2, name + "%");
-			st.setString(3, name + "%");
-			ResultSet rs = st.executeQuery();
-			
-			while(rs.next()) {
-				students.add(new Student(rs.getInt("studentId"), 
-						                 rs.getDate("birthday"),
-										 rs.getDate("yearEnrolled") == null ?
-												 null :
-												 Year.of(rs.getDate("yearEnrolled").getYear()), 
-										 rs.getString("firstName"),
-										 rs.getString("middleName"),
-										 rs.getString("lastName"),
-										 rs.getString("telNo"), 
-										 rs.getString("celNo"), 
-										 rs.getString("email"), 
-										 rs.getString("address"), 
-										 rs.getString("course"),
-										 rs.getString("hashedPass"),
-										 rs.getString("civil"),
-										 rs.getString("citizen"),
-										 rs.getString("gender")));
-				System.out.println("Student " + rs.getString("firstName") + " Found!");
-			} 
-			
-			conn.close();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-		System.out.println();
-		return students;
-		
-	}
 	
 
 	/**
 	 * Retrieves a list of organization using their full title or acronym.
-	 * @param title
+	 * @param title - title/acronym of organization 
 	 * @return List of organization 
 	 */
 	public static ArrayList<Involvement> getOrgList(String title) {
@@ -333,7 +174,7 @@ public class UserService {
 
 	/**
 	 * Retrieves a list of project using their full title or acronym.
-	 * @param title
+	 * @param title of involvement/project
 	 * @return List of project
 	 */
 	public static ArrayList<Involvement> getProjList(String title) {	// TODO debug
@@ -456,7 +297,11 @@ public class UserService {
 		
 	}
 	
-	public static void addUser(Student student) {
+	/**
+	 * Adds the studennt to the database.
+	 * @param student - the Student object being added.
+	 */
+	public static void addStudent(Student student) {
 		System.out.println();
 		try{
 			String driver = "com.mysql.jdbc.Driver";
@@ -489,31 +334,9 @@ public class UserService {
 		System.out.println();
 	}
 	
-
-	// TODO Remove this temporary class of adding admin class
-	public static void addAdmin(int id, String pass, String email) {
-		try{
-			String driver = "com.mysql.jdbc.Driver";
-			Class.forName(driver);
-			Connection conn = DatabaseManager.getConnection();
-			PasswordAuthentication p = new PasswordAuthentication();
-			
-			PreparedStatement stmt =  conn.prepareStatement("INSERT INTO admin (adminId, hashedPass, email) VALUES (?, ?, ?)");
-		
-			stmt.setInt(1, id);
-			stmt.setString(2, p.hash(pass.toCharArray()));
-			stmt.setString(3, email);
-			conn.close();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-		System.out.println("Added 11526491 admin");
-	}
 	
 	/**
-	 * 
+	 * Retrieves the info of the logged-in student.
 	 * @param id - id placed in cookie.
 	 * @return the student object containing his/her information.
 	 */
@@ -573,7 +396,12 @@ public class UserService {
 		return student;
 	}
 
-	public static int getUserIDNum(int id) {
+	/**
+	 * Retrieves the student's ID number
+	 * @param id
+	 * @return the student with the id number
+	 */
+	public static int getStudentIDNum(int id) {
 		int idNum = 0;
 		
 		try{
@@ -603,6 +431,10 @@ public class UserService {
 		return idNum;
 	}
 	
+	/**
+	 * ADdes involvments
+	 * @param involvement
+	 */
 	@SuppressWarnings("deprecation")
 	public static void addInvolvements(Involvement involvement) {
 		System.out.println();
@@ -635,6 +467,10 @@ public class UserService {
 		System.out.println();
 	}
 	
+	/**
+	 * Updates the student
+	 * @param student
+	 */
 	public static void updateStudent(Student student) {
 		System.out.println();
 		try{
@@ -691,6 +527,10 @@ public class UserService {
 		System.out.println();
 	}
 	
+	/**
+	 * Updates the relatives
+	 * @param relative
+	 */
 	public static void updateRelatives(Relative relative) {
 		System.out.println();
 		try{
@@ -727,7 +567,10 @@ public class UserService {
 	}
 	
 	
-
+	/**
+	 * Updates studennt academic information.
+	 * @param student - student to update
+	 */
 	public static void updateStudentAcadInfo(Student student) {
 		System.out.println();
 		try{

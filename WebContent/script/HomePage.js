@@ -5,6 +5,36 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+
+//This function handles the front-end effects/notice when user does not place the correct input.
+function enterValidInput() {
+	console.log("I happened");
+	alert("Please enter a valid input.");
+}
+
+//Account login failure front-end done here.
+function accPassMismatch(data) {
+	alert(data);
+}
+
+//This function handles submitting the form.
+function submitTheForm(username, password) {
+	$.ajax({
+ 	   context: this,
+        url:'login',
+        data:{'email':username,
+        	  'password': password},
+        type:'POST',
+        cache:false,
+        success: function(data){
+        	accPassMismatch(data);
+        },
+        error:function(){
+        	console.log("error searchResult.js");
+        }
+     });
+}
+
 $("document").ready(function() {
 
 	//Submit form!
@@ -13,11 +43,14 @@ $("document").ready(function() {
 		var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         
+        //Check if email exists, entered and password is entered.
         if(validateEmail(username) && password !== null && password !== ""){
         	// Check if email
-        	 $("form#loginForm").submit();
+        	submitTheForm(username, password);
+        	 
+        //Error cheecking for front page happens here:
         } else{
-        	// TODO front end notif
+        	enterValidInput();
         }
 	});
 	

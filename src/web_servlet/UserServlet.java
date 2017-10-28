@@ -155,10 +155,11 @@ public class UserServlet extends HttpServlet {
 		
 		else {
 			/*Send error*/
-			System.out.println("inValid");
+			System.out.println("inValid (User not found)");
 			//send error code.
 			// TODO front end notif
-			response.sendRedirect("HomePage.jsp");
+			response.getWriter().write("Please enter the correct username/password.");
+
 		}
 		System.out.println("****************************************\n");
 		

@@ -5,49 +5,120 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+
 //This function handles submitting the data.
-function submitTheForm(email, password, password2, idnum, fName, mName, lName) {
+function submitTheForm() {
 	$.ajax({
- 	   context: this,
-        url:'s',
-        data:{'email':username,
-        	  'password': password},
-        type:'POST',
-        cache:false,
-        success: function(data){
-        	//Front-end here.
-        	accPassMismatch(data);
-        },
-        error:function(){
-        	console.log("error searchResult.js");
-        }
-     });
+	   context: this,
+      url:'signUp',
+      data:$("form#signUpForm").serialize(),
+      type:'POST',
+      cache:false,
+      success: function(data){
+      	//Front-end here.
+      	accPassMismatch(data);
+      },
+      error:function(){
+      	console.log("error searchResult.js");
+      }
+   });
 }
 
-//This will handle the errors that would happen if one of the field is violated.
-//
-function constraintChecker() {
-	//if id number is valid, proceed.
-	//Else return FALSE
+function stringIsWord(value) {
+	return /^[a-z]+$/i.test(value);
+}
+
+//if all fields valid, proceed. if not, place front end effects of what field is not ok.
+function constraintChecker(password, idNum, fName, lName, mName, courseName) {
+	var satisfied = true;
 	
-	//if password is valid, proceed.
-	//Else return FALSE
+	//ID number//
+	//- Must be 8 in size.
+	//- Must be INTEGERS ONLY.
+	if(idNum.length == 8 && /^\d+$/.test(idNum)) {
+		//make some sort of indicator near field that it is done correctly.
+	}
+	else {
+	////make some sort of indicator near field that it is done incorrectly.
+		alert("Invalid IDnumber");
+		satisfied = false;
+	}
 	
-	//if fName is valid, proceed.
-	//Else return FALSE
+	//Password//
+	//Must be atleast 8 characters
+	//atleast 1 number, 1 special char
+	if(password.length == 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/.test(password)) {
+		////make some sort of indicator near field that it is done correctly.
+	}
+	else {
+	////make some sort of indicator near field that it is done incorrectly.
+		alert("Invalid Password");
+		satisfied = false;
+	}
 	
-	//if lName is valid, proceed.
-	//Else return FALSE
+	//fName//
+	//Characters ONLY
+	if(stringIsWord(fName)) {
+	////make some sort of indicator near field that it is done correctly.
+	}
+	else {
+	////make some sort of indicator near field that it is done incorrectly.
+		alert("Invalid First name");
+		satisfied = false;
+	}
+
+	//lName//
+	//Characters ONLY
+	if(stringIsWord(lName)) {
+		
+	////make some sort of indicator near field that it is done correctly.
+	}
+	else {
+	////make some sort of indicator near field that it is done incorrectly.
+		alert("Invalid last name");
+		satisfied = false;
+	}
 	
-	//if courseName is valid, proceed.
-	//Else return FALSE
+	//mName//
+	//Characters ONLY
+	if(stringIsWord(mName) || mName == "" || mName == null) {
+	////make some sort of indicator near field that it is done correctly.
+	}
+	else {
+	////make some sort of indicator near field that it is done incorrectly.
+		alert("Invalid Middle name");
+		satisfied = false;
+	}
+	
+	//courseName//
+	//Characters ONLY
+	if(/^[a-z\s]+$/i.test(courseName)) {
+	////make some sort of indicator near field that it is done correctly.
+	}
+	else {
+	////make some sort of indicator near field that it is done incorrectly.
+		alert("Invalid courseName");
+		satisfied = false;
+	}
 	
 	
-	return true;
+}
+
+function removeExtraWhiteSpaces(value) {
+	return value.replace(/\s+/g,' ').trim();
 }
 
 $("document").ready(function(idNum, password, fName, lName) {
-	
+    var password;
+    var idNum;
+    var fName;
+    var mName;
+    var lName;
+    var email;
+    var password2;
+    var courseName;
+    var select;
+    var college;
 	//To show the select(Dropdown).
 	console.log("This happened II");
 	$('select#dropDownCollege').material_select();
@@ -58,14 +129,25 @@ $("document").ready(function(idNum, password, fName, lName) {
 	
 	$("#signupb").click(function(event) {
 
-        var password = document.getElementById('password').value;
-        var idNum = document.getElementById('idNum').value;
-        var fName = document.getElementById('firstName').value;
-        var mName = document.getElementById('middleName').value;
-        var lName = document.getElementById('lastName').value;
-        var email = document.getElementById('email').value;
-        var password2 = document.getElementById('password2').value;
-        var courseName = document.getElementById('courseName').value;
+        password = document.getElementById('password').value;
+        idNum = document.getElementById('idNum').value;
+        fName = document.getElementById('firstName').value;
+        mName = document.getElementById('middleName').value;
+        lName = document.getElementById('lastName').value;
+        email = document.getElementById('email').value;
+        password2 = document.getElementById('password2').value;
+        courseName = document.getElementById('courseName').value;
+        select = document.getElementById('dropDownCollege');
+        
+        college = select.options[select.selectedIndex].value;
+        console.log(typeof(idNum))
+        
+        //Removes unecessary extra white spaces.
+        idNum = removeExtraWhiteSpaces(idNum);
+        fName = removeExtraWhiteSpaces(fName);
+        lName = removeExtraWhiteSpaces(fName);
+        mName = removeExtraWhiteSpaces(mName);
+        courseNName = removeExtraWhiteSpaces(fName);
         
         //All input must be placed (No blanks, except for mName).
         if(validateEmail(email) && 
@@ -74,16 +156,13 @@ $("document").ready(function(idNum, password, fName, lName) {
     	   fName && 
     	   lName &&
     	   courseName &&
+    	   college != "" &&
     	   password2 === password ){
         	
-        	//If all has inputs, place constraint warnings (If violated in a certain field).
-        	//If constraintChecker returns true, proceed submitting.
-        	if(constraintChecker(idNum, password, fName, lName)) {
+        	//if all fields valid, proceed. if not, place front end effects of what field is not ok.
+        	if(constraintChecker(password, idNum, fName, lName, mName, courseName))
         		$('.modal').modal();
-        	}
 
-        
-        
         } else{
         	// TODO front end notif
         	alert("Please fill up all important fields.");
@@ -93,7 +172,8 @@ $("document").ready(function(idNum, password, fName, lName) {
 	//Send verification link here.
 	$("#proceedModal").click(function() {
         // TODO update once verified mail
-		$("form#signUpForm").submit();
+		//$("form#signUpForm").submit();
+		submitTheForm();
 	});
 
 });

@@ -1,6 +1,7 @@
 package web_servlet;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.time.Year;
 import java.util.ArrayList;
@@ -81,27 +82,31 @@ public class StudentServlet extends HttpServlet {
 		int idnum = Integer.parseInt(idNum);
 		
 			
-		//If email already placed, don't do anything. <- ???
-
-		//Else, do this.
-		
-		//Perform hashing here//
-		PasswordAuthentication p = new PasswordAuthentication();
-        
-		String newPass = p.hash(password.toCharArray());
-		Student student = new Student(idnum, 
-				  lastname,
-				  firstname,
-				  middlename,
-				  username, //Username is email.
-				  newPass,
-				  college,
-				  course);
-		
-		StudentService.addStudent(student);
-		System.out.println("User added!");
-		
-		response.sendRedirect("HomePage.jsp");
+		//Constraint checking
+		//If email already existing
+		if(false) {
+			
+		}
+		//f not, do this.
+		else {
+			//Perform hashing here//
+			PasswordAuthentication p = new PasswordAuthentication();
+	        
+			String newPass = p.hash(password.toCharArray());
+			Student student = new Student(idnum, 
+					  lastname,
+					  firstname,
+					  middlename,
+					  username, //Username is email.
+					  newPass,
+					  college,
+					  course);
+			
+			StudentService.addStudent(student);
+			System.out.println("User added!");
+			
+			response.sendRedirect("HomePage.jsp");
+		}
 		System.out.println("*******************************************");
 	}
 
@@ -401,5 +406,4 @@ public class StudentServlet extends HttpServlet {
 		System.out.println("***********************************************************************************");
 		
 	}
-
 }

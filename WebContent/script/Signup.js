@@ -5,6 +5,18 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+function duplicateHandler(data) {
+	
+	//front end handling constraint done here (create functions for them so we can reuse it on the 3rd case in the switch-case)
+	switch(data) {
+		case "EMAIL-TAKEN": break; //only email
+		case "IDNUM-TAKEN": break; //only idnum
+		case "EMAIL-TAKEN|IDNUM-TAKEN": break; //both (use functions made in email and inum)
+		default: document.location.href = 'HomePage.jsp'; //redirect to homepage.
+		
+	}
+	
+}
 
 //This function handles submitting the data.
 function submitTheForm() {
@@ -16,8 +28,8 @@ function submitTheForm() {
       cache:false,
       success: function(data){
     	  
-      	//Front end stating email is taken.
-      	alert(data);
+      	//Front end stating email or idnum or both is taken.
+    	 duplicateHandler(data);
       	
       },
       error:function(){
@@ -27,7 +39,7 @@ function submitTheForm() {
 }
 
 function stringIsWord(value) {
-	return /^[a-z]+$/i.test(value);
+	return /^[a-z\s]+$/i.test(value);
 }
 
 //if all fields valid, proceed. if not, place front end effects of what field is not ok.
@@ -94,7 +106,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	
 	//courseName//
 	//Characters ONLY
-	if(/^[a-z\s]+$/i.test(courseName)) {
+	if(stringIsWord(courseName)) {
 	////make some sort of indicator near field that it is done correctly.
 	}
 	else {

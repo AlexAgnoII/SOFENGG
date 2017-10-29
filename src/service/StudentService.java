@@ -61,6 +61,42 @@ public class StudentService {
 		System.out.println();
 		return isTaken;
 	}
+	
+	/**
+	 * Checks if the idNumber entered is taken or not.
+	 * @param idnum - idNumber to be checked.
+	 * @return true (taken) or false (not taken)
+	 */
+	public static boolean isIdNumberTaken(int idnum) {
+		boolean isTaken = false;
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE studentId = ?");
+			st.setInt(1, idnum);
+			ResultSet rs = st.executeQuery();
+			
+			//Checks if result set has any data returned.
+			if (!rs.isBeforeFirst() ) {    
+			    System.out.println("iDnumber not yet taken."); 
+			} 
+			else {
+				System.out.println("iDnumber is taken.");
+				isTaken = true;
+			}
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return isTaken;
+	}
 
 	/**
 	 * Validates if the student is existing or not.
@@ -638,6 +674,7 @@ public class StudentService {
 		}
 		System.out.println();
 	}
+
 
 
 

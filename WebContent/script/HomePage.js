@@ -14,7 +14,20 @@ function enterValidInput() {
 
 //Account login failure front-end done here.
 function accPassMismatch(data) {
-	alert(data);
+	//Front end constraint warning here
+	if(data === "FAIL-LOGIN") {
+		alert(data);
+	}
+	
+	//redirect to adminhomepage.
+	else if(data === "PASS-LOGIN-ADMIN"){
+		document.location.href = 'AdminHomePage.jsp';
+	}
+	
+	//redirect to user homepage.
+	else {
+		document.location.href = 'viewByStudent';
+	}
 }
 
 //This function handles submitting the form.

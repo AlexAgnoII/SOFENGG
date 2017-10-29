@@ -127,7 +127,8 @@ public class UserServlet extends HttpServlet {
 
 			//Redirect inside website
 			//response.sendRedirect("UserHomePage.jsp");
-			response.sendRedirect("viewByStudent"); //redirect to view profile.jsp
+			//response.sendRedirect("viewByStudent"); //redirect to view profile.jsp
+			response.getWriter().write("PASS-LOGIN-STUDENT");
 			
 		} else if(AdminService.validateAdmin(email, password)) { 
 			String userID = AdminService.getAdminID(email);
@@ -149,7 +150,8 @@ public class UserServlet extends HttpServlet {
 			response.addCookie(theCookie);
 
 			//Redirect inside website
-			 response.sendRedirect("AdminHomePage.jsp");
+			//response.sendRedirect("AdminHomePage.jsp");
+			response.getWriter().write("PASS-LOGIN-ADMIN");
 			
 		}
 		
@@ -158,7 +160,7 @@ public class UserServlet extends HttpServlet {
 			System.out.println("inValid (User not found)");
 			//send error code.
 			// TODO front end notif
-			response.getWriter().write("Please enter the correct username/password.");
+			response.getWriter().write("FAIL-LOGIN");
 
 		}
 		System.out.println("****************************************\n");

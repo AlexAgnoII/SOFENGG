@@ -33,7 +33,7 @@ import service.StudentService;
 )
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private String duplicateError;
 	
     public StudentServlet() {
         super();
@@ -80,14 +80,11 @@ public class StudentServlet extends HttpServlet {
 		String college = request.getParameter("college");
 		String course = request.getParameter("course");
 		int idnum = Integer.parseInt(idNum);
-		
-			
-		//Constraint checking
-		//If email already existing
-		if(StudentService.isEmailTaken(username)) {
-			response.getWriter().write("EMAIL-TAKEN");
+
+		//if username OR idnumber OR both has a duplicate in DP, send error message.
+		if(checkDuplicates(username, idnum)) {
+			response.getWriter().write(duplicateError);
 		}
-		//if not, do this.
 		else {
 			//Perform hashing here//
 			PasswordAuthentication p = new PasswordAuthentication();
@@ -105,9 +102,47 @@ public class StudentServlet extends HttpServlet {
 			StudentService.addStudent(student);
 			System.out.println("User added!");
 			
-			response.sendRedirect("HomePage.jsp");
+			//response.sendRedirect("HomePage.jsp");
+			response.getWriter().write("VALID-SIGNUP");
 		}
 		System.out.println("*******************************************");
+	}
+
+	private boolean checkDuplicates(String username, int idnum) {
+		// TODO Auto-generated method stub
+		boolean hasDuplicate = false;
+		ArrayList<String> container = new ArrayList<String>(); //Contains the fields that has duplicates with the DB.
+		duplicateError = "";
+		
+		//Email is already taken.
+		if(StudentService.isEmailTaken(username)) {
+			hasDuplicate = true;
+			container.add("EMAIL-TAKEN");
+		}
+		
+		//idnumber is already taken
+		if(StudentService.isIdNumberTaken(idnum)) {
+			hasDuplicate = true;
+			container.add("IDNUM-TAKEN");
+		}
+		
+		if(hasDuplicate) {
+			if(container.size() == 1)
+				duplicateError = container.get(0);
+			else {
+				for (int i = 0; i < container.size(); i++) {
+					if(i != container.size()-1) {
+						duplicateError += container.get(i) + "|";
+					}
+					else {
+						duplicateError += container.get(i);
+					}
+					
+				}
+			}
+		}
+		
+		return hasDuplicate;
 	}
 
 	/**

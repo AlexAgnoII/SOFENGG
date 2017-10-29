@@ -15,8 +15,10 @@ function submitTheForm() {
       type:'POST',
       cache:false,
       success: function(data){
-      	//Front-end here.
-      	accPassMismatch(data);
+    	  
+      	//Front end stating email is taken.
+      	alert(data);
+      	
       },
       error:function(){
       	console.log("error searchResult.js");
@@ -47,7 +49,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	//Password//
 	//Must be atleast 8 characters
 	//atleast 1 number, 1 special char
-	if(password.length == 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/.test(password)) {
+	if(password.length >= 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$/.test(password)) {
 		////make some sort of indicator near field that it is done correctly.
 	}
 	else {
@@ -101,7 +103,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 		satisfied = false;
 	}
 	
-	
+	return satisfied;
 }
 
 function removeExtraWhiteSpaces(value) {
@@ -160,8 +162,11 @@ $("document").ready(function(idNum, password, fName, lName) {
     	   password2 === password ){
         	
         	//if all fields valid, proceed. if not, place front end effects of what field is not ok.
-        	if(constraintChecker(password, idNum, fName, lName, mName, courseName))
-        		$('.modal').modal();
+        	if(constraintChecker(password, idNum, fName, lName, mName, courseName)) {
+        		//$('.modal').modal();
+        		submitTheForm();
+        	}
+        	
 
         } else{
         	// TODO front end notif

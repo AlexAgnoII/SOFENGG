@@ -74,7 +74,7 @@ public class StudentServlet extends HttpServlet {
 		String lastname = request.getParameter("lastName");
 		String firstname = request.getParameter("firstName");
 		String middlename = request.getParameter("middleName");
-		String username = request.getParameter("email");
+		String username = request.getParameter("email"); //Email
 		String password = request.getParameter("password");
 		String rePassword = request.getParameter("password2");
 		String college = request.getParameter("college");
@@ -84,10 +84,10 @@ public class StudentServlet extends HttpServlet {
 			
 		//Constraint checking
 		//If email already existing
-		if(false) {
-			
+		if(StudentService.isEmailTaken(username)) {
+			response.getWriter().write("EMAIL-TAKEN");
 		}
-		//f not, do this.
+		//if not, do this.
 		else {
 			//Perform hashing here//
 			PasswordAuthentication p = new PasswordAuthentication();

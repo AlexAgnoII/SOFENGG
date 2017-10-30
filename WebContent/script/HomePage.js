@@ -8,8 +8,7 @@ function validateEmail(email) {
 
 //This function handles the front-end effects/notice when user does not place the correct input.
 function enterValidInput() {
-	console.log("I happened");
-	alert("Please enter a valid input.");
+	Materialize.toast('Please enter a valid email / pasword', 7000);
 }
 
 //Account login failure front-end done here.
@@ -17,7 +16,7 @@ function accPassMismatch(data) {
 	//Front end constraint warning here
 	if(data === "FAIL-LOGIN") {
 		//alert(data);
-        Materialize.toast('Username and password do not match', 40000);
+        Materialize.toast('Username and password do not match', 7000);
 	}
 	
 	//redirect to adminhomepage.

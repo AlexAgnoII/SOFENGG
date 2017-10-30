@@ -16,7 +16,8 @@ function enterValidInput() {
 function accPassMismatch(data) {
 	//Front end constraint warning here
 	if(data === "FAIL-LOGIN") {
-		alert(data);
+		//alert(data);
+        Materialize.toast('Username and password do not match', 40000);
 	}
 	
 	//redirect to adminhomepage.

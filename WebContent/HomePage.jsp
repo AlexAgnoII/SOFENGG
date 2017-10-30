@@ -21,7 +21,7 @@
 	</head>
 	
 	<body>
-		<div id="left"></div>
+			<div id="left"></div>
 		<div id="right"></div>
 		<div id="top"></div>
 		<div id="bottom"></div>
@@ -31,6 +31,7 @@
                 <img src="css/arrow.png" id="arrow">
                 <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
             </div><br>
+            
             <form action="login" method="POST" id="loginForm">
                 <div class="input-field col s12">
                     <input id="username" type="email" class="validate" name="email">
@@ -43,10 +44,13 @@
                  </div>
             </form>
             
-            <br>
-            <br>
+            <br><br><br>
             <a class="waves-effect waves-light btn" id="loginb">login</a>
+        
             <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
+            
+            <br><br><br>
+            <a id="forgotpw" href="#!">Forgot password?</a>
         </div>
         
 		<script src="script/HomePage.js"></script>

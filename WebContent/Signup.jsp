@@ -36,13 +36,13 @@
                 <input type="text" id="idNum" name="idNum" onblur="checkIdNumber(this, getElementById('idError'))"><br> 
                 
                 <p>Last Name</p> <span id="lastNameError"></span>
-                <input type="text" id="lastName" name="lastName"><br> 
+                <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lastNameError'))"><br> 
                 
                 <p>First Name</p> <span id="firstNameError"></span>
-                <input type="text" id="firstName" name="firstName"><br> 
+                <input type="text" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('firstNameError'))"><br> 
                 
                 <p>Middle Name</p> <span id="middleNameError"></span>
-                <input type="text" id="middleName" name="middleName"><br> 
+                <input type="text" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))"><br> 
                 
                 <p>College</p>
                 
@@ -60,14 +60,14 @@
                 </div>
                 
                 
-                <p>Course</p> <span id="courseError"></span>
-                <input type="text" id="courseName" name="course"> <br>
+                <p>Course</p> <span id="courseError" ></span>
+                <input type="text" id="courseName" name="course" onblur="checkStringField(this, getElementById('courseError'))"> <br>
 
                 <p>Email Address</p> <span id="emailError"></span>
-                <input type="text" id="email" name="email"><br> 
+                <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))"><br> 
                 
                 <p>Password</p> <span id="passwordError"></span>
-                <input type="password" id="password" name="password"><br>
+                <input type="password" id="password" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))"><br>
                 
                 <p>Re-enter Password</p>
                 <input type="password" id="password2" name="password2"><br><br> 

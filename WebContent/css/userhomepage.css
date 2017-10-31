@@ -21,133 +21,134 @@ html {
 		}
 		#top { top: 0; }
 
-#pulse {
-    background-color: #006f4a; 
-    height: 70px;
-    width: 180px;
-    position: fixed;
-    margin-top: 20px;
-    margin-left: 10px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    border-style: solid;
-    border-width: 2px;
-    border-left: 0px;
-    border-color: #006f4a;
-}
-
-#pulse:hover {
-    background-color: white;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-width: 2px;
-    border-left: 0px;
+nav {
+    margin-top: 10px;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 0 5px 5px -10px #333;
 }
 
 #wrapper {
+    width: 180px;
     display: inline-flex;
-    padding: 4px;
-    width: 150px;
+}
+
+#tbox {
+    margin: 0 auto;
+    padding: 5px;
+    background-color: transparent; 
+    width: 180px;
+    height: 51px;
+    position: fixed;
+    box-shadow: 0px 0px;
 }
 
 #title {
     font-family: "Montserrat";
-    font-size: 15.5px;
+    font-size: 13px;
     text-align: left;
     line-height: 95%;
-    font-weight: 400;
-    width: 60%;
+    font-weight: 500;
+    width: 45%;
     margin-top: 0px;
-    margin-left: -2px;
-    color: white;
+    color: #1f1f1f;
 }
 
-#pulse:hover #title {
-    color: #1e1e1e;
+#tbox:hover #title {
+    color: #006f4a;
     font-weight: 500;
 }
 
 #arrow {
-    font-size: 60px;
-    margin-left: -5px;
-    color: #1e1e1e;
+    height: 45px;
+    margin: 2px;
 }
 
-#pulse:hover #arrow {
+#menu {
+    margin-left: 10px;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 0px 0px;
     color: #006f4a;
+    line-height: 355%;
+    font-size: 13px;
+    width: 130px;
 }
 
-/* add your css below! :) */
-
-body {
-  /*margin: 0px;*/
+a#menu.dropdown-button.btn {
+    width: 130px;  
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background: #333;
-}
-
-li {
+#mb {
     float: left;
-    border-right: 1px solid #BBB;
-    overflow: hidden;
+    margin-left: -20px;
+    width: 25px;
+    color: #006f4a;
+    height: 50px;
+    line-height: 200%;
 }
 
-li:last-child {
-    border-right: none;
+a#menu.dropdown-button.btn:hover {
+    background-color: #006f4a;
+    color: snow;
+    border-radius: 0px;
 }
 
-li:hover {
-    background: #555;
+a#menu.dropdown-button.btn:hover #mb {
+    color: snow;
 }
 
-li a, .dropbtn{
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 25px 10px;
-    text-decoration: none;
-    width: 150px;
+
+#drop {
+    margin-right: 10px;
+    color: #006f4a;
+    height: 50px;
+    width: 80px;
+    float: right;
+    background-color: transparent;
+    box-shadow: 0px 0px;
+    border-radius: 0px;
 }
 
-li.dropdown {
-    display: inline-block;
+#drop:hover {
+    background-color: #006f4a;
+    color: snow;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+#dc {
+    width: 30px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 160%;
 }
 
-.notices {
-    margin-top: 10px;
-    width: 650px;
-    height: 750px;
-    border: 1px solid transparent;
-    background: #E0E0E0;
-    border-radius: 5px;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: auto;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {
-    background: #DDD;
-}
-
-.dropdown-content{
+#dp1 {
     display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    background-color: #006f4a;
+    width: 100px;
+    margin-top: 50px;
+    margin-right: -100px;
+    float: right;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#dp2 {
+    display: none;
+    width: 130px;
+    margin-top: 50px;
+    margin-left: 10px;
+    float: left;
+    background-color: #006f4a;  
+}
+
+nav ul a{
+    width: 130px;
+    padding-left: 20px;
+    font-size: 11px;
+    line-height: 260%;
+    height: 30px;
+}
+
+nav ul a:hover {
+     background-color: #01563a;
 }

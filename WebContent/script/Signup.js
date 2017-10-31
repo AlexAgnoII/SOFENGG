@@ -9,9 +9,10 @@ function duplicateHandler(data) {
 	
 	//front end handling constraint done here (create functions for them so we can reuse it on the 3rd case in the switch-case)
 	switch(data) {
-		case "EMAIL-TAKEN": break; //only email
-		case "IDNUM-TAKEN": break; //only idnum
-		case "EMAIL-TAKEN|IDNUM-TAKEN": break; //both (use functions made in email and inum)
+		case "EMAIL-TAKEN": alert("Email is already taken."); break; //only email
+		case "IDNUM-TAKEN": alert("ID-number is already taken."); break; //only idnum
+		case "EMAIL-TAKEN|IDNUM-TAKEN":  alert("ID-number is already taken."); 
+		                                  alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
 		default: document.location.href = 'HomePage.jsp'; //redirect to homepage.
 		
 	}
@@ -40,6 +41,43 @@ function submitTheForm() {
 
 function stringIsWord(value) {
 	return /^[a-z\s]+$/i.test(value);
+}
+
+/**
+ * Constraint checker for idNumber.
+ * - Must be 8 digits.
+ * - Must be digits ONLY.
+ * @param idNum
+ * @returns
+ */
+function idNumberChecker(idNum) {
+	return idNum.length == 8 && /^\d+$/.test(idNum)
+}
+
+/**
+ * OnBlur function used for input field of id number.
+ * @param idInputField = the ID of the input field.
+ * @param spanId = the spanId.
+ */
+function checkIdNumber(idInputField, spanId) {
+	
+	//check if there's anything that has been input on.
+	if(idInputField.value) {
+		console.log("Has input!");
+		spanId.innerHTML = ""; //change the text to nothing.
+		
+		//Check if idNumber follows constraint.
+		if(idNumberChecker(idInputField.value)) {
+			spanId.innerHTML = "CORRECT";
+		}
+		else {
+			spanId.innerHTML = "Must be 8 digit integers only.";
+		}
+		
+	}
+	else {
+		spanId.innerHTML = "Please enter an input.";
+	}
 }
 
 //if all fields valid, proceed. if not, place front end effects of what field is not ok.

@@ -32,16 +32,16 @@
         
         <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
-                <p>ID Number</p> 
-                <input type="text" id="idNum" name="idNum"><br> 
+                <p>ID Number</p> <span id="idError"></span>
+                <input type="text" id="idNum" name="idNum" onblur="checkIdNumber(this, getElementById('idError'))"><br> 
                 
-                <p>Last Name</p>
+                <p>Last Name</p> <span id="lastNameError"></span>
                 <input type="text" id="lastName" name="lastName"><br> 
                 
-                <p>First Name</p>
+                <p>First Name</p> <span id="firstNameError"></span>
                 <input type="text" id="firstName" name="firstName"><br> 
                 
-                <p>Middle Name</p>
+                <p>Middle Name</p> <span id="middleNameError"></span>
                 <input type="text" id="middleName" name="middleName"><br> 
                 
                 <p>College</p>
@@ -60,20 +60,17 @@
                 </div>
                 
                 
-                <p>Course</p>
+                <p>Course</p> <span id="courseError"></span>
                 <input type="text" id="courseName" name="course"> <br>
 
-                <p>Email Address</p>
+                <p>Email Address</p> <span id="emailError"></span>
                 <input type="text" id="email" name="email"><br> 
                 
-                <p>Password</p>
+                <p>Password</p> <span id="passwordError"></span>
                 <input type="password" id="password" name="password"><br>
                 
                 <p>Re-enter Password</p>
                 <input type="password" id="password2" name="password2"><br><br> 
-                
-                <!--    <button id="backb">BACK</button>  -->               
-             	<!--   <input id = "signupb" type="submit" value="SIGNUP">  -->
                 
                 <a class="waves-effect waves-light btn" id="backb">BACK</a>
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="signupb" type=submit>SIGNUP</a>

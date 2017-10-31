@@ -17,63 +17,41 @@ html {
 		
 	#top{
 		left: 0; right: 0;
-		height: 0px;
+		height: 10px;
 		}
 		#top { top: 0; }
 
-#navbar {
-    background-color: white;
-    height: 55px;
-    width: 100%;
-    left: 0;
-    display: inline;
-    position: fixed;
-    border-style: solid;
-    border-color: #006f4a;
-    border-width: 10px;
-    border-bottom: 0px;
-    z-index: 5;   
-}
-
-#tbox {
-    background-color: #006f4a; 
-    height: 70px;
-    width: 190px;
-    position: fixed;
-    margin-top: 20px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 0px;
-    border-style: solid;
-    border-width: 2px;
-    border-left: 0px;
-    border-color: #006f4a;
-}
-
-#tbox:hover {
-    background-color: white;
-    border-color: #1e1e1e;
-    border-style: solid;
-    border-width: 2px;
-    border-left: 0px;
+nav {
+    margin-top: 10px;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 0 5px 5px -10px #333;
 }
 
 #wrapper {
+    width: 180px;
     display: inline-flex;
-    margin-left: -25px;
-    margin-top: 5px;
+}
+
+#tbox {
+    margin: 0 auto;
+    padding: 5px;
+    background-color: transparent; 
+    width: 180px;
+    height: 51px;
+    position: fixed;
+    box-shadow: 0px 0px;
 }
 
 #title {
     font-family: "Montserrat";
-    font-size: 15.5px;
+    font-size: 13px;
     text-align: left;
     line-height: 95%;
-    font-weight: 400;
-    width: 60%;
+    font-weight: 500;
+    width: 45%;
     margin-top: 0px;
-    margin-left: -3px;
-    color: white;
+    color: #1f1f1f;
 }
 
 #tbox:hover #title {
@@ -82,27 +60,90 @@ html {
 }
 
 #arrow {
-    font-size: 60px;
-    margin-left: -5px;
-    margin-top: 8px;
-    color: #1e1e1e;
+    height: 45px;
+    margin: 2px;
 }
 
 #menu {
-    margin-top: 80px;
-    margin-left: -10px;
-    background-color: white;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #006f4a;
+    margin-left: 10px;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 0px 0px;
+    color: #006f4a;
+    line-height: 355%;
+    font-size: 13px;
+    width: 150px;
 }
 
-#logoutb, #settingsb {
-    font-size: 12.5px;
-    color: #1e1e1e;
-    font-weight: 400;
-    line-height: 85%;
+a#menu.dropdown-button.btn {
+    width: 150px;
+    
 }
+
+#mb {
+    float: left;
+    margin-left: -20px;
+    width: 25px;
+    color: #006f4a;
+    height: 50px;
+    line-height: 200%;
+}
+
+#drop {
+    margin-right: 10px;
+    color: #006f4a;
+    height: 50px;
+    width: 80px;
+    float: right;
+    background-color: transparent;
+    box-shadow: 0px 0px;
+    border-radius: 0px;
+}
+
+#drop:hover {
+    background-color: #006f4a;
+    color: snow;
+}
+
+#dc {
+    width: 30px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 160%;
+}
+
+#dp1 {
+    display: none;
+    background-color: #006f4a;
+    width: 100px;
+    margin-top: 50px;
+    margin-right: -100px;
+    float: right;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#dp2 {
+    display: none;
+    width: 180px;
+    margin-top: 50px;
+    margin-left: 10px;
+    float: left;
+    background-color: #006f4a;  
+}
+
+
+nav ul a{
+    width: 150px;
+    padding-left: 20px;
+    font-size: 11px;
+    line-height: 260%;
+    height: 30px;
+}
+
+nav ul a:hover {
+     background-color: #01563a;
+}
+
 
 #searchdiv {
     background-color: #006f4a;
@@ -111,7 +152,7 @@ html {
     height: 40px;
     display: inline-flex;
     border-bottom-left-radius: 2px;
-    box-shadow: 0 5px 5px -5px #333;
+    box-shadow: 0 5px 5px -6px #333;
 }
 
 #searchbar {

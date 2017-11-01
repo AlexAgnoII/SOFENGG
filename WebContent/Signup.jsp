@@ -21,14 +21,16 @@
 		<div id="top"></div>
 		<div id="bottom"></div>
 		
-       <div id="navbar">
-            <a class="dropdown-button btn" href='#' data-activates="menu" id="tbox">
-            <div id="wrapper">
-                <i class="material-icons" id="arrow">near_me</i>
-                <p id="title">DLSU STUDENT INFORMATION SYSTEM</p>
-            </div>   
-            </a>
-        </div>
+        <nav>
+            <div class="nav-wrapper">
+               <a class='brand-logo center' data-activates='dp2' href='#' id="tbox">
+                <div id="wrapper">
+                    <img src="css/arrow.png" id="arrow">
+                    <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>
+                </div>   
+               </a>
+            </div>
+        </nav>
         
         <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
@@ -59,7 +61,6 @@
 	                </select>
                 </div>
                 
-                
                 <p>Course</p> <span id="courseError" ></span>
                 <input type="text" id="courseName" name="course" onblur="checkStringField(this, getElementById('courseError'))"> <br>
 
@@ -74,6 +75,7 @@
                 
                 <a class="waves-effect waves-light btn" id="backb">BACK</a>
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="signupb" type=submit>SIGNUP</a>
+                <br>
             </form>
 
         </div>

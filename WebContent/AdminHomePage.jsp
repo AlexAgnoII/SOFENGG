@@ -41,12 +41,28 @@
                 <div id="dp2">
                      <ul>
                         <li><a href="#!">View Students</a></li>
-                        <li><a href="#!">New Announcement</a></li>
+                        <li><a class="modal-trigger" href="#newannounce"> New Announcement</a></li>
                     </ul>
                 </div>
             </div>
         </nav> 
         
+        <div id="newannounce" class="modal">
+            <div id="annhead">[NEW ANNOUNCEMENT]</div>
+            <div id="annwrap">
+                <form>
+                   <p class="ltags">Title</p>
+                   <input type="text" id="anntitle">
+
+                   <p class="ltags">Description</p>
+                   <input type="text" id="anndesc">
+                </form>
+                <br>
+                <a class="waves-effect waves-light btn" id="ANpost">POST</a>
+                <br>
+
+            </div>
+        </div>
     
         
      <!--<div id="searchdiv">
@@ -56,6 +72,13 @@
             </form>
         </div> -->
         
+     <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+        
+        
+    </script>    
     
         
     </body>

@@ -17,28 +17,33 @@ html {
 		
 	#top{
 		left: 0; right: 0;
-		height: 10px;
+		height: 0px;
 		}
 		#top { top: 0; }
 
 nav {
-    margin-top: 10px;
-    height: 50px;
-    background-color: transparent;
+    position: fixed;
+    height: 66px;
+    background-color: white;
     box-shadow: 0 5px 5px -10px #333;
+    z-index: 5;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #006f4a;
+    border-bottom: 0px;
 }
 
 #wrapper {
-    width: 180px;
+    width: 150px;
     display: inline-flex;
 }
 
 #tbox {
     margin: 0 auto;
-    padding: 5px;
+    padding: 4px;
     background-color: transparent; 
     width: 180px;
-    height: 51px;
+    height: 56px;
     position: fixed;
     box-shadow: 0px 0px;
 }
@@ -65,18 +70,17 @@ nav {
 }
 
 #menu {
-    margin-left: 10px;
     height: 50px;
     background-color: transparent;
     box-shadow: 0px 0px;
     color: #006f4a;
-    line-height: 355%;
+    line-height: 385%;
     font-size: 13px;
-    width: 150px;
+    width: 100px;
 }
 
 a#menu.dropdown-button.btn {
-    width: 150px;
+    width: 130px;
     
 }
 
@@ -86,14 +90,24 @@ a#menu.dropdown-button.btn {
     width: 25px;
     color: #006f4a;
     height: 50px;
-    line-height: 200%;
+    line-height: 215%;
+}
+
+a#menu.dropdown-button.btn:hover {
+    background-color: #006f4a;
+    color: snow;
+    border-radius: 0px;
+    box-shadow: 0 5px 5px -6px #333;
+}
+
+a#menu.dropdown-button.btn:hover #mb {
+    color: snow;
 }
 
 #drop {
-    margin-right: 10px;
     color: #006f4a;
     height: 50px;
-    width: 80px;
+    width: 50px;
     float: right;
     background-color: transparent;
     box-shadow: 0px 0px;
@@ -103,40 +117,36 @@ a#menu.dropdown-button.btn {
 #drop:hover {
     background-color: #006f4a;
     color: snow;
+    box-shadow: 0 5px 5px -6px #333;
 }
 
 #dc {
+    position: relative;
+    right: 15px;
     width: 30px;
     height: 50px;
     font-size: 30px;
-    line-height: 160%;
+    line-height: 155%;
 }
 
-#dp1 {
+#dp1, #dp2 {
     display: none;
-    background-color: #006f4a;
-    width: 100px;
     margin-top: 50px;
-    margin-right: -100px;
-    float: right;
+    margin-left: 0px;
+    background-color: #006f4a;
     box-shadow: 0 5px 5px -5px #333;
 }
 
 #dp2 {
-    display: none;
-    width: 180px;
-    margin-top: 50px;
-    margin-left: 10px;
+    width: 130px;
     float: left;
-    background-color: #006f4a;  
 }
 
-
 nav ul a{
-    width: 150px;
-    padding-left: 20px;
-    font-size: 11px;
-    line-height: 260%;
+    width: 130px;
+    padding-left: 10px;
+    font-size: 10px;
+    line-height: 275%;
     height: 30px;
 }
 
@@ -144,6 +154,69 @@ nav ul a:hover {
      background-color: #01563a;
 }
 
+/* others below */
+
+#newannounce {
+    width: 600px;
+}
+
+#annhead {
+    background-color: #006f4a;
+    color: snow;
+    height: 30px;
+    text-align: center;
+    line-height: 200%;
+}
+
+#annwrap {
+    margin: 0 auto;
+    width: 550px;
+    padding: 10px;
+}
+
+.ltags {
+    font-size: 13px;
+    color: #006f4a;
+    font-weight: 500;
+}
+
+#anntitle, #anndesc {
+    width: 350px;
+    height: 25px;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(0, 0, 0, 0.3);
+    padding-left: 3px;
+    font-size: 12px;
+}
+
+#anndesc {
+    width: 500px;
+    height: 80px; 
+}
+
+#ANpost {
+    margin-top: -15px;
+    background-color: #006f4a;
+    color: snow;
+    line-height: 250%;
+    height: 30px;
+    padding: 0 25px;
+    float: right;
+    font-size: 11px;
+    font-weight: 500;
+    box-shadow: 0 5px 5px -6px #333;
+    border-style: solid;
+    border-width: 0.6px;
+    border-radius: 2px;
+    border-color: dimgrey;
+    
+}
 
 #searchdiv {
     background-color: #006f4a;

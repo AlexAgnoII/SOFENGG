@@ -115,6 +115,7 @@ a#menu.dropdown-button.btn:hover #mb {
     box-shadow: 0px 0px;
     border-radius: 0px;
     align-content: center;
+    cursor: pointer;
 }
 
 #notif {

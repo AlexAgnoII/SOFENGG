@@ -29,6 +29,9 @@
                 
                 <a class='dropdown-button btn' href='#' data-activates='dp1' id="drop"><i class="large material-icons" id="dc">arrow_drop_down_circle</i></a>
                 
+                <a id="notif"><i class="large material-icons" id="nc">notifications</i></a>
+                
+                
                 <div id="dp1">
                     <ul>
                         <li><a href="#!"> Settings</a></li>
@@ -41,6 +44,10 @@
                         <li><a href="#!">Profile</a></li>
                         <li><a href="#!">Annoucements</a></li>
                     </ul>
+                </div>
+                
+                <div id="dp3">
+                    <p id="ann">Notification here</p>
                 </div>
             </div>
         </nav> 
@@ -392,8 +399,17 @@
                  $('#EIedit').show();
                  $('#EIsave').hide();
              })
-            
+             
           });
+         
+         $('#notif').click( function(event){
+             event.stopPropagation();
+             $('#dp3').slideToggle();
+         });
+         
+         $(document).click( function(){
+             $('#dp3').hide();
+         });
         
     </script>
     </body>

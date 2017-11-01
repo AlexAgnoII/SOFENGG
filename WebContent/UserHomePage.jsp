@@ -19,11 +19,11 @@
 		<div id="top"></div>
 		<div id="bottom"></div>
         
-       <nav>
+        <nav>
             <div class="nav-wrapper">
                <a class='brand-logo center' data-activates='dp2' href='#' id="tbox">
                 <div id="wrapper">
-                    <img src="css/arrow.png" id="arrow">
+                    <img src="/css/arrow.png" id="arrow">
                     <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>
                 </div>   
                </a>
@@ -31,6 +31,9 @@
                 <a class='dropdown-button btn' href='#' data-activates='dp2' id="menu"><i class="medium material-icons" id="mb">menu</i>MENU</a>
                 
                 <a class='dropdown-button btn' href='#' data-activates='dp1' id="drop"><i class="large material-icons" id="dc">arrow_drop_down_circle</i></a>
+                
+                <a id="notif"><i class="large material-icons" id="nc">notifications</i></a>
+                
                 
                 <div id="dp1">
                     <ul>
@@ -42,12 +45,27 @@
                 <div id="dp2">
                      <ul>
                         <li><a href="#!">Profile</a></li>
-                        <li><a href="#!">Announcements</a></li>
+                        <li><a href="#!">Annoucements</a></li>
                     </ul>
+                </div>
+                
+                <div id="dp3">
+                    <p id="ann">Notification here</p>
                 </div>
             </div>
         </nav> 
         
-    
+        <script>
+            
+            $('#notif').click( function(event){
+                event.stopPropagation();
+                $('#dp3').slideToggle();
+            });
+            
+            $(document).click( function(){
+                $('#dp3').hide();
+            });
+
+        </script>
     </body>
 </html>

@@ -17,28 +17,34 @@ html {
 		
 	#top{
 		left: 0; right: 0;
-		height: 10px;
+		height: 0px;
 		}
 		#top { top: 0; }
 
 nav {
-    margin-top: 10px;
-    height: 50px;
-    background-color: transparent;
+    position: fixed;
+    height: 66px;
+    background-color: white;
     box-shadow: 0 5px 5px -10px #333;
+    z-index: 5;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #006f4a;
+    border-bottom: 0px;
+    
 }
 
 #wrapper {
-    width: 180px;
+    width: 150px;
     display: inline-flex;
 }
 
 #tbox {
     margin: 0 auto;
-    padding: 5px;
+    padding: 4px;
     background-color: transparent; 
     width: 180px;
-    height: 51px;
+    height: 56px;
     position: fixed;
     box-shadow: 0px 0px;
 }
@@ -65,12 +71,11 @@ nav {
 }
 
 #menu {
-    margin-left: 10px;
     height: 50px;
     background-color: transparent;
     box-shadow: 0px 0px;
     color: #006f4a;
-    line-height: 355%;
+    line-height: 385%;
     font-size: 13px;
     width: 130px;
 }
@@ -85,7 +90,7 @@ a#menu.dropdown-button.btn {
     width: 25px;
     color: #006f4a;
     height: 50px;
-    line-height: 200%;
+    line-height: 215%;
 }
 
 a#menu.dropdown-button.btn:hover {
@@ -98,9 +103,7 @@ a#menu.dropdown-button.btn:hover #mb {
     color: snow;
 }
 
-
 #drop {
-    margin-right: 10px;
     color: #006f4a;
     height: 50px;
     width: 80px;
@@ -119,7 +122,7 @@ a#menu.dropdown-button.btn:hover #mb {
     width: 30px;
     height: 50px;
     font-size: 30px;
-    line-height: 160%;
+    line-height: 155%;
 }
 
 #dp1 {
@@ -136,7 +139,6 @@ a#menu.dropdown-button.btn:hover #mb {
     display: none;
     width: 130px;
     margin-top: 50px;
-    margin-left: 10px;
     float: left;
     background-color: #006f4a;  
 }

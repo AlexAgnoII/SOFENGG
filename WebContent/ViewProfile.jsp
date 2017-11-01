@@ -52,7 +52,7 @@
                 
                 <!-- Profile Overview -->
                 <li>
-                  <div class="collapsible-header active">PROFILE OVERVIEW</div>
+                  <div class="collapsible-header active"><i class="large material-icons">star</i>PROFILE OVERVIEW</div>
                   <div class="collapsible-body active">
                       
                       <p id="stname">${loggedUser.firstName} ${loggedUser.middleName} ${loggedUser.lastName}</p>
@@ -67,7 +67,7 @@
                 
                 <!-- Personal Information -->
                 <li>
-                  <div class="collapsible-header">> PERSONAL INFORMATION</div>
+                  <div class="collapsible-header"><i class="large material-icons">account_circle</i>PERSONAL INFORMATION</div>
                     
                   <div class="collapsible-body">
                       <a class="waves-effect waves-light btn" id="PIedit">EDIT</a>
@@ -146,7 +146,7 @@
                 
                 <!-- Family Background -->
                 <li>
-                    <div class="collapsible-header">> FAMILY BACKGROUND</div>
+                    <div class="collapsible-header"><i class="large material-icons">group</i>FAMILY BACKGROUND</div>
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
@@ -201,7 +201,7 @@
                 </li>
                 
                 <li>
-                    <div class="collapsible-header">> ACADEMIC BACKGROUND</div>
+                    <div class="collapsible-header"><i class="large material-icons">school</i>ACADEMIC BACKGROUND</div>
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
@@ -215,27 +215,63 @@
                 </li>
                 
                 <li>
-                    <div class="collapsible-header">> INTERNAL INVOLVEMENT</div>
+                    <div class="collapsible-header"><i class="large material-icons">book</i>INTERNAL INVOLVEMENT</div>
                     
                     <div class="collapsible-body">
-                        <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
+                        <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
                         
-                
+                        <div class="wrap">
+                            <div class="f">
+                                <p class="ltags">Year</p>
+                                <input type="text" id="inyear" name="inyear" value="2017" disabled>
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Event/Organization</p>
+                                <input type="text" id="inorg" name="inorg" value="Something" disabled>                         
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Position</p>
+                                <input type="text" id="inpos" name="inpos" value="Someone" disabled>
+                            </div>
+                        </div>
                         
+                        <br><br>
+                        
+                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
                     </div> <!-- end of div tag Internal Involvement --> 
                 
                 
                 </li>
                 
                 <li>
-                    <div class="collapsible-header">> EXTERNAL INVOLVEMENT</div>
+                    <div class="collapsible-header"><i class="large material-icons">nature_people</i>EXTERNAL INVOLVEMENT</div>
                     
                     <div class="collapsible-body">
-                        <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
+                        <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
                         
-                
+                        <div class="wrap">
+                            <div class="f">
+                                <p class="ltags">Year</p>
+                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Event/Organization</p>
+                                <input type="text" id="exorg" name="exorg" value="Something" disabled>                         
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Position</p>
+                                <input type="text" id="expos" name="expos" value="Someone" disabled>
+                            </div>
+                        </div>
                         
-                    </div> <!-- end of div tag Internal Involvement --> 
+                        <br><br>
+                        
+                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+                    </div> <!-- end of div tag External Involvement --> 
                 </li>
                 
                
@@ -262,9 +298,8 @@
                  $('#citizen').removeAttr('disabled');
                  $('#gender').removeAttr('disabled');
                  
-                 $('#PIsave').show();
                  $('#PIedit').hide();
-                 
+                 $('#PIsave').show();
              }) 
              
              $('#PIsave').click(function () {
@@ -282,8 +317,8 @@
                  $('#citizen').attr('disabled', 'disabled');
                  $('#gender').attr('disabled', 'disabled');
                  
-                 $('#PIsave').hide();
                  $('#PIedit').show();
+                 $('#PIsave').hide();
              })
              
              $('#FBedit').click(function () {
@@ -322,9 +357,42 @@
                  $('#FBsave').hide();
              })
              
-             $('#help').click(function () {
-                 $('#helpinfo').show();
+             $('#IIedit').click(function () {
+                 $('#inyear').removeAttr('disabled');
+                 $('#inorg').removeAttr('disabled');
+                 $('#inpos').removeAttr('disabled');
+                 
+                 $('#IIedit').hide();
+                 $('#IIsave').show();
              })
+             
+             $('#IIsave').click(function () {
+                 $('#inyear').attr('disabled', 'disabled');
+                 $('#inorg').attr('disabled', 'disabled');
+                 $('#inpos').attr('disabled', 'disabled');
+                 
+                 $('#IIedit').show();
+                 $('#IIsave').hide();
+             })
+             
+              $('#EIedit').click(function () {
+                 $('#exyear').removeAttr('disabled');
+                 $('#exorg').removeAttr('disabled');
+                 $('#expos').removeAttr('disabled');
+                 
+                 $('#EIedit').hide();
+                 $('#EIsave').show();
+             })
+             
+             $('#EIsave').click(function () {
+                 $('#exyear').attr('disabled', 'disabled');
+                 $('#exorg').attr('disabled', 'disabled');
+                 $('#expos').attr('disabled', 'disabled');
+                 
+                 $('#EIedit').show();
+                 $('#EIsave').hide();
+             })
+            
           });
         
     </script>

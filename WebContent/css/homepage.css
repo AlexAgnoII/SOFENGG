@@ -85,16 +85,11 @@ form {
 	color: #1f1f1f;
 }
 
-.toast {
+
+#inv, #dnm {
+    display: none;
     font-size: 10px;
-    font-weight: 400;
-    padding: 5px 10px;
-    min-height: 20px;
-    right: 228%;
-    top: 340px;
-    opacity: 0.9;
-    background-color: transparent;
     color: indianred;
-    box-shadow: 0px 0px 0px 0px;
+    font-style: italic;
 }
 

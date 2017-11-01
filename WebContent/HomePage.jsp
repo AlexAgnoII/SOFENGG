@@ -44,6 +44,9 @@
                  </div>
             </form>
             
+            <p id="dnm">Username and password do not match</p>
+            <p id="inv">Invalid username or password</p>
+            
             <br><br><br>
             <a class="waves-effect waves-light btn" id="loginb">login</a>
         

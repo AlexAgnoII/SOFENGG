@@ -17,62 +17,48 @@ html {
 		
 	#top{
 		left: 0; right: 0;
-		height: 10px;
+		height: 0px;
 		}
 		#top { top: 0; }
 
-#navbar {
-    height: 55px;
-    width: 100%;
-    left: 0;
-    display: inline;
+nav {
     position: fixed;
-    border-style: solid;
-    border-color: #006f4a;
-    border-width: 10px;
-    border-bottom: 0px;
-    z-index: 5;   
-}
-
-#tbox {
-    background-color: #006f4a; 
-    height: 70px;
-    width: 190px;
-    position: fixed;
-    margin-top: 20px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 0px;
-    border-style: solid;
-    border-width: 2px;
-    border-left: 0px;
-    border-color: #006f4a;
-}
-
-#tbox:hover {
+    margin-top: -10px;
+    height: 66px;
     background-color: white;
-    border-color: #1e1e1e;
+    box-shadow: 0 5px 5px -10px #333;
+    z-index: 5;
     border-style: solid;
-    border-width: 2px;
-    border-left: 0px;
+    border-width: 10px;
+    border-color: #006f4a;
+    border-bottom: 0px;
+    
 }
 
 #wrapper {
+    width: 150px;
     display: inline-flex;
-    margin-left: -25px;
-    margin-top: 5px;
+}
+
+#tbox {
+    margin: 0 auto;
+    padding: 4px;
+    background-color: transparent; 
+    width: 180px;
+    height: 56px;
+    position: fixed;
+    box-shadow: 0px 0px;
 }
 
 #title {
     font-family: "Montserrat";
-    font-size: 15.5px;
+    font-size: 13px;
     text-align: left;
     line-height: 95%;
-    font-weight: 400;
-    width: 60%;
+    font-weight: 500;
+    width: 45%;
     margin-top: 0px;
-    margin-left: -3px;
-    color: white;
+    color: #1f1f1f;
 }
 
 #tbox:hover #title {
@@ -81,76 +67,217 @@ html {
 }
 
 #arrow {
-    font-size: 60px;
-    margin-left: -5px;
-    margin-top: 8px;
-    color: #1e1e1e;
+    height: 45px;
+    margin: 2px;
 }
 
 #menu {
-	margin-top: 80px;
-    margin-left: -10px;
-    background-color: white;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #006f4a;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 0px 0px;
+    color: #006f4a;
+    line-height: 385%;
+    font-size: 13px;
+    width: 130px;
 }
 
-#logoutb, #settingsb, #editprofb {
-    font-size: 12.5px;
-    color: #1e1e1e;
-    font-weight: 400;
-    line-height: 150%;
+a#menu.dropdown-button.btn {
+    width: 130px;  
 }
 
-/** other css below **/
+#mb {
+    float: left;
+    margin-left: -20px;
+    width: 25px;
+    color: #006f4a;
+    height: 50px;
+    line-height: 215%;
+}
+
+a#menu.dropdown-button.btn:hover {
+    background-color: #006f4a;
+    color: snow;
+    border-radius: 0px;
+}
+
+a#menu.dropdown-button.btn:hover #mb {
+    color: snow;
+}
+
+#drop {
+    color: #006f4a;
+    height: 50px;
+    width: 80px;
+    float: right;
+    background-color: transparent;
+    box-shadow: 0px 0px;
+    border-radius: 0px;
+}
+
+#drop:hover {
+    background-color: #006f4a;
+    color: snow;
+}
+
+#dc {
+    width: 30px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 155%;
+}
+
+#dp1 {
+    display: none;
+    background-color: #006f4a;
+    width: 100px;
+    margin-top: 50px;
+    margin-right: -100px;
+    float: right;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+#dp2 {
+    display: none;
+    width: 130px;
+    margin-top: 50px;
+    float: left;
+    background-color: #006f4a;  
+}
+
+nav ul a{
+    width: 130px;
+    padding-left: 20px;
+    font-size: 11px;
+    line-height: 260%;
+    height: 30px;
+}
+
+nav ul a:hover {
+     background-color: #01563a;
+}
+
+/* others below */
 
 #profilefeed {
-    background-color: white;
-    margin: 0 auto;
     position: relative;
-    top: 15%;
-    width: 60%;
-    padding: 5px;
+    margin: 0 auto;
+    top: 90px;
+    width: 750px;
 }
 
 .collapsible-header {
-    display: block;
-    cursor: pointer;
-    min-height: 3rem;
-    line-height: 3rem;
-    padding: 0 1rem;
     background-color: #006f4a;
     color: snow;
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 300%;
+    min-height: 1rem;
+}
+
+.collapsible-header i {
+    font-size: 21.5px;
+    line-height: 150%;
+}
+
+#PIedit, #PIsave, #FBedit, #FBsave {
+    margin-top: -15px;
+    background-color: lightgrey;
+    color: #1f1f1f;
+    line-height: 180%;
+    height: 20px;
+    padding: 0 15px;
+    float: right;
+    font-size: 11px;
+    font-weight: 500;
+    box-shadow: 0 5px 5px -6px #333;
+    border-style: solid;
+    border-width: 0.6px;
+    border-radius: 2px;
+    border-color: dimgrey;
+}
+
+#PIsave, #FBsave {
+    display: none
+}
+
+.wrap {
+    display: inline-flex;
+    margin-top: -10px;
+}
+
+.f {
+    margin-left: 3px;
+}
+
+.ltags {
+    color: #006f4a;
     font-size: 12px;
-    border-bottom: 1px solid #ddd;
-}
-
-.hfeedp {
-    font-size: 12px;
-}
-
-.labheads {
-	font-weight: 500;
-	font-size: 13px;
-	color: #006f4a;
-}
-
-.binfo {
-    font-size: 13px;
-    padding-left: 2px;
-}
-
-.heads {
-    font-size: 15px;
     font-weight: 500;
 }
 
-.subheads {
-    font-size: 13.5px;
-    font-weight: 400;
+#stname {
+    width: 400px;
+    color: #006f4a;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: -5px;
 }
 
-p {
-    line-height: 10%
+.profow {
+    color: #1f1f1f;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: -10px;
+    margin-left: 10px;
+}
+
+#address[disabled], #city[disabled], #country[disabled], #cell[disabled], #prov[disabled], #zip[disabled], #tel[disabled], #bday[disabled], #civil[disabled], #age[disabled], #citizen[disabled], #gender[disabled], #dname[disabled], #mname[disabled], #bname[disabled], #sname[disabled], #dwork[disabled], #mwork[disabled], #bwork[disabled], #swork[disabled], #dbday[disabled], #mbday[disabled], #bbday[disabled], #sbday[disabled], #failed[disabled] {
+    border-color: transparent;
+}
+
+#address {
+    width: 650px;
+    height: 20px;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(0, 0, 0, 0.3);
+    padding-left: 3px;
+    font-size: 12px;
+}
+
+#city, #country, #cell, #prov, #zip, #tel {
+    width: 314px;
+    height: 20px;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 3px;
+    font-size: 12px;
+}
+
+#bday, #civil, #age, #citizen, #gender, #dname, #mname, #bname, #sname, #dwork, #mwork, #bwork, #swork, #dbday, #mbday, #bbday, #sbday, #failed {
+    width: 203px;
+    height: 20px;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 3px;
+    font-size: 12px;
 }

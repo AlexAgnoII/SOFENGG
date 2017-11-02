@@ -417,9 +417,9 @@ public class StudentServlet extends HttpServlet {
 		int idnum;
 		
 		System.out.println("***************** ADD EXTERNAL INVOLVEMENTS ************************");
-		String inyear = request.getParameter("exyear");
-		String org = request.getParameter("exorgname");
-		String pos = request.getParameter("exorgpos");
+		String inyear = request.getParameter("inyear");
+		String org = request.getParameter("inorgname");
+		String pos = request.getParameter("inorgpos");
 		
 		Year year = Year.parse(inyear);
 		

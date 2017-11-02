@@ -70,13 +70,9 @@ public class UserServlet extends HttpServlet {
 		cookies = request.getCookies();
 		for (Cookie c : cookies) {
 			if(c.getName().equals("USER")) {
-				c.setValue(null);
-				c.setPath("/SOFENGG");
 				c.setMaxAge(0);
 				response.addCookie(c);
 			} else if(c.getName().equals("ADMIN")) {
-				c.setValue(null);
-				c.setPath("/SOFENGG");
 				c.setMaxAge(0);
 				response.addCookie(c);
 			}
@@ -130,7 +126,7 @@ public class UserServlet extends HttpServlet {
 			response.addCookie(theCookie);
 
 			//Redirect inside website
-			response.sendRedirect("UserHomePage.jsp");
+			//response.sendRedirect("UserHomePage.jsp");
 			//response.sendRedirect("viewByStudent"); //redirect to view profile.jsp
 			response.getWriter().write("PASS-LOGIN-STUDENT");
 			

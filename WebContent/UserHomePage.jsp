@@ -45,7 +45,7 @@
                 <div id="dp2">
                      <ul>
                         <li><a href="#!">Profile</a></li>
-                        <li><a href="#!">Annoucements</a></li>
+                        <li><a href="#!">Announcements</a></li>
                     </ul>
                 </div>
                 

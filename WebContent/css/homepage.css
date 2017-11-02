@@ -74,6 +74,10 @@ form {
     color: snow;
 }
 
+#loginb:hover, #signupb:hover {
+	opacity: 0.9;
+}
+
 #forgotpw {
     margin-top: 20px;
     font-size: 11px;

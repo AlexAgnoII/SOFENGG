@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.time.Year;
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+
+import beans_model.Post;
 import beans_model.Student;
 
 public class AdminService {
@@ -215,6 +218,42 @@ public class AdminService {
 		}
 		System.out.println();
 		return students;
+		
+	}
+
+
+	/**
+	 * Creates a new post
+	 * @param title - title of the post
+	 * @param body  - body of the post
+	 * @return the post that was created or NULL if no post was created.
+	 */
+	public static Post createPost(String title, String body, String id) {
+		System.out.println();
+		Post post = null;
+			
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`post` (`title`, `body`, `adminId`) " +
+													     "VALUES (?, ?, ?);");
+			st.setString(1, title);
+			st.setString(2, body);
+			st.setString(3, id);
+			ResultSet rs = st.executeQuery();
+			
+			System.out.println("Posted: " + title +"!"); 
+			post = new Post(title, body);
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return post;
 		
 	}
 }

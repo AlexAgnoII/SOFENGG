@@ -40,7 +40,7 @@
                 
                 <div id="dp2">
                      <ul>
-                        <li><a href="#!">View Students</a></li>
+                        <li><a href="ViewStudents.jsp">View Students</a></li>
                         <li><a class="modal-trigger" href="#newannounce"> New Announcement</a></li>
                     </ul>
                 </div>
@@ -50,17 +50,15 @@
         <div id="newannounce" class="modal">
             <div id="annhead">[NEW ANNOUNCEMENT]</div>
             <div id="annwrap">
-                <form>
-                   <p class="ltags">Title</p>
-                   <input type="text" id="anntitle">
-
-                   <p class="ltags">Description</p>
-                   <input type="text" id="anndesc">
-                </form>
-                <br>
-                <a class="waves-effect waves-light btn" id="ANpost">POST</a>
-                <br>
-
+                <form action="createPost" method="POST" id="createPostForm">
+					<p class="ltags">Title</p>
+					<input type="text" id="anntitle">
+					<p class="ltags">Description</p>
+					<input type="text" id="annbody">
+					<br>	
+					<a class="waves-effect waves-light btn" id="ANpost" type=submit>POST</a>
+					<br>
+           		</form>
             </div>
         </div>
     

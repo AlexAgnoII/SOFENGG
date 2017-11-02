@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans_model.Post;
 import beans_model.Student;
 import service.AdminService;
 import service.StudentService;
@@ -18,8 +19,8 @@ import service.StudentService;
  * Servlet implementation class AdminServlet
  */
 @WebServlet(urlPatterns = {"/search",
-		                   "/viewByAdmin"
-})
+		                   "/viewByAdmin",
+		                  "/createPost"})
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,10 +43,45 @@ public class AdminServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoPost  AdminServlet)");
 		switch(request.getServletPath()) {
+			case "/createPost":  createPost(request, response); break;
 			default: System.out.println("ERROR(Inside AdminServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
-	
+
+	/**
+	 * Creates new post by the admin.
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void createPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+		System.out.println("***************** Create Post ************************");
+		String title = request.getParameter("anntitle"),
+			   body  = request.getParameter("annbody"),
+			   id 	 = "";
+		
+
+		Cookie[]cookies = request.getCookies();
+		for (Cookie c : cookies) {
+			if(c.getName().equals("ADMIN") && c.getMaxAge() != 0) {
+				id = "" + c.getValue();
+			}
+		}
+		System.out.println("Posting: " + title);
+		
+		Post post = AdminService.createPost(title, body, id);
+
+		request.setAttribute("newPost", post);
+		request.getRequestDispatcher("AdminHomePage.jsp").forward(request, response);
+		
+//		request.setAttribute("studentList", studentList);
+//		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
+		
+		System.out.println("*******************************************");
+	}
+
+
 	/**
 	 * Searches for and retrieves the necessary information searched by admin.
 	 * @param request

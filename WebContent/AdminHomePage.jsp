@@ -8,6 +8,7 @@
         
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="script/AdminHomePage.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
         <link rel = "stylesheet" type="text/css" href="css/adminhomepage.css">
@@ -44,6 +45,7 @@
                         <li><a class="modal-trigger" href="#newannounce"> New Announcement</a></li>
                     </ul>
                 </div>
+        
             </div>
         </nav> 
         
@@ -55,14 +57,21 @@
 					<input type="text" id="anntitle" name = "anntitle">
 					<p class="ltags">Description</p>
 					<input type="text" id="annbody" name = "annbody">
-					<br>	
-					<button class="waves-effect waves-light btn" id="ANpost" type=submit>POST</button>
-					<br>
            		</form>
+					<br>	
+					<button class="waves-effect waves-light btn" id="ANpost" >POST</button>
+					<br>
             </div>
         </div>
     
         
+	    <div id="postFeed">
+	    	<div id="postContainer" class = "studentContainer">
+	            <p id="postTitle" name="postTitle">Title</p>
+	            <p id="postBody" name="postBody">Body</p>
+	        </div> 
+  		</div>
+  		
      <!--<div id="searchdiv">
             <form action="search" method="GET" id = "searchForm">
                 <input type="text" id="searchbar" name="searchbar" placeholder="search">

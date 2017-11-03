@@ -165,7 +165,39 @@ public class AdminService {
 		return student;
 	}
 	
-	
+
+
+	/**
+	 * Retrieves a list of post
+	 * @return List of posts made by the admins
+	 */
+	public static ArrayList<Post> getPosts() {
+		System.out.println();
+		ArrayList<Post> posts = new ArrayList<>();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.post order by postid desc;");
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				posts.add(new Post(rs.getString("title"), rs.getString("body")));
+				System.out.println("Post: " + rs.getString("title"));
+			} 
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return posts;
+		
+	}
+
 	
 	
 

@@ -242,7 +242,7 @@ public class AdminService {
 			st.setString(1, title);
 			st.setString(2, body);
 			st.setString(3, id);
-			ResultSet rs = st.executeQuery();
+			st.executeUpdate();
 			
 			System.out.println("Posted: " + title +"!"); 
 			post = new Post(title, body);

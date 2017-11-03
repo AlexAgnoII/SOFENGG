@@ -20,7 +20,8 @@ import service.StudentService;
  */
 @WebServlet(urlPatterns = {"/search",
 		                   "/viewByAdmin",
-		                  "/createPost"})
+		                  "/createPost",
+		                  "/getPosts"})
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +36,8 @@ public class AdminServlet extends HttpServlet {
 		System.out.println("I am called. (DoGet  AdminServlet)");
 		switch(request.getServletPath()) {
 	    	case "/viewByAdmin": retrieveStudentForAdmin(request, response); break;
-			case "/search":  search(request, response); break;
+			case "/search":  	 search(request, response); break;
+			case "/getPosts":    getPosts(request, response); break;
 	    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern doesn't match existing patterns.");
 		}
 	}
@@ -81,6 +83,29 @@ public class AdminServlet extends HttpServlet {
 		System.out.println("*******************************************");
 	}
 
+
+	/**
+	 * Retrieves the posts made by the admin
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @return List of Posts
+	 */
+	private ArrayList<Post> getPosts(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+		System.out.println("***************** UPDATING POST FEED ************************");
+		String name = request.getParameter("searchbar");
+		
+		ArrayList<Post> postList = AdminService.getPosts();
+		
+		System.out.println(postList);
+
+		System.out.println("*******************************************");
+		return postList;
+//		request.setAttribute("postList", postList);
+//		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
+		
+	}
 
 	/**
 	 * Searches for and retrieves the necessary information searched by admin.

@@ -37,7 +37,6 @@ function checkStringField(stringField, spanString) {
 	}
 }
 
-
 function stringIsDigit(value) {
 	return /^\d+$/.test(value)
 }
@@ -115,6 +114,9 @@ function checkPIConstraints() {
 	return ready;
 }
 
+/**
+ * Submits the PI form.
+ */
 function submitPIform() {
 	$.ajax({
 		  context: this,
@@ -133,6 +135,14 @@ function submitPIform() {
 	      	alert("Update Failed!")
 	      }
 	   });
+}
+
+
+/**
+ * Sends internal involvements form
+ */
+function sendIntInvForm() {
+	document.getElementById("intInv").submit();
 }
 
 
@@ -234,6 +244,7 @@ $(document).ready(function() {
 	})
 
 	$('#IIsave').click(function() {
+		sendIntInvForm();
 		$('#inyear').attr('disabled', 'disabled');
 		$('#inorg').attr('disabled', 'disabled');
 		$('#inpos').attr('disabled', 'disabled');

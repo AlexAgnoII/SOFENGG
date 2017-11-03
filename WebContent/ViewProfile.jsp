@@ -227,27 +227,28 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
-                        
-                        <div class="wrap">
-                            <div class="f">
-                                <p class="ltags">Year</p>
-                                <input type="text" id="inyear" name="inyear" value="2017" disabled>
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Event/Organization</p>
-                                <input type="text" id="inorg" name="inorg" value="Something" disabled>                         
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Position</p>
-                                <input type="text" id="inpos" name="inpos" value="Someone" disabled>
-                            </div>
-                        </div>
-                        
-                        <br><br>
-                        
-                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
+                        <form action = "addIntInv" method = "POST" id = "intInv">
+	                        <div class="wrap">
+	                            <div class="f">
+	                                <p class="ltags">Year</p>
+	                                <input type="text" id="inyear" name="inyear" value="2017" disabled>
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Event/Organization</p>
+	                                <input type="text" id="inorg" name="inorg" value="Something" disabled>                         
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Position</p>
+	                                <input type="text" id="inpos" name="inpos" value="Someone" disabled>
+	                            </div>
+	                        </div>
+	                        
+	                        <br><br>
+	                        
+	                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
+                        </form>
                     </div> <!-- end of div tag Internal Involvement --> 
                 
                 

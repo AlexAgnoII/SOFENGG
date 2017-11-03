@@ -34,17 +34,36 @@
         
         <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
-                <p>ID Number</p> <span id="idError"></span>
-                <input type="text" id="idNum" name="idNum" onblur="checkIdNumber(this, getElementById('idError'))"><br> 
+                <p>ID Number</p>
+                <input type="text" id="idNum" name="idNum" onblur="checkIdNumber(this, getElementById('idError'))">
                 
-                <p>Last Name</p> <span id="lastNameError"></span>
-                <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lastNameError'))"><br> 
+                <!-- idError 1: incorrect ID; not all digits -->
+                <span id="idError1"><br>Your ID number must only contain numbers.</span>
                 
-                <p>First Name</p> <span id="firstNameError"></span>
-                <input type="text" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('firstNameError'))"><br> 
+                <!-- idError 2: incorrect ID; more or less than 8 digits -->
+                <span id="idError2"><br>Your ID number is not 8 digits.</span>
                 
-                <p>Middle Name</p> <span id="middleNameError"></span>
-                <input type="text" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))"><br> 
+                <!-- idError 3: ID taken already -->
+                <span id="idError3"><br>This ID number has already been taken.</span>
+                
+                <p>Last Name</p> 
+                <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lastNameError'))">
+                
+                <!-- lastNameError -->
+                <span id="lastNameError"><br>Your last name only contains letters.</span>
+                
+                <p>First Name</p> 
+                <input type="text" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('firstNameError'))">
+                
+                <!-- firstNameError -->
+                <span id="firstNameError"><br>Your first name only contains letters.</span>
+                
+                <p>Middle Name</p> 
+                <input type="text" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))"> 
+                
+                <!-- middleNameError -->
+                <span id="middleNameError"><br>Your middle name only contains letters.</span>
+                
                 
                 <p>College</p>
                 
@@ -61,14 +80,25 @@
 	                </select>
                 </div>
                 
-                <p>Course</p> <span id="courseError" ></span>
-                <input type="text" id="courseName" name="course" onblur="checkStringField(this, getElementById('courseError'))"> <br>
+                <p>Course</p>
+                <input type="text" id="courseName" name="course" onblur="checkStringField(this, getElementById('courseError'))">
+                <br>
+                <!-- courseError -->
+                <span id="courseError"></span>
 
-                <p>Email Address</p> <span id="emailError"></span>
-                <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))"><br> 
+                <p>Email Address</p>
+                <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))"><br>
+                <!-- emailError: taken already -->
+                <span id="emailError"><br>This Email has already been taken.</span>
                 
-                <p>Password</p> <span id="passwordError"></span>
+                <p>Password</p>
                 <input type="password" id="password" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))"><br>
+                
+                <!-- passwordError 1: less than 8 characters -->
+                <span id="passwordError1"><br>Your password must be at least 8 characters.</span>
+                
+                <!-- passwordError 2: either no number or no special character -->
+                <span id="passwordError2"><br>Your password must be have at least 1 number and at least 1 special character.</span>
                 
                 <p>Re-enter Password</p>
                 <input type="password" id="password2" name="password2"><br><br> 

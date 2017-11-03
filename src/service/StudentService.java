@@ -489,7 +489,7 @@ public class StudentService {
 			
 			while(rs.next()) {
 				System.out.println("Get logged student id loop.");
-				idNum = rs.getInt("idnum");
+				idNum = rs.getInt("studentId");
 				
 			}
 			
@@ -526,7 +526,7 @@ public class StudentService {
 			stmt.setString(1, involvement.getiName());
 			stmt.setInt(2, involvement.getIdNum());
 			stmt.setString(3, involvement.getPosition());
-			stmt.setDate(4, Date.valueOf(year));
+			stmt.setString(4, year);
 			stmt.setInt(5, involvement.getInternal());
 
 			stmt.executeUpdate();

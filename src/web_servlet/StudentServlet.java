@@ -395,14 +395,19 @@ public class StudentServlet extends HttpServlet {
 		
 		idnum = StudentService.getStudentIDNum(Integer.parseInt(userCookie.getValue()));
 		
+		System.out.println(idnum);
+		
 		Involvement involvement = new Involvement(idnum, org, pos, year, 1);
 		
+		involvement.setIdNum(idnum);
 		involvement.setiName(org);
 		involvement.setAcadYear(year);
 		involvement.setPosition(pos);
 		involvement.setInternal(1);
 		
 		StudentService.addInvolvements(involvement);
+		
+		response.sendRedirect("viewByStudent");
 		
 		System.out.println("***********************************************************************************");
 		

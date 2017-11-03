@@ -27,7 +27,7 @@ import service.StudentService;
 				   		   "/updateAcadInfo1", //Student
 		                   "/add", //Student
 		                   "/viewByStudent",
-		                   "/view2edit", //Student
+		                  /* "/view2edit",*/ //Student
 		                   "/addIntInv", //Student
 		                   "/addExtInv"} //Student
 )
@@ -42,7 +42,7 @@ public class StudentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoGet data servlet)");
 		switch(request.getServletPath()) {
-		    case "/view2edit":
+		    //case "/view2edit":
 			case "/viewByStudent": retrieveStudent(request, response); break; 
 			default: System.out.println("ERROR(Inside dataServlet *doGet*): url pattern doesn't match existing patterns.");
 		}

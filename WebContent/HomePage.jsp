@@ -56,6 +56,6 @@
             <a id="forgotpw" href="#!">Forgot password?</a>
         </div>
         
-		<script src="script/HomePage.js"></script>
+		<script type="text/javascript" src="script/HomePage.js"></script>
 	</body>
 </html>

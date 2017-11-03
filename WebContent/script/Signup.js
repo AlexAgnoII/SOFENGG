@@ -295,7 +295,6 @@ $("document").ready(function(idNum, password, fName, lName) {
         select = document.getElementById('dropDownCollege');
         
         college = select.options[select.selectedIndex].value;
-        console.log(typeof(idNum))
         
         //Removes unecessary extra white spaces.
         idNum = removeExtraWhiteSpaces(idNum);

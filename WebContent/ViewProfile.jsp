@@ -78,37 +78,37 @@
                   <div class="collapsible-body">
                      <a class="waves-effect waves-light btn" id="PIedit">EDIT</a>
                       
-                     <form id="PIform">
-	                     <p class="ltags">Address</p> <span id="addressSpan"></span>
+                     <form id="PIform" action="updatePersonal" method="POST">
+	                     <p class="ltags">Address</p> 
 	                     <input type="text" id="address" name="address" value="${loggedUser.address}" disabled>
 	                     <!--  <p id="staddress" class="stinfo1">${loggedUser.address}</p> -->
 	
 	                     <div class="wrap">
 	                        <div class="f">
-	                            <p class="ltags">City</p>
+	                            <p class="ltags">City</p> <span id="citySpan"></span>
 	                            <input type="text" id="city" name="city" value="${loggedUser.city}" disabled>
 	                            <!-- <p id="stcity" class="stinfo2">${loggedUser.city}</p> -->
 	
-	                            <p class="ltags">Country</p>
+	                            <p class="ltags">Country</p> <span id="countrySpan"></span>
 	                            <input type="text" id="country" name="country" value="${loggedUser.country}" disabled>
 	                            <!-- <p id="stcountry" class="stinfo2">${loggedUser.country}</p> -->
 	
-	                            <p class="ltags">Mobile Number</p>
+	                            <p class="ltags">Mobile Number</p> <span id="cellSpan"></span>
 	                            <input type="text" id="cell" name="cell" value="${loggedUser.celNo}" disabled>
 	                            <!-- <p id="stmob" class="stinfo2">${loggedUser.celNo}</p> -->
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Province</p>
+	                            <p class="ltags">Province</p> <span id="provSpan"></span>
 	                            <input type="text" id="prov" name="prov"
 	                                    value="${loggedUser.province}" disabled>
 	                            <!-- <p id="stprov" class="stinfo2">${loggedUser.province}</p> -->
 	
-	                            <p class="ltags">Zip Code</p>	
+	                            <p class="ltags">Zip Code</p> <span id="zipSpan"></span>	
 	                            <input type="text" id="zip" name="zip" value="${loggedUser.zip}" disabled>
 	                            <!-- <p id="stzip" class="stinfo2">${loggedUser.zip}</p> -->
 	
-	                            <p class="ltags">Telephone Number</p>
+	                            <p class="ltags">Telephone Number</p> <span id="telSpan"></span>
 	                            <input type="text" id="tel" name="tel" value="${loggedUser.telNo}" disabled>
 	                            <!-- <p id="sttel" class="stinfo2">${loggedUser.telNo}</p> -->
 	                        </div>
@@ -128,23 +128,24 @@
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Age</p>
+	                            <p class="ltags">Age</p> 
 	                            <input type="text" id="age" name="age" value="${loggedUser.age}" disabled>
 	                            <!-- <p id="stage" class="stinfo3">${loggedUser.age}</p> -->
 	
-	                            <p class="ltags">Nationality</p>
+	                            <p class="ltags">Nationality</p> <span id="nationSpan"></span>
 	                            <input type="text" id="citizen" name="citizen" value="${loggedUser.citizen}" disabled>
 	                            <!-- <p id="stcitzen" class="stinfo3">${loggedUser.citizen}</p> -->
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Gender</p>
+	                            <p class="ltags">Gender</p> 
 	                            <input type="text" id="gender" name="gender" value="${loggedUser.gender}" disabled>
 	                            <!-- <p id="genderpi" class="stinfo3">${loggedUser.gender}</p> -->
 	                        </div>
 	                     </div>
 	                     
-                     </form>
+                     </form> <!-- PIForm -->
+                     
                      <br><br>  
                      <a class="waves-effect waves-light btn" id="PIsave">SAVE</a>  
                                                 

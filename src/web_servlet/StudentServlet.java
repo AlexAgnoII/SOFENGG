@@ -329,7 +329,7 @@ public class StudentServlet extends HttpServlet {
 	    
 	    System.out.println("***********************************************************************************");
 	    //After updating, go back to edit.
-	    response.sendRedirect("view2edit");
+	    //response.sendRedirect("view2edit");
 	}
 	
 	/**

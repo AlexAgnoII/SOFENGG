@@ -19,7 +19,7 @@ public class Involvement {
 		iName = name;
 		position = pos;
 		acadYear = year;
-		internal = internal;
+		this.internal = internal;
 	}
 	
 	public Involvement(int num, String name, String pos, Year year, int internal) {
@@ -27,7 +27,7 @@ public class Involvement {
 		iName = name;
 		position = pos;
 		acadYear = year;
-		internal = internal;
+		this.internal = internal;
 	}
 	
 

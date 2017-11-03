@@ -7,6 +7,14 @@ function sendPIForm() {
 }
 
 /**
+ * Sends internal involvements form
+ */
+
+function sendIntInvForm() {
+	document.getElementById("intInv").submit();
+}
+
+/**
  * 
  * @returns
  */
@@ -102,6 +110,7 @@ $(document).ready(function() {
 	})
 
 	$('#IIsave').click(function() {
+		sendIntInvForm();
 		$('#inyear').attr('disabled', 'disabled');
 		$('#inorg').attr('disabled', 'disabled');
 		$('#inpos').attr('disabled', 'disabled');

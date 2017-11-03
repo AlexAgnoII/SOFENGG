@@ -379,8 +379,8 @@ public class StudentServlet extends HttpServlet {
 		
 		System.out.println("***************** ADD INTERNAL INVOLVEMENTS ************************");
 		String inyear = request.getParameter("inyear");
-		String org = request.getParameter("inorgname");
-		String pos = request.getParameter("inorgpos");
+		String org = request.getParameter("inorg");
+		String pos = request.getParameter("inpos");
 		
 		Year year = Year.parse(inyear);
 		
@@ -396,6 +396,11 @@ public class StudentServlet extends HttpServlet {
 		idnum = StudentService.getStudentIDNum(Integer.parseInt(userCookie.getValue()));
 		
 		Involvement involvement = new Involvement(idnum, org, pos, year, 1);
+		
+		involvement.setiName(org);
+		involvement.setAcadYear(year);
+		involvement.setPosition(pos);
+		involvement.setInternal(1);
 		
 		StudentService.addInvolvements(involvement);
 		

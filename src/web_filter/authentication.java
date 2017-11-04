@@ -118,6 +118,7 @@ public class authentication implements Filter {
 									 chain.doFilter(request, response);
 								 }
 								 break; 
+			case "/ResetPassword.html":
 			case "/Signup.jsp":
 								 if(proceed) {
 									 System.out.println("Redirecting to UserHomePage.jsp..");

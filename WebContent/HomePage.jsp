@@ -53,7 +53,7 @@
             <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
             
             <br><br><br>
-            <a id="forgotpw" href="#!">Forgot password?</a>
+            <a id="forgotpw" href="ResetPassword.html">Forgot password?</a>
         </div>
         
 		<script type="text/javascript" src="script/HomePage.js"></script>

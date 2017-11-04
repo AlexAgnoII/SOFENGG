@@ -148,6 +148,7 @@
                      
                      <br><br>  
                      <a class="waves-effect waves-light btn" id="PIsave">SAVE</a>  
+                     <a class="waves-effect waves-light btn" id="PIcancel">CANCEL</a>  
                                                 
                   </div> <!-- end of div tag Personal Information -->
                 </li>
@@ -167,11 +168,10 @@
                                 <p class="ltags">Mother's Name</p>
                                 <input type="text" id="mname" name="mname" value="Mama bear" disabled>
                                 
-                                <p class="ltags">Sister/s' Name</p>
-                                <input type="text" id="bname" name="bname" value="Kuya Bear" disabled>
+                                <p class="ltags">Sibling/s' Name</p>
+                                <input type="text" id="sname" name="sname" value="Sibling Bear" disabled>
                                 
-                                <p class="ltags">Brother/s' Name</p>
-                                <input type="text" id="sname" name="sname" value="Ate bear" disabled>
+                       
                             </div>
                             
                             <div class="f">
@@ -180,10 +180,7 @@
                                 
                                 <p class="ltags">Occupation</p>
                                 <input type="text" id="mwork" name="mwok" value="Bear" disabled>
-
-                                <p class="ltags">Occupation</p>
-                                <input type="text" id="bwork" name="bwork" value="Bear" disabled>
-                                
+                             
                                 <p class="ltags">Occupation</p>
                                 <input type="text" id="swork" name="swork" value="Bear" disabled>
                             </div>
@@ -194,10 +191,7 @@
                                 
                                 <p class="ltags">Birthday</p>
                                 <input type="text" id="mbday" name="mbday" value="Tomorrow" disabled>
-                                
-                                <p class="ltags">Birthday</p>
-                                <input type="text" id="bbday" name="bbday" value="Tomorrow" disabled>
-                                
+                                                           
                                 <p class="ltags">Birthday</p>
                                 <input type="text" id="sbday" name="sbday" value="Tomorrow" disabled>
                             </div>
@@ -205,6 +199,7 @@
                         </div>
                         <br><br>
                         <a class="waves-effect waves-light btn" id="FBsave">SAVE</a>
+                        <a class="waves-effect waves-light btn" id="FBcancel">CANCEL</a>
                     </div> <!-- end of div tag Family Background -->    
                 </li>
                 
@@ -248,6 +243,7 @@
 	                        <br><br>
 	                        
 	                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
+	                        <a class="waves-effect waves-light btn" id="IIcancel">CANCEL</a>
                         </form>
                     </div> <!-- end of div tag Internal Involvement --> 
                 
@@ -280,6 +276,7 @@
 	                        <br><br>
 	                        
 	                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+	                        <a class="waves-effect waves-light btn" id="EIcancel">CANCEL</a>
                         </form>
                     </div> <!-- end of div tag External Involvement --> 
                 </li>

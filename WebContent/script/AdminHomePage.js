@@ -25,40 +25,22 @@ function loadPosts(){
         type: 'GET',
         cache:false,
         success: function(data){
-        	generatePosts(data, document.getElementById("postFeed"));
-        },
+        	var postFeed = document.getElementById("postFeed");
+        	
+        	// Remove all children
+        	while (postFeed.firstChild) {	
+        		postFeed.removeChild(postFeed.firstChild);
+        	}
+
+        	// Append html snippet 
+    	    $(postFeed).append(data);
+    	},
         error:function(){
             console.log("URL getPosts does not exist");
         }
     });
 }
 
-function generatePosts(data, postFeed){
-	while (postFeed.firstChild) {
-		postFeed.removeChild(postFeed.firstChild);
-	}
-	
-	for (var i = 0; i < data.size(); i++) {
-
-	    var container      = document.createElement("div");
-	    var title          = document.createElement("p");
-	    var body		   = document.createElement("p");
-	  
-	    // TODO add classes
-	//    $(title).addClass('postTitle');
-	    
-	    // TODO add id or attribute
-	//    tag.setAttribute('id', "tag");
-	//    inputTagUser.setAttribute('placeholder', 'Enter username');
-	    
-	    $(title).text(data.get(i).title);
-	    $(body).text(data.get(i).body);
-		
-	    $(container).append(title);
-	    $(container).append(body);
-	    $(postFeed).append(container);
-	}
-}
 
 /*******************************************/
 

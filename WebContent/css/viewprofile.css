@@ -266,7 +266,16 @@ nav ul a:hover {
     margin-left: 10px;
 }
 
-#address[disabled], #city[disabled], #country[disabled], #cell[disabled], #prov[disabled], #zip[disabled], #tel[disabled], #bday[disabled], #civil[disabled], #age[disabled], #citizen[disabled], #gender[disabled], #dname[disabled], #mname[disabled], #sname[disabled], #dwork[disabled], #mwork[disabled], #swork[disabled], #dbday[disabled], #mbday[disabled], #sbday[disabled], #failed[disabled], #inyear[disabled], #inorg[disabled], #inpos[disabled], #exyear[disabled], #exorg[disabled], #expos[disabled] {
+#address[disabled], #city[disabled], #country[disabled], 
+#cell[disabled], #prov[disabled], #zip[disabled], 
+#tel[disabled], #bday[disabled], #civil[disabled], 
+#age[disabled], #citizen[disabled], #gender[disabled], 
+#dname[disabled], #mname[disabled], #sname[disabled], 
+#dwork[disabled], #mwork[disabled], #swork[disabled], 
+#dbday[disabled], #mbday[disabled], #sbday[disabled], 
+#failed[disabled], #inyear[disabled], #inorg[disabled], 
+#inpos[disabled], #exyear[disabled], #exorg[disabled], 
+#expos[disabled] {
     border-color: transparent;
 }
 
@@ -301,7 +310,9 @@ nav ul a:hover {
     font-size: 12px;
 }
 
-#bday, #civil, #age, #citizen, #gender, #dname, #mname, #bname, #sname, #dwork, #mwork, #bwork, #swork, #dbday, #mbday, #bbday, #sbday, #failed, #inpos, #expos {
+#bday, #civil, #age, #citizen, #gender, #dname, 
+#mname, #sname, #dwork, #mwork, #swork, #dbday, 
+#mbday, #sbday, #failed, #inpos, #expos {
     width: 203px;
     height: 20px;
     color: black;

@@ -2,7 +2,6 @@ package web_servlet;
 
 import java.io.IOException;
 
-import java.io.PrintWriter;
 import java.time.Year;
 import java.util.ArrayList;
 
@@ -39,6 +38,7 @@ public class StudentServlet extends HttpServlet {
         super();
     }
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoGet data servlet)");
 		switch(request.getServletPath()) {
@@ -49,6 +49,7 @@ public class StudentServlet extends HttpServlet {
 	}
 
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoPost data servlet)");
 		switch(request.getServletPath()) {
@@ -395,7 +396,6 @@ public class StudentServlet extends HttpServlet {
 		
 		idnum = StudentService.getStudentIDNum(Integer.parseInt(userCookie.getValue()));
 		
-		System.out.println(idnum);
 		
 		Involvement involvement = new Involvement(idnum, org, pos, year, 1);
 		
@@ -427,11 +427,11 @@ public class StudentServlet extends HttpServlet {
 		int idnum;
 		
 		System.out.println("***************** ADD EXTERNAL INVOLVEMENTS ************************");
-		String inyear = request.getParameter("inyear");
-		String org = request.getParameter("inorgname");
-		String pos = request.getParameter("inorgpos");
+		String exyear = request.getParameter("exyear");
+		String org = request.getParameter("exorg");
+		String pos = request.getParameter("expos");
 		
-		Year year = Year.parse(inyear);
+		Year year = Year.parse(exyear);
 		
 		for (Cookie c: cookies) {
 			if(c.getName().equals("USER")) {
@@ -446,7 +446,15 @@ public class StudentServlet extends HttpServlet {
 		
 		Involvement involvement = new Involvement(idnum, org, pos, year, 0);
 		
+		involvement.setIdNum(idnum);
+		involvement.setiName(org);
+		involvement.setAcadYear(year);
+		involvement.setPosition(pos);
+		involvement.setInternal(0);
+		
 		StudentService.addInvolvements(involvement);
+		
+		response.sendRedirect("viewByStudent");
 		
 		System.out.println("***********************************************************************************");
 		

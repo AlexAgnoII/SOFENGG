@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.time.Year;
 import java.util.ArrayList;
 
-import javax.servlet.http.Cookie;
-
 import beans_model.Post;
 import beans_model.Student;
 

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import beans_model.Post;
 import beans_model.Student;
 import service.AdminService;
-import service.StudentService;
 
 /**
  * Servlet implementation class AdminServlet
@@ -33,6 +32,7 @@ public class AdminServlet extends HttpServlet {
         super();
     }
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoGet  AdminServlet)");
 		switch(request.getServletPath()) {
@@ -43,6 +43,7 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoPost  AdminServlet)");
 		switch(request.getServletPath()) {

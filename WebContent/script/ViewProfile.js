@@ -145,6 +145,14 @@ function sendIntInvForm() {
 	document.getElementById("intInv").submit();
 }
 
+/**
+ * Sends external involvements form
+ */
+function sendExtInvForm() {
+	console.log("Pasok");
+	document.getElementById("extInv").submit();
+}
+
 
 $(document).ready(function() {
 	$('.collapsible').collapsible();
@@ -263,6 +271,7 @@ $(document).ready(function() {
 	})
 
 	$('#EIsave').click(function() {
+		sendExtInvForm();
 		$('#exyear').attr('disabled', 'disabled');
 		$('#exorg').attr('disabled', 'disabled');
 		$('#expos').attr('disabled', 'disabled');

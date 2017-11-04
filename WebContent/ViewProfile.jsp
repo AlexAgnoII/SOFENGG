@@ -236,12 +236,12 @@
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" id="inorg" name="inorg" value="Something" disabled>                         
+	                                <input type="text" id="inorg" name="inorg" placeholder="Something" disabled>                         
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Position</p>
-	                                <input type="text" id="inpos" name="inpos" value="Someone" disabled>
+	                                <input type="text" id="inpos" name="inpos" placeholder="Someone" disabled>
 	                            </div>
 	                        </div>
 	                        
@@ -259,27 +259,28 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
-                        
-                        <div class="wrap">
-                            <div class="f">
-                                <p class="ltags">Year</p>
-                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Event/Organization</p>
-                                <input type="text" id="exorg" name="exorg" value="Something" disabled>                         
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Position</p>
-                                <input type="text" id="expos" name="expos" value="Someone" disabled>
-                            </div>
-                        </div>
-                        
-                        <br><br>
-                        
-                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+                        <form action = "addExtInv" method = "POST" id = "extInv">
+	                        <div class="wrap">
+	                            <div class="f">
+	                                <p class="ltags">Year</p>
+	                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Event/Organization</p>
+	                                <input type="text" id="exorg" name="exorg" placeholder="Something" disabled>                         
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Position</p>
+	                                <input type="text" id="expos" name="expos" placeholder="Someone" disabled>
+	                            </div>
+	                        </div>
+	                        
+	                        <br><br>
+	                        
+	                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+                        </form>
                     </div> <!-- end of div tag External Involvement --> 
                 </li>
                 

@@ -207,10 +207,7 @@ nav ul a:hover {
     line-height: 150%;
 }
 
-#PIedit, #PIsave, #PIcancel, 
-#FBedit, #FBsave, #FBcancel, 
-#IIedit, #IIsave, #IIcancel, 
-#EIedit, #EIsave, #EIcancel {
+#PIedit, #PIsave, #FBedit, #FBsave, #IIedit, #IIsave, #EIedit, #EIsave {
     margin-top: -15px;
     background-color: lightgrey;
     color: #1f1f1f;
@@ -227,13 +224,9 @@ nav ul a:hover {
     border-color: dimgrey;
 }
 
-#PIsave, #FBsave, #IIsave, #EIsave, 
-#PIcancel, #FBcancel, #IIcancel, #EIcancel {
-    display: none;
-    margin-right: 5px;
+#PIsave, #FBsave, #IIsave, #EIsave {
+    display: none
 }
-
-
 
 .wrap {
     display: inline-flex;
@@ -266,16 +259,7 @@ nav ul a:hover {
     margin-left: 10px;
 }
 
-#address[disabled], #city[disabled], #country[disabled], 
-#cell[disabled], #prov[disabled], #zip[disabled], 
-#tel[disabled], #bday[disabled], #civil[disabled], 
-#age[disabled], #citizen[disabled], #gender[disabled], 
-#dname[disabled], #mname[disabled], #sname[disabled], 
-#dwork[disabled], #mwork[disabled], #swork[disabled], 
-#dbday[disabled], #mbday[disabled], #sbday[disabled], 
-#failed[disabled], #inyear[disabled], #inorg[disabled], 
-#inpos[disabled], #exyear[disabled], #exorg[disabled], 
-#expos[disabled] {
+#address[disabled], #city[disabled], #country[disabled], #cell[disabled], #prov[disabled], #zip[disabled], #tel[disabled], #bday[disabled], #civil[disabled], #age[disabled], #citizen[disabled], #gender[disabled], #dname[disabled], #mname[disabled], #bname[disabled], #sname[disabled], #dwork[disabled], #mwork[disabled], #bwork[disabled], #swork[disabled], #dbday[disabled], #mbday[disabled], #bbday[disabled], #sbday[disabled], #failed[disabled], #inyear[disabled], #inorg[disabled], #inpos[disabled], #exyear[disabled], #exorg[disabled], #expos[disabled] {
     border-color: transparent;
 }
 
@@ -310,9 +294,7 @@ nav ul a:hover {
     font-size: 12px;
 }
 
-#bday, #civil, #age, #citizen, #gender, #dname, 
-#mname, #sname, #dwork, #mwork, #swork, #dbday, 
-#mbday, #sbday, #failed, #inpos, #expos {
+#bday, #civil, #age, #citizen, #gender, #dname, #mname, #bname, #sname, #dwork, #mwork, #bwork, #swork, #dbday, #mbday, #bbday, #sbday, #failed, #inpos, #expos {
     width: 203px;
     height: 20px;
     color: black;
@@ -342,4 +324,11 @@ nav ul a:hover {
     opacity: 0.9;
     padding-left: 3px;
     font-size: 12px;
+}
+
+#dig8, #dig11, #digonly, #invcode{
+    display: none;
+    font-size: 10px;
+    color: indianred;
+    font-style: italic;
 }

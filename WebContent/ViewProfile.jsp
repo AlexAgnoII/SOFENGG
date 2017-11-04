@@ -78,37 +78,37 @@
                   <div class="collapsible-body">
                      <a class="waves-effect waves-light btn" id="PIedit">EDIT</a>
                       
-                     <form id="PIform" action="updatePersonal" method="POST">
-	                     <p class="ltags">Address</p> 
+                     <form id="PIform">
+	                     <p class="ltags">Address</p> <span id="addressSpan"></span>
 	                     <input type="text" id="address" name="address" value="${loggedUser.address}" disabled>
 	                     <!--  <p id="staddress" class="stinfo1">${loggedUser.address}</p> -->
 	
 	                     <div class="wrap">
 	                        <div class="f">
-	                            <p class="ltags">City</p> <span id="citySpan"></span>
+	                            <p class="ltags">City</p>
 	                            <input type="text" id="city" name="city" value="${loggedUser.city}" disabled>
 	                            <!-- <p id="stcity" class="stinfo2">${loggedUser.city}</p> -->
 	
-	                            <p class="ltags">Country</p> <span id="countrySpan"></span>
+	                            <p class="ltags">Country</p>
 	                            <input type="text" id="country" name="country" value="${loggedUser.country}" disabled>
 	                            <!-- <p id="stcountry" class="stinfo2">${loggedUser.country}</p> -->
 	
-	                            <p class="ltags">Mobile Number</p> <span id="cellSpan"></span>
+	                            <p class="ltags">Mobile Number</p>
 	                            <input type="text" id="cell" name="cell" value="${loggedUser.celNo}" disabled>
 	                            <!-- <p id="stmob" class="stinfo2">${loggedUser.celNo}</p> -->
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Province</p> <span id="provSpan"></span>
+	                            <p class="ltags">Province</p>
 	                            <input type="text" id="prov" name="prov"
 	                                    value="${loggedUser.province}" disabled>
 	                            <!-- <p id="stprov" class="stinfo2">${loggedUser.province}</p> -->
 	
-	                            <p class="ltags">Zip Code</p> <span id="zipSpan"></span>	
+	                            <p class="ltags">Zip Code</p>	
 	                            <input type="text" id="zip" name="zip" value="${loggedUser.zip}" disabled>
 	                            <!-- <p id="stzip" class="stinfo2">${loggedUser.zip}</p> -->
 	
-	                            <p class="ltags">Telephone Number</p> <span id="telSpan"></span>
+	                            <p class="ltags">Telephone Number</p>
 	                            <input type="text" id="tel" name="tel" value="${loggedUser.telNo}" disabled>
 	                            <!-- <p id="sttel" class="stinfo2">${loggedUser.telNo}</p> -->
 	                        </div>
@@ -128,27 +128,25 @@
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Age</p> 
+	                            <p class="ltags">Age</p>
 	                            <input type="text" id="age" name="age" value="${loggedUser.age}" disabled>
 	                            <!-- <p id="stage" class="stinfo3">${loggedUser.age}</p> -->
 	
-	                            <p class="ltags">Nationality</p> <span id="nationSpan"></span>
+	                            <p class="ltags">Nationality</p>
 	                            <input type="text" id="citizen" name="citizen" value="${loggedUser.citizen}" disabled>
 	                            <!-- <p id="stcitzen" class="stinfo3">${loggedUser.citizen}</p> -->
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Gender</p> 
+	                            <p class="ltags">Gender</p>
 	                            <input type="text" id="gender" name="gender" value="${loggedUser.gender}" disabled>
 	                            <!-- <p id="genderpi" class="stinfo3">${loggedUser.gender}</p> -->
 	                        </div>
 	                     </div>
 	                     
-                     </form> <!-- PIForm -->
-                     
+                     </form>
                      <br><br>  
                      <a class="waves-effect waves-light btn" id="PIsave">SAVE</a>  
-                     <a class="waves-effect waves-light btn" id="PIcancel">CANCEL</a>  
                                                 
                   </div> <!-- end of div tag Personal Information -->
                 </li>
@@ -162,18 +160,17 @@
                         
                         <div class="wrap">
                             <div class="f">
-                            	<button id="addSibling">Add Sibling</button>
-                            	
-                                <p class="ltags">Father's Name</p> 
+                                <p class="ltags">Father's Name</p>
                                 <input type="text" id="dname" name="dname" value="Papa bear" disabled>
                                 
                                 <p class="ltags">Mother's Name</p>
                                 <input type="text" id="mname" name="mname" value="Mama bear" disabled>
                                 
-                                <p class="ltags">Sibling/s' Name</p>
-                                <input type="text" id="sname" name="sname" value="Sibling Bear" disabled>
+                                <p class="ltags">Sister/s' Name</p>
+                                <input type="text" id="bname" name="bname" value="Kuya Bear" disabled>
                                 
-                       
+                                <p class="ltags">Brother/s' Name</p>
+                                <input type="text" id="sname" name="sname" value="Ate bear" disabled>
                             </div>
                             
                             <div class="f">
@@ -182,7 +179,10 @@
                                 
                                 <p class="ltags">Occupation</p>
                                 <input type="text" id="mwork" name="mwok" value="Bear" disabled>
-                             
+
+                                <p class="ltags">Occupation</p>
+                                <input type="text" id="bwork" name="bwork" value="Bear" disabled>
+                                
                                 <p class="ltags">Occupation</p>
                                 <input type="text" id="swork" name="swork" value="Bear" disabled>
                             </div>
@@ -193,7 +193,10 @@
                                 
                                 <p class="ltags">Birthday</p>
                                 <input type="text" id="mbday" name="mbday" value="Tomorrow" disabled>
-                                                           
+                                
+                                <p class="ltags">Birthday</p>
+                                <input type="text" id="bbday" name="bbday" value="Tomorrow" disabled>
+                                
                                 <p class="ltags">Birthday</p>
                                 <input type="text" id="sbday" name="sbday" value="Tomorrow" disabled>
                             </div>
@@ -201,7 +204,6 @@
                         </div>
                         <br><br>
                         <a class="waves-effect waves-light btn" id="FBsave">SAVE</a>
-                        <a class="waves-effect waves-light btn" id="FBcancel">CANCEL</a>
                     </div> <!-- end of div tag Family Background -->    
                 </li>
                 
@@ -224,29 +226,27 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
-                        <form action = "addIntInv" method = "POST" id = "intInv">
-	                        <div class="wrap">
-	                            <div class="f">
-	                                <p class="ltags">Year</p>
-	                                <input type="text" id="inyear" name="inyear" value="2017" disabled>
-	                            </div>
-	                            
-	                            <div class="f">
-	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" id="inorg" name="inorg" placeholder="Something" disabled>                         
-	                            </div>
-	                            
-	                            <div class="f">
-	                                <p class="ltags">Position</p>
-	                                <input type="text" id="inpos" name="inpos" placeholder="Someone" disabled>
-	                            </div>
-	                        </div>
-	                        
-	                        <br><br>
-	                        
-	                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
-	                        <a class="waves-effect waves-light btn" id="IIcancel">CANCEL</a>
-                        </form>
+                        
+                        <div class="wrap">
+                            <div class="f">
+                                <p class="ltags">Year</p>
+                                <input type="text" id="inyear" name="inyear" value="2017" disabled>
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Event/Organization</p>
+                                <input type="text" id="inorg" name="inorg" value="Something" disabled>                         
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Position</p>
+                                <input type="text" id="inpos" name="inpos" value="Someone" disabled>
+                            </div>
+                        </div>
+                        
+                        <br><br>
+                        
+                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
                     </div> <!-- end of div tag Internal Involvement --> 
                 
                 
@@ -257,29 +257,27 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
-                        <form action = "addExtInv" method = "POST" id = "extInv">
-	                        <div class="wrap">
-	                            <div class="f">
-	                                <p class="ltags">Year</p>
-	                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
-	                            </div>
-	                            
-	                            <div class="f">
-	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" id="exorg" name="exorg" placeholder="Something" disabled>                         
-	                            </div>
-	                            
-	                            <div class="f">
-	                                <p class="ltags">Position</p>
-	                                <input type="text" id="expos" name="expos" placeholder="Someone" disabled>
-	                            </div>
-	                        </div>
-	                        
-	                        <br><br>
-	                        
-	                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
-	                        <a class="waves-effect waves-light btn" id="EIcancel">CANCEL</a>
-                        </form>
+                        
+                        <div class="wrap">
+                            <div class="f">
+                                <p class="ltags">Year</p>
+                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Event/Organization</p>
+                                <input type="text" id="exorg" name="exorg" value="Something" disabled>                         
+                            </div>
+                            
+                            <div class="f">
+                                <p class="ltags">Position</p>
+                                <input type="text" id="expos" name="expos" value="Someone" disabled>
+                            </div>
+                        </div>
+                        
+                        <br><br>
+                        
+                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
                     </div> <!-- end of div tag External Involvement --> 
                 </li>
                 
@@ -287,6 +285,10 @@
               </ul>
         </div>
         
+        <p id="dig8">ID Number should contain 8 digits only</p>
+        <p id="dig11">Cellphone Number should contain 11 digits only</p>
+        <p id="digonly">Telephone Number should contain digits only</p>
+        <p id="invcode">Please use the valid codes per level</p>
         
     <script type="text/javascript" src="script/ViewProfile.js"></script>
     </body>

@@ -70,4 +70,17 @@ $("document").ready(function() {
         }
 	});
 	
+
+    $(document).keyup(function (e) {
+		var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var activeElement = document.activeElement;
+        
+        // When enter key is pressed
+        if((activeElement.id == 'username' || activeElement.id == 'password') && (e.keyCode == 13))
+	        if(validateEmail(username) && password !== null && password !== "")
+	        	 submitTheForm(username, password);
+	        else enterValidInput();
+        
+    });
 });

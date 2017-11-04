@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,7 @@ import service.StudentService;
  * updating, deleting, adding data etc.
  */
 @WebServlet(urlPatterns = {"/updatePersonal", //Student
+		                   "/updateFamily",
 				   		   "/updateAcadInfo1", //Student
 		                   "/add", //Student
 		                   "/viewByStudent",
@@ -55,6 +57,7 @@ public class StudentServlet extends HttpServlet {
 			case "/add": addStudents(request, response); break;
 			case "/updatePersonal": updatePersonal(request, response); break;
 			case "/updateAcadInfo1": updateAcadInfo(request, response); break;
+			case "/updateFamily": updateFamily(request, response); break;
 			case "/addIntInv": addInternalInvolvements(request, response); break;
 			case "/addExtInv": addExternalInvolvements(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
@@ -241,6 +244,24 @@ public class StudentServlet extends HttpServlet {
 	    student.setCity(city);
     
 	    System.out.println("***********************************************************************************");
+	}
+	
+	/**
+	 * Updates the family siblings/mother/father of a student.
+	 * @param request
+	 * @param response
+	 */
+	private void updateFamily(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		Enumeration<String> e = request.getParameterNames();
+		
+		System.out.println();
+		while (e.hasMoreElements()) {
+		    String param = e.nextElement();
+		    String value = request.getParameter(param);
+		    System.out.println(param + ": " + value);
+		}
+		
 	}
 	
 	/**

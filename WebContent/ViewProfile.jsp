@@ -157,50 +157,47 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
+                        <a class="waves-effect waves-light btn" id="addSibling">ADD SIBLING</a>
                         
                         <div class="wrap">
-                            <div class="f">
-                                <p class="ltags">Father's Name</p>
-                                <input type="text" id="dname" name="dname" value="Papa bear" disabled>
-                                
-                                <p class="ltags">Mother's Name</p>
-                                <input type="text" id="mname" name="mname" value="Mama bear" disabled>
-                                
-                                <p class="ltags">Sister/s' Name</p>
-                                <input type="text" id="bname" name="bname" value="Kuya Bear" disabled>
-                                
-                                <p class="ltags">Brother/s' Name</p>
-                                <input type="text" id="sname" name="sname" value="Ate bear" disabled>
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Occupation</p>
-                                <input type="text" id="dwork" name="dwork" value="Bear" disabled>
-                                
-                                <p class="ltags">Occupation</p>
-                                <input type="text" id="mwork" name="mwok" value="Bear" disabled>
+	                        <form action="updateFamily" method="POST" id="FBform">
+	                            <div class="f">
+	                                <p class="ltags">Father's Name</p>
+	                                <input type="text" id="dname" name="dname" value="Papa bear" disabled>
+	                                
+	                                <p class="ltags">Mother's Name</p>
+	                                <input type="text" id="mname" name="mname" value="Mama bear" disabled>
 
-                                <p class="ltags">Occupation</p>
-                                <input type="text" id="bwork" name="bwork" value="Bear" disabled>
-                                
-                                <p class="ltags">Occupation</p>
-                                <input type="text" id="swork" name="swork" value="Bear" disabled>
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Birthday</p>
-                                <input type="text" id="dbday" name="bday" value="Tomorrow" disabled>
-                                
-                                <p class="ltags">Birthday</p>
-                                <input type="text" id="mbday" name="mbday" value="Tomorrow" disabled>
-                                
-                                <p class="ltags">Birthday</p>
-                                <input type="text" id="bbday" name="bbday" value="Tomorrow" disabled>
-                                
-                                <p class="ltags">Birthday</p>
-                                <input type="text" id="sbday" name="sbday" value="Tomorrow" disabled>
-                            </div>
-                        
+	                                <p class="ltags">Sibling/s' Name</p>
+	                                <input type="text" class="sname" name="name-0" value="Ate bear" disabled>
+	                                
+	                                <p id="FBname"></p>
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Occupation</p>
+	                                <input type="text" id="dwork" name="dwork" value="Bear" disabled>
+	                                
+	                                <p class="ltags">Occupation</p>
+	                                <input type="text" id="mwork" name="mwok" value="Bear" disabled>
+	                                
+	                                <p class="ltags">Occupation</p>
+	                                <input type="text" class="swork" name="work-0" value="Bear" disabled>
+	                                <p id="FBocc"></p>
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Birthday</p>
+	                                <input type="text" id="dbday" name="bday" value="Tomorrow" disabled>
+	                                
+	                                <p class="ltags">Birthday</p>
+	                                <input type="text" id="mbday" name="mbday" value="Tomorrow" disabled>
+
+	                                <p class="ltags">Birthday</p>
+	                                <input type="text" class="sbday" name="bday-0" value="Tomorrow" disabled>
+	                                <p id="FBbday"></p>
+	                            </div>
+	                        </form>
                         </div>
                         <br><br>
                         <a class="waves-effect waves-light btn" id="FBsave">SAVE</a>

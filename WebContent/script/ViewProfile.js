@@ -1,3 +1,5 @@
+//Global variables 
+var FBctr; //counting for the names of the dynamic family members field.
 
 /**
  * Checks if string field input is valid.
@@ -141,7 +143,23 @@ function submitPIform() {
  * Submits the family background form.
  */
 function submitFBform() {
-	
+	$.ajax({
+		  context: this,
+	      url:'updateFamily',
+	      data:$("form#FBform").serialize(),
+	      type:'POST',
+	      cache:false,
+	      success: function(data){
+	    	  
+	      	//Front end stating success
+	    	 alert("Update successful!")
+	      	
+	      },
+	      error:function(){
+	      	console.log("error searchResult.js");
+	      	alert("Update Failed!")
+	      }
+	   });
 }
 
 
@@ -160,9 +178,19 @@ function sendExtInvForm() {
 	document.getElementById("extInv").submit();
 }
 
+/**
+ * gets the Family background count.
+ * @returns a number in string.
+ */
+function getFBcount(value) {
+	var number = value.split("-");
+	console.log(number[1]);
+	return number[1];
+	
+}
 
 $(document).ready(function() {
-
+	FBctr = getFBcount($("form input").last().attr("name"));
 	$('.collapsible').collapsible();
 
 	$('#PIedit').click(function() {
@@ -217,16 +245,13 @@ $(document).ready(function() {
 	$('#FBedit').click(function() {
 		$('#dname').removeAttr('disabled');
 		$('#mname').removeAttr('disabled');
-		$('#bname').removeAttr('disabled');
-		$('#sname').removeAttr('disabled');
+		$('.sname').removeAttr('disabled');
 		$('#dwork').removeAttr('disabled');
 		$('#mwork').removeAttr('disabled');
-		$('#bwork').removeAttr('disabled');
-		$('#swork').removeAttr('disabled');
+		$('.swork').removeAttr('disabled');
 		$('#dbday').removeAttr('disabled');
 		$('#mbday').removeAttr('disabled');
-		$('#bbday').removeAttr('disabled');
-		$('#sbday').removeAttr('disabled');
+		$('.sbday').removeAttr('disabled');
 
 		$('#FBedit').hide();
 		$('#FBsave').show();
@@ -234,22 +259,28 @@ $(document).ready(function() {
 	})
 
 	$('#FBsave').click(function() {
-		$('#dname').attr('disabled', 'disabled');
-		$('#mname').attr('disabled', 'disabled');
-		$('#bname').attr('disabled', 'disabled');
-		$('#sname').attr('disabled', 'disabled');
-		$('#dwork').attr('disabled', 'disabled');
-		$('#mwork').attr('disabled', 'disabled');
-		$('#bwork').attr('disabled', 'disabled');
-		$('#swork').attr('disabled', 'disabled');
-		$('#dbday').attr('disabled', 'disabled');
-		$('#mbday').attr('disabled', 'disabled');
-		$('#bbday').attr('disabled', 'disabled');
-		$('#sbday').attr('disabled', 'disabled');
-
-		$('#FBedit').show();
-		$('#FBsave').hide();
-		$('#FBcancel').hide();
+		//No constraints violated.
+		if(true) { //Gonna add constraint checker soon.
+			submitFBform();
+			
+			$('#dname').attr('disabled', 'disabled');
+			$('#mname').attr('disabled', 'disabled');
+			$('.sname').attr('disabled', 'disabled');
+			$('#dwork').attr('disabled', 'disabled');
+			$('#mwork').attr('disabled', 'disabled');
+			$('.swork').attr('disabled', 'disabled');
+			$('#dbday').attr('disabled', 'disabled');
+			$('#mbday').attr('disabled', 'disabled');
+			$('.sbday').attr('disabled', 'disabled');
+	
+			$('#FBedit').show();
+			$('#FBsave').hide();
+			$('#FBcancel').hide();	
+		}
+		//Constraints violdated.
+		else {
+			
+		}
 	})
 
 	$('#IIedit').click(function() {
@@ -358,9 +389,30 @@ $(document).ready(function() {
 	});
 	//---------------------------
 	
-	//FB bur here
-	$('#dname').blur(function() {
-	
+	//add sibling
+	$("#addSibling").click(function() {
+		var nameInput = $("<input></input>");
+		var occInput = $("<input></input>");
+		var bdayInput = $("<input></input>");
+		FBctr++;
+		console.log("New input field name: " + FBctr);
+		
+		nameInput.attr("class", "sname");
+		nameInput.attr("name", "name-" +FBctr);
+		
+		occInput.attr("class", "swork");
+		occInput.attr("name", "work-"+FBctr);
+		
+		bdayInput.attr("class", "sbday");
+		bdayInput.attr("name", "bday-"+FBctr);
+		
+		console.log(nameInput);
+		console.log(occInput);
+		console.log(bdayInput);
+		
+		$("#FBname").after(nameInput);
+		$("#FBocc").after(occInput);
+		$("#FBbday").after(bdayInput);
 	});
 	
 	//-----------------------------------------

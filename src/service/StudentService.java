@@ -546,40 +546,32 @@ public class StudentService {
 			
 			PreparedStatement stmt =  conn.prepareStatement(
 					"UPDATE student "
-				  + "SET firstName=?, " //1
-					  + "middleName=?,"//2
-					  + "lastName=?, "//3
-					  + "celNo=?, "//4
-					  + "telNo=?, "//5
-					  + "email=?, "//6
-					  + "address=?, " //7
-					  + "birthday=?, " //8
-					  + "civil=?, " //9
-					  + "citizen=?, " //10
-					  + "gender=?, " //11
-					  + "country=?, " //12
-					  + "province=?, " //13 
-					  + "zip=?, " //14
-					  + "city=? "//15
-				 + "WHERE id=?" //16					
+				  + "SET celNo=?, "//1
+					  + "telNo=?, "//2
+					  + "address=?, " //3
+					  + "birthday=?, " //4
+					  + "civil=?, " //5
+					  + "citizen=?, " //6
+					  + "gender=?, " //7
+					  + "country=?, " //8
+					  + "province=?, " //9 
+					  + "zip=?, " //10
+					  + "city=? "//11
+				 + "WHERE id=?" //12					
 					);
 			
-			stmt.setString(1, student.getFirstName());
-			stmt.setString(2, student.getMiddleName());
-			stmt.setString(3, student.getLastName());
-			stmt.setString(4, student.getCelNo());
-			stmt.setString(5, student.getTelNo());
-			stmt.setString(6, student.getEmail());
-			stmt.setString(7, student.getAddress());
-			stmt.setDate(8, student.getTempDate());
-			stmt.setString(9, student.getCivil());
-			stmt.setString(10, student.getCitizen());
-			stmt.setString(11, student.getGender());
-			stmt.setString(12,student.getCountry());
-			stmt.setString(13, student.getProvince());
-			stmt.setInt(14, student.getZip());
-			stmt.setString(15,  student.getCity());
-			stmt.setInt(16, student.getDbID());
+			stmt.setString(1, student.getCelNo());
+			stmt.setString(2, student.getTelNo());
+			stmt.setString(3, student.getAddress());
+			stmt.setDate(4, student.getTempDate());
+			stmt.setString(5, student.getCivil());
+			stmt.setString(6, student.getCitizen());
+			stmt.setString(7, student.getGender());
+			stmt.setString(8,student.getCountry());
+			stmt.setString(9, student.getProvince());
+			stmt.setInt(10, student.getZip());
+			stmt.setString(11,  student.getCity());
+			stmt.setInt(12, student.getDbID());
 			
 			stmt.executeUpdate();
 			

@@ -199,21 +199,13 @@ public class StudentServlet extends HttpServlet {
 	private void updatePersonal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		System.out.println("****************************UPDATE PERSONAL*******************************************");
 		Student student = new Student();
-		Relative father = new Relative();
-		Relative mother = new Relative();
-		Relative sister = new Relative();
-		Relative brother = new Relative();
 		
 		String dbID = (String) request.getSession().getAttribute("UN");
-		String lastName = request.getParameter("lastName");
-		String firstName = request.getParameter("firstName");
-		String middleName = request.getParameter("middleName");
 		String address = request.getParameter("address");
 		String city = request.getParameter("city");
 		String prov = request.getParameter("prov");
 		String country = request.getParameter("country");
 		int zip = Integer.parseInt(request.getParameter("zip"));
-		String email = request.getParameter("email");
 		String cell = request.getParameter("cell");
 		String tel = request.getParameter("tel");
 		String bday = request.getParameter("bday");
@@ -224,15 +216,11 @@ public class StudentServlet extends HttpServlet {
 		student.setSQLDate(bday);
 		
 		System.out.println("SessionID: " + dbID);
-		System.out.println("lastname: " + lastName);
-		System.out.println("firstname: " + firstName);
-		System.out.println("middleName: " + middleName);
 		System.out.println("address: " + address);
 		System.out.println("City: " + city);
 		System.out.println("prov:  " + prov);
 		System.out.println("country: " + country);
 		System.out.println("zip: " + zip);
-		System.out.println("email: " + email);
 		System.out.println("cell: " + cell);
 		System.out.println("tel: " + tel);
 		System.out.println("bday: " + student.getTempDate());
@@ -241,12 +229,8 @@ public class StudentServlet extends HttpServlet {
 		System.out.println("gender: " + gender);
 		
 	    student.setDbID(Integer.parseInt(dbID));
-	    student.setFirstName(firstName);
-	    student.setMiddleName(middleName);
-		student.setLastName(lastName);
 		student.setCelNo(cell);
 		student.setTelNo(tel);
-	    student.setEmail(email);
 	    student.setAddress(address);
 		student.setCivil(civil);
 		student.setCitizen(citizen);
@@ -255,81 +239,8 @@ public class StudentServlet extends HttpServlet {
 		student.setProvince(prov);
 		student.setZip(zip);
 	    student.setCity(city);
-//	    
-//	    String fatherName = request.getParameter("dname");
-//		String fatherOccu = request.getParameter("dprof");
-//		String fatherBday = request.getParameter("dbday");
-//		
-//		father.setSQLDate(fatherBday);
-//		
-//		System.out.println("Session ID: " + dbID);
-//		System.out.println("Father name: " + fatherName);
-//		System.out.println("Father Occupation: " + fatherOccu);
-//		System.out.println("Father Bday: " + father.getTempDate());
-//		
-//		father.setStudentId(Integer.parseInt(dbID));
-//		father.setName(fatherName);
-//		father.setType("father");
-//		father.setOccupation(fatherOccu);
-//		
-//		String motherName = request.getParameter("mname");
-//		String motherOccu = request.getParameter("mprof");
-//		String motherBday = request.getParameter("mbday");
-//		
-//		mother.setSQLDate(motherBday);
-//		
-//		System.out.println("Session ID: " + dbID);
-//		System.out.println("Mother name: " + motherName);
-//		System.out.println("Mother Occupation: " + motherOccu);
-//		System.out.println("Mother Bday: " + mother.getTempDate());
-//		
-//		mother.setStudentId(Integer.parseInt(dbID));
-//		mother.setName(motherName);
-//		mother.setType("mother");
-//		mother.setOccupation(motherOccu);
-//		
-//		String sisterName = request.getParameter("sname");
-//		String sisterOccu = request.getParameter("sprof");
-//		String sisterBday = request.getParameter("sbday");
-//		
-//		sister.setSQLDate(sisterBday);
-//		
-//		System.out.println("Session ID: " + dbID);
-//		System.out.println("Sister name: " + sisterName);
-//		System.out.println("Sister Occupation: " + sisterOccu);
-//		System.out.println("Sister Bday: " + sister.getTempDate());
-//		
-//		sister.setStudentId(Integer.parseInt(dbID));
-//		sister.setName(sisterName);
-//		sister.setType("sister");
-//		sister.setOccupation(sisterOccu);
-//		
-//		String brotherName = request.getParameter("bname");
-//		String brotherOccu = request.getParameter("bprof");
-//		String brotherBday = request.getParameter("bbday");
-//		
-//		brother.setSQLDate(brotherBday);
-//		
-//		System.out.println("Session ID: " + dbID);
-//		System.out.println("Brother name: " + brotherName);
-//		System.out.println("Brother Occupation: " + brotherOccu);
-//		System.out.println("Brother Bday: " + brother.getTempDate());
-//		
-//		brother.setStudentId(Integer.parseInt(dbID));
-//		brother.setName(brotherName);
-//		brother.setType("brother");
-//		brother.setOccupation(brotherOccu);
-	    
-	    StudentService.updateStudent(student);
-	    
-//	    UserService.updateRelatives(father);
-//	    UserService.updateRelatives(mother);
-//	    UserService.updateRelatives(sister);
-//	    UserService.updateRelatives(brother);
-	    
+    
 	    System.out.println("***********************************************************************************");
-	    //After updating, go back to edit.
-	    //response.sendRedirect("view2edit");
 	}
 	
 	/**

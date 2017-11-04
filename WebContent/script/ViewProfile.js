@@ -70,8 +70,7 @@ function checkDigitField(inputField, spanString) {
  */
 function checkPIConstraints() {
 	var ready = true; //ready variable to see if its ok to submit form.
-	var stringFieldArray = [$("#address"), $('#city'), $('#country'),
-							$('#prov'), $('#citizen')];
+	var stringFieldArray = [$("#address"), $('#city'), $('#country'), $('#prov'), $('#citizen')];
 	var integerFieldArray = [$('#cell'),$('#tel'),  $('#zip')];
 	var value;
 	
@@ -137,6 +136,14 @@ function submitPIform() {
 	   });
 }
 
+/**
+ * 
+ * Submits the family background form.
+ */
+function submitFBform() {
+	
+}
+
 
 /**
  * Sends internal involvements form
@@ -147,6 +154,7 @@ function sendIntInvForm() {
 
 
 $(document).ready(function() {
+
 	$('.collapsible').collapsible();
 
 	$('#PIedit').click(function() {
@@ -160,7 +168,6 @@ $(document).ready(function() {
 		$('#tel').removeAttr('disabled');
 		$('#bday').removeAttr('disabled');
 		$('#civil').removeAttr('disabled');
-		//$('#age').removeAttr('disabled');
 		$('#citizen').removeAttr('disabled');
 		$('#gender').removeAttr('disabled');
 
@@ -334,6 +341,13 @@ $(document).ready(function() {
 		checkDigitField(telField, telSpan);
 	});
 	//---------------------------
+	
+	//FB bur here
+	$('#dname').blur(function() {
+	
+	});
+	
+	//-----------------------------------------
 
 });
 

@@ -27,7 +27,6 @@ import service.StudentService;
 				   		   "/updateAcadInfo1", //Student
 		                   "/add", //Student
 		                   "/viewByStudent",
-		                  /* "/view2edit",*/ //Student
 		                   "/addIntInv", //Student
 		                   "/addExtInv"} //Student
 )

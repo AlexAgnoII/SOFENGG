@@ -161,7 +161,9 @@
                         
                         <div class="wrap">
                             <div class="f">
-                                <p class="ltags">Father's Name</p>
+                            	<button id="addSibling">Add Sibling</button>
+                            	
+                                <p class="ltags">Father's Name</p> 
                                 <input type="text" id="dname" name="dname" value="Papa bear" disabled>
                                 
                                 <p class="ltags">Mother's Name</p>

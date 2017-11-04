@@ -3,11 +3,11 @@ package beans_model;
 public class Post {
 
 	private String title,
-				   description;
+				   body;
 
-	public Post(String title, String description) {
+	public Post(String title, String body) {
 		super();
-		this.description = description;
+		this.body = body;
 		this.title = title;
 	}
 
@@ -19,17 +19,17 @@ public class Post {
 		this.title = title;
 	}
 
-	public String getDescripti() {
-		return description;
+	public String getBody() {
+		return body;
 	}
 
-	public void setDescripti(String description) {
-		this.description = description;
+	public void setBody(String body) {
+		this.body = body;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [title=" + title + ", descripti=" + description + "]";
+		return "Post [title=" + title + ", body=" + body + "]";
 	}
 
 }

@@ -148,6 +148,7 @@
                      
                      <br><br>  
                      <a class="waves-effect waves-light btn" id="PIsave">SAVE</a>  
+                     <a class="waves-effect waves-light btn" id="PIcancel">CANCEL</a>  
                                                 
                   </div> <!-- end of div tag Personal Information -->
                 </li>
@@ -169,11 +170,10 @@
                                 <p class="ltags">Mother's Name</p>
                                 <input type="text" id="mname" name="mname" value="Mama bear" disabled>
                                 
-                                <p class="ltags">Sister/s' Name</p>
-                                <input type="text" id="bname" name="bname" value="Kuya Bear" disabled>
+                                <p class="ltags">Sibling/s' Name</p>
+                                <input type="text" id="sname" name="sname" value="Sibling Bear" disabled>
                                 
-                                <p class="ltags">Brother/s' Name</p>
-                                <input type="text" id="sname" name="sname" value="Ate bear" disabled>
+                       
                             </div>
                             
                             <div class="f">
@@ -182,10 +182,7 @@
                                 
                                 <p class="ltags">Occupation</p>
                                 <input type="text" id="mwork" name="mwok" value="Bear" disabled>
-
-                                <p class="ltags">Occupation</p>
-                                <input type="text" id="bwork" name="bwork" value="Bear" disabled>
-                                
+                             
                                 <p class="ltags">Occupation</p>
                                 <input type="text" id="swork" name="swork" value="Bear" disabled>
                             </div>
@@ -196,10 +193,7 @@
                                 
                                 <p class="ltags">Birthday</p>
                                 <input type="text" id="mbday" name="mbday" value="Tomorrow" disabled>
-                                
-                                <p class="ltags">Birthday</p>
-                                <input type="text" id="bbday" name="bbday" value="Tomorrow" disabled>
-                                
+                                                           
                                 <p class="ltags">Birthday</p>
                                 <input type="text" id="sbday" name="sbday" value="Tomorrow" disabled>
                             </div>
@@ -207,6 +201,7 @@
                         </div>
                         <br><br>
                         <a class="waves-effect waves-light btn" id="FBsave">SAVE</a>
+                        <a class="waves-effect waves-light btn" id="FBcancel">CANCEL</a>
                     </div> <!-- end of div tag Family Background -->    
                 </li>
                 
@@ -238,18 +233,19 @@
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" id="inorg" name="inorg" value="Something" disabled>                         
+	                                <input type="text" id="inorg" name="inorg" placeholder="Something" disabled>                         
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Position</p>
-	                                <input type="text" id="inpos" name="inpos" value="Someone" disabled>
+	                                <input type="text" id="inpos" name="inpos" placeholder="Someone" disabled>
 	                            </div>
 	                        </div>
 	                        
 	                        <br><br>
 	                        
 	                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
+	                        <a class="waves-effect waves-light btn" id="IIcancel">CANCEL</a>
                         </form>
                     </div> <!-- end of div tag Internal Involvement --> 
                 
@@ -261,27 +257,29 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
-                        
-                        <div class="wrap">
-                            <div class="f">
-                                <p class="ltags">Year</p>
-                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Event/Organization</p>
-                                <input type="text" id="exorg" name="exorg" value="Something" disabled>                         
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Position</p>
-                                <input type="text" id="expos" name="expos" value="Someone" disabled>
-                            </div>
-                        </div>
-                        
-                        <br><br>
-                        
-                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+                        <form action = "addExtInv" method = "POST" id = "extInv">
+	                        <div class="wrap">
+	                            <div class="f">
+	                                <p class="ltags">Year</p>
+	                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Event/Organization</p>
+	                                <input type="text" id="exorg" name="exorg" placeholder="Something" disabled>                         
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Position</p>
+	                                <input type="text" id="expos" name="expos" placeholder="Someone" disabled>
+	                            </div>
+	                        </div>
+	                        
+	                        <br><br>
+	                        
+	                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+	                        <a class="waves-effect waves-light btn" id="EIcancel">CANCEL</a>
+                        </form>
                     </div> <!-- end of div tag External Involvement --> 
                 </li>
                 

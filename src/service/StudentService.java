@@ -1,14 +1,9 @@
 package service;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 
@@ -489,7 +484,7 @@ public class StudentService {
 			
 			while(rs.next()) {
 				System.out.println("Get logged student id loop.");
-				idNum = rs.getInt("idnum");
+				idNum = rs.getInt("studentId");
 				
 			}
 			
@@ -512,8 +507,6 @@ public class StudentService {
 	public static void addInvolvements(Involvement involvement) {
 		System.out.println();
 		
-		String year = involvement.getAcadYear().toString();
-		
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
@@ -526,7 +519,7 @@ public class StudentService {
 			stmt.setString(1, involvement.getiName());
 			stmt.setInt(2, involvement.getIdNum());
 			stmt.setString(3, involvement.getPosition());
-			stmt.setDate(4, Date.valueOf(year));
+			stmt.setString(4, involvement.getAcadYear().toString());
 			stmt.setInt(5, involvement.getInternal());
 
 			stmt.executeUpdate();

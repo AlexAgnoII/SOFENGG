@@ -7,6 +7,7 @@ html {
 #top, #bottom, #left, #right {
 	background: #006f4a;
 	position: fixed;
+	z-index: 100;
 	}
 	#left, #right {
 		top: 0; bottom: 0;
@@ -30,7 +31,9 @@ nav {
     border-style: solid;
     border-width: 10px;
     border-color: #006f4a;
+    border-right-color: transparent;
     border-bottom: 0px;
+    top: 0;
 }
 
 #wrapper {
@@ -253,4 +256,30 @@ nav ul a:hover {
     margin-top: 6px;
     color: snow;
     float: right;   
+}
+
+#postFeed{
+    position: relative;
+    margin: 0 auto;
+    top: 90px;
+    width: 750px;
+}
+
+.postContainer{
+	border: 1px solid #ddd;
+    margin: .5rem 0 1rem 0;
+}
+
+.postTitle{
+	margin-top: 0;
+	padding-left:2%;
+    font-weight: 350;
+    font-size: 15px;
+    color: snow;
+    background-color: #006f4a;
+}
+
+.postBody{
+	padding-left: 4%;
+	font-size   : 12.5px;
 }

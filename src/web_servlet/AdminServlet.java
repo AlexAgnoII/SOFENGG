@@ -1,6 +1,7 @@
 package web_servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import beans_model.Post;
 import beans_model.Student;
 import service.AdminService;
-import service.StudentService;
 
 /**
  * Servlet implementation class AdminServlet
@@ -32,6 +32,7 @@ public class AdminServlet extends HttpServlet {
         super();
     }
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoGet  AdminServlet)");
 		switch(request.getServletPath()) {
@@ -42,6 +43,7 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoPost  AdminServlet)");
 		switch(request.getServletPath()) {
@@ -59,8 +61,8 @@ public class AdminServlet extends HttpServlet {
 	 */
 	private void createPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** Create Post ************************");
-		String title = request.getParameter("anntitle"),
-			   body  = request.getParameter("annbody"),
+		String title = request.getParameter("title"),
+			   body  = request.getParameter("body"),
 			   id 	 = "";
 		
 
@@ -92,16 +94,26 @@ public class AdminServlet extends HttpServlet {
 	 * @throws IOException
 	 * @return List of Posts
 	 */
-	private ArrayList<Post> getPosts(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+	private void getPosts(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** UPDATING POST FEED ************************");
-		String name = request.getParameter("searchbar");
-		
+
 		ArrayList<Post> postList = AdminService.getPosts();
+		String name 			 = request.getParameter("searchbar"),
+			   htmlPostList 	 = "";
+		
+		for(Post p : postList){
+			htmlPostList += "<div class = 'postContainer'>" +
+					        "   <p class = 'postTitle'>" + p.getTitle() + "</p>" +
+					        "   <p class = 'postBody' >" + p.getBody() + "</p>" + 
+					        "</div> ";
+		}
 		
 		System.out.println(postList);
-
+	    response.setContentType("text/html"); 
+	    response.setCharacterEncoding("UTF-8"); 
+	    response.getWriter().write(htmlPostList);       
 		System.out.println("*******************************************");
-		return postList;
+		
 //		request.setAttribute("postList", postList);
 //		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
 		

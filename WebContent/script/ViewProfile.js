@@ -152,13 +152,20 @@ function sendIntInvForm() {
 	document.getElementById("intInv").submit();
 }
 
+/**
+ * Sends external involvements form
+ */
+function sendExtInvForm() {
+	console.log("Pasok");
+	document.getElementById("extInv").submit();
+}
+
 
 $(document).ready(function() {
 
 	$('.collapsible').collapsible();
 
 	$('#PIedit').click(function() {
-		alert("AHH");
 		$('#address').removeAttr('disabled');
 		$('#city').removeAttr('disabled');
 		$('#country').removeAttr('disabled');
@@ -173,6 +180,7 @@ $(document).ready(function() {
 
 		$('#PIedit').hide();
 		$('#PIsave').show();
+		$('#PIcancel').show();
 	})
 
 	$('#PIsave').click(function() {
@@ -197,6 +205,7 @@ $(document).ready(function() {
 
 			$('#PIedit').show();
 			$('#PIsave').hide();
+			$('#PIcancel').hide();
 		}
 		
 		else {
@@ -221,6 +230,7 @@ $(document).ready(function() {
 
 		$('#FBedit').hide();
 		$('#FBsave').show();
+		$('#FBcancel').show();
 	})
 
 	$('#FBsave').click(function() {
@@ -239,6 +249,7 @@ $(document).ready(function() {
 
 		$('#FBedit').show();
 		$('#FBsave').hide();
+		$('#FBcancel').hide();
 	})
 
 	$('#IIedit').click(function() {
@@ -248,6 +259,7 @@ $(document).ready(function() {
 
 		$('#IIedit').hide();
 		$('#IIsave').show();
+		$('#IIcancel').show();
 	})
 
 	$('#IIsave').click(function() {
@@ -258,6 +270,7 @@ $(document).ready(function() {
 
 		$('#IIedit').show();
 		$('#IIsave').hide();
+		$('#IIcancel').hide();
 	})
 
 	$('#EIedit').click(function() {
@@ -267,15 +280,18 @@ $(document).ready(function() {
 
 		$('#EIedit').hide();
 		$('#EIsave').show();
+		$('#EIcancel').show();
 	})
 
 	$('#EIsave').click(function() {
+		sendExtInvForm();
 		$('#exyear').attr('disabled', 'disabled');
 		$('#exorg').attr('disabled', 'disabled');
 		$('#expos').attr('disabled', 'disabled');
 
 		$('#EIedit').show();
 		$('#EIsave').hide();
+		$('#EIcancel').hide();
 	})
 	
 	$('#notif').click(function(event) {

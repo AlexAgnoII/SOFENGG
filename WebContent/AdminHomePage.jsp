@@ -49,6 +49,9 @@
             </div>
         </nav> 
         
+	    <div id="postFeed">
+  		</div>
+  		
         <div id="newannounce" class="modal">
             <div id="annhead">[NEW ANNOUNCEMENT]</div>
             <div id="annwrap">
@@ -64,14 +67,6 @@
             </div>
         </div>
     
-        
-	    <div id="postFeed">
-	    	<div id="postContainer" class = "studentContainer">
-	            <p id="postTitle" name="postTitle">Title</p>
-	            <p id="postBody" name="postBody">Body</p>
-	        </div> 
-  		</div>
-  		
      <!--<div id="searchdiv">
             <form action="search" method="GET" id = "searchForm">
                 <input type="text" id="searchbar" name="searchbar" placeholder="search">

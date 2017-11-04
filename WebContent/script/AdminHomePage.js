@@ -53,6 +53,8 @@ function submitTheForm(title, body) {
         type:'POST',
         cache:false,
         success: function(data){
+        	document.getElementById('materialize-modal-overlay-1').style.display = 'none';
+        	document.getElementById('newannounce').style.display = 'none';
         	loadPosts();
         },
         error:function(){

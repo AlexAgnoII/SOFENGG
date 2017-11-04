@@ -70,13 +70,13 @@ public class UserServlet extends HttpServlet {
 		cookies = request.getCookies();
 		for (Cookie c : cookies) {
 			if(c.getName().equals("USER")) {
-				c.setValue(null);
-				c.setPath("/SOFENGG");
+//				c.setValue(null);
+//				c.setPath("/SOFENGG");
 				c.setMaxAge(0);
 				response.addCookie(c);
 			} else if(c.getName().equals("ADMIN")) {
-				c.setValue(null);
-				c.setPath("/SOFENGG");
+//				c.setValue(null);
+//				c.setPath("/SOFENGG");
 				c.setMaxAge(0);
 				response.addCookie(c);
 			}

@@ -261,7 +261,10 @@ $(document).ready(function() {
 	$('#FBsave').click(function() {
 		//No constraints violated.
 		if(true) { //Gonna add constraint checker soon.
-			submitFBform();
+			
+		   //submit the forms
+		   submitFBform();
+			
 			
 			$('#dname').attr('disabled', 'disabled');
 			$('#mname').attr('disabled', 'disabled');
@@ -279,7 +282,7 @@ $(document).ready(function() {
 		}
 		//Constraints violdated.
 		else {
-			
+			alert("Something went wrong sir!")
 		}
 	})
 
@@ -389,6 +392,7 @@ $(document).ready(function() {
 	});
 	//---------------------------
 	
+	
 	//add sibling
 	$("#addSibling").click(function() {
 		var nameInput = $("<input></input>");
@@ -398,13 +402,16 @@ $(document).ready(function() {
 		console.log("New input field name: " + FBctr);
 		
 		nameInput.attr("class", "sname");
-		nameInput.attr("name", "name-" +FBctr);
+		nameInput.attr("type", "text");
+		nameInput.attr("name", "sibname-" +FBctr);
 		
 		occInput.attr("class", "swork");
-		occInput.attr("name", "work-"+FBctr);
+		occInput.attr("type", "text");
+		occInput.attr("name", "sibwork-"+FBctr);
 		
 		bdayInput.attr("class", "sbday");
-		bdayInput.attr("name", "bday-"+FBctr);
+		bdayInput.attr("type", "date");
+		bdayInput.attr("name", "sibbday-"+FBctr);
 		
 		console.log(nameInput);
 		console.log(occInput);

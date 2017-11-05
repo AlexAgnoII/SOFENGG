@@ -253,15 +253,80 @@ public class StudentServlet extends HttpServlet {
 	 */
 	private void updateFamily(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		System.out.println("********************************UPDATE FAMILY******************************");
+		Relative dadRel = new Relative();
+		Relative momRel = new Relative();
+		Relative sibRel = new Relative();
+		
 		Enumeration<String> e = request.getParameterNames();
+		ArrayList<String> siblingList = new ArrayList<String>();
+		Cookie[] cookies = request.getCookies();
+		Cookie userCookie = null;
+		for (Cookie c: cookies) {
+			if(c.getName().equals("USER")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
+			}
+		}
+		
+		
+		System.out.println("User ID: " + userCookie.getValue());
 		
 		System.out.println();
+		int dadCtr = 1;
+		int momCtr = 1;
 		while (e.hasMoreElements()) {
 		    String param = e.nextElement();
 		    String value = request.getParameter(param);
 		    System.out.println(param + ": " + value);
+		    //Sibling
+		    if(param.matches(".*dad.*")) {
+		    	if(dadCtr == 1) {
+		    		dadRel.setType("Father");
+		    		dadCtr = 0;
+		    	}
+
+		    	if(param.equals("dadname")) {
+		    		dadRel.setName(value);
+		    	}
+		    	else if (param.equals("dadwork")) {
+		    		dadRel.setOccupation(value);
+		    	}
+		    	else {
+		    		//Birthday
+		    	}
+		    	
+		    }
+		    
+		    else if(param.matches(".*mom.*")){
+		    	if(momCtr == 1) {
+		    		momRel.setType("Mother");
+		    		momCtr = 0;
+		    	}
+
+		    	if(param.equals("momname")) {
+		    		momRel.setName(value);
+		    	}
+		    	else if (param.equals("momWork")) {
+		    		momRel.setOccupation(value);
+		    	}
+		    	else {
+		    		//birthday
+		    	}
+		    }
+		    
+		    else siblingList.add(param);
 		}
-		
+	    
+	    System.out.println(dadRel.getName());
+	    System.out.println(momRel.getName());
+	    
+	    for(String r : siblingList) {
+	    	System.out.println(r);
+	    }
+		System.out.println("***************************************************************************");
 	}
 	
 	/**
@@ -388,6 +453,5 @@ public class StudentServlet extends HttpServlet {
 		response.sendRedirect("viewByStudent");
 		
 		System.out.println("***********************************************************************************");
-		
 	}
 }

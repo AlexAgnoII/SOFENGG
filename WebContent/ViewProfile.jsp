@@ -163,38 +163,38 @@
 	                        <form action="updateFamily" method="POST" id="FBform">
 	                            <div class="f">
 	                                <p class="ltags">Father's Name</p>
-	                                <input type="text" id="dname" name="dname" value="Papa bear" disabled>
+	                                <input type="text" id="dname" name="dadname" value="Papa bear" disabled>
 	                                
 	                                <p class="ltags">Mother's Name</p>
-	                                <input type="text" id="mname" name="mname" value="Mama bear" disabled>
+	                                <input type="text" id="mname" name="momname" value="Mama bear" disabled>
 
 	                                <p class="ltags">Sibling/s' Name</p>
-	                                <input type="text" class="sname" name="name-0" value="Ate bear" disabled>
+	                                <input type="text" class="sname" name="sibname-0" value="Ate bear" disabled>
 	                                
 	                                <p id="FBname"></p>
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" id="dwork" name="dwork" value="Bear" disabled>
+	                                <input type="text" id="dwork" name="dadwork" value="Bear" disabled>
 	                                
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" id="mwork" name="mwok" value="Bear" disabled>
+	                                <input type="text" id="mwork" name="momwok" value="Bear" disabled>
 	                                
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" class="swork" name="work-0" value="Bear" disabled>
+	                                <input type="text" class="swork" name="sibwork-0" value="Bear" disabled>
 	                                <p id="FBocc"></p>
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Birthday</p>
-	                                <input type="text" id="dbday" name="bday" value="Tomorrow" disabled>
+	                                <input type="date" id="dbday" name="dadbday" value="Tomorrow" disabled>
 	                                
 	                                <p class="ltags">Birthday</p>
-	                                <input type="text" id="mbday" name="mbday" value="Tomorrow" disabled>
+	                                <input type="date" id="mbday" name="mombday" value="Tomorrow" disabled>
 
 	                                <p class="ltags">Birthday</p>
-	                                <input type="text" class="sbday" name="bday-0" value="Tomorrow" disabled>
+	                                <input type="date" class="sbday" name="sibbday-0" value="Tomorrow" disabled>
 	                                <p id="FBbday"></p>
 	                            </div>
 	                        </form>

@@ -182,13 +182,13 @@
 		                            <div class="f">
 		                                <p class="ltags">Birthday</p>
 	
-		                                <input type="date" class="ipfield threeip" name="dadBday" value="Tomorrow" disabled>
+		                                <input type="date" class="ipfield threeip" name="dadBday" value="12/01/2000" disabled>
 		                                
 		                                <p class="ltags">Birthday</p>
-		                                <input type="date" class="ipfield threeip" name="momBday" value="Tomorrow" disabled>
+		                                <input type="date" class="ipfield threeip" name="momBday" value="12/01/2000" disabled>
 	
 		                                <p class="ltags">Birthday</p>
-		                                <input type="date" class="sbday ipfield threeip" name="sibBday-0" value="Tomorrow" disabled>
+		                                <input type="date" class="sbday ipfield threeip" name="sibBday-0" value="12/01/2000" disabled>
 		                                <p id="FBbday"></p>
 		                            </div>
 		                   

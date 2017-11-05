@@ -84,7 +84,7 @@
                 <input type="text" id="courseName" name="course" onblur="checkStringField(this, getElementById('courseError'))">
                 <br>
                 <!-- courseError -->
-                <span id="courseError"></span>
+                <span id="courseError">Please write your full course name</span>
 
                 <p>Email Address</p>
                 <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))"><br>

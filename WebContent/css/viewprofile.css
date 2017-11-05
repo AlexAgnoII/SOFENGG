@@ -26,7 +26,7 @@ nav {
     margin-top: -10px;
     height: 66px;
     background-color: white;
-    box-shadow: 0 5px 5px -10px #333;
+    box-shadow: 0px 0px;
     z-index: 5;
     border-style: solid;
     border-width: 10px;
@@ -36,7 +36,7 @@ nav {
 }
 
 #wrapper {
-    width: 150px;
+    width: 100%;
     display: inline-flex;
 }
 
@@ -44,7 +44,7 @@ nav {
     margin: 0 auto;
     padding: 4px;
     background-color: transparent; 
-    width: 180px;
+    width: 155px;
     height: 56px;
     position: fixed;
     box-shadow: 0px 0px;
@@ -190,7 +190,8 @@ nav ul a:hover {
     position: relative;
     margin: 0 auto;
     top: 90px;
-    width: 750px;
+    width: 55%;
+    min-width: 275px; /* add */
 }
 
 .collapsible-header {
@@ -207,7 +208,11 @@ nav ul a:hover {
     line-height: 150%;
 }
 
-#PIedit, #PIsave, #FBedit, #FBsave, #IIedit, #IIsave, #EIedit, #EIsave {
+#PIedit, #PIsave, #PIcancel, 
+#FBedit, #FBsave, #FBcancel, 
+#IIedit, #IIsave, #IIcancel, 
+#EIedit, #EIsave, #EIcancel, 
+#addSibling {
     margin-top: -15px;
     background-color: lightgrey;
     color: #1f1f1f;
@@ -224,17 +229,21 @@ nav ul a:hover {
     border-color: dimgrey;
 }
 
-#PIsave, #FBsave, #IIsave, #EIsave {
-    display: none
+#PIsave, #FBsave, #IIsave, #EIsave, 
+#PIcancel, #FBcancel, #IIcancel, #EIcancel, #addSibling {
+    display: none;
+    margin-right: 5px;
 }
 
 .wrap {
+    width: 100%;
     display: inline-flex;
     margin-top: -10px;
 }
 
 .f {
     margin-left: 3px;
+    width: 100%; 
 }
 
 .ltags {
@@ -244,7 +253,7 @@ nav ul a:hover {
 }
 
 #stname {
-    width: 400px;
+    width: 60%;
     color: #006f4a;
     font-size: 15px;
     font-weight: 500;
@@ -259,38 +268,13 @@ nav ul a:hover {
     margin-left: 10px;
 }
 
-#address[disabled], 
-#city[disabled], 
-#country[disabled], 
-#cell[disabled], 
-#prov[disabled], 
-#zip[disabled], 
-#tel[disabled], 
-#bday[disabled], 
-#civil[disabled], 
-#age[disabled], 
-#citizen[disabled], 
-#gender[disabled], 
-#dname[disabled], 
-#mname[disabled], 
-div.f input.sname[disabled], 
-#dwork[disabled], 
-#mwork[disabled], 
-div.f input.swork[disabled], 
-#dbday[disabled], 
-#mbday[disabled], 
-div.f input.sbday[disabled], 
-#failed[disabled], 
-#inyear[disabled], 
-#inorg[disabled], 
-#inpos[disabled], 
-#exyear[disabled], 
-#exorg[disabled], 
-#expos[disabled] {
-    border-color: transparent;
+form#PIform input.ipfield[disabled], form#FBform input.ipfield[disabled], 
+form#intInv input.ipfield[disabled],
+form#extInv input.ipfield[disabled]{
+    border-color: transparent;  
 }
 
-#address {
+form#PIform input.fullip, form#PIform input.halfip {
     width: 650px;
     height: 20px;
     color: black;
@@ -305,40 +289,14 @@ div.f input.sbday[disabled],
     font-size: 12px;
 }
 
-#city, #country, #cell, #prov, #zip, #tel, #inorg, #exorg {
+form#PIform input.halfip {
     width: 314px;
-    height: 20px;
-    color: black;
-    margin-top: -10px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    border-radius: 2px;
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: rgba(0, 0, 0, 0.3);
-    opacity: 0.9;
-    padding-left: 3px;
-    font-size: 12px;
 }
 
-                                                  
-#civil, 
-#age, 
-#citizen, 
-#gender, 
-#dname, 
-#mname, 
-div.f input.sname, /*Here's how the .class css would work. (sname)*/
-#bday, 
-#dwork, 
-#mwork, 
-div.f input.swork, /*Here's how the .class css would work. (sname)*/
-#dbday, 
-#mbday, 
-div.f input.sbday, /*Here's how the .class css would work. (sname)*/
-#failed, 
-#inpos, 
-#expos {
+form#PIform input.threeip, 
+form#FBform input.threeip,
+form#intInv input.threeip,
+form#extInv input.threeip{
     width: 203px;
     height: 20px;
     color: black;
@@ -351,10 +309,15 @@ div.f input.sbday, /*Here's how the .class css would work. (sname)*/
     border-color: rgba(0, 0, 0, 0.3);
     opacity: 0.9;
     padding-left: 3px;
-    font-size: 12px;
+    font-size: 12px; 
 }
 
-#inyear, #exyear {
+form#intInv input.threeip,
+form#extInv input.threeip {
+    width: 270px;
+}
+
+form#extInv input.threeipyear {
     width: 90px;
     height: 20px;
     color: black;

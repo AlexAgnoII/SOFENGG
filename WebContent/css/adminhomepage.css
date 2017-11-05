@@ -159,7 +159,7 @@ nav ul a:hover {
 
 /* others below */
 
-#newannounce {
+#newannounce, #updateAnnounce{
     width: 600px;
 }
 
@@ -183,7 +183,7 @@ nav ul a:hover {
     font-weight: 500;
 }
 
-#anntitle, #annbody {
+#anntitle, #annbody, #updateTitle, #updateBody{
     width: 350px;
     height: 25px;
     color: black;
@@ -203,7 +203,7 @@ nav ul a:hover {
     height: 80px; 
 }
 
-#ANpost {
+#ANpost, #ANupdate {
     margin-top: -15px;
     background-color: #006f4a;
     color: snow;
@@ -270,16 +270,28 @@ nav ul a:hover {
     margin: .5rem 0 1rem 0;
 }
 
-.postTitle{
+.pchead{
 	margin-top: 0;
+    background-color: #006f4a;
+}
+
+.postTitle{
+	display: inline-block;
 	padding-left:2%;
     font-weight: 350;
     font-size: 15px;
     color: snow;
-    background-color: #006f4a;
 }
 
 .postBody{
 	padding-left: 4%;
 	font-size   : 12.5px;
+}
+
+.editbtn {
+	color: snow;
+	font-size: 12px;
+	float: right;
+	margin-right: 2%;
+	margin-top: 2%;
 }

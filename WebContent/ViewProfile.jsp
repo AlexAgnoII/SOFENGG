@@ -78,39 +78,31 @@
                   <div class="collapsible-body">
                      <a class="waves-effect waves-light btn" id="PIedit">EDIT</a>
                       
-                     <form id="PIform">
-	                     <p class="ltags">Address</p> <span id="addressSpan"></span>
-	                     <input type="text" id="address" name="address" value="${loggedUser.address}" disabled>
-	                     <!--  <p id="staddress" class="stinfo1">${loggedUser.address}</p> -->
+                     <form id="PIform" action="updatePersonal" method="POST">
+	                     <p class="ltags">Address</p> 
+	                     <input type="text" class="ipfield fullip" name="address" value="${loggedUser.address}" disabled>
 	
 	                     <div class="wrap">
 	                        <div class="f">
-	                            <p class="ltags">City</p>
-	                            <input type="text" id="city" name="city" value="${loggedUser.city}" disabled>
-	                            <!-- <p id="stcity" class="stinfo2">${loggedUser.city}</p> -->
+	                            <p class="ltags">City</p> <span id="citySpan"></span>
+	                            <input type="text" class="ipfield halfip" name="city" value="${loggedUser.city}" disabled>
 	
-	                            <p class="ltags">Country</p>
-	                            <input type="text" id="country" name="country" value="${loggedUser.country}" disabled>
-	                            <!-- <p id="stcountry" class="stinfo2">${loggedUser.country}</p> -->
+	                            <p class="ltags">Country</p> <span id="countrySpan"></span>
+	                            <input type="text" class="ipfield halfip" value="${loggedUser.country}" disabled>
 	
-	                            <p class="ltags">Mobile Number</p>
-	                            <input type="text" id="cell" name="cell" value="${loggedUser.celNo}" disabled>
-	                            <!-- <p id="stmob" class="stinfo2">${loggedUser.celNo}</p> -->
+	                            <p class="ltags">Mobile Number</p> <span id="cellSpan"></span>
+	                            <input type="text" class="ipfield halfip" name="cell" value="${loggedUser.celNo}" disabled>
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Province</p>
-	                            <input type="text" id="prov" name="prov"
-	                                    value="${loggedUser.province}" disabled>
-	                            <!-- <p id="stprov" class="stinfo2">${loggedUser.province}</p> -->
+	                            <p class="ltags">Province</p> <span id="provSpan"></span>
+	                            <input type="text" class="ipfield halfip" name="prov" value="${loggedUser.province}" disabled>
 	
-	                            <p class="ltags">Zip Code</p>	
-	                            <input type="text" id="zip" name="zip" value="${loggedUser.zip}" disabled>
-	                            <!-- <p id="stzip" class="stinfo2">${loggedUser.zip}</p> -->
+	                            <p class="ltags">Zip Code</p> <span id="zipSpan"></span>	
+	                            <input type="text" class="ipfield halfip" name="zip" value="${loggedUser.zip}" disabled>
 	
-	                            <p class="ltags">Telephone Number</p>
-	                            <input type="text" id="tel" name="tel" value="${loggedUser.telNo}" disabled>
-	                            <!-- <p id="sttel" class="stinfo2">${loggedUser.telNo}</p> -->
+	                            <p class="ltags">Telephone Number</p> <span id="telSpan"></span>
+	                            <input type="text" class="ipfield halfip" name="tel" value="${loggedUser.telNo}" disabled>
 	                        </div>
 	                    </div>
 	
@@ -119,34 +111,33 @@
 	                    <div class="wrap">
 	                        <div class="f">
 	                            <p class="ltags">Birthday</p>
-	                            <input type="date" id="bday" name="bday" value="${loggedUser.birthday}" disabled>
-	                            <!-- <p id="stbday" class="stinfo3">${loggedUser.birthday}</p> -->
+	                            <input type="date" class = "ipfield threeip" name="bday" value="${loggedUser.birthday}" disabled>
 	
 	                            <p class="ltags">Civil Status</p>
-	                            <input type="text" id="civil" name="civil" value="${loggedUser.civil}" disabled>
-	                            <!-- <p id="stciv" class="stinfo3">${loggedUser.civil}</p> -->
+	                            <input type="text" class="ipfield threeip" name="civil" value="${loggedUser.civil}" disabled>
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Age</p>
-	                            <input type="text" id="age" name="age" value="${loggedUser.age}" disabled>
-	                            <!-- <p id="stage" class="stinfo3">${loggedUser.age}</p> -->
+	                            <p class="ltags">Age</p> 
+	                            <input type="text" class="ipfield threeip" name="age" value="${loggedUser.age}" disabled>
 	
-	                            <p class="ltags">Nationality</p>
-	                            <input type="text" id="citizen" name="citizen" value="${loggedUser.citizen}" disabled>
-	                            <!-- <p id="stcitzen" class="stinfo3">${loggedUser.citizen}</p> -->
+	                            <p class="ltags">Nationality</p> <span id="nationSpan"></span>
+	                            <input type="text" class="ipfield threeip" name="citizen" value="${loggedUser.citizen}" disabled>
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Gender</p>
-	                            <input type="text" id="gender" name="gender" value="${loggedUser.gender}" disabled>
-	                            <!-- <p id="genderpi" class="stinfo3">${loggedUser.gender}</p> -->
+	                            <p class="ltags">Gender</p> 
+	                            <input type="text" class="ipfield threeip" name="gender" value="${loggedUser.gender}" disabled>
+
 	                        </div>
 	                     </div>
 	                     
-                     </form>
-                     <br><br>  
+                     </form> <!-- PIForm -->
+                     
+                     <br><br> 
+                     <a class="waves-effect waves-light btn" id="PIcancel">CANCEL</a>
                      <a class="waves-effect waves-light btn" id="PIsave">SAVE</a>  
+                       
                                                 
                   </div> <!-- end of div tag Personal Information -->
                 </li>
@@ -155,51 +146,56 @@
                 <li>
                     <div class="collapsible-header"><i class="large material-icons">group</i>FAMILY BACKGROUND</div>
                     
-                    <div class="collapsible-body">
+                    <div class="collapsible-body FB">
                         <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
                         <a class="waves-effect waves-light btn" id="addSibling">ADD SIBLING</a>
-                        
+                        <br>
+                        <form action="updateFamily" method="POST" id="FBform">
                         <div class="wrap">
-	                        <form action="updateFamily" method="POST" id="FBform">
+	                        
 	                            <div class="f">
 	                                <p class="ltags">Father's Name</p>
-	                                <input type="text" id="dname" name="dadname" value="Papa bear" disabled>
+	                                <input type="text" class="ipfield threeip" name="dadname" value="Papa bear" disabled>
 	                                
 	                                <p class="ltags">Mother's Name</p>
-	                                <input type="text" id="mname" name="momname" value="Mama bear" disabled>
+	                                <input type="text" class="ipfield threeip" name="momname" value="Mama bear" disabled>
 
 	                                <p class="ltags">Sibling/s' Name</p>
-	                                <input type="text" class="sname" name="sibname-0" value="Ate bear" disabled>
+	                                <input type="text" class="sname ipfield threeip" name="sibname-0" value="Ate bear" disabled>
 	                                
 	                                <p id="FBname"></p>
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" id="dwork" name="dadwork" value="Bear" disabled>
+	                                <input type="text" class="ipfield threeip" name="dadwork" value="Bear" disabled>
 	                                
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" id="mwork" name="momwok" value="Bear" disabled>
+	                                <input type="text" class="ipfield threeip" name="momwok" value="Bear" disabled>
 	                                
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" class="swork" name="sibwork-0" value="Bear" disabled>
+	                                <input type="text" class="swork ipfield threeip" name="sibwork-0" value="Bear" disabled>
 	                                <p id="FBocc"></p>
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Birthday</p>
-	                                <input type="date" id="dbday" name="dadbday" value="Tomorrow" disabled>
+	                                <input type="date" class="ipfield threeip" name="dadbday" value="Tomorrow" disabled>
 	                                
 	                                <p class="ltags">Birthday</p>
-	                                <input type="date" id="mbday" name="mombday" value="Tomorrow" disabled>
+	                                <input type="date" class="ipfield threeip" name="mombday" value="Tomorrow" disabled>
 
 	                                <p class="ltags">Birthday</p>
-	                                <input type="date" class="sbday" name="sibbday-0" value="Tomorrow" disabled>
+	                                <input type="date" class="sbday ipfield threeip" name="sibbday-0" value="Tomorrow" disabled>
 	                                <p id="FBbday"></p>
 	                            </div>
-	                        </form>
+	                   
                         </div>
+                        </form> <!-- end FBform -->
+                        
                         <br><br>
+                        
+                        <a class="waves-effect waves-light btn" id="FBcancel">CANCEL</a>
                         <a class="waves-effect waves-light btn" id="FBsave">SAVE</a>
                     </div> <!-- end of div tag Family Background -->    
                 </li>
@@ -224,26 +220,29 @@
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
                         
-                        <div class="wrap">
-                            <div class="f">
-                                <p class="ltags">Year</p>
-                                <input type="text" id="inyear" name="inyear" value="2017" disabled>
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Event/Organization</p>
-                                <input type="text" id="inorg" name="inorg" value="Something" disabled>                         
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Position</p>
-                                <input type="text" id="inpos" name="inpos" value="Someone" disabled>
-                            </div>
-                        </div>
-                        
-                        <br><br>
-                        
-                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
+                        <form action = "addIntInv" method = "POST" id = "intInv">
+	                        <div class="wrap">
+	                            <div class="f">
+	                                <p class="ltags">Year</p>
+	                                <input type="text" class="ipfield threeipyear" name="inyear" value="2017" disabled>
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Event/Organization</p>
+	                                <input type="text" class="ipfield threeip" name="inorg" placeholder="Something" disabled>                         
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Position</p>
+	                                <input type="text" class="ipfield threeip" name="inpos" placeholder="Someone" disabled>
+	                            </div>
+	                        </div>
+	                        
+	                        <br><br>
+	                        
+                            <a class="waves-effect waves-light btn" id="IIcancel">CANCEL</a>
+	                        <a class="waves-effect waves-light btn" id="IIsave">SAVE</a>
+                        </form> <!-- end intInv -->
                     </div> <!-- end of div tag Internal Involvement --> 
                 
                 
@@ -254,34 +253,36 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
-                        
-                        <div class="wrap">
-                            <div class="f">
-                                <p class="ltags">Year</p>
-                                <input type="text" id="exyear" name="exyear" value="2017" disabled>
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Event/Organization</p>
-                                <input type="text" id="exorg" name="exorg" value="Something" disabled>                         
-                            </div>
-                            
-                            <div class="f">
-                                <p class="ltags">Position</p>
-                                <input type="text" id="expos" name="expos" value="Someone" disabled>
-                            </div>
-                        </div>
-                        
-                        <br><br>
-                        
-                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+                        <form action = "addExtInv" method = "POST" id = "extInv">
+	                        <div class="wrap">
+	                            <div class="f">
+	                                <p class="ltags">Year</p>
+	                                <input type="text" class="ipfield threeipyear" name="exyear" value="2017" disabled>
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Event/Organization</p>
+	                                <input type="text" class="ipfield threeip" name="exorg" placeholder="Something" disabled>                         
+	                            </div>
+	                            
+	                            <div class="f">
+	                                <p class="ltags">Position</p>
+	                                <input type="text" class="ipfield threeip" name="expos" placeholder="Someone" disabled>
+	                            </div>
+	                        </div>
+	                        
+	                        <br><br>
+	                        
+                            <a class="waves-effect waves-light btn" id="EIcancel">CANCEL</a>
+	                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
+	                        
+                        </form> <!-- end extInv -->
                     </div> <!-- end of div tag External Involvement --> 
                 </li>
-                
-               
+           
               </ul>
         </div>
-        
+
         <p id="dig8">ID Number should contain 8 digits only</p>
         <p id="dig11">Cellphone Number should contain 11 digits only</p>
         <p id="digonly">Telephone Number should contain digits only</p>

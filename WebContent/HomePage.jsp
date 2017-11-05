@@ -47,13 +47,12 @@
             <p id="dnm">Username and password do not match</p>
             <p id="inv">Invalid username or password</p>
             
-            <br><br><br>
+            <br><br>
             <a class="waves-effect waves-light btn" id="loginb">login</a>
-        
-            <a class="waves-effect waves-light btn" id="signupb" href="Signup.jsp">signup</a>
             
-            <br><br><br>
-            <a id="forgotpw" href="ResetPassword.html">Forgot password?</a>
+            <br>
+            <a  id="signupb" href="Signup.jsp">Create Account</a>
+            <a id="forgotpw" href="#!">Forgot password?</a>
         </div>
         
 		<script type="text/javascript" src="script/HomePage.js"></script>

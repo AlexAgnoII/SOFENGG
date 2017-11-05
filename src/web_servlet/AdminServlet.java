@@ -2,6 +2,7 @@ package web_servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -123,6 +124,7 @@ public class AdminServlet extends HttpServlet {
 		ArrayList<Post> postList = AdminService.getPosts();
 		String name 			 = request.getParameter("searchbar"),
 			   htmlPostList 	 = "";
+		SimpleDateFormat ft = new SimpleDateFormat ("MMMMM dd, yyyy; hh:mm a");
 		
 		for(Post p : postList){
 			htmlPostList += "<div class = 'postContainer' postId = '" + p.getPostId() +"'>" +
@@ -135,7 +137,8 @@ public class AdminServlet extends HttpServlet {
 							"				    return false;" +
 							"				})();return false;'>" +
 					        "			<i class='material-icons editbtn'>edit</i></a>" +
-					        "	</div>" +
+					        "   <p class = 'postDate' >" + ft.format(p.getDate()) + "</p>" +
+					        "	</div>" + 
 					        "   <p class = 'postBody' >" + p.getBody() + "</p>" + 
 					        "</div> ";
 		}

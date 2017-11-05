@@ -278,9 +278,9 @@ nav ul a:hover {
 .postTitle{
 	display: inline-block;
 	padding-left:2%;
-    font-weight: 350;
     font-size: 15px;
     color: snow;
+    margin-bottom: 2px;
 }
 
 .postBody{
@@ -288,9 +288,18 @@ nav ul a:hover {
 	font-size   : 12.5px;
 }
 
+.postDate{
+	color: #afafaf;
+	font-size: 12px;
+	font-style: italic;
+	margin-top:2px;
+	padding-bottom: 4px;
+	margin-left: 2%;
+}
+
 .editbtn {
 	color: snow;
-	font-size: 12px;
+	font-size: 15px;
 	float: right;
 	margin-right: 2%;
 	margin-top: 2%;

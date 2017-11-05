@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import beans_model.Post;
 import beans_model.Student;
@@ -181,7 +184,7 @@ public class AdminService {
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
-				posts.add(new Post(rs.getString("title"), rs.getString("body"), rs.getInt("postId")));
+				posts.add(new Post(rs.getInt("postId"), rs.getString("title"), rs.getString("body"), new Date(rs.getTimestamp("date").getTime())));
 				System.out.println("Post: " + rs.getString("title"));
 			} 
 			
@@ -261,20 +264,23 @@ public class AdminService {
 	public static Post createPost(String title, String body) {
 		System.out.println();
 		Post post = null;
+		long timeNow = Calendar.getInstance().getTimeInMillis();
+		Timestamp ts = new Timestamp(timeNow);
 			
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
-			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`post` (`title`, `body`) " +
-													     "VALUES (?, ?);");
+			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`post` (`title`, `body`, `date`) " +
+													     "VALUES (?, ?, ?);");
 			st.setString(1, title);
 			st.setString(2, body);
+			st.setTimestamp(3, ts);
 			st.executeUpdate();
 			
 			System.out.println("Posted: " + title +"!"); 
-			post = new Post(title, body);
+			post = new Post(title, body, new Date(timeNow));
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -297,21 +303,24 @@ public class AdminService {
 	public static Post updatePost(int postId, String title, String body) {
 		System.out.println();
 		Post post = null;
-			
+		long timeNow = Calendar.getInstance().getTimeInMillis();
+		Timestamp ts = new Timestamp(timeNow);
+		
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
 			PreparedStatement st = conn.prepareStatement("UPDATE sofengg.post SET " +
-														 "title = ?, body = ? WHERE postId = ?;");
+														 "title = ?, body = ?, date = ? WHERE postId = ?;");
 			st.setString(1, title);
 			st.setString(2, body);
-			st.setInt(3, postId);
+			st.setTimestamp(3, ts);
+			st.setInt(4, postId);
 			st.executeUpdate();
 			
 			System.out.println("Updated: " + title +"!"); 
-			post = new Post(title, body);
+			post = new Post(title, body, new Date(timeNow));
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

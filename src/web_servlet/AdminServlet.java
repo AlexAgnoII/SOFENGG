@@ -21,7 +21,8 @@ import service.AdminService;
 @WebServlet(urlPatterns = {"/search",
 		                   "/viewByAdmin",
 		                  "/createPost",
-		                  "/getPosts"})
+		                  "/getPosts",
+		                  "/updatePost"})
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,8 +49,35 @@ public class AdminServlet extends HttpServlet {
 		System.out.println("I am called. (DoPost  AdminServlet)");
 		switch(request.getServletPath()) {
 			case "/createPost":  createPost(request, response); break;
+			case "/updatePost":  updatePost(request, response); break;
 			default: System.out.println("ERROR(Inside AdminServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
+	}
+
+	/**
+	 * Updates a post by the admin
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void updatePost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+		System.out.println("***************** UPDATE POST ************************");
+		String title  = request.getParameter("title"),
+			   body   = request.getParameter("body");
+		int    postId = 0;
+		
+		try{
+			postId = Integer.parseInt(request.getParameter("postId"));
+		}catch(NumberFormatException e){
+			System.out.println("Error: AdminServlet.java String to Integer parsing updatePost method");
+		}
+		System.out.println("Updating: Post #" + postId);
+		
+		AdminService.updatePost(postId, title, body);
+
+		
+		System.out.println("*******************************************");
 	}
 
 	/**
@@ -66,28 +94,23 @@ public class AdminServlet extends HttpServlet {
 			   id 	 = "";
 		
 
-		Cookie[]cookies = request.getCookies();
-		for (Cookie c : cookies) {
-			if(c.getName().equals("ADMIN") && c.getMaxAge() != 0) {
-				id = "" + c.getValue();
-			}
-		}
+//		Cookie[]cookies = request.getCookies();
+//		for (Cookie c : cookies) {
+//			if(c.getName().equals("ADMIN") && c.getMaxAge() != 0) {
+//				id = "" + c.getValue();
+//			}
+//		}
 		System.out.println("Posting: " + title);
-		
-		Post post = AdminService.createPost(title, body, id);
+		AdminService.createPost(title, body);
 
-		request.setAttribute("newPost", post);
-		request.getRequestDispatcher("AdminHomePage.jsp").forward(request, response);
 		
-//		request.setAttribute("studentList", studentList);
-//		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
 		
 		System.out.println("*******************************************");
 	}
 
 
 	/**
-	 * Retrieves the posts made by the admin
+	 * Retrieves a list of posts made by the admin
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -102,8 +125,17 @@ public class AdminServlet extends HttpServlet {
 			   htmlPostList 	 = "";
 		
 		for(Post p : postList){
-			htmlPostList += "<div class = 'postContainer'>" +
-					        "   <p class = 'postTitle'>" + p.getTitle() + "</p>" +
+			htmlPostList += "<div class = 'postContainer' postId = '" + p.getPostId() +"'>" +
+							"	<div class='pchead'>" +
+					        "   	<p class = 'postTitle'>" + p.getTitle() + "</p>" +
+							"		<a class='modal-trigger' href = '#updateAnnounce' onClick = '(function(){"+
+							"				    document.getElementById(\"updateTitle\").setAttribute(\"postId\", \"" + p.getPostId() + "\");" +
+							"   				$(\"#updateTitle\").val(\"" + p.getTitle() + "\");" +
+							"   		 		$(\"#updateBody\").val(\"" + p.getBody() + "\");" +
+							"				    return false;" +
+							"				})();return false;'>" +
+					        "			<i class='material-icons editbtn'>edit</i></a>" +
+					        "	</div>" +
 					        "   <p class = 'postBody' >" + p.getBody() + "</p>" + 
 					        "</div> ";
 		}
@@ -114,8 +146,6 @@ public class AdminServlet extends HttpServlet {
 	    response.getWriter().write(htmlPostList);       
 		System.out.println("*******************************************");
 		
-//		request.setAttribute("postList", postList);
-//		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
 		
 	}
 

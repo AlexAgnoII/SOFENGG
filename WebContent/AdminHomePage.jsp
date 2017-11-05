@@ -66,21 +66,28 @@
 					<br>
             </div>
         </div>
-    
+
+        <div id="updateAnnounce" class="modal">
+            <div id="annhead">[UPDATE ANNOUNCEMENT]</div>
+            <div id="annwrap">
+                <form action="createPost" method="POST" id="createPostForm">
+					<p class="ltags">Title</p>
+					<input type="text" id="updateTitle" name = "anntitle">
+					<p class="ltags">Description</p>
+					<input type="text" id="updateBody" name = "annbody">
+           		</form>
+					<br>	
+					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>
+					<br>
+            </div>
+        </div>
+            
      <!--<div id="searchdiv">
             <form action="search" method="GET" id = "searchForm">
                 <input type="text" id="searchbar" name="searchbar" placeholder="search">
                 <a><i class="material-icons" id="magglass">search</i></a>
             </form>
         </div> -->
-        
-     <script>
-        $(document).ready(function(){
-            $('.modal').modal();
-        });
-        
-        
-    </script>    
     
         
     </body>

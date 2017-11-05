@@ -181,7 +181,7 @@ public class AdminService {
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
-				posts.add(new Post(rs.getString("title"), rs.getString("body")));
+				posts.add(new Post(rs.getString("title"), rs.getString("body"), rs.getInt("postId")));
 				System.out.println("Post: " + rs.getString("title"));
 			} 
 			
@@ -258,7 +258,7 @@ public class AdminService {
 	 * @param body  - body of the post
 	 * @return the post that was created or NULL if no post was created.
 	 */
-	public static Post createPost(String title, String body, String id) {
+	public static Post createPost(String title, String body) {
 		System.out.println();
 		Post post = null;
 			
@@ -267,14 +267,50 @@ public class AdminService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
-			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`post` (`title`, `body`, `adminId`) " +
-													     "VALUES (?, ?, ?);");
+			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`post` (`title`, `body`) " +
+													     "VALUES (?, ?);");
 			st.setString(1, title);
 			st.setString(2, body);
-			st.setString(3, id);
 			st.executeUpdate();
 			
 			System.out.println("Posted: " + title +"!"); 
+			post = new Post(title, body);
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return post;
+		
+	}
+	
+
+	/**
+	 * Updates a post
+	 * @param postId - ID of the post
+	 * @param title  - title of the post
+	 * @param body   - body of the post
+	 * @return the post that was created or NULL if no post was created.
+	 */
+	public static Post updatePost(int postId, String title, String body) {
+		System.out.println();
+		Post post = null;
+			
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("UPDATE sofengg.post SET " +
+														 "title = ?, body = ? WHERE postId = ?;");
+			st.setString(1, title);
+			st.setString(2, body);
+			st.setInt(3, postId);
+			st.executeUpdate();
+			
+			System.out.println("Updated: " + title +"!"); 
 			post = new Post(title, body);
 			conn.close();
 		} catch (ClassNotFoundException e) {

@@ -58,14 +58,34 @@ function submitTheForm(title, body) {
         	loadPosts();
         },
         error:function(){
-        	console.log("error searchResult.js");
+        	console.log("error createPost URL");
+        }
+     });
+}
+
+function updateForm(postId, title, body) {
+	$.ajax({
+ 	    context: this,
+        url:'updatePost',
+        data:{'postId': postId,
+    		  'title' : title,
+    		  'body'  : body},
+        type:'POST',
+        cache:false,
+        success: function(data){
+        	document.getElementById('materialize-modal-overlay-1').style.display = 'none';
+        	document.getElementById('updateAnnounce').style.display = 'none';
+        	loadPosts();
+        },
+        error:function(){
+        	console.log("error updatePost URL");
         }
      });
 }
 
 $("document").ready(function() {
-
-	loadPosts();
+    $('.modal').modal();
+    loadPosts();
 	
 	// Creating new post
 	$("#ANpost").click(function() {
@@ -82,5 +102,21 @@ $("document").ready(function() {
         	enterValidInput();
         }
 	});
-	
+
+	// Updating post
+	$("#ANupdate").click(function() {
+
+        var postId   = document.getElementById('updateTitle').getAttribute("postId");
+		var title  = document.getElementById('updateTitle').value;
+        var body   = document.getElementById('updateBody').value;
+        
+        if(title !== null && title !== "" &&
+		   body !== null && body !== ""){
+        	updateForm(postId, title, body);
+        	 
+        //Error checking for front page happens here:
+        } else{
+        	enterValidInput();
+        }
+	});
 });

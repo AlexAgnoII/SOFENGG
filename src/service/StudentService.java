@@ -40,7 +40,7 @@ public class StudentService {
 			ResultSet rs = st.executeQuery();
 			
 			//Checks if result set has any data returned.
-			if (!rs.isBeforeFirst() ) {    
+			if (!rs.isBeforeFirst()) {    
 			    System.out.println("Email not yet taken."); 
 			} 
 			else {
@@ -584,6 +584,44 @@ public class StudentService {
 		}
 		System.out.println();
 	}
+
+	
+	/**
+	 * Updates studennt academic information.
+	 * @param student - student to update
+	 */
+	public static void updateStudentAcadInfo(Student student) {
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE student "
+				  + "SET studentId=?, " //1
+					  + "course=?,"//2
+					  + "college=?, "//3
+				 + "WHERE id=?" //4					
+					);
+			
+			stmt.setInt(1, student.getStudentId());
+			stmt.setString(2, student.getCourse());
+			stmt.setString(3, student.getCollege());
+			stmt.setInt(9, Integer.parseInt(student.getCollege()));
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Update acad info success for "+ student.getDbID() + "!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+	}
+
 	
 	/**
 	 * Updates the relatives
@@ -623,13 +661,13 @@ public class StudentService {
 		}
 		System.out.println();
 	}
-	
-	
+
 	/**
-	 * Updates studennt academic information.
-	 * @param student - student to update
+	 * ADds the new relative to the DB.
+	 * @param relative
 	 */
-	public static void updateStudentAcadInfo(Student student) {
+	private static void addRelatives(Relative relative) {
+		// TODO Auto-generated method stub
 		System.out.println();
 		try{
 			String driver = "com.mysql.jdbc.Driver";
@@ -637,29 +675,100 @@ public class StudentService {
 			Connection conn = DatabaseManager.getConnection();
 			
 			PreparedStatement stmt =  conn.prepareStatement(
-					"UPDATE student "
-				  + "SET studentId=?, " //1
-					  + "course=?,"//2
-					  + "college=?, "//3
-				 + "WHERE id=?" //4					
+					"INSERT INTO relative (studentDBId, " //1
+				                       + "name," //2
+							           + "type," //3
+				                       + "occupation," //4
+							           + "birthday)" //5
+					                   + " VALUES (?, ?, ?, ?, ?)"
 					);
 			
-			stmt.setInt(1, student.getStudentId());
-			stmt.setString(2, student.getCourse());
-			stmt.setString(3, student.getCollege());
-			stmt.setInt(9, Integer.parseInt(student.getCollege()));
+			stmt.setInt(1, relative.getStudentId());
+			stmt.setString(2, relative.getName());
+			stmt.setString(3, relative.getType());
+			stmt.setString(4, relative.getOccupation());
+			stmt.setDate(5, relative.getTempDate());
 			
 			stmt.executeUpdate();
 			
-			System.out.println("Update acad info success for "+ student.getDbID() + "!");
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
+		System.out.println("Added relative!");
 		System.out.println();
 	}
+
+	/**
+	 * Decides whether the service updates OR adds the relative.
+	 * @param r
+	 */
+	public static void updateOrAddRelative(Relative r) {
+		// TODO Auto-generated method stub
+		
+		//If relativeID is zero, then it is not yet recorded in the DB.
+		if(r.getRelativeId() == 0) {
+			System.out.println(r.getName() + ": is zero, add it.");
+			addRelatives(r);
+		}
+		
+		//update that field.
+		else {
+			System.out.println(r.getName() + ": is not zero, update it.");
+			updateRelatives(r);
+		}
+		
+	}
+
+	public static ArrayList<Relative> getRelatives(int studentDBid) {
+		// TODO Auto-generated method stub
+		ArrayList<Relative> relativeList = new ArrayList<Relative>();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			
+			PreparedStatement stmt =  conn.prepareStatement("select * from relative\r\n" + 
+					                                        "WHERE studentDBid = ?");
+			stmt.setInt(1, studentDBid);
+			ResultSet rs = stmt.executeQuery();
+			
+			//No result was returned.
+			if(!rs.isBeforeFirst()) {
+				System.out.println("Doesnt have relatives yet.");
+				return null;
+			}
+			
+			//Result set returned! proceed.
+			else {
+				System.out.println("Has Relatives!");
+				while(rs.next()) {
+					relativeList.add(new Relative(rs.getInt("relativeId"),
+							                      rs.getInt("studentDBId"),
+												  rs.getString("name"),
+												  rs.getString("type"),
+												  rs.getString("occupation"),
+												  rs.getDate("birthday")
+							                     ));
+				}
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		
+		return relativeList;
+	}
+
+
+
 
 
 

@@ -153,43 +153,43 @@
                         <form action="updateFamily" method="POST" id="FBform">
 	                        <div class="wrap">
 		                        
-		                            <div class="f">
+		                            <div class="f" id="FBname">
 		                                <p class="ltags">Father's Name</p>
-		                                <input type="text" class="ipfield threeip" name="dadName" value="Papa bear" disabled>
+		                                <input type="text" class="ipfield threeip" name="dadName-0" value="Papa bear" disabled>
 		                                
 		                                <p class="ltags">Mother's Name</p>
-		                                <input type="text" class="ipfield threeip" name="momName" value="Mama bear" disabled>
+		                                <input type="text" class="ipfield threeip" name="momName-0" value="Mama bear" disabled>
 	
 		                                <p class="ltags">Sibling/s' Name</p>
-		                                <input type="text" class="sname ipfield threeip" name="sibName-0" value="Ate bear" disabled>
+		                                <input type="text" class="sname ipfield threeip" name="sibName-0-0" value="Ate bear" disabled>
 		                                
-		                                <p id="FBname"></p>
+		                                <!--<p id="FBname"></p>-->
 		                            </div>
 		                            
-		                            <div class="f">
+		                            <div class="f" id="FBocc">
 		                                <p class="ltags">Occupation</p>
-		                                <input type="text" class="ipfield threeip" name="dadWork" value="Bear" disabled>
+		                                <input type="text" class="ipfield threeip" name="dadWork-0" value="Bear" disabled>
 		                                
 		                                <p class="ltags">Occupation</p>
-		                                <input type="text" class="ipfield threeip" name="momWork" value="Bear" disabled>
+		                                <input type="text" class="ipfield threeip" name="momWork-0" value="Bear" disabled>
 		                                
 		                                <p class="ltags">Occupation</p>
-		                                <input type="text" class="swork ipfield threeip" name="sibWork-0" value="Bear" disabled>
+		                                <input type="text" class="swork ipfield threeip" name="sibWork-0-0" value="Bear" disabled>
 	
-		                                <p id="FBocc"></p>
+		                                <!--<p id="FBocc"></p>-->
 		                            </div>
 		                            
-		                            <div class="f">
+		                            <div class="f" id="FBbday">
 		                                <p class="ltags">Birthday</p>
 	
-		                                <input type="date" class="ipfield threeip" name="dadBday" value="12/01/2000" disabled>
+		                                <input type="date" class="ipfield threeip" name="dadBday-0" value="2000-12-01" disabled>
 		                                
 		                                <p class="ltags">Birthday</p>
-		                                <input type="date" class="ipfield threeip" name="momBday" value="12/01/2000" disabled>
+		                                <input type="date" class="ipfield threeip" name="momBday-0" value="2000-12-01" disabled>
 	
 		                                <p class="ltags">Birthday</p>
-		                                <input type="date" class="sbday ipfield threeip" name="sibBday-0" value="12/01/2000" disabled>
-		                                <p id="FBbday"></p>
+		                                <input type="date" class="sbday ipfield threeip" name="sibBday-0-0" value="2000-12-01" disabled>
+		                                <!-- <p id="FBbday"></p>-->
 		                            </div>
 		                   
 	                        </div>

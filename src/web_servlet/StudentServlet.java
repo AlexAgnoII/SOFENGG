@@ -159,6 +159,7 @@ public class StudentServlet extends HttpServlet {
 		Cookie[] cookies = request.getCookies();
 		Cookie userCookie = null;
 		Student student = null;
+		ArrayList<Relative> relativeList = null;
 		
 		System.out.println("************************************Retrieve User (User side)**********************************");
 		for (Cookie c: cookies) {
@@ -170,19 +171,28 @@ public class StudentServlet extends HttpServlet {
 			}
 		}
 		
-		if(userCookie == null || userCookie.getName().equals("USER")){
+		if(userCookie != null){
 			student = StudentService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
-			request.setAttribute("loggedUser", student);
+			System.out.println("Relatives:");
+			relativeList = StudentService.getRelatives(Integer.parseInt(userCookie.getValue()));
 			
-			if(request.getServletPath().contentEquals("/viewByStudent")) {
-				System.out.println("Viewing via viewprofile..");
-				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+			if(relativeList != null) {
+				for(Relative r : relativeList) {
+					System.out.println(r.toString());
+				}
 			}
-	
 			else {
-				System.out.println("Viewing via editprofile..");
-				request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
+				System.out.println("No relatives.");
 			}
+			
+			
+			
+			request.setAttribute("loggedUser", student);
+			request.setAttribute("relativeList", relativeList);
+			System.out.println("Viewing via viewprofile..");
+			
+			request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
+
 		}
 		
 		else {
@@ -258,13 +268,12 @@ public class StudentServlet extends HttpServlet {
 		Relative momRel = new Relative();
 		Relative sibRel = new Relative();
 		Enumeration<String> e = request.getParameterNames();
-		ArrayList<String> siblingList = new ArrayList<String>(),
-				          relativeList = new ArrayList<String>();
+		ArrayList<String> siblingList = new ArrayList<String>();
+		ArrayList<Relative> relativeList = new ArrayList<Relative>();
 		Cookie[] cookies = request.getCookies();
 		Cookie userCookie = null;
-		int dadCtr = 1;
-		int momCtr = 1;
-		
+		String[] temp;
+		int lengthSib; //length of siblings.
 		
 		for (Cookie c: cookies) {
 			if(c.getName().equals("USER")) {
@@ -285,54 +294,77 @@ public class StudentServlet extends HttpServlet {
 		    String param = e.nextElement();
 		    String value = request.getParameter(param);
 		    System.out.println(param + ": " + value);
+		    temp = param.split("-"); //0 = name | 1 =  Relative ID in database. (For Mom and Dad)
 		    
-		    //Mom
 		    if(param.matches(".*dad.*")) {
-		    	if(dadCtr == 1) {
-		    		dadRel.setType("Father");
-		    		dadCtr = 0;
-		    	}
-
-		    	if(param.equals("dadName")) {
+		    	if(param.matches(".*dadName.*")) {
 		    		dadRel.setName(value);
 		    	}
-		    	else if (param.equals("dadWork")) {
+		    	else if (param.matches(".*dadWork.*")) {
 		    		dadRel.setOccupation(value);
 		    	}
 		    	else {
 		    		dadRel.setSQLDate(value);
+		    		dadRel.setType("Father");
+		    		dadRel.setRelativeId(Integer.parseInt(temp[1]));
 		    	}
 		    	
 		    }
 		    
 		    else if(param.matches(".*mom.*")){
-		    	if(momCtr == 1) {
-		    		momRel.setType("Mother");
-		    		momCtr = 0;
-		    	}
 
-		    	if(param.equals("momName")) {
+		    	if(param.matches(".*momName.*")) {
 		    		momRel.setName(value);
 		    	}
-		    	else if (param.equals("momWork")) {
+		    	else if (param.matches(".*momWork.*")) {
 		    		momRel.setOccupation(value);
 		    	}
 		    	else {
 		    		momRel.setSQLDate(value);
+		    		momRel.setType("Mother");
+		    		momRel.setRelativeId(Integer.parseInt(temp[1]));
 		    	}
 		    }
 		    
 		    else siblingList.add(param);
 		}
-	    
-	    System.out.println(dadRel.getName() + "|" + dadRel.getOccupation() + "|" + dadRel.getTempDate() +"|" + dadRel.getType());
-	    System.out.println(momRel.getName()+ "|" + momRel.getOccupation() + "|" + momRel.getTempDate() +"|" + dadRel.getType());
-	    
+	 
 	    System.out.println();
+	    
+	    lengthSib = siblingList.size() / 3;
+	    for(int i = 0; i < lengthSib; i++) {
+	    	relativeList.add(new Relative());
+	    }
 
 	    for(String r : siblingList) {
-	    	System.out.println(r);
+	    	temp = r.split("-"); //0 = name | 1 = field index  | 2 =Relative ID in database. (For Mom and Dad)
+	    	//temp[1] is the # of the field input in sibling.
+	    	if(temp[0].equals("sibName")) {
+	    		relativeList.get(Integer.parseInt(temp[1])).setName(request.getParameter(r));
+	    		
+	    	}
+	    	else if(temp[0].equals("sibWork")) {
+	    		relativeList.get(Integer.parseInt(temp[1])).setOccupation(request.getParameter(r));
+	    	}
+	    	else {
+	    		relativeList.get(Integer.parseInt(temp[1])).setType("Sibling");//sincec this if goes once through a certain field, this sets the type of the field once.
+	    		relativeList.get(Integer.parseInt(temp[1])).setSQLDate(request.getParameter(r));
+	    		relativeList.get(Integer.parseInt(temp[1])).setRelativeId(Integer.parseInt(temp[2]));
+	    	}
 	    }
+	    
+	    relativeList.add(dadRel);
+	    relativeList.add(momRel);
+	    
+	    for (Relative r : relativeList) {
+	    	r.setStudentId(Integer.parseInt(userCookie.getValue()));
+	    	System.out.println(r.toString());
+	    	StudentService.updateOrAddRelative(r);
+	    }
+	    
+	    
+	    
+	    System.out.println("Update/Add Complete!");
 		System.out.println("***************************************************************************");
 	}
 	

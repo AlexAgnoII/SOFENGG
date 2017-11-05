@@ -21,9 +21,6 @@ public class Relative {
 		super();
 		this.relativeId = relativeId;
 		this.studentId = studentId;
-		//this.firstName = firstName;
-		//this.middleName = middleName;
-		//this.lastName = lastName;
 		this.name = name;
 		this.type = type;
 		this.occupation = occupation;

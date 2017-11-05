@@ -190,7 +190,7 @@ function getFBcount(value) {
 }
 
 $(document).ready(function() {
-	FBctr = getFBcount($("form input").last().attr("name"));
+	FBctr = getFBcount($("form#FBform div.wrap div.f input").last().attr("name"));
 	$('.collapsible').collapsible();
 
 	$('#PIedit').click(function() {
@@ -355,25 +355,30 @@ $(document).ready(function() {
 		FBctr++;
 		console.log("New input field name: " + FBctr);
 		
-		nameInput.attr("class", "sname");
+		nameInput.attr("class", "sname ipfield threeip");
 		nameInput.attr("type", "text");
-		nameInput.attr("name", "sibName-" +FBctr);
+		nameInput.attr("name", "sibName-" +FBctr+"-0");
 		
-		occInput.attr("class", "swork");
+		occInput.attr("class", "swork ipfield threeip");
 		occInput.attr("type", "text");
-		occInput.attr("name", "sibWork-"+FBctr);
+		occInput.attr("name", "sibWork-"+FBctr+"-0");
 		
-		bdayInput.attr("class", "sbday");
+		bdayInput.attr("class", "sbday ipfield threeip");
 		bdayInput.attr("type", "date");
-		bdayInput.attr("name", "sibBday-"+FBctr);
+		bdayInput.attr("name", "sibBday-"+FBctr+"-0");
+		bdayInput.attr("value", "2000-12-01");
 		
 		console.log(nameInput);
 		console.log(occInput);
 		console.log(bdayInput);
 		
-		$("#FBname").after(nameInput);
-		$("#FBocc").after(occInput);
-		$("#FBbday").after(bdayInput);
+		//name works this way:
+		//<field>-<index in field>-<ID on database>
+		//ID on database is 0 if its not yet added.
+		//Else, it will be placed there.
+		$("#FBname").append(nameInput);
+		$("#FBocc").append(occInput);
+		$("#FBbday").append(bdayInput);
 	});
 	
 	//-----------------------------------------

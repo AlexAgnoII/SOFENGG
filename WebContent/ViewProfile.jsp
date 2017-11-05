@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
@@ -152,46 +153,104 @@
 
                         <form action="updateFamily" method="POST" id="FBform">
 	                        <div class="wrap">
-		                        
-		                            <div class="f" id="FBname">
-		                                <p class="ltags">Father's Name</p>
-		                                <input type="text" class="ipfield threeip" name="dadName-0" value="Papa bear" disabled>
-		                                
-		                                <p class="ltags">Mother's Name</p>
-		                                <input type="text" class="ipfield threeip" name="momName-0" value="Mama bear" disabled>
-	
-		                                <p class="ltags">Sibling/s' Name</p>
-		                                <input type="text" class="sname ipfield threeip" name="sibName-0-0" value="Ate bear" disabled>
-		                                
-		                                <!--<p id="FBname"></p>-->
-		                            </div>
-		                            
-		                            <div class="f" id="FBocc">
-		                                <p class="ltags">Occupation</p>
-		                                <input type="text" class="ipfield threeip" name="dadWork-0" value="Bear" disabled>
-		                                
-		                                <p class="ltags">Occupation</p>
-		                                <input type="text" class="ipfield threeip" name="momWork-0" value="Bear" disabled>
-		                                
-		                                <p class="ltags">Occupation</p>
-		                                <input type="text" class="swork ipfield threeip" name="sibWork-0-0" value="Bear" disabled>
-	
-		                                <!--<p id="FBocc"></p>-->
-		                            </div>
-		                            
-		                            <div class="f" id="FBbday">
-		                                <p class="ltags">Birthday</p>
-	
-		                                <input type="date" class="ipfield threeip" name="dadBday-0" value="2000-12-01" disabled>
-		                                
-		                                <p class="ltags">Birthday</p>
-		                                <input type="date" class="ipfield threeip" name="momBday-0" value="2000-12-01" disabled>
-	
-		                                <p class="ltags">Birthday</p>
-		                                <input type="date" class="sbday ipfield threeip" name="sibBday-0-0" value="2000-12-01" disabled>
-		                                <!-- <p id="FBbday"></p>-->
-		                            </div>
-		                   
+	                        	
+	                        	<c:choose>
+			                        <c:when test="${empty relativeList}"> <!-- Conditional to check if relative list is empty or not. -->
+			                            <div class="f" id="FBname">
+			                                <p class="ltags">Father's Name</p>
+			                                <input type="text" class="ipfield threeip" name="dadName-0" value="Papa bear" disabled>
+			                                
+			                                <p class="ltags">Mother's Name</p>
+			                                <input type="text" class="ipfield threeip" name="momName-0" value="Mama bear" disabled>
+		
+			                                <p class="ltags">Sibling/s' Name</p>
+			                                <input type="text" class="sname ipfield threeip" name="sibName-0-0" value="Ate bear" disabled>
+			                                
+			                                <!--<p id="FBname"></p>-->
+			                            </div>
+			                            
+			                            <div class="f" id="FBocc">
+			                                <p class="ltags">Occupation</p>
+			                                <input type="text" class="ipfield threeip" name="dadWork-0" value="Bear" disabled>
+			                                
+			                                <p class="ltags">Occupation</p>
+			                                <input type="text" class="ipfield threeip" name="momWork-0" value="Bear" disabled>
+			                                
+			                                <p class="ltags">Occupation</p>
+			                                <input type="text" class="swork ipfield threeip" name="sibWork-0-0" value="Bear" disabled>
+		
+			                                <!--<p id="FBocc"></p>-->
+			                            </div>
+			                            
+			                            <div class="f" id="FBbday">
+			                                <p class="ltags">Birthday</p>
+		
+			                                <input type="date" class="ipfield threeip" name="dadBday-0" value="2000-12-01" disabled>
+			                                
+			                                <p class="ltags">Birthday</p>
+			                                <input type="date" class="ipfield threeip" name="momBday-0" value="2000-12-01" disabled>
+		
+			                                <p class="ltags">Birthday</p>
+			                                <input type="date" class="sbday ipfield threeip" name="sibBday-0-0" value="2000-12-01" disabled>
+			                                <!-- <p id="FBbday"></p>-->
+			                            </div>
+			                   		</c:when>
+			                   		
+			                   		<c:otherwise> <!-- If not empty, do this -->
+			                            <div class="f" id="FBname">
+			                                <p class="ltags">Father's Name</p>
+			                                <input type="text" class="ipfield threeip" name="dadName-${father.relativeId}" value="${father.name}" disabled>
+			                                
+			                                <p class="ltags">Mother's Name</p>
+			                                <input type="text" class="ipfield threeip" name="momName-${mother.relativeId}" value="${mother.name}" disabled>
+		
+			                                <p class="ltags">Sibling/s' Name</p>
+			                                <c:forEach items="${relativeList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
+			                                	<c:if test="${s.type == 'Sibling'}">
+			                                		<input type="text" class="sname ipfield threeip" name="sibName-${loop.index}-${s.relativeId}" value="${s.name}" disabled>
+			                                	</c:if>
+			                                </c:forEach>
+			                                
+			                                <!--<p id="FBname"></p>-->
+			                            </div>
+			                            
+			                            <div class="f" id="FBocc">
+			                                <p class="ltags">Occupation</p>
+			                                <input type="text" class="ipfield threeip" name="dadWork-${father.relativeId}" value="${father.occupation}" disabled>
+			                                
+			                                <p class="ltags">Occupation</p>
+			                                <input type="text" class="ipfield threeip" name="momWork-${mother.relativeId}" value="${mother.occupation}" disabled>
+			                                
+			                                <p class="ltags">Occupation</p>
+			                                <c:forEach items="${relativeList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
+			                                	<c:if test="${s.type == 'Sibling'}">
+			                                		<input type="text" class="swork ipfield threeip" name="sibWork-${loop.index}-${s.relativeId}" value="${s.occupation}" disabled>
+			                                	</c:if>
+			                                </c:forEach>
+		
+			                                <!--<p id="FBocc"></p>-->
+			                            </div>
+			                            
+			                            <div class="f" id="FBbday">
+			                                <p class="ltags">Birthday</p>
+		
+			                                <input type="date" class="ipfield threeip" name="dadBday-${father.relativeId}" value="${father.birthday}" disabled>
+			                                
+			                                <p class="ltags">Birthday</p>
+			                                <input type="date" class="ipfield threeip" name="momBday-${mother.relativeId}" value="${mother.birthday}" disabled>
+		
+			                                <p class="ltags">Birthday</p>
+			                                <c:forEach items="${relativeList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
+			                                	<c:if test="${s.type == 'Sibling'}">
+			                                		<input type="date" class="sbday ipfield threeip" name="sibBday-${loop.index}-${s.relativeId}" value="${s.birthday}" disabled>
+			                                	</c:if>
+			                                </c:forEach>
+			                                <!-- <p id="FBbday"></p>-->
+			                            </div>
+			                   		</c:otherwise>
+		                   		
+		                   		</c:choose>
+		                   		
 	                        </div>
                         </form> <!-- end FBform -->
                     

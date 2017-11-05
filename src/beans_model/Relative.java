@@ -13,7 +13,6 @@ public class Relative {
 	private Date birthday;
 
 	private java.sql.Date tempDate;
-
 	
 	
 	public Relative(int relativeId, int studentId, String name, String type,

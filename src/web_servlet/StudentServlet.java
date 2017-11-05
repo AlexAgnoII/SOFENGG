@@ -160,6 +160,9 @@ public class StudentServlet extends HttpServlet {
 		Cookie userCookie = null;
 		Student student = null;
 		ArrayList<Relative> relativeList = null;
+		Relative mother = null, father = null;
+		ArrayList<Relative> sibilings = null;
+		int siblingCount = 0;
 		
 		System.out.println("************************************Retrieve User (User side)**********************************");
 		for (Cookie c: cookies) {
@@ -180,15 +183,26 @@ public class StudentServlet extends HttpServlet {
 				for(Relative r : relativeList) {
 					System.out.println(r.toString());
 				}
+				mother = StudentService.getMother(relativeList);
+			    father = StudentService.getFather(relativeList);
+			    siblingCount = StudentService.getSiblingCount(relativeList);
 			}
 			else {
 				System.out.println("No relatives.");
 			}
 			
+			if(mother == null) 
+				System.out.println("No mother.");
+			if(father == null)
+				System.out.println("No father");
+			
 			
 			
 			request.setAttribute("loggedUser", student);
 			request.setAttribute("relativeList", relativeList);
+			request.setAttribute("mother", mother);
+			request.setAttribute("father", father);
+			request.setAttribute("siblingSize", siblingCount);
 			System.out.println("Viewing via viewprofile..");
 			
 			request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);

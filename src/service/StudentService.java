@@ -636,19 +636,17 @@ public class StudentService {
 			
 			PreparedStatement stmt =  conn.prepareStatement(
 					"UPDATE relative "
-				  + "SET studentId=?, " //1
-					  + "name=?,"//2
-					  + "occupation=?, "//3
-					  + "birthday=? "//4
-				 + "WHERE id=?" + "AND type=?" //5 & 6					
+				  + "SET name=?,"//1
+					  + "occupation=?, "//2
+					  + "birthday=? "//3
+				 + "WHERE relativeId=?" + " AND type=?" //4 & 5				
 					);
 			
-			stmt.setInt(1, relative.getStudentId());
-			stmt.setString(2, relative.getName());
-			stmt.setString(3, relative.getOccupation());
-			stmt.setDate(4, relative.getTempDate());
-			stmt.setInt(5, relative.getRelativeId());
-			stmt.setString(6, relative.getType());
+			stmt.setString(1, relative.getName());
+			stmt.setString(2, relative.getOccupation());
+			stmt.setDate(3, relative.getTempDate());
+			stmt.setInt(4, relative.getRelativeId());
+			stmt.setString(5, relative.getType());
 			
 			stmt.executeUpdate();
 			
@@ -765,6 +763,39 @@ public class StudentService {
 		
 		
 		return relativeList;
+	}
+	
+	
+	public static Relative getMother(ArrayList<Relative> relativeList) {
+		for (Relative r : relativeList) {
+			if(r.getType().equals("Mother")) {
+				return r;
+			}
+		}
+		
+		//No mother found.
+		return null;
+	}
+	
+	public static Relative getFather(ArrayList<Relative> relativeList) {
+		for (Relative r : relativeList) {
+			if(r.getType().equals("Father")) {
+				return r;
+			}
+		}
+		
+		//No Father found.
+		return null;
+	}
+	
+	public static int getSiblingCount(ArrayList<Relative> relativeList) {
+		int sum = 0;
+		
+		for (Relative r : relativeList) {
+			sum++;
+		}
+		
+		return sum;
 	}
 
 

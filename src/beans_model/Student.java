@@ -27,7 +27,7 @@ public class Student {
 				   province,
 				   country;
 	
-	//This is used for updating date.
+	//This is used for updating date (Birthday).
 	private java.sql.Date tempDate;
 	
 

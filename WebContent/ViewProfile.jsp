@@ -158,47 +158,47 @@
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
                         <a class="waves-effect waves-light btn" id="addSibling">ADD SIBLING</a>
-                        
-                        <div class="wrap">
-	                        <form action="updateFamily" method="POST" id="FBform">
+                        <form action="updateFamily" method="POST" id="FBform">
+                        	<div class="wrap">
 	                            <div class="f">
 	                                <p class="ltags">Father's Name</p>
-	                                <input type="text" id="dname" name="dadname" value="Papa bear" disabled>
+	                                <input type="text" id="dname" name="dadName" value="Papa bear" disabled>
 	                                
 	                                <p class="ltags">Mother's Name</p>
-	                                <input type="text" id="mname" name="momname" value="Mama bear" disabled>
+	                                <input type="text" id="mname" name="momName" value="Mama bear" disabled>
 
 	                                <p class="ltags">Sibling/s' Name</p>
-	                                <input type="text" class="sname" name="sibname-0" value="Ate bear" disabled>
+	                                <input type="text" class="sname" name="sibName-0" value="Ate bear" disabled>
 	                                
 	                                <p id="FBname"></p>
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" id="dwork" name="dadwork" value="Bear" disabled>
+	                                <input type="text" id="dwork" name="dadWork" value="Bear" disabled>
 	                                
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" id="mwork" name="momwok" value="Bear" disabled>
+	                                <input type="text" id="mwork" name="momWork" value="Bear" disabled>
 	                                
 	                                <p class="ltags">Occupation</p>
-	                                <input type="text" class="swork" name="sibwork-0" value="Bear" disabled>
+	                                <input type="text" class="swork" name="sibWork-0" value="Bear" disabled>
 	                                <p id="FBocc"></p>
 	                            </div>
 	                            
 	                            <div class="f">
 	                                <p class="ltags">Birthday</p>
-	                                <input type="date" id="dbday" name="dadbday" value="Tomorrow" disabled>
+	                                <input type="date" id="dbday" name="dadBday" disabled>
 	                                
 	                                <p class="ltags">Birthday</p>
-	                                <input type="date" id="mbday" name="mombday" value="Tomorrow" disabled>
+	                                <input type="date" id="mbday" name="momBday" disabled>
 
 	                                <p class="ltags">Birthday</p>
-	                                <input type="date" class="sbday" name="sibbday-0" value="Tomorrow" disabled>
+	                                <input type="date" class="sbday" name="sibBday-0" disabled>
 	                                <p id="FBbday"></p>
 	                            </div>
-	                        </form>
-                        </div>
+	                      
+                        	</div>
+                        </form>
                         <br><br>
                         <a class="waves-effect waves-light btn" id="FBsave">SAVE</a>
                     </div> <!-- end of div tag Family Background -->    

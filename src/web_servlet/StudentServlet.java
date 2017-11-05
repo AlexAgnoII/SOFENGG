@@ -257,11 +257,15 @@ public class StudentServlet extends HttpServlet {
 		Relative dadRel = new Relative();
 		Relative momRel = new Relative();
 		Relative sibRel = new Relative();
-		
 		Enumeration<String> e = request.getParameterNames();
-		ArrayList<String> siblingList = new ArrayList<String>();
+		ArrayList<String> siblingList = new ArrayList<String>(),
+				          relativeList = new ArrayList<String>();
 		Cookie[] cookies = request.getCookies();
 		Cookie userCookie = null;
+		int dadCtr = 1;
+		int momCtr = 1;
+		
+		
 		for (Cookie c: cookies) {
 			if(c.getName().equals("USER")) {
 				System.out.println("Cookie found!");
@@ -270,32 +274,33 @@ public class StudentServlet extends HttpServlet {
 				userCookie = c;
 			}
 		}
-		
-		
 		System.out.println("User ID: " + userCookie.getValue());
 		
+		//Organize Relatives.
 		System.out.println();
-		int dadCtr = 1;
-		int momCtr = 1;
+
+		
+		//Separated parents from siblings
 		while (e.hasMoreElements()) {
 		    String param = e.nextElement();
 		    String value = request.getParameter(param);
 		    System.out.println(param + ": " + value);
-		    //Sibling
+		    
+		    //Mom
 		    if(param.matches(".*dad.*")) {
 		    	if(dadCtr == 1) {
 		    		dadRel.setType("Father");
 		    		dadCtr = 0;
 		    	}
 
-		    	if(param.equals("dadname")) {
+		    	if(param.equals("dadName")) {
 		    		dadRel.setName(value);
 		    	}
-		    	else if (param.equals("dadwork")) {
+		    	else if (param.equals("dadWork")) {
 		    		dadRel.setOccupation(value);
 		    	}
 		    	else {
-		    		//Birthday
+		    		dadRel.setSQLDate(value);
 		    	}
 		    	
 		    }
@@ -306,23 +311,25 @@ public class StudentServlet extends HttpServlet {
 		    		momCtr = 0;
 		    	}
 
-		    	if(param.equals("momname")) {
+		    	if(param.equals("momName")) {
 		    		momRel.setName(value);
 		    	}
 		    	else if (param.equals("momWork")) {
 		    		momRel.setOccupation(value);
 		    	}
 		    	else {
-		    		//birthday
+		    		momRel.setSQLDate(value);
 		    	}
 		    }
 		    
 		    else siblingList.add(param);
 		}
 	    
-	    System.out.println(dadRel.getName());
-	    System.out.println(momRel.getName());
+	    System.out.println(dadRel.getName() + "|" + dadRel.getOccupation() + "|" + dadRel.getTempDate() +"|" + dadRel.getType());
+	    System.out.println(momRel.getName()+ "|" + momRel.getOccupation() + "|" + momRel.getTempDate() +"|" + dadRel.getType());
 	    
+	    System.out.println();
+
 	    for(String r : siblingList) {
 	    	System.out.println(r);
 	    }

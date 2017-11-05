@@ -403,15 +403,15 @@ $(document).ready(function() {
 		
 		nameInput.attr("class", "sname");
 		nameInput.attr("type", "text");
-		nameInput.attr("name", "sibname-" +FBctr);
+		nameInput.attr("name", "sibName-" +FBctr);
 		
 		occInput.attr("class", "swork");
 		occInput.attr("type", "text");
-		occInput.attr("name", "sibwork-"+FBctr);
+		occInput.attr("name", "sibWork-"+FBctr);
 		
 		bdayInput.attr("class", "sbday");
 		bdayInput.attr("type", "date");
-		bdayInput.attr("name", "sibbday-"+FBctr);
+		bdayInput.attr("name", "sibBday-"+FBctr);
 		
 		console.log(nameInput);
 		console.log(occInput);

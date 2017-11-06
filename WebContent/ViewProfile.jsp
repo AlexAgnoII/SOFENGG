@@ -205,10 +205,8 @@
 			                                <input type="text" class="ipfield threeip" name="momName-${mother.relativeId}" value="${mother.name}" disabled>
 		
 			                                <p class="ltags">Sibling/s' Name</p>
-			                                <c:forEach items="${relativeList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
-			                                	<c:if test="${s.type == 'Sibling'}">
+			                                <c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
 			                                		<input type="text" class="sname ipfield threeip" name="sibName-${loop.index}-${s.relativeId}" value="${s.name}" disabled>
-			                                	</c:if>
 			                                </c:forEach>
 			                                
 			                                <!--<p id="FBname"></p>-->
@@ -222,10 +220,8 @@
 			                                <input type="text" class="ipfield threeip" name="momWork-${mother.relativeId}" value="${mother.occupation}" disabled>
 			                                
 			                                <p class="ltags">Occupation</p>
-			                                <c:forEach items="${relativeList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
-			                                	<c:if test="${s.type == 'Sibling'}">
+			                                <c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
 			                                		<input type="text" class="swork ipfield threeip" name="sibWork-${loop.index}-${s.relativeId}" value="${s.occupation}" disabled>
-			                                	</c:if>
 			                                </c:forEach>
 		
 			                                <!--<p id="FBocc"></p>-->
@@ -240,10 +236,8 @@
 			                                <input type="date" class="ipfield threeip" name="momBday-${mother.relativeId}" value="${mother.birthday}" disabled>
 		
 			                                <p class="ltags">Birthday</p>
-			                                <c:forEach items="${relativeList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
-			                                	<c:if test="${s.type == 'Sibling'}">
+			                                <c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
 			                                		<input type="date" class="sbday ipfield threeip" name="sibBday-${loop.index}-${s.relativeId}" value="${s.birthday}" disabled>
-			                                	</c:if>
 			                                </c:forEach>
 			                                <!-- <p id="FBbday"></p>-->
 			                            </div>

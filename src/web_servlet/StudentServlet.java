@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -159,7 +160,8 @@ public class StudentServlet extends HttpServlet {
 		Cookie[] cookies = request.getCookies();
 		Cookie userCookie = null;
 		Student student = null;
-		ArrayList<Relative> relativeList = null;
+		ArrayList<Relative> relativeList = null, 
+				            siblingList = null;
 		Relative mother = null, father = null;
 		ArrayList<Relative> sibilings = null;
 		int siblingCount = 0;
@@ -185,6 +187,7 @@ public class StudentServlet extends HttpServlet {
 				}
 				mother = StudentService.getMother(relativeList);
 			    father = StudentService.getFather(relativeList);
+			    siblingList = StudentService.getSiblings(relativeList);
 			    siblingCount = StudentService.getSiblingCount(relativeList);
 			}
 			else {
@@ -195,14 +198,17 @@ public class StudentServlet extends HttpServlet {
 				System.out.println("No mother.");
 			if(father == null)
 				System.out.println("No father");
+			if(siblingList.size() == 0)
+				System.out.println("No Siblings.");
 			
 			
 			
 			request.setAttribute("loggedUser", student);
-			request.setAttribute("relativeList", relativeList);
+		    request.setAttribute("relativeList", relativeList);
+			request.setAttribute("siblingList", siblingList);
 			request.setAttribute("mother", mother);
 			request.setAttribute("father", father);
-			request.setAttribute("siblingSize", siblingCount);
+			request.setAttribute("siblingSize", siblingCount-1); //deduct 1 due to index for setting the fields.
 			System.out.println("Viewing via viewprofile..");
 			
 			request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
@@ -282,6 +288,7 @@ public class StudentServlet extends HttpServlet {
 		Relative momRel = new Relative();
 		Relative sibRel = new Relative();
 		Enumeration<String> e = request.getParameterNames();
+		Map<String, String[]> eVal = request.getParameterMap();
 		ArrayList<String> siblingList = new ArrayList<String>();
 		ArrayList<Relative> relativeList = new ArrayList<Relative>();
 		Cookie[] cookies = request.getCookies();
@@ -301,7 +308,6 @@ public class StudentServlet extends HttpServlet {
 		
 		//Organize Relatives.
 		System.out.println();
-
 		
 		//Separated parents from siblings
 		while (e.hasMoreElements()) {
@@ -376,8 +382,7 @@ public class StudentServlet extends HttpServlet {
 	    	StudentService.updateOrAddRelative(r);
 	    }
 	    
-	    
-	    
+
 	    System.out.println("Update/Add Complete!");
 		System.out.println("***************************************************************************");
 	}

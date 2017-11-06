@@ -788,6 +788,23 @@ public class StudentService {
 		return null;
 	}
 	
+	
+	public static ArrayList<Relative> getSiblings(ArrayList<Relative> relativeList) {
+		ArrayList<Relative> siblings = new ArrayList<Relative>();
+		
+		for(Relative r : relativeList) {
+			if(r.getType().equals("Sibling")) {
+				siblings.add(r);
+			}
+		}
+		
+		
+		if(siblings.size() == 0)
+			return null;
+		else return siblings;
+		
+	}
+	
 	public static int getSiblingCount(ArrayList<Relative> relativeList) {
 		int sum = 0;
 		

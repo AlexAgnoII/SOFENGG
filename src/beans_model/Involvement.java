@@ -9,11 +9,11 @@ public class Involvement {
 	private int idNum;
 	private String iName;
 	private String position;
-	private Year acadYear;
+	private int acadYear;
 	private int internal;
 	private ArrayList<String> handler = new ArrayList<>();
 	
-	public Involvement(int id, int num, String name, String pos, Year year, int internal){
+	public Involvement(int id, int num, String name, String pos, int year, int internal){
 		this.id = id;
 		idNum = num;
 		iName = name;
@@ -22,7 +22,7 @@ public class Involvement {
 		this.internal = internal;
 	}
 	
-	public Involvement(int num, String name, String pos, Year year, int internal) {
+	public Involvement(int num, String name, String pos, int year, int internal) {
 		idNum = num;
 		iName = name;
 		position = pos;
@@ -32,6 +32,10 @@ public class Involvement {
 	
 
 	public Involvement(int int1, int int2, String string, String string2, Year of) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Involvement() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -59,12 +63,7 @@ public class Involvement {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public Year getAcadYear() {
-		return acadYear;
-	}
-	public void setAcadYear(Year acadYear) {
-		this.acadYear = acadYear;
-	}
+
 	public int getInternal() {
 		return internal;
 	}
@@ -75,7 +74,7 @@ public class Involvement {
 	@Override
 	public String toString() {
 		return "Involvement [id=" + id + ", idNum=" + idNum + ", iName=" + iName + ", position=" + position
-				+ ", acadYear=" + acadYear + "]";
+				+ ", acadYear=" + acadYear + "internal=" + internal + "]";
 	}
 
 
@@ -86,6 +85,14 @@ public class Involvement {
 
 	public void setHandler(ArrayList<String> handler) {
 		this.handler = handler;
+	}
+
+	public int getAcadYear() {
+		return acadYear;
+	}
+
+	public void setAcadYear(int acadYear) {
+		this.acadYear = acadYear;
 	}
 	
 	

@@ -498,40 +498,7 @@ public class StudentService {
 		System.out.println("ID retrieved!");
 		return idNum;
 	}
-	
-	/**
-	 * ADdes involvments
-	 * @param involvement
-	 */
-	@SuppressWarnings("deprecation")
-	public static void addInvolvements(Involvement involvement) {
-		System.out.println();
-		
-		try{
-			String driver = "com.mysql.jdbc.Driver";
-			Class.forName(driver);
-			Connection conn = DatabaseManager.getConnection();
-			
-			PreparedStatement stmt =  conn.prepareStatement(
-					"INSERT INTO involvement (iName, idNum, position, acadYear, internal) VALUES (?, ?, ?, ?, ?)"
-					);
-			
-			stmt.setString(1, involvement.getiName());
-			stmt.setInt(2, involvement.getIdNum());
-			stmt.setString(3, involvement.getPosition());
-			stmt.setString(4, involvement.getAcadYear().toString());
-			stmt.setInt(5, involvement.getInternal());
 
-			stmt.executeUpdate();
-			
-			conn.close();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-		System.out.println();
-	}
 	
 	/**
 	 * Updates the student
@@ -813,6 +780,100 @@ public class StudentService {
 		}
 		
 		return sum;
+	}
+	
+	
+	/**
+	 * ADdes involvments
+	 * @param involvement
+	 */
+	@SuppressWarnings("deprecation")
+	public static void addInvolvements(Involvement involvement) {
+		System.out.println();
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"INSERT INTO involvement (iName, studentDBId, position, acadYear, internal) VALUES (?, ?, ?, ?, ?)"
+					);
+			
+			stmt.setString(1, involvement.getiName());
+			stmt.setInt(2, involvement.getIdNum());
+			stmt.setString(3, involvement.getPosition());
+			stmt.setInt(4, involvement.getAcadYear());
+			stmt.setInt(5, involvement.getInternal());
+
+			stmt.executeUpdate();
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+	}
+	
+
+	/**
+	 * Updates the involvement.
+	 * @param involvement
+	 */
+	private static void updateInvolvements(Involvement involvement) {
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE involvement "
+				  + "SET iName=?,"//1
+					  + "position=?, "//2
+					  + "acadYear=? "//3
+				 + "WHERE involvementId=?" + " AND studentDBId=?" //4 & 5				
+					);
+			
+			stmt.setString(1, involvement.getiName());
+			stmt.setString(2, involvement.getPosition());
+			stmt.setInt(3, involvement.getAcadYear());
+			stmt.setInt(4, involvement.getId());
+			stmt.setInt(5, involvement.getIdNum());
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Update success for "+ involvement.getId() + "!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		
+	}
+	
+	/**
+	 * Decided whether involvements are added or not.
+	 */
+	public static void addOrUpdateInvolvements(Involvement involvement) {
+		// TODO Auto-generated method stub
+		
+		//If zero, its not yet on DB.
+		if(involvement.getId() == 0) {
+			System.out.println("Not yet added, proceed in adding..");
+			addInvolvements(involvement);
+			
+		}
+		
+		else {
+			System.out.println("Added! Proceed in updating..");
+			updateInvolvements(involvement);
+		}
+		
 	}
 
 

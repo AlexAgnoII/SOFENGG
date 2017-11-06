@@ -274,22 +274,22 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
-                        
+                        <a class="waves-effect waves-light btn addMoreInvolvments" id="imInternal">Add involvement</a>
                         <form action = "addIntInv" method = "POST" id = "intInv">
 	                        <div class="wrap">
-	                            <div class="f">
+	                            <div class="f" id="INyear">
 	                                <p class="ltags">Year</p>
-	                                <input type="text" class="ipfield threeipyear" name="inyear" value="2017" disabled>
+	                                <input type="text" class="ipfield threeipyear" name="inYear-0-0" value="2017" disabled>
 	                            </div>
 	                            
-	                            <div class="f">
+	                            <div class="f" id="INevent">
 	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" class="ipfield threeip" name="inorg" placeholder="Something" disabled>                         
+	                                <input type="text" class="ipfield threeip" name="inOrg-0-0" value="Something" disabled>                         
 	                            </div>
 	                            
-	                            <div class="f">
+	                            <div class="f" id="INposition">
 	                                <p class="ltags">Position</p>
-	                                <input type="text" class="ipfield threeip" name="inpos" placeholder="Someone" disabled>
+	                                <input type="text" class="ipfield threeip" name="inPos-0-0" value="Someone" disabled>
 	                            </div>
 	                        </div>
 	                        
@@ -308,21 +308,22 @@
                     
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
+                        <a class="waves-effect waves-light btn addMoreInvolvments" id="imExternal">Add involvement</a>
                         <form action = "addExtInv" method = "POST" id = "extInv">
 	                        <div class="wrap">
-	                            <div class="f">
+	                            <div class="f" id="EXyear">
 	                                <p class="ltags">Year</p>
-	                                <input type="text" class="ipfield threeipyear" name="exyear" value="2017" disabled>
+	                                <input type="text" class="ipfield threeipyear" name="exYear-0-0" value="2017" disabled>
 	                            </div>
 	                            
-	                            <div class="f">
+	                            <div class="f" id="EXevent">
 	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" class="ipfield threeip" name="exorg" placeholder="Something" disabled>                         
+	                                <input type="text" class="ipfield threeip" name="exOrg-0-0" value="Something" disabled>                         
 	                            </div>
 	                            
-	                            <div class="f">
+	                            <div class="f" id="EXposition">
 	                                <p class="ltags">Position</p>
-	                                <input type="text" class="ipfield threeip" name="expos" placeholder="Someone" disabled>
+	                                <input type="text" class="ipfield threeip" name="exPos-0-0" value="Someone" disabled>
 	                            </div>
 	                        </div>
 	                        

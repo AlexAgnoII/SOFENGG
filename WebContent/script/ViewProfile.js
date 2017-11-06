@@ -1,5 +1,7 @@
 //Global variables 
 var FBctr; //counting for the names of the dynamic family members field.
+var INctr; //counting for the names of the dynamic internal fields
+var EXctr; //counting for the names of the dynamic external fields
 
 /**
  * Checks if string field input is valid.
@@ -179,18 +181,57 @@ function sendExtInvForm() {
 }
 
 /**
- * gets the Family background count.
+ * gets the dynamic count.
  * @returns a number in string.
  */
-function getFBcount(value) {
+function getDynamicCount(value) {
 	var number = value.split("-");
 	console.log(number[1]);
 	return number[1];
 	
 }
 
+/**
+ * Adds dynamic input fields to the appropriate place (Internal/External involvements)
+ * @param placeYear - place to put year field
+ * @param placeEvent - place to put event field
+ * @param placePos - place to put position fiield
+ * @param yearInput - input field for year
+ * @param eventInput - input field for event
+ * @param posInput - input field for position
+ * @param ctr - counter of the field
+ * @param nameSuffx - either ex for external, in for internal
+ */
+function addFieldsInvolvement(placeYear, //Div id to append year
+						      placeEvent, //Div id to append event/org
+						      placePos, //Div id to append pos
+						      yearInput,
+						      eventInput,
+						      posInput,
+						      ctr,
+						      nameSuffix) {
+	yearInput.attr("class", "ipfield threeipyear");
+	yearInput.attr("name", nameSuffix + "Year-" + ctr + "-0");
+	yearInput.attr("type", "text");
+	
+	eventInput.attr("class", "ipfield threeip" );
+	eventInput.attr("name", nameSuffix + "Org-" + ctr + "-0" );
+	eventInput.attr("type", "text" );
+	
+	posInput.attr("class", "ipfield threeip" );
+	posInput.attr("name", nameSuffix + "Pos-" + ctr + "-0" );
+	posInput.attr("type", "text");
+	
+	placeYear.append(yearInput);
+	placeEvent.append(eventInput);
+	placePos.append(posInput);
+}
+
 $(document).ready(function() {
-	FBctr = getFBcount($("form#FBform div.wrap div.f input").last().attr("name"));
+	FBctr = getDynamicCount($("form#FBform div.wrap div.f input").last().attr("name"));
+	INctr = getDynamicCount($("form#intInv div.wrap div.f input").last().attr("name"));
+	EXctr = getDynamicCount($("form#extInv div.wrap div.f input").last().attr("name"));
+	
 	$('.collapsible').collapsible();
 
 	$('#PIedit').click(function() {
@@ -257,12 +298,20 @@ $(document).ready(function() {
 	})
 
 	$('#IIsave').click(function() {
-		sendIntInvForm();
-		$('form#intInv input.ipfield').attr('disabled', 'disabled');
+		
+		//Constraints handling soon
+		if(true) {
+			sendIntInvForm();
+			$('form#intInv input.ipfield').attr('disabled', 'disabled');
 
-		$('#IIedit').show();
-		$('#IIsave').hide();
-		$('#IIcancel').hide();
+			$('#IIedit').show();
+			$('#IIsave').hide();
+			$('#IIcancel').hide();
+		}
+		else {
+			//front end error for constraints.
+		}
+
 	})
 
 	$('#EIedit').click(function() {
@@ -274,12 +323,20 @@ $(document).ready(function() {
 	})
 
 	$('#EIsave').click(function() {
-		sendExtInvForm();
-		$('form#extInv input.ipfield').attr('disabled', 'disabled');
+		
+		//constraints handler
+		if(true) {
+			sendExtInvForm();
+			$('form#extInv input.ipfield').attr('disabled', 'disabled');
 
-		$('#EIedit').show();
-		$('#EIsave').hide();
-		$('#EIcancel').hide();
+			$('#EIedit').show();
+			$('#EIsave').hide();
+			$('#EIcancel').hide();	
+		}
+		else {
+			
+		}
+
 	})
 	
 	$('#notif').click(function(event) {
@@ -372,13 +429,47 @@ $(document).ready(function() {
 		console.log(occInput);
 		console.log(bdayInput);
 		
-		//name works this way:
-		//<field>-<index in field>-<ID on database>
-		//ID on database is 0 if its not yet added.
 		//Else, it will be placed there.
 		$("#FBname").append(nameInput);
 		$("#FBocc").append(occInput);
 		$("#FBbday").append(bdayInput);
+	});
+	
+	$(".addMoreInvolvments").click(function() {
+		var eventInput = $("<input></input>");
+		var yearInput = $("<input></input>");
+		var posInput =$("<input></input>");
+		var id = $(this).attr("id");
+		console.log(id);
+		//Internal
+		if(id === "imInternal") {
+			console.log("internal adding: " + INctr);
+			INctr++;
+			
+			addFieldsInvolvement($("#INyear"),
+					             $("#INevent"),
+					             $("#INposition"),
+					             yearInput,
+					             eventInput,
+					             posInput,
+					             INctr,
+					             "in");
+		}
+		//External
+		else {
+			console.log("external adding: " + EXctr)
+			EXctr++;
+			addFieldsInvolvement($("#EXyear"),
+					             $("#EXevent"),
+					             $("#EXposition"),
+					             yearInput,
+					             eventInput,
+					             posInput,
+					             EXctr,
+					             "ex");
+		}
+		
+		
 	});
 	
 	//-----------------------------------------

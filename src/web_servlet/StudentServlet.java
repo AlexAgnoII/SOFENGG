@@ -59,8 +59,8 @@ public class StudentServlet extends HttpServlet {
 			case "/updatePersonal": updatePersonal(request, response); break;
 			case "/updateAcadInfo1": updateAcadInfo(request, response); break;
 			case "/updateFamily": updateFamily(request, response); break;
-			case "/addIntInv": addInternalInvolvements(request, response); break;
-			case "/addExtInv": addExternalInvolvements(request, response); break;
+			case "/addIntInv": addInvolvements(request, response, 1); break;
+			case "/addExtInv": addInvolvements(request, response, 0); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
@@ -295,7 +295,7 @@ public class StudentServlet extends HttpServlet {
 		Cookie userCookie = null;
 		String[] temp;
 		int lengthSib; //length of siblings.
-		
+
 		for (Cookie c: cookies) {
 			if(c.getName().equals("USER")) {
 				System.out.println("Cookie found!");
@@ -379,7 +379,7 @@ public class StudentServlet extends HttpServlet {
 	    for (Relative r : relativeList) {
 	    	r.setStudentId(Integer.parseInt(userCookie.getValue()));
 	    	System.out.println(r.toString());
-	    	StudentService.updateOrAddRelative(r);
+	    	StudentService.updateOrAddRelative(r); //updating done here.
 	    }
 	    
 
@@ -419,97 +419,84 @@ public class StudentServlet extends HttpServlet {
 	    //After updating, go back to edit.
 	    response.sendRedirect("view2edit");
 	}
+	
+	/**
+	 * Adds involvement for user.
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void addInvolvements(HttpServletRequest request, HttpServletResponse response, int type) throws ServletException, IOException {
+		ArrayList<Involvement> involvementList = new ArrayList<Involvement>();
+		Enumeration<String> e = request.getParameterNames();
+		ArrayList<String> paramNames = new ArrayList<String>();
+		Cookie[] cookies = request.getCookies();
+		Cookie userCookie = null;
+		String param = null;
+		String value = null;
+		int involvementCount = 0;
+		String temp[];
+		
+		if(type == 0)
+			System.out.println("***************** ADD EXTERNAL INVOLVEMENTS ************************");
+		else
+			System.out.println("***************** ADD INTERNAL INVOLVEMENTS ************************");
+		
+		for (Cookie c: cookies) {
+			if(c.getName().equals("USER")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
+			}
+		}
+		
+		while(e.hasMoreElements()) {
+			param = e.nextElement();
+			value = request.getParameter(param);
+			
+			System.out.println("Name: " + param + " | Value: + " + value);
+			paramNames.add(param);
+			involvementCount++;
+		}
+		
+		involvementCount /= 3;
+		for(int i = 0; i < involvementCount; i++) {
+			involvementList.add(new Involvement());
+		}
+		
+		for(String parameter : paramNames) {
+			temp = parameter.split("-");
+			//0 = name
+			//1 = fieldIndex
+			//2 = Database status (0 for nothing, else is at db.)
+			
+			if(parameter.matches(".*Year.*")) {
+				involvementList.get(Integer.parseInt(temp[1])).setAcadYear(Integer.parseInt(request.getParameter(parameter)));
+			}
+			
+			else if (parameter.matches(".*Org.*")) {
+				involvementList.get(Integer.parseInt(temp[1])).setiName(request.getParameter(parameter));
+			}
+			
+			else {
+				involvementList.get(Integer.parseInt(temp[1])).setPosition(request.getParameter(parameter));
+				involvementList.get(Integer.parseInt(temp[1])).setId(Integer.parseInt(temp[2]));
 
-	/**
-	 * Adds internal involvement for the user
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void addInternalInvolvements(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie[] cookies = request.getCookies();
-		Cookie userCookie = null;
-		int idnum;
-		
-		System.out.println("***************** ADD INTERNAL INVOLVEMENTS ************************");
-		String inyear = request.getParameter("inyear");
-		String org = request.getParameter("inorg");
-		String pos = request.getParameter("inpos");
-		
-		Year year = Year.parse(inyear);
-		
-		for (Cookie c: cookies) {
-			if(c.getName().equals("USER")) {
-				System.out.println("Cookie found!");
-				System.out.println("Cookie name: " +  c.getName());
-				System.out.println("Cookie Value: " + c.getValue());
-				userCookie = c;
 			}
+			
 		}
 		
-		idnum = StudentService.getStudentIDNum(Integer.parseInt(userCookie.getValue()));
-		
-		
-		Involvement involvement = new Involvement(idnum, org, pos, year, 1);
-		
-		involvement.setIdNum(idnum);
-		involvement.setiName(org);
-		involvement.setAcadYear(year);
-		involvement.setPosition(pos);
-		involvement.setInternal(1);
-		
-		StudentService.addInvolvements(involvement);
-		
-		response.sendRedirect("viewByStudent");
-		
-		System.out.println("***********************************************************************************");
-		
-	}
-	
-	
-	/**
-	 * Adds external involvement for user.
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void addExternalInvolvements(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie[] cookies = request.getCookies();
-		Cookie userCookie = null;
-		int idnum;
-		
-		System.out.println("***************** ADD EXTERNAL INVOLVEMENTS ************************");
-		String exyear = request.getParameter("exyear");
-		String org = request.getParameter("exorg");
-		String pos = request.getParameter("expos");
-		
-		Year year = Year.parse(exyear);
-		
-		for (Cookie c: cookies) {
-			if(c.getName().equals("USER")) {
-				System.out.println("Cookie found!");
-				System.out.println("Cookie name: " +  c.getName());
-				System.out.println("Cookie Value: " + c.getValue());
-				userCookie = c;
-			}
+		for(Involvement i : involvementList) {
+			i.setInternal(type);
+			i.setIdNum(Integer.parseInt(userCookie.getValue()));
+			System.out.println(i.toString());
+			StudentService.addOrUpdateInvolvements(i);
 		}
 		
-		idnum = StudentService.getStudentIDNum(Integer.parseInt(userCookie.getValue()));
 		
-		Involvement involvement = new Involvement(idnum, org, pos, year, 0);
-		
-		involvement.setIdNum(idnum);
-		involvement.setiName(org);
-		involvement.setAcadYear(year);
-		involvement.setPosition(pos);
-		involvement.setInternal(0);
-		
-		StudentService.addInvolvements(involvement);
-		
-		response.sendRedirect("viewByStudent");
-		
+		System.out.println("Involvements addeed/Updated!");
 		System.out.println("***********************************************************************************");
 	}
 }

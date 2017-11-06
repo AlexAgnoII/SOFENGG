@@ -876,6 +876,61 @@ public class StudentService {
 		
 	}
 
+	public static ArrayList<Involvement> getSpecificStudentInvolvement(int studentDBid, int type) {
+		ArrayList<Involvement> involvementList = new ArrayList<Involvement>();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			
+			PreparedStatement stmt =  conn.prepareStatement("select * from involvement\r\n" + 
+					                                        "WHERE studentDBid = ? AND internal=?");
+			stmt.setInt(1, studentDBid);
+			stmt.setInt(2, type);
+			ResultSet rs = stmt.executeQuery();
+			
+			//No result was returned.
+			if(!rs.isBeforeFirst()) {
+				System.out.println("Doesnt have involvements yet.");
+				return null;
+			}
+			
+			//Result set returned! proceed.
+			else {
+				System.out.println("Has Relatives!");
+				while(rs.next()) {
+					involvementList.add(new Involvement(rs.getInt("involvementId"),
+														rs.getInt("studentDBId"),
+														rs.getString("iName"),
+														rs.getString("position"),
+														rs.getInt("acadYear"),
+														rs.getInt("internal")
+							));
+				}
+			}
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		
+		return involvementList;
+	}
+	
+	
+	public static int getCountInvolvements(ArrayList<Involvement> involvementList) {
+		int sum = 0;
+		for(Involvement i : involvementList) {
+			sum++;
+		}
+		
+		return sum;
+	}
+
 
 
 

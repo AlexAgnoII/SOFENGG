@@ -164,7 +164,11 @@ public class StudentServlet extends HttpServlet {
 				            siblingList = null;
 		Relative mother = null, father = null;
 		ArrayList<Relative> sibilings = null;
+		ArrayList<Involvement> internalList = null,
+				               externalList = null;
 		int siblingCount = 0;
+		int internalSize = 0;
+		int externalSize = 0;
 		
 		System.out.println("************************************Retrieve User (User side)**********************************");
 		for (Cookie c: cookies) {
@@ -180,6 +184,8 @@ public class StudentServlet extends HttpServlet {
 			student = StudentService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
 			System.out.println("Relatives:");
 			relativeList = StudentService.getRelatives(Integer.parseInt(userCookie.getValue()));
+			internalList = StudentService.getSpecificStudentInvolvement(Integer.parseInt(userCookie.getValue()), 1);
+			externalList = StudentService.getSpecificStudentInvolvement(Integer.parseInt(userCookie.getValue()), 0);
 			
 			if(relativeList != null) {
 				for(Relative r : relativeList) {
@@ -202,6 +208,26 @@ public class StudentServlet extends HttpServlet {
 				System.out.println("No Siblings.");
 			
 			
+			System.out.println("Involvements:");
+			if(internalList != null) {
+				System.out.println("Internal: ");
+				for(Involvement i : internalList) {
+					System.out.println(i.toString());
+				}
+				internalSize = StudentService.getCountInvolvements(internalList);
+			}
+			else System.out.println("No internal");
+			
+			System.out.println();
+			if(externalList != null) {
+				System.out.println("External:");
+				for(Involvement i : externalList) {
+					System.out.println(i.toString());
+				}
+				externalSize = StudentService.getCountInvolvements(externalList);
+			}
+			else System.out.println("No external.");
+			
 			
 			request.setAttribute("loggedUser", student);
 		    request.setAttribute("relativeList", relativeList);
@@ -209,6 +235,10 @@ public class StudentServlet extends HttpServlet {
 			request.setAttribute("mother", mother);
 			request.setAttribute("father", father);
 			request.setAttribute("siblingSize", siblingCount-1); //deduct 1 due to index for setting the fields.
+			request.setAttribute("internalList", internalList);
+			request.setAttribute("externalList", externalList);
+			request.setAttribute("internalSize", internalSize-1); //deduct 1 due to index for setting the fields.
+			request.setAttribute("externalSize", externalSize-1); //deduct 1 due to index for setting the fields.
 			System.out.println("Viewing via viewprofile..");
 			
 			request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);

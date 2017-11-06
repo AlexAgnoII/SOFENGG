@@ -169,15 +169,46 @@ function submitFBform() {
  * Sends internal involvements form
  */
 function sendIntInvForm() {
-	document.getElementById("intInv").submit();
+	$.ajax({
+		  context: this,
+	      url:'addIntInv',
+	      data:$("form#intInv").serialize(),
+	      type:'POST',
+	      cache:false,
+	      success: function(data){
+	    	  
+	      	//Front end stating success
+	    	 alert("Update successful!")
+	      	
+	      },
+	      error:function(){
+	      	console.log("error searchResult.js");
+	      	alert("Update Failed!")
+	      }
+	   });
 }
 
 /**
  * Sends external involvements form
  */
 function sendExtInvForm() {
-	console.log("Pasok");
-	document.getElementById("extInv").submit();
+	$.ajax({
+		  context: this,
+	      url:'addExtInv',
+	      data:$("form#extInv").serialize(),
+	      type:'POST',
+	      cache:false,
+	      success: function(data){
+	    	  
+	      	//Front end stating success
+	    	 alert("Update successful!")
+	      	
+	      },
+	      error:function(){
+	      	console.log("error searchResult.js");
+	      	alert("Update Failed!")
+	      }
+	   });
 }
 
 /**

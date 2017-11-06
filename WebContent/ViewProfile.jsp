@@ -276,22 +276,51 @@
                         <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
                         <a class="waves-effect waves-light btn addMoreInvolvments" id="imInternal">Add involvement</a>
                         <form action = "addIntInv" method = "POST" id = "intInv">
-	                        <div class="wrap">
-	                            <div class="f" id="INyear">
-	                                <p class="ltags">Year</p>
-	                                <input type="text" class="ipfield threeipyear" name="inYear-0-0" value="2017" disabled>
-	                            </div>
-	                            
-	                            <div class="f" id="INevent">
-	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" class="ipfield threeip" name="inOrg-0-0" value="Something" disabled>                         
-	                            </div>
-	                            
-	                            <div class="f" id="INposition">
-	                                <p class="ltags">Position</p>
-	                                <input type="text" class="ipfield threeip" name="inPos-0-0" value="Someone" disabled>
-	                            </div>
-	                        </div>
+	                        <c:choose>
+	                        	<c:when test="${empty internalList}"> <!-- Internal not existing, do this -->
+			                        <div class="wrap">
+			                            <div class="f" id="INyear">
+			                                <p class="ltags">Year</p>
+			                                <input type="text" class="ipfield threeipyear" name="inYear-0-0" value="2017" disabled>
+			                            </div>
+			                            
+			                            <div class="f" id="INevent">
+			                                <p class="ltags">Event/Organization</p>
+			                                <input type="text" class="ipfield threeip" name="inOrg-0-0" value="Something" disabled>                         
+			                            </div>
+			                            
+			                            <div class="f" id="INposition">
+			                                <p class="ltags">Position</p>
+			                                <input type="text" class="ipfield threeip" name="inPos-0-0" value="Someone" disabled>
+			                            </div>
+			                        </div>
+		                        </c:when>
+		                        
+		                        <c:otherwise> <!-- Internal exiisting, do this -->
+			                        <div class="wrap">
+			                            <div class="f" id="INyear">
+			                                <p class="ltags">Year</p>
+			                                <c:forEach items="${internalList}" begin="0" end="${internalSize}" var="i" varStatus="loop">
+			                               		<input type="text" class="ipfield threeipyear" name="inYear-${loop.index}-${i.id}" value="${i.acadYear}" disabled>
+			                                </c:forEach>
+			                            </div>
+			                            
+			                            <div class="f" id="INevent">
+			                                <p class="ltags">Event/Organization</p>
+			                                <c:forEach items="${internalList}" begin="0" end="${internalSize}" var="i" varStatus="loop">
+			                                	<input type="text" class="ipfield threeip" name="inOrg-${loop.index}-${i.id}" value="${i.iName}" disabled>       
+			                                </c:forEach>                  
+			                            </div>
+			                            
+			                            <div class="f" id="INposition">
+			                                <p class="ltags">Position</p>
+			                                <c:forEach items="${internalList}" begin="0" end="${internalSize}" var="i" varStatus="loop">
+			                               		<input type="text" class="ipfield threeip" name="inPos-${loop.index}-${i.id}" value="${i.position}" disabled>
+			                               	</c:forEach>  
+			                            </div>
+			                        </div>
+		                        </c:otherwise>
+		                    </c:choose>
 	                        
 	                        <br><br>
 	                        
@@ -310,28 +339,56 @@
                         <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
                         <a class="waves-effect waves-light btn addMoreInvolvments" id="imExternal">Add involvement</a>
                         <form action = "addExtInv" method = "POST" id = "extInv">
-	                        <div class="wrap">
-	                            <div class="f" id="EXyear">
-	                                <p class="ltags">Year</p>
-	                                <input type="text" class="ipfield threeipyear" name="exYear-0-0" value="2017" disabled>
-	                            </div>
-	                            
-	                            <div class="f" id="EXevent">
-	                                <p class="ltags">Event/Organization</p>
-	                                <input type="text" class="ipfield threeip" name="exOrg-0-0" value="Something" disabled>                         
-	                            </div>
-	                            
-	                            <div class="f" id="EXposition">
-	                                <p class="ltags">Position</p>
-	                                <input type="text" class="ipfield threeip" name="exPos-0-0" value="Someone" disabled>
-	                            </div>
-	                        </div>
+                        <c:choose>
+                        	<c:when test="${empty externalList}">
+		                        <div class="wrap">
+		                            <div class="f" id="EXyear">
+		                                <p class="ltags">Year</p>
+		                                <input type="text" class="ipfield threeipyear" name="exYear-0-0" value="2017" disabled>
+		                            </div>
+		                            
+		                            <div class="f" id="EXevent">
+		                                <p class="ltags">Event/Organization</p>
+		                                <input type="text" class="ipfield threeip" name="exOrg-0-0" value="Something" disabled>    
+		                            </div>
+		                            
+		                            <div class="f" id="EXposition">
+		                                <p class="ltags">Position</p>
+		                                <input type="text" class="ipfield threeip" name="exPos-0-0" value="Someone" disabled>
+		                            </div>
+		                        </div>
+	                        </c:when>
 	                        
+	                        <c:otherwise>
+		                        <div class="wrap">
+		                            <div class="f" id="EXyear">
+		                                <p class="ltags">Year</p>
+		                                <c:forEach items="${externalList}" begin="0" end="${externalSize}" var="i" varStatus="loop">
+		                                	<input type="text" class="ipfield threeipyear" name="exYear-${loop.index}-${i.id}" value="${i.acadYear}" disabled>
+		                            	</c:forEach>
+		                            </div>
+		                            
+		                            <div class="f" id="EXevent">
+		                                <p class="ltags">Event/Organization</p>
+		                                <c:forEach items="${externalList}" begin="0" end="${externalSize}" var="i" varStatus="loop">
+		                               		<input type="text" class="ipfield threeip" name="exOrg-${loop.index}-${i.id}" value="${i.iName}" disabled>                         
+		                            	</c:forEach>
+		                            </div>
+		                            
+		                            <div class="f" id="EXposition">
+		                                <p class="ltags">Position</p>
+		                                <c:forEach items="${externalList}" begin="0" end="${externalSize}" var="i" varStatus="loop">
+		                                	<input type="text" class="ipfield threeip" name="exPos-${loop.index}-${i.id}" value="${i.position}" disabled>
+		                            	</c:forEach>
+		                            </div>
+		                        </div>
+	                        </c:otherwise>
+	                    </c:choose>
 	                        <br><br>
 	                        
                             <a class="waves-effect waves-light btn" id="EIcancel">CANCEL</a>
 	                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
-	                        
+	                     
                         </form> <!-- end extInv -->
                     </div> <!-- end of div tag External Involvement --> 
                 </li>

@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
@@ -11,7 +8,7 @@
 		<script type="text/javascript" src="script/AdminHomePage.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
-        <link rel = "stylesheet" type="text/css" href="css/adminhomepage.css">
+        <link rel = "stylesheet" type="text/css" href="css/adminsearchforstudents.css">
     </head>
     
     <body>
@@ -49,7 +46,16 @@
             </div>
         </nav> 
       	
-      	<div id="postFeed"> </div> 
+      	<div id="postFeed">
+              <div class="nav-wrapper">
+                <form>
+                  <div class="input-field z-depth-1">
+                    <input id="search" type="search">
+                    <label class="label-icon" for="search" style="color: #006f4a"><i class="material-icons">search</i></label>
+                  </div>
+                </form>
+              </div>
+        </div> 
       	
         <div id="newannounce" class="modal">
             <div class = "annhead">[NEW ANNOUNCEMENT]</div>
@@ -79,16 +85,7 @@
 					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>
 					<br>
             </div>
-        </div>
-    
-        
-     <!--<div id="searchdiv">
-            <form action="search" method="GET" id = "searchForm">
-                <input type="text" id="searchbar" name="searchbar" placeholder="search">
-                <a><i class="material-icons" id="magglass">search</i></a>
-            </form>
-        </div> -->
-       
+        </div>      
         
     </body>
 </html>

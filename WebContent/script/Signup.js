@@ -197,7 +197,8 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
-		alert("Invalid IDnumber");
+		//alert("Invalid IDnumber");
+        $('#idErrorMain1').show();
 		satisfied = false;
 	}
 	
@@ -209,7 +210,8 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
-		alert("Invalid Password");
+		//alert("Invalid Password");
+        $('#passwordErrorMain1').show();
 		satisfied = false;
 	}
 	
@@ -220,7 +222,8 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
-		alert("Invalid First name");
+		//alert("Invalid First name");
+        $('#firstNameErrorMain').show();
 		satisfied = false;
 	}
 
@@ -232,7 +235,8 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
-		alert("Invalid last name");
+		//alert("Invalid last name");
+        $('#lastNameErrorMain').show();
 		satisfied = false;
 	}
 	
@@ -243,7 +247,8 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
-		alert("Invalid Middle name");
+		//alert("Invalid Middle name");
+        $('#middleNameErrorMain').show();
 		satisfied = false;
 	}
 	
@@ -254,8 +259,10 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
-		alert("Invalid courseName");
+		//alert("Invalid courseName");
+        $('#courseErrorMain').show();
 		satisfied = false;
+        
 	}
 	
 	return satisfied;

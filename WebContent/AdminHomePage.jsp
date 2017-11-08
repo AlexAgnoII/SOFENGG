@@ -8,6 +8,7 @@
         
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="script/AdminHomePage.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
         <link rel = "stylesheet" type="text/css" href="css/adminhomepage.css">
@@ -86,15 +87,7 @@
                 <a><i class="material-icons" id="magglass">search</i></a>
             </form>
         </div> -->
-        
-     <script>
-        $(document).ready(function(){
-            $('.modal').modal();
-        });
-        
-        
-    </script>    
-    
+       
         
     </body>
 </html>

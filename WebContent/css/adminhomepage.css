@@ -23,7 +23,7 @@ html {
 		#top { top: 0; }
 
 nav {
-    position: fixed;
+    position: sticky;
     height: 66px;
     background-color: white;
     box-shadow: 0 5px 5px -10px #333;
@@ -96,14 +96,14 @@ a#menu.dropdown-button.btn {
     line-height: 215%;
 }
 
-a#menu.dropdown-button.btn:hover {
+a#menu.dropdown-button.btn:hover, a#menu.dropdown-button.btn:focus {
     background-color: #006f4a;
     color: snow;
     border-radius: 0px;
     box-shadow: 0 5px 5px -6px #333;
 }
 
-a#menu.dropdown-button.btn:hover #mb {
+a#menu.dropdown-button.btn:focus #mb, a#menu.dropdown-button.btn:hover #mb {
     color: snow;
 }
 
@@ -117,7 +117,7 @@ a#menu.dropdown-button.btn:hover #mb {
     border-radius: 0px;
 }
 
-#drop:hover {
+#drop:hover, #drop:focus {
     background-color: #006f4a;
     color: snow;
     box-shadow: 0 5px 5px -6px #333;
@@ -146,7 +146,6 @@ a#menu.dropdown-button.btn:hover #mb {
 }
 
 nav ul a{
-    width: 130px;
     padding-left: 10px;
     font-size: 10px;
     line-height: 275%;
@@ -229,16 +228,6 @@ nav ul a:hover {
     
 }
 
-#searchdiv {
-    background-color: #006f4a;
-    width: 275px;
-    float: right;
-    height: 40px;
-    display: inline-flex;
-    border-bottom-left-radius: 2px;
-    box-shadow: 0 5px 5px -6px #333;
-}
-
 #searchbar {
     position: relative;
     width: 220px;
@@ -266,11 +255,10 @@ nav ul a:hover {
     float: right;   
 }
 
-
-#postFeed{
+#postFeed, #searchFeed{
     position: relative;
     margin: 0 auto;
-    top: 90px;
+    margin-top:90px;
     width: 750px;
 }
 
@@ -337,4 +325,11 @@ nav ul a:hover {
     height: 50px;
     font-size: 30px;
     line-height: 155%;
+}
+
+#searchDiv{
+    position: relative;
+    margin: 0 auto;
+    margin-top:90px;
+    width: 750px;
 }

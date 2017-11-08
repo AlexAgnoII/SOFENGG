@@ -1,17 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        
-        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-		<script type="text/javascript" src="script/AdminHomePage.js"></script>
-        
-        <!-- INSERT CORRECT STYLESHEET BELOW -->
-        <link rel = "stylesheet" type="text/css" href="css/adminsearchforstudents.css">
-    </head>
-    
-    <body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Admin Search</title>
+	
+	        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+	        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	        
+	        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+	        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+			<script type="text/javascript" src="script/AdminHomePage.js"></script>
+	        
+	        <!-- INSERT CORRECT STYLESHEET BELOW -->
+        	<link rel = "stylesheet" type="text/css" href="css/adminhomepage.css">
+	        
+	</head>
+	<body>
         <div id="left"></div>
 		<div id="right"></div>
 		<div id="top"></div>
@@ -19,7 +25,7 @@
         
        <nav>
             <div class="nav-wrapper">
-               <a class='brand-logo center' data-activates='dp2' href='#' id="tbox">
+               <a class='brand-logo center' data-activates='dp2' href='AdminHomePage.jsp' id="tbox">
                 <div id="wrapper">
                     <img src="css/arrow.png" id="arrow">
                     <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>
@@ -46,16 +52,14 @@
             </div>
         </nav> 
       	
-      	<div id="postFeed">
-              <div class="nav-wrapper">
-                <form>
-                  <div class="input-field z-depth-1">
-                    <input id="search" type="search">
-                    <label class="label-icon" for="search" style="color: #006f4a"><i class="material-icons">search</i></label>
-                  </div>
-                </form>
-              </div>
-        </div> 
+		<div id = "searchDiv" class="input-field z-depth-1" id = "searchDiv">
+			<form action="search" method="GET" id = "searchForm">
+                <input type="search" id="search" name="searchbar" >
+                <label class="label-icon" for="search" style="color: #006f4a"><i class="material-icons">search</i></label>
+            </form>
+		</div>
+		
+      	<div id="searchResultFeed"></div> 
       	
         <div id="newannounce" class="modal">
             <div class = "annhead">[NEW ANNOUNCEMENT]</div>
@@ -87,5 +91,5 @@
             </div>
         </div>      
         
-    </body>
+	</body>
 </html>

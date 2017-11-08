@@ -185,6 +185,16 @@ public class authentication implements Filter {
 					               	 res.sendRedirect("HomePage.jsp");
 					                }
 				                break;
+			case "/AdminSearchForStudents.jsp": 
+                if(proceed && admin) {
+	               	 System.out.println("Continue on this page..");
+	                   chain.doFilter(request, response);
+					 }
+	                else {
+	               	 System.out.println("Redirecting to HomePage.jsp..");
+	               	 res.sendRedirect("HomePage.jsp");
+	                }
+                break;
 			case "/ViewProfile.jsp": //if cookie exists, continue
 					                if(proceed) {
 						               	 System.out.println("Continue on this page..");

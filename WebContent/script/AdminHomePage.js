@@ -26,14 +26,15 @@ function loadPosts(){
         cache:false,
         success: function(data){
         	var postFeed = document.getElementById("postFeed");
-        	
-        	// Remove all children
-        	while (postFeed.firstChild) {	
-        		postFeed.removeChild(postFeed.firstChild);
+        	if(postFeed != null){
+	        	// Remove all children
+	        	while (postFeed.firstChild) {	
+	        		postFeed.removeChild(postFeed.firstChild);
+	        	}
+	
+	        	// Append html snippet 
+	    	    $(postFeed).append(data);
         	}
-
-        	// Append html snippet 
-    	    $(postFeed).append(data);
     	},
         error:function(){
             console.log("URL getPosts does not exist");

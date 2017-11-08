@@ -46,19 +46,36 @@
                 </div>
             </div>
         </nav> 
-        
+      	
+      	<div id="postFeed"> </div> 
+      	
         <div id="newannounce" class="modal">
-            <div id="annhead">[NEW ANNOUNCEMENT]</div>
-            <div id="annwrap">
+            <div class = "annhead">[NEW ANNOUNCEMENT]</div>
+            <div class ="annwrap">
                 <form action="createPost" method="POST" id="createPostForm">
 					<p class="ltags">Title</p>
-					<input type="text" id="anntitle">
+					<input type="text" id="anntitle" name = "anntitle">
 					<p class="ltags">Description</p>
-					<input type="text" id="annbody">
-					<br>	
-					<a class="waves-effect waves-light btn" id="ANpost" type=submit>POST</a>
-					<br>
+					<input type="text" id="annbody" name = "annbody">
            		</form>
+					<br>	
+					<button class="waves-effect waves-light btn" id="ANpost" >POST</button>
+					<br>
+            </div>
+        </div>
+
+        <div id="updateAnnounce" class="modal">
+            <div class = "annhead">[UPDATE ANNOUNCEMENT]</div>
+            <div class = "annwrap">
+                <form action="createPost" method="POST" id="createPostForm">
+					<p class="ltags">Title</p>
+					<input type="text" id="updateTitle" name = "anntitle">
+					<p class="ltags">Description</p>
+					<input type="text" id="updateBody" name = "annbody">
+           		</form>
+					<br>	
+					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>
+					<br>
             </div>
         </div>
     

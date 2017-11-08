@@ -161,9 +161,10 @@ nav ul a:hover {
 
 #newannounce, #updateAnnounce{
     width: 600px;
+    height: 80%;
 }
 
-#annhead {
+.annhead {
     background-color: #006f4a;
     color: snow;
     height: 30px;
@@ -171,10 +172,15 @@ nav ul a:hover {
     line-height: 200%;
 }
 
-#annwrap {
+.annwrap {
     margin: 0 auto;
     width: 550px;
     padding: 10px;
+    height: 90%;
+}
+
+#createPostForm{
+	height: 90%;
 }
 
 .ltags {
@@ -184,8 +190,7 @@ nav ul a:hover {
 }
 
 #anntitle, #annbody, #updateTitle, #updateBody{
-    width: 350px;
-    height: 25px;
+    width: 97.5%;
     color: black;
     margin-top: -10px;
     margin-bottom: 5px;
@@ -198,9 +203,13 @@ nav ul a:hover {
     font-size: 12px;
 }
 
-#annbody {
-    width: 500px;
-    height: 80px; 
+#anntitle, #updateTitle{
+	height: 7.5%;
+}
+
+#annbody, #updateBody {
+    height: 70%; 
+    overflow-wrap: break-word; 
 }
 
 #ANpost, #ANupdate {
@@ -209,7 +218,6 @@ nav ul a:hover {
     color: snow;
     line-height: 250%;
     height: 30px;
-    padding: 0 25px;
     float: right;
     font-size: 11px;
     font-weight: 500;
@@ -257,6 +265,7 @@ nav ul a:hover {
     color: snow;
     float: right;   
 }
+
 
 #postFeed{
     position: relative;

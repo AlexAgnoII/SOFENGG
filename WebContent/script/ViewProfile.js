@@ -324,6 +324,7 @@ $(document).ready(function() {
 		$('form#intInv input.ipfield').removeAttr('disabled');
 
 		$('#IIedit').hide();
+		$('#imInternal').show();
 		$('#IIsave').show();
 		$('#IIcancel').show();
 	})
@@ -336,6 +337,7 @@ $(document).ready(function() {
 			$('form#intInv input.ipfield').attr('disabled', 'disabled');
 
 			$('#IIedit').show();
+			$('#imInternal').hide();
 			$('#IIsave').hide();
 			$('#IIcancel').hide();
 		}
@@ -349,6 +351,7 @@ $(document).ready(function() {
 		$('form#extInv input.ipfield').removeAttr('disabled');
 
 		$('#EIedit').hide();
+		$('#imExternal').show();
 		$('#EIsave').show();
 		$('#EIcancel').show();
 	})
@@ -361,6 +364,7 @@ $(document).ready(function() {
 			$('form#extInv input.ipfield').attr('disabled', 'disabled');
 
 			$('#EIedit').show();
+			$('#imExternal').hide();
 			$('#EIsave').hide();
 			$('#EIcancel').hide();	
 		}

@@ -204,7 +204,7 @@ public class StudentServlet extends HttpServlet {
 				System.out.println("No mother.");
 			if(father == null)
 				System.out.println("No father");
-			if(siblingList.size() == 0)
+			if (siblingList == null || siblingList.size() ==0)
 				System.out.println("No Siblings.");
 			
 			

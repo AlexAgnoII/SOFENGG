@@ -140,12 +140,8 @@ p {
     box-shadow: 0 5px 5px -3.5px #333;
 }
 
-#signupb:hover {
-	opacity: 0.9;
-}
-
-#backb:hover {
-	opacity: 0.9;
+#signupb:hover, #backb:hover {
+	background-color: black;
 }
 
 #modal1 {
@@ -196,7 +192,9 @@ div.input-field {
 }
 
 
-#idError1, #idError2, #idError3, #lastNameError, #firstNameError, #middleNameError, #courseError, #emailError, #passwordError1, #passwordError2, #idErrorMain1, #passwordErrorMain1, #firstNameErrorMain, #lastNameErrorMain, #middleNameErrorMain, #courseErrorMain  {
+#idError1, #idError2, #idError3, #lastNameError, #firstNameError, #middleNameError, #courseError, 
+#emailError, #passwordError1, #passwordError2, #idErrorMain1, #passwordErrorMain1, #firstNameErrorMain, 
+#lastNameErrorMain, #middleNameErrorMain, #courseErrorMain  {
     display: none;
     color: indianred;
     font-size: 10px;

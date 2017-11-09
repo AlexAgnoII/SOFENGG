@@ -212,7 +212,7 @@ nav ul a:hover {
 #FBedit, #FBsave, #FBcancel, 
 #IIedit, #IIsave, #IIcancel, 
 #EIedit, #EIsave, #EIcancel, 
-#addSibling {
+#addSibling, #imInternal, #imExternal {
     margin-top: -15px;
     background-color: lightgrey;
     color: #1f1f1f;
@@ -230,7 +230,7 @@ nav ul a:hover {
 }
 
 #PIsave, #FBsave, #IIsave, #EIsave, 
-#PIcancel, #FBcancel, #IIcancel, #EIcancel, #addSibling {
+#PIcancel, #FBcancel, #IIcancel, #EIcancel, #addSibling, #imInternal, #imExternal {
     display: none;
     margin-right: 5px;
 }

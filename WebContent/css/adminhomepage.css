@@ -79,11 +79,11 @@ nav {
     color: #006f4a;
     line-height: 385%;
     font-size: 13px;
-    width: 100px;
+    width: 140px;
 }
 
 a#menu.dropdown-button.btn {
-    width: 130px;
+    width: 135px;
     
 }
 
@@ -141,11 +141,12 @@ a#menu.dropdown-button.btn:focus #mb, a#menu.dropdown-button.btn:hover #mb {
 }
 
 #dp2 {
-    width: 130px;
+    width: 135px;
     float: left;
 }
 
 nav ul a{
+	width: 135px;
     padding-left: 10px;
     font-size: 10px;
     line-height: 275%;
@@ -153,6 +154,7 @@ nav ul a{
 }
 
 nav ul a:hover {
+	
      background-color: #01563a;
 }
 

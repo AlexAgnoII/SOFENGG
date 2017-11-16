@@ -192,10 +192,10 @@ div.input-field {
 }
 
 
-#idError1, #idError2, #idError3, #lastNameError, #firstNameError, #middleNameError, #courseError, 
-#emailError, #passwordError1, #passwordError2, #idErrorMain1, #passwordErrorMain1, #firstNameErrorMain, 
+#idError1, #idError2, #idError3, #lastNameError, #firstNameError, #middleNameError, #courseError, #emailError, #passwordError1, #passwordError2, #idErrorMain1, #passwordErrorMain1, #firstNameErrorMain, 
 #lastNameErrorMain, #middleNameErrorMain, #courseErrorMain  {
     display: none;
     color: indianred;
     font-size: 10px;
+    width: 330px;
 }

@@ -34,43 +34,43 @@
         
         <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
-                <p>ID Number</p>
-                <input type="text" id="idNum" name="idNum" onblur="checkIdNumber(this, getElementById('idError'))">
+                <p id="lol">ID Number</p>
+                <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" onblur="checkIdNumber(this, getElementById('idError'))">
                 <!-- idErrorMain 1: Invalid ID -->
-                <span id="idErrorMain1"><br>Invalid ID</span>
+                <div id="idErrorMain1">Your ID number must consist of 8 numbers</div>
                 
                 <!-- idError 1: incorrect ID; not all digits -->
-                <span id="idError1"><br>Your ID number must only contain numbers.</span>
+                <div id="idError1">Your ID number must only contain numbers.</div>
                 
                 <!-- idError 2: incorrect ID; more or less than 8 digits -->
-                <span id="idError2"><br>Your ID number is not 8 digits.</span>
+                <div id="idError2">Your ID number is not 8 digits.</div>
                 
                 <!-- idError 3: ID taken already -->
-                <span id="idError3"><br>This ID number has already been taken.</span>
+                <div id="idError3">This ID number has already been taken.</div>
                 
                 <p>Last Name</p> 
                 <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lastNameError'))">
                 <!-- lastNameErrorMain: Invalid LastName -->
-                <span id="lastNameErrorMain"><br>Invalid last name.</span>
+                <div id="lastNameErrorMain">Invalid last name.</div>
                 
                 <!-- lastNameError -->
-                <span id="lastNameError"><br>Your last name only contains letters.</span>
+                <div id="lastNameError">Your last name only contains letters.</div>
                 
                 <p>First Name</p> 
                 <input type="text" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('firstNameError'))">
                 <!-- firstNameErrorMain: Invalid FirstName -->
-                <span id="firstNameErrorMain"><br>Invalid first name.</span>
+                <div id="firstNameErrorMain">Invalid first name.</div>
                 
                 <!-- firstNameError -->
-                <span id="firstNameError"><br>Your first name only contains letters.</span>
+                <div id="firstNameError">Your first name only contains letters.</div>
                 
                 <p>Middle Name</p> 
                 <input type="text" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))"> 
                 <!-- middleNameErrorMain: Invalid MiddleName -->
-                <span id="middleNameErrorMain"><br>Invalid middle name.</span>
+                <div id="middleNameErrorMain">Invalid middle name.</div>
                 
                 <!-- middleNameError -->
-                <span id="middleNameError"><br>Your middle name only contains letters.</span>
+                <div id="middleNameError">>Your middle name only contains letters.</div>
                 
                 
                 <p>College</p>
@@ -92,26 +92,26 @@
                 <input type="text" id="courseName" name="course" onblur="checkStringField(this, getElementById('courseError'))">
                 <br>
                 <!-- courseErrorMain: Invalid Course -->
-                <span id="courseErrorMain"><br>Invalid course.</span>
+                <div id="courseErrorMain">Your course must be abbreviated version</div>
                 
                 <!-- courseError -->
-                <span id="courseError">Please write your full course name</span>
+                <div id="courseError">Please write your full course name</div>
 
                 <p>Email Address</p>
-                <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))"><br>
+                <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))">
                 <!-- emailError: taken already -->
-                <span id="emailError"><br>This Email has already been taken.</span>
+                <div id="emailError">This e-mail has already been taken.</div>
                 
                 <p>Password</p>
                 <input type="password" id="password" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))"><br>
                 <!-- passwordErrorMain 1: Invalid Password-->
-                <span id="passwordErrorMain1"><br>Invalid password.</span>
+                <div id="passwordErrorMain1">Your password must be at least 8 characters with at least 1 number and 1 special character.</div>
                 
                 <!-- passwordError 1: less than 8 characters -->
-                <span id="passwordError1"><br>Your password must be at least 8 characters.</span>
+                <div id="passwordError1">Your password must be at least 8 characters.</div>
                 
                 <!-- passwordError 2: either no number or no special character -->
-                <span id="passwordError2"><br>Your password must be have at least 1 number and at least 1 special character.</span>
+                <div id="passwordError2">Your password must be have at least 1 number and at least 1 special character.</div>
                 
                 <p>Re-enter Password</p>
                 <input type="password" id="password2" name="password2"><br><br> 
@@ -136,6 +136,10 @@
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		<script src="script/Signup.js"></script>
-        <!-- <script>$('#idError1').show();</script> -->
+        <script>
+            // tests
+            //$('#idNum').css("border-color", "indianred");
+ 
+        </script>
    	</body>
 </html>

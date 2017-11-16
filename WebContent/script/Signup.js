@@ -9,10 +9,23 @@ function duplicateHandler(data) {
 	
 	//front end handling constraint done here (create functions for them so we can reuse it on the 3rd case in the switch-case)
 	switch(data) {
-		case "EMAIL-TAKEN": alert("Email is already taken."); break; //only email
-		case "IDNUM-TAKEN": alert("ID-number is already taken."); break; //only idnum
-		case "EMAIL-TAKEN|IDNUM-TAKEN":  alert("ID-number is already taken."); 
-		                                  alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
+		case "EMAIL-TAKEN": $('#emailError').show();
+                            $('#email').css("border-color", "indianred");
+                            break;
+            //alert("Email is already taken."); break;
+            //only email
+		case "IDNUM-TAKEN": $('#idError3').show();
+                            $('#idNum').css("border-color", "indianred");
+                            break;
+            //alert("ID-number is already taken."); break; 
+            //only idnum
+		case "EMAIL-TAKEN|IDNUM-TAKEN":  $('#idError3').show();
+                                        $('#idNum').css("border-color", "indianred");
+            //alert("ID-number is already taken."); 
+		                                  $('#emailError').show();
+                                        $('#email').css("border-color", "indianred");
+                                        break;
+            //alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
 		default: document.location.href = 'HomePage.jsp'; //redirect to homepage.
 		
 	}
@@ -70,7 +83,10 @@ function checkIdNumber(idInputField, spanId) {
 	}
 	//If not follow, do front end magic to do show this.
 	else {
-		spanId.innerHTML = "Must be 8 digit integers only."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+		//spanId.innerHTML = "Must be 8 digit integers only.";
+        $('#idError1').show();
+        $('#idNum').css("border-color", "indianred");
+        //This is temporary, you can add this directly to the tag span and just hided/show the tag.
 	}
 }
 
@@ -199,6 +215,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid IDnumber");
         $('#idErrorMain1').show();
+        $('#idNum').css("border-color", "indianred");
 		satisfied = false;
 	}
 	
@@ -212,6 +229,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid Password");
         $('#passwordErrorMain1').show();
+        $('#password').css("border-color", "indianred");
 		satisfied = false;
 	}
 	
@@ -224,6 +242,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid First name");
         $('#firstNameErrorMain').show();
+        $('#firstName').css("border-color", "indianred");
 		satisfied = false;
 	}
 
@@ -237,6 +256,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid last name");
         $('#lastNameErrorMain').show();
+        $('#lastName').css("border-color", "indianred");
 		satisfied = false;
 	}
 	
@@ -249,6 +269,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid Middle name");
         $('#middleNameErrorMain').show();
+        $('#middleName').css("border-color", "indianred");
 		satisfied = false;
 	}
 	
@@ -261,6 +282,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid courseName");
         $('#courseErrorMain').show();
+        $('#courseName').css("border-color", "indianred");
 		satisfied = false;
         
 	}

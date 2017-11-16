@@ -89,7 +89,7 @@
                 </div>
                 
                 <p>Course</p>
-                <input type="text" id="courseName" name="course" onblur="checkStringField(this, getElementById('courseError'))">
+                <input type="text" id="courseName" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseError'))">
                 <br>
                 <!-- courseErrorMain: Invalid Course -->
                 <div id="courseErrorMain">Your course must be abbreviated version</div>

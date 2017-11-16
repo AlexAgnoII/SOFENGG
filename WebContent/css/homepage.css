@@ -93,10 +93,9 @@ form {
     color: #1f1f1f;
 }
 
-#inv, #dnm {
-    display: none;
+#dnm {
     font-size: 10px;
-    color: indianred;
+    color: transparent;
     font-style: italic;
 }
 

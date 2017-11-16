@@ -9,7 +9,7 @@ function validateEmail(email) {
 //This function handles the front-end effects/notice when user does not place the correct input.
 function enterValidInput() {
 	//Materialize.toast('Please enter a valid email / pasword', 7000);
-	$('#inv').show();
+	$('#dnm').css({"color":"indianred"});
 }
 
 //Account login failure front-end done here.
@@ -18,7 +18,7 @@ function accPassMismatch(data) {
 	if(data === "FAIL-LOGIN") {
 		//alert(data);
        // Materialize.toast('Username and password do not match', 7000);
-		$('#dnm').show();
+		$('#dnm').css({"color":"indianred"});
 	}
 	
 	//redirect to adminhomepage.

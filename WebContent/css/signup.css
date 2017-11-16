@@ -35,38 +35,33 @@ nav {
 }
 
 #wrapper {
-    width: 150px;
+	margin-top: 35px;
+    width: 250px;
     display: inline-flex;
 }
 
 #tbox {
-    margin: 0 auto;
-    padding: 4px;
+    margin: 30 auto;
     background-color: transparent; 
-    width: 180px;
-    height: 56px;
+    width: 250px;
+    height: 75px;
     position: fixed;
     box-shadow: 0px 0px;
 }
 
 #title {
     font-family: "Montserrat";
-    font-size: 13px;
+    font-size: 22px;
     text-align: left;
     line-height: 95%;
-    font-weight: 500;
+    font-weight: 600;
     width: 45%;
     margin-top: 0px;
     color: #1f1f1f;
 }
 
-#tbox:hover #title {
-    color: #006f4a;
-    font-weight: 500;
-}
-
 #arrow {
-    height: 45px;
+    height: 75px;
     margin: 2px;
 }
 
@@ -76,20 +71,46 @@ nav {
     position: relative;
     margin: 0 auto;
     text-align: left;
-    top: 75px;
-    width: 400px;
+    top: 135px;
+    width: 600px;
+    padding: 20px;
     padding-top: 40px;
-    padding-left: 40px;
-    border-radius: 5px;
+    border-radius: 3px;
     border-style: solid;
     border-width: 0px;
-    border-color: snow;
-    background-color: rgba(241, 241, 241, 0.7);
-    box-shadow: 0 5px 5px -5px #333;
+    border-color: none;
+  /*  background-color: #fbfbfb; 
+    box-shadow: 0 5px 5px -5px #333; */
 }
 
-#lastName, #firstName, #middleName, #password, #password2, #email, #idNum, #courseName {
-    width: 300px;
+.wrap {
+    width: 100%; /* ** */
+    display: inline-flex;
+    margin-bottom: 11px;
+}
+
+.f {
+    width: 100%; /* ** */
+}
+
+#sufeed .twos {
+    width: 95%;
+    height: 20px;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    font-size: 11px;
+    padding-left: 2px;
+    
+}
+
+#lastName, #email, #idNum {
+    width: 97.5%;
     height: 20px;
     margin-top: -10px;
     margin-bottom: 5px;
@@ -103,8 +124,8 @@ nav {
     padding-left: 2px;
 }
 
-#idNum, #courseName {
-    width: 147px;
+#idNum {
+    width: 155px;
 }
 
 #courseName {
@@ -112,32 +133,29 @@ nav {
     top: -10px;
 }
 
-
 p {
     width: 150px;
     font-size: 11px;
     padding: 0px;
-    margin-top: 1px;
+    margin-top: -10px;
     margin-bottom: 1.5px;
     font-weight: 600;
     color: #006f4a;
 }
 
 #signupb, #backb {
-    position: relative;
+    left: 30%;
+    position: relative
+    margin: 0 auto;
     font-family: "Montserrat";
-    height: 26px;
+    height: 25px;
     width: 100px;
     font-size: 10px;
     line-height: 250%;
-    background-color: #1f1f1f;
+    background-color: #1b1b1b;
     color: snow;
-    border-style: none;
     border-radius: 3px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    left: 15%;
-    box-shadow: 0 5px 5px -3.5px #333;
+    box-shadow: 0 5px 5px -5px #333;
 }
 
 #signupb:hover, #backb:hover {
@@ -171,11 +189,10 @@ ul.dropdown-content.select-dropdown li.disabled span {
 
 /*This is for the select tag size customization.*/
 div.input-field {
-	width: 300px;
-	height: 43px;
-    margin-top: -8px;
+	width: 95%;
+    margin-top: -10px;
     margin-left: 4px;
-    margin-bottom: -16px;
+    margin-bottom: -19px;
 }
 
 .select-wrapper input.select-dropdown {
@@ -191,11 +208,10 @@ div.input-field {
     
 }
 
-
-#idError1, #idError2, #idError3, #lastNameError, #firstNameError, #middleNameError, #courseError, #emailError, #passwordError1, #passwordError2, #idErrorMain1, #passwordErrorMain1, #firstNameErrorMain, 
-#lastNameErrorMain, #middleNameErrorMain, #courseErrorMain  {
-    display: none;
-    color: indianred;
-    font-size: 10px;
-    width: 330px;
+#sufeed .errors {
+    margin-top: -4px;
+    margin-left: 5px;
+    font-size: 8px;
+    color: transparent;
+    font-style: italic;
 }

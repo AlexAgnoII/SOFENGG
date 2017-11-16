@@ -32,93 +32,71 @@
             </div>
         </nav>
         
-        <div id= sufeed>
+       <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
                 <p id="lol">ID Number</p>
                 <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" onblur="checkIdNumber(this, getElementById('idError'))">
-                <!-- idErrorMain 1: Invalid ID -->
-                <div id="idErrorMain1">Your ID number must consist of 8 numbers</div>
-                
-                <!-- idError 1: incorrect ID; not all digits -->
-                <div id="idError1">Your ID number must only contain numbers.</div>
-                
-                <!-- idError 2: incorrect ID; more or less than 8 digits -->
-                <div id="idError2">Your ID number is not 8 digits.</div>
-                
-                <!-- idError 3: ID taken already -->
-                <div id="idError3">This ID number has already been taken.</div>
-                
-                <p>Last Name</p> 
+                <p id="idnumerror" class="errors">*Invalid ID Number*</p>
+                  
+                <p>Last Name</p>
                 <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lastNameError'))">
-                <!-- lastNameErrorMain: Invalid LastName -->
-                <div id="lastNameErrorMain">Invalid last name.</div>
-                
-                <!-- lastNameError -->
-                <div id="lastNameError">Your last name only contains letters.</div>
-                
-                <p>First Name</p> 
-                <input type="text" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('firstNameError'))">
-                <!-- firstNameErrorMain: Invalid FirstName -->
-                <div id="firstNameErrorMain">Invalid first name.</div>
-                
-                <!-- firstNameError -->
-                <div id="firstNameError">Your first name only contains letters.</div>
-                
-                <p>Middle Name</p> 
-                <input type="text" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))"> 
-                <!-- middleNameErrorMain: Invalid MiddleName -->
-                <div id="middleNameErrorMain">Invalid middle name.</div>
-                
-                <!-- middleNameError -->
-                <div id="middleNameError">>Your middle name only contains letters.</div>
-                
-                
-                <p>College</p>
-                
-                <div class="input-field">
-	                <select id="dropDownCollege" name="college" class="ddcollege">
-	                    <option value="" disabled selected>Select your College:</option>
-	                	<option value="1">College of Computer Studies</option>
-	                	<option value="2">Ramon V. del Rosario College of Business</option>
-	                	<option value="3">Br. Andrew Gonzales College of Education</option>
-	                	<option value="4">Gokongwei College of Engineering</option>
-	                	<option value="5">College of Liberal Arts</option>
-	                	<option value="6">College of Science</option>
-	                	<option value="7">School of Economics</option>
-	                </select>
+                <p id="lnameerror" class="errors">*Invalid last name*</p>
+
+                <div class="wrap">
+                    <div class="f">
+                        <p>First Name</p> 
+                        <input type="text" class="twos" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('firstNameError'))">
+                        <p id="fnameerror" class="errors">*Invalid first name*</p>
+                        
+                        <p>College</p>
+                        <div class="input-field">
+                            <select id="dropDownCollege" name="college" class="ddcollege">
+                                <option value="" disabled selected>Select your College:</option>
+                                <option value="1">College of Computer Studies</option>
+                                <option value="2">Ramon V. del Rosario College of Business</option>
+                                <option value="3">Br. Andrew Gonzales College of Education</option>
+                                <option value="4">Gokongwei College of Engineering</option>
+                                <option value="5">College of Liberal Arts</option>
+                                <option value="6">College of Science</option>
+                                <option value="7">School of Economics</option>
+                            </select>
+                        </div>
+                        <p id="collegeerror" class="errors">*Invalid selected college*</p>
+                    </div>
+                    
+                     <div class="f">
+                        <p>Middle Name</p> 
+                        <input type="text" class="twos" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))">
+                         <p id="mnameerror" class="errors">*Invalid middle name*</p>
+                         
+                        <p>Course</p>
+                        <input type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseError'))">
+                        <p id="courseerror" class="errors">*Invalid degree code*</p>
+                    
+                    </div>
                 </div>
                 
-                <p>Course</p>
-                <input type="text" id="courseName" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseError'))">
-                <br>
-                <!-- courseErrorMain: Invalid Course -->
-                <div id="courseErrorMain">Your course must be abbreviated version</div>
-                
-                <!-- courseError -->
-                <div id="courseError">Please write your full course name</div>
-
                 <p>Email Address</p>
                 <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))">
-                <!-- emailError: taken already -->
-                <div id="emailError">This e-mail has already been taken.</div>
+                <p id="emailerror" class="errors">*Invalid email address*</p>
                 
-                <p>Password</p>
-                <input type="password" id="password" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))"><br>
-                <!-- passwordErrorMain 1: Invalid Password-->
-                <div id="passwordErrorMain1">Your password must be at least 8 characters with at least 1 number and 1 special character.</div>
+                <div class="wrap">
+                    <div class="f">
+                         <p>Password</p>
+                         <input type="password" class="twos" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))">
+                         <p id="pwerror" class="errors">*Passwords do not match*</p>
+                    </div>
+                    
+                    <div class="f">
+                         <p>Re-enter Password</p>
+                         <input type="password" class="twos" name="password2">
+                    </div>
+                </div>
                 
-                <!-- passwordError 1: less than 8 characters -->
-                <div id="passwordError1">Your password must be at least 8 characters.</div>
-                
-                <!-- passwordError 2: either no number or no special character -->
-                <div id="passwordError2">Your password must be have at least 1 number and at least 1 special character.</div>
-                
-                <p>Re-enter Password</p>
-                <input type="password" id="password2" name="password2"><br><br> 
-                
+                <br><br><br>
                 <a class="waves-effect waves-light btn" id="backb">BACK</a>
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="signupb" type=submit>SIGNUP</a>
-                <br>
+
             </form>
 
         </div>

@@ -52,11 +52,11 @@ public final class PasswordAuthentication {
 
         public static void main(String[] args) {
             PasswordAuthentication p = new PasswordAuthentication();
-            String pass = p.hash("4rhP!qr10");
-            System.out.println("4rhP!qr10 || " + pass + " || " + p.authenticate("4rhP!qr10", pass));
-            String pass2 = p.hash("9rhP!3@T");
-            System.out.println("9rhP!3@T " + pass2 + " || " + p.authenticate("4rhP!qr10", pass2));
-            System.out.println("9rhP!3@T " + pass2 + " || " + p.authenticate("9rhP!3@T", pass2));
+            String pass = p.hash("qwertY!123");
+            System.out.println("qwertY!123 || " + pass + " || " + p.authenticate("qwertY!123", pass));
+            String pass2 = p.hash("Asdfg!123");
+            System.out.println("Asdfg!123 " + pass2 + " || " + p.authenticate("qwertY!123", pass2));
+            System.out.println("Asdfg!123 " + pass2 + " || " + p.authenticate("Asdfg!123", pass2));
         }
 
     }

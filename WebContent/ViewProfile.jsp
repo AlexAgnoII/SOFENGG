@@ -42,8 +42,8 @@
                 
                 <div id="dp2">
                      <ul>
-                        <li><a href="#!">Profile</a></li>
-                        <li><a href="#!">Annoucements</a></li>
+                        <li><a href="ViewProfile.jsp">Profile</a></li>
+                        <li><a href="UserAnnouncements.jsp">Announcements</a></li>
                     </ul>
                 </div>
                 

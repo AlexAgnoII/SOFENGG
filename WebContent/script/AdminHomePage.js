@@ -22,6 +22,7 @@ function loadPosts(){
 	$.ajax({
  	    context: this,
         url:'getPosts',
+        data:{'user': 'admin'},
         type: 'GET',
         cache:false,
         success: function(data){

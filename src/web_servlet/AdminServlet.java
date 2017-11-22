@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -120,23 +121,26 @@ public class AdminServlet extends HttpServlet {
 	 */
 	private void getPosts(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** UPDATING POST FEED ************************");
-
+		String user = request.getParameter("user");
 		ArrayList<Post> postList = AdminService.getPosts();
 		String name 			 = request.getParameter("searchbar"),
 			   htmlPostList 	 = "";
 		SimpleDateFormat ft = new SimpleDateFormat ("MMMMM dd, yyyy; hh:mm a");
 		
-		for(Post p : postList){
+		
+	    for(Post p : postList){
 			htmlPostList += "<div class = 'postContainer' postId = '" + p.getPostId() +"'>" +
 							"	<div class='pchead'>" +
 					        "   	<p class = 'postTitle'>" + p.getTitle() + "</p>" +
-							"		<a class='modal-trigger' href = '#updateAnnounce' onClick = '(function(){"+
-							"				    document.getElementById(\"updateTitle\").setAttribute(\"postId\", \"" + p.getPostId() + "\");" +
+					        (user.equals("admin") ?
+					        "		<a class='modal-trigger' href = '#updateAnnounce' onClick = '(function(){"+
+							"				    document.getElementById(\"updateTitle\"" +
+					        ").setAttribute(\"postId\", \"" + p.getPostId() + "\");" +
 							"   				$(\"#updateTitle\").val(\"" + p.getTitle() + "\");" +
 							"   		 		$(\"#updateBody\").val(\"" + p.getBody() + "\");" +
 							"				    return false;" +
 							"				})();return false;'>" +
-					        "			<i class='material-icons editbtn'>edit</i></a>" +
+							"	<i class='material-icons editbtn'>edit</i></a>" : "") +
 					        "   <p class = 'postDate' >" + ft.format(p.getDate()) + "</p>" +
 					        "	</div>" + 
 					        "   <p class = 'postBody' >" + p.getBody() + "</p>" + 

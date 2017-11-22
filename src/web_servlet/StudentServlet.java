@@ -6,6 +6,7 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -83,6 +84,11 @@ public class StudentServlet extends HttpServlet {
 		String rePassword = request.getParameter("password2");
 		String college = request.getParameter("college");
 		String course = request.getParameter("course");
+		
+	    String verificationId = UUID.randomUUID().toString().replace("-", "");
+	    
+	    System.out.println("uuid = " + verificationId);
+	    
 		int idnum = Integer.parseInt(idNum);
 
 		//if username OR idnumber OR both has a duplicate in DP, send error message.
@@ -93,7 +99,9 @@ public class StudentServlet extends HttpServlet {
 			//Perform hashing here//
 			PasswordAuthentication p = new PasswordAuthentication();
 	        
-			String newPass = p.hash(password.toCharArray());
+			String newPass 			 = p.hash(password.toCharArray()),
+				   newVerificationId = p.hash(verificationId.toCharArray());
+			
 			Student student = new Student(idnum, 
 					  lastname,
 					  firstname,
@@ -103,8 +111,14 @@ public class StudentServlet extends HttpServlet {
 					  college,
 					  course);
 			
-			StudentService.addStudent(student);
+			StudentService.addStudent(student, newVerificationId);
 			System.out.println("User added!");
+		
+			// TODO Send email with the verificationLink = Verification.jsp# + verificationId
+			
+			/* I guess sa authentication.java redirect nalnag to login page pagka entered diyan????? 
+			 * after ma confirm sa db na same verificationId and ma change yung value ng verificationId to null
+			 */
 			
 			//response.sendRedirect("HomePage.jsp");
 			response.getWriter().write("VALID-SIGNUP");

@@ -8,9 +8,11 @@
         
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="script/UserAnnouncements.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
         <link rel = "stylesheet" type="text/css" href="css/userhomepage.css">
+        <link rel = "stylesheet" type="text/css" href="css/UserAnnouncements.css">
     </head>
     
     <body>
@@ -23,7 +25,7 @@
             <div class="nav-wrapper">
                <a class='brand-logo center' data-activates='dp2' href='#' id="tbox">
                 <div id="wrapper">
-                    <img src="/css/arrow.png" id="arrow">
+                    <img src="css/arrow.png" id="arrow">
                     <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>
                 </div>   
                </a>
@@ -44,7 +46,7 @@
                 
                 <div id="dp2">
                      <ul>
-                        <li><a href="#!">Profile</a></li>
+                        <li><a href="ViewProfile.jsp">Profile</a></li>
                         <li><a href="UserAnnouncements.jsp">Announcements</a></li>
                     </ul>
                 </div>
@@ -53,8 +55,11 @@
                     <p id="ann">Notification here</p>
                 </div>
             </div>
+
         </nav> 
         
+     	<div id="postFeed"> </div> 
+      		
         <script>
             
             $('#notif').click( function(event){

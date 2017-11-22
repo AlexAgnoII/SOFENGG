@@ -206,6 +206,17 @@ public class authentication implements Filter {
 						               	 res.sendRedirect("HomePage.jsp");
 						                }
 					               break;
+			case "/UserAnnouncements.jsp": //if cookie exists, continue
+                if(proceed) {
+	               	 System.out.println("Continue on this page..");
+	                   chain.doFilter(request, response);
+					 }
+	                //If not, go to homepage
+	                else {
+	               	 System.out.println("Redirecting to HomePage.jsp..");
+	               	 res.sendRedirect("HomePage.jsp");
+	                }
+               break;
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
 		}
 		

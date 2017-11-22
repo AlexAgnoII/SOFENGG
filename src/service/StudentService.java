@@ -110,10 +110,11 @@ public class StudentService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ?");
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ? " +
+														 "AND (verificationId IS NULL OR verificationId = \'\')");
 			st.setString(1, username);
 			ResultSet rs = st.executeQuery();
-			
+
 			while(rs.next()) {
 				if(p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
 					System.out.println("User found, valid!");
@@ -369,7 +370,7 @@ public class StudentService {
 	 * Adds the studennt to the database.
 	 * @param student - the Student object being added.
 	 */
-	public static void addStudent(Student student) {
+	public static void addStudent(Student student, String verificationId) {
 		System.out.println();
 		try{
 			String driver = "com.mysql.jdbc.Driver";
@@ -377,7 +378,9 @@ public class StudentService {
 			Connection conn = DatabaseManager.getConnection();
 			
 			PreparedStatement stmt =  conn.prepareStatement(
-					"INSERT INTO student (studentId, firstName, middleName, lastName, celNo, telNo, email, hashedPass, collegeId, course) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+					"INSERT INTO student (studentId, firstName, middleName, lastName, " +
+					"celNo, telNo, email, hashedPass, collegeId, course, verificationId) " +
+					"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 					);
 			
 			stmt.setInt(1, student.getStudentId());
@@ -390,6 +393,7 @@ public class StudentService {
 			stmt.setString(8, student.getHashedPass());
 			stmt.setInt(9, Integer.parseInt(student.getCollege()));
 			stmt.setString(10,student.getCourse());
+			stmt.setString(11, verificationId);
 			
 			stmt.executeUpdate();
 			

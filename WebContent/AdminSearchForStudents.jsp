@@ -14,7 +14,7 @@
 			<script type="text/javascript" src="script/AdminHomePage.js"></script>
 	        
 	        <!-- INSERT CORRECT STYLESHEET BELOW -->
-        	<link rel = "stylesheet" type="text/css" href="css/adminhomepage.css">
+        	<link rel = "stylesheet" type="text/css" href="css/adminsearchforstudents.css">
 	        
 	</head>
 	<body>
@@ -59,7 +59,40 @@
             </form>
 		</div>
 		
-      	<div id="searchResultFeed"></div> 
+      	<div id="searchResultFeed">
+            <div class="card-panel green darken-3">
+                <table>
+                    <tr class="white-text">
+                        <td id="sId">11926004</td>
+                        <td id="sName">Carl Carlo C. Carlos</td>
+                        <td id="sCourse">BS CHM</td>
+                        <td id="sCollege">COS</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card-panel green darken-3">
+                <table id="cardTable">
+                    <tr class="white-text">
+                        <td id="sId">100115468</td>
+                        <td id="sName">Marcelita Gonzales R. Yvarnadez y Llaverde</td>
+                        <td id="sCourse">AB PSM</td>
+                        <td id="sCollege">CLA</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card-panel green darken-3">
+                <table id="cardTable">
+                    <tr class="white-text">
+                        <td id="sId">10465122</td>
+                        <td id="sName">Ma. Franchesca Gianina G. Chua</td>
+                        <td id="sCourse">BS MGT</td>
+                        <td id="sCollege">SOM</td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
       	
         <div id="newannounce" class="modal">
             <div class = "annhead">[NEW ANNOUNCEMENT]</div>

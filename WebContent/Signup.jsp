@@ -98,7 +98,7 @@
                     <div class="f">
                          <p>Re-enter Password</p>
                          <input type="password" id="password2" class="twos" name="password2" onblur="checkPasswordEqual(this, getElementById('password'))">
-                         <p id="pwerrorPlaceHolderNotEqual">_______________________________________________________________</p>
+                         <p id="pwerrorPlaceHolderNotEqual" class="errorplaceholder">___________________________________________________________________</p>
                          <p id="pwNotEqual" class="errors">*Password did not match*</p>
                     </div>
                 </div>

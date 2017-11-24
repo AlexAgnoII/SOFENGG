@@ -113,13 +113,14 @@ public class authentication implements Filter {
 		
 
 		switch(url) {
+		    /*Public Pagges*/
 		    case "/ResetPassword.html":
 		    case "/Signup.jsp":
 			case "/HomePage.jsp": //If user, proceed to UserHomePage.
 				                System.out.println("Access public pages...");
 								if(user) {
 									 System.out.println("Redirecting to ViewProfile.jsp.."); 
-									 res.sendRedirect("viewByStudent"); //Redirect to viewprofile for now.
+									 res.sendRedirect("UserHomePage.jsp"); //Redirect to viewprofile for now.
 								 }
 								
 								 //If admin, go to adminHomePage
@@ -133,9 +134,9 @@ public class authentication implements Filter {
 									 chain.doFilter(request, response);
 								 }
 								 break; 
+			/*Private Pagges*/
 			case "/UserAnnouncements.jsp": //if cookie exists, continue
 			case "/ViewProfile.jsp":
-			case "/ViewStudents.jsp":
 			case "/UserHomePage.jsp": //if cookie exists, continue
 								System.out.println("Access user pages..");
 				                if(user) {
@@ -149,6 +150,7 @@ public class authentication implements Filter {
 				               	  res.sendRedirect("HomePage.jsp");
 				                }
 								 break; 
+			case "/ViewStudents.jsp":
 			case "/AdminSearchForStudents.jsp": 
 			case "/SearchResult.jsp": //if cookie exists, continue
 			case "/AdminHomePage.jsp": //if cookie exists, continue

@@ -30,7 +30,7 @@ function accPassMismatch(data) {
 	
 	//redirect to user homepage.
 	else {
-		document.location.href = 'viewByStudent';
+		document.location.href = 'UserHomePage.jsp';
 	}
 }
 

@@ -75,7 +75,8 @@ function updateForm(postId, title, body) {
         type:'POST',
         cache:false,
         success: function(data){
-        	document.getElementById('materialize-modal-overlay-1').style.display = 'none';
+        	document.getElementById('materialize-modal-overlay-3').style.display = 'none';
+        	document.getElementById('materialize-modal-overlay-2').style.display = 'none';
         	document.getElementById('updateAnnounce').style.display = 'none';
         	loadPosts();
         },

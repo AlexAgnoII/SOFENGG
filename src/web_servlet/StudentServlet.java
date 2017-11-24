@@ -376,6 +376,8 @@ public class StudentServlet extends HttpServlet {
 		student.setProvince(prov);
 		student.setZip(zip);
 	    student.setCity(city);
+	    
+	    StudentService.updateStudent(student);
     
 	    System.out.println("***********************************************************************************");
 	}

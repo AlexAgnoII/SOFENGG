@@ -200,7 +200,55 @@ public class AdminService {
 	}
 
 	
-	
+	/**
+	 * Retrieves a list of student who are eligible for an award.
+	 * @return List of student or NULL should there be no student found.
+	 */
+	public static ArrayList<Student> getStudentsEligibleAward() {
+		System.out.println();
+		ArrayList<Student> students = new ArrayList<>();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT student.* FROM sofengg.student, sofengg.involvement WHERE " +
+														 "studentId = idNum GROUP BY studentId HAVING COUNT(*) >= 5");
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				students.add(new Student(rs.getInt("studentId"), 
+						                 rs.getDate("birthday"),
+										 rs.getDate("yearEnrolled") == null ?
+												 null :
+												 Year.of(rs.getDate("yearEnrolled").getYear()), 
+										 rs.getString("firstName"),
+										 rs.getString("middleName"),
+										 rs.getString("lastName"),
+										 rs.getString("telNo"), 
+										 rs.getString("celNo"), 
+										 rs.getString("email"), 
+										 rs.getString("address"), 
+										 rs.getString("course"),
+										 rs.getString("hashedPass"),
+										 rs.getString("civil"),
+										 rs.getString("citizen"),
+										 rs.getString("gender")));
+				System.out.println("Student " + rs.getString("firstName") + " Found!");
+			} 
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return students;
+		
+	}
+
+
 
 	/**
 	 * Retrieves a list of student using their name.
@@ -223,23 +271,36 @@ public class AdminService {
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
-				students.add(new Student(rs.getInt("studentId"), 
-						                 rs.getDate("birthday"),
-										 rs.getDate("yearEnrolled") == null ?
-												 null :
-												 Year.of(rs.getDate("yearEnrolled").getYear()), 
-										 rs.getString("firstName"),
-										 rs.getString("middleName"),
-										 rs.getString("lastName"),
-										 rs.getString("telNo"), 
-										 rs.getString("celNo"), 
-										 rs.getString("email"), 
-										 rs.getString("address"), 
-										 rs.getString("course"),
-										 rs.getString("hashedPass"),
-										 rs.getString("civil"),
-										 rs.getString("citizen"),
-										 rs.getString("gender")));
+				String college  = "";
+
+//				SELECT cName FROM sofengg.student, college WHERE college.collegeId = student.collegeId and studentId = '11237461';
+				
+				PreparedStatement st2 = conn.prepareStatement("SELECT cName FROM sofengg.student, sofengg.college WHERE " +
+															  "college.collegeId = student.collegeId AND studentId = ?");
+				st2.setInt(1, rs.getInt("studentId"));
+				ResultSet rs2 = st2.executeQuery();
+				if(rs2.next())
+					college = rs2.getString("cName");
+				
+				Student student = new Student(rs.getInt("studentId"), 
+							                  rs.getDate("birthday"),
+											  rs.getDate("yearEnrolled") == null ?
+																		    null :
+																			Year.of(rs.getDate("yearEnrolled").getYear()), 
+											  rs.getString("firstName"),
+											  rs.getString("middleName"),
+											  rs.getString("lastName"),
+											  rs.getString("telNo"), 
+											  rs.getString("celNo"), 
+											  rs.getString("email"), 
+											  rs.getString("address"), 
+											  rs.getString("course"),
+											  rs.getString("hashedPass"),
+											  rs.getString("civil"),
+											  rs.getString("citizen"),
+											  rs.getString("gender"));
+				student.setCollege(college);
+				students.add(student);
 				System.out.println("Student " + rs.getString("firstName") + " Found!");
 			} 
 			

@@ -58,7 +58,7 @@
 					<p class="ltags">Title</p>
 					<input type="text" id="anntitle" name = "anntitle">
 					<p class="ltags">Description</p>
-					<input type="text" id="annbody" name = "annbody">
+					<textarea type="text" id="annbody" name = "annbody"> </textarea>
            		</form>
 					<br>	
 					<button class="waves-effect waves-light btn" id="ANpost" >POST</button>
@@ -73,7 +73,7 @@
 					<p class="ltags">Title</p>
 					<input type="text" id="updateTitle" name = "anntitle">
 					<p class="ltags">Description</p>
-					<input type="text" id="updateBody" name = "annbody">
+					<textarea type="text" id="updateBody" name = "annbody"></textarea>
            		</form>
 					<br>	
 					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>

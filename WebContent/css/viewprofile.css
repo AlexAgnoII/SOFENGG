@@ -340,3 +340,20 @@ form#intInv input.threeipyear {
     color: indianred;
     font-style: italic;
 }
+
+#specialAge {
+	width: 95%;
+    height: 20px;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 3px;
+    font-size: 12px; 
+    border-color: transparent;  
+}

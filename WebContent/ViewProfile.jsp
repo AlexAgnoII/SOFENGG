@@ -42,7 +42,7 @@
                 
                 <div id="dp2">
                      <ul>
-                        <li><a href="ViewProfile.jsp">Profile</a></li>
+                        <li><a href="viewByStudent">Profile</a></li>
                         <li><a href="UserAnnouncements.jsp">Announcements</a></li>
                     </ul>
                 </div>
@@ -64,7 +64,7 @@
                       
                       <p id="stname">${loggedUser.firstName} ${loggedUser.middleName} ${loggedUser.lastName}</p>
                       <p class="profow">${loggedUser.studentId}</p>
-                      <p class="profow">Email Address</p>
+                      <p class="profow">${loggedUser.email}</p>
                       <p class="profow">${loggedUser.course}</p>
                       <p class="profow">${loggedUser.college}</p>
                       
@@ -81,29 +81,29 @@
                       
                      <form id="PIform" action="updatePersonal" method="POST">
 	                     <p class="ltags">Address</p> 
-	                     <input type="text" class="ipfield fullip" name="address" value="${loggedUser.address}" disabled>
+	                     <input id="address" type="text" class="ipfield fullip" name="address" value="${loggedUser.address}" disabled placeholder="Ex: #10 Scout Fire st, Barangay Always Ready">
 	
 	                     <div class="wrap">
 	                        <div class="f">
 	                            <p class="ltags">City</p> <span id="citySpan"></span>
-	                            <input type="text" class="ipfield halfip" name="city" value="${loggedUser.city}" disabled>
+	                            <input id="city" type="text" class="ipfield halfip" name="city" value="${loggedUser.city}" disabled placeholder="Ex: Quezon City, Makati city, etc.">
 	
 	                            <p class="ltags">Country</p> <span id="countrySpan"></span>
-	                            <input type="text" class="ipfield halfip" value="${loggedUser.country}" disabled>
+	                            <input id="country" type="text" class="ipfield halfip" value="${loggedUser.country}" disabled placeholder="Ex: Philippines, USA, Singapore, etc.">
 	
 	                            <p class="ltags">Mobile Number</p> <span id="cellSpan"></span>
-	                            <input type="text" class="ipfield halfip" name="cell" value="${loggedUser.celNo}" disabled>
+	                            <input id="cell" type="text" class="ipfield halfip" name="cell" value="${loggedUser.celNo}" disabled placeHolder="Ex: 09171234567 (11-digits)">
 	                        </div>
 	
 	                        <div class="f">
 	                            <p class="ltags">Province</p> <span id="provSpan"></span>
-	                            <input type="text" class="ipfield halfip" name="prov" value="${loggedUser.province}" disabled>
+	                            <input id="prov" type="text" class="ipfield halfip" name="prov" value="${loggedUser.province}" disabled placeholder="Ex: Batangas, Manhattan, etc.">
 	
 	                            <p class="ltags">Zip Code</p> <span id="zipSpan"></span>	
-	                            <input type="text" class="ipfield halfip" name="zip" value="${loggedUser.zip}" disabled>
+	                            <input id="zip" type="text" class="ipfield halfip" name="zip" value="${loggedUser.zip}" disabled placeholder="Ex: 1101, 2231, 1000, etc">
 	
 	                            <p class="ltags">Telephone Number</p> <span id="telSpan"></span>
-	                            <input type="text" class="ipfield halfip" name="tel" value="${loggedUser.telNo}" disabled>
+	                            <input id="tel" type="text" class="ipfield halfip" name="tel" value="${loggedUser.telNo}" disabled placeholder="Ex: 108999, etc">
 	                        </div>
 	                    </div>
 	
@@ -115,20 +115,20 @@
 	                            <input type="date" class = "ipfield threeip" name="bday" value="${loggedUser.birthday}" disabled>
 	
 	                            <p class="ltags">Civil Status</p>
-	                            <input type="text" class="ipfield threeip" name="civil" value="${loggedUser.civil}" disabled>
+	                            <input type="text" class="ipfield threeip" name="civil" value="${loggedUser.civil}" disabled placeholder="Single, Married">
 	                        </div>
 	
 	                        <div class="f">
 	                            <p class="ltags">Age</p> 
-	                            <input type="text" class="ipfield threeip" name="age" value="${loggedUser.age}" disabled>
+	                            <input type="text" id="specialAge" name="age" value="${loggedUser.age}" disabled>
 	
 	                            <p class="ltags">Nationality</p> <span id="nationSpan"></span>
-	                            <input type="text" class="ipfield threeip" name="citizen" value="${loggedUser.citizen}" disabled>
+	                            <input id="citizen" type="text" class="ipfield threeip" name="citizen" value="${loggedUser.citizen}" disabled placeholder="Ex: Filipino, American, Chinese, etc.">
 	                        </div>
 	
 	                        <div class="f">
 	                            <p class="ltags">Gender</p> 
-	                            <input type="text" class="ipfield threeip" name="gender" value="${loggedUser.gender}" disabled>
+	                            <input type="text" class="ipfield threeip" name="gender" value="${loggedUser.gender}" disabled placeholder="Male or Female">
 
 	                        </div>
 	                     </div>

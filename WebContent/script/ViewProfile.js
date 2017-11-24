@@ -272,6 +272,15 @@ $(document).ready(function() {
 		$('#PIsave').show();
 		$('#PIcancel').show();
 	})
+	
+	$('#PIcancel').click(function() {
+		//Disable fields
+		$('form#PIform input.ipfield').attr('disabled', 'disabled');
+		$('#PIedit').show();
+		$('#PIsave').hide();
+		$('#PIcancel').hide();
+		
+	})
 
 	$('#PIsave').click(function() {
 		
@@ -299,6 +308,15 @@ $(document).ready(function() {
 		$('#FBsave').show();
 		$('#FBcancel').show();
 		$('#addSibling').show();
+	})
+	
+	$("#FBcancel").click(function() {
+		   $('form#FBform input.ipfield').attr('disabled', 'disabled');
+			$('#FBedit').show();
+			$('#FBsave').hide();
+			$('#FBcancel').hide();
+			$('#addSibling').hide();
+		   
 	})
 
 	$('#FBsave').click(function() {
@@ -328,6 +346,14 @@ $(document).ready(function() {
 		$('#IIsave').show();
 		$('#IIcancel').show();
 	})
+	
+	$("#IIcancel").click(function() {
+		$('form#intInv input.ipfield').attr('disabled', 'disabled');
+		$('#IIedit').show();
+		$('#imInternal').hide();
+		$('#IIsave').hide();
+		$('#IIcancel').hide();
+	})
 
 	$('#IIsave').click(function() {
 		
@@ -354,6 +380,15 @@ $(document).ready(function() {
 		$('#imExternal').show();
 		$('#EIsave').show();
 		$('#EIcancel').show();
+	})
+	
+	$("#EIcancel").click(function() {
+		$('form#extInv input.ipfield').attr('disabled', 'disabled');
+
+		$('#EIedit').show();
+		$('#imExternal').hide();
+		$('#EIsave').hide();
+		$('#EIcancel').hide();	
 	})
 
 	$('#EIsave').click(function() {

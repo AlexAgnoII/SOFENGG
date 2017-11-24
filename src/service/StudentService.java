@@ -134,6 +134,45 @@ public class StudentService {
 		return found;
 	}
 	
+
+	/**
+	 * Checks if a student is eligible for an award
+	 * (at least 1 involvement)
+	 * @param studentDBId - DB ID of the student
+	 * @return true or false
+	 */
+	public static boolean eligibleAward(int studentDBId) {
+		boolean found = false;
+		PasswordAuthentication p = new PasswordAuthentication();
+		
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			PreparedStatement st = conn.prepareStatement("SELECT student.studentId FROM sofengg.student, "  +
+														 "sofengg.involvement WHERE studentId = idNum AND " +
+														 "student.studentId = ? " 							+ 
+														 "GROUP BY studentId HAVING COUNT(*) >= 5");
+
+			st.setInt(1, studentDBId);
+			ResultSet rs = st.executeQuery();
+
+			if(rs.next()) {
+				System.out.println("User is eligible for an award!");
+				found = true;
+			}
+
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return found;
+	}
 	
 	/**
 	 * Retrieves the user ID (on DB, not the same with ID number of student..

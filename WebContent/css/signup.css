@@ -209,9 +209,23 @@ div.input-field {
 }
 
 #sufeed .errors {
+    display: none;
+    margin-top: -4px;
+    margin-left: 5px;
+    font-size: 8px;
+    color: indianred;
+    font-style: italic;
+}
+
+#idnumerrorPlaceHolder, #lnameerrorPlaceHolder, #fnameerrorPlaceHolder, #collegeerrorPlaceHolder, #mnameerrorPlaceHolder, #courseerrorPlaceHolder, #emailerrorPlaceHolder, #pwerrorPlaceHolder {
     margin-top: -4px;
     margin-left: 5px;
     font-size: 8px;
     color: transparent;
     font-style: italic;
+    cursor: default;
+}
+
+#pwerror {
+    width: 95%;
 }

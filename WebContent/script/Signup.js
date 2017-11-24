@@ -72,14 +72,18 @@ function checkIdNumber(idInputField, spanId) {
 		
 		if(idInputField.value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanId.innerHTML = "";
+			//spanId.innerHTML = "";
+            $('#idnumerrorPlaceHolder').show();
+            $('#idnumerror').hide();
+            $('#idNum').css("border-color" , "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
 		//spanId.innerHTML = "Must be 8 digit integers only.";
-        $('#idnumerror').css("border-color", "indianred");
+        $('#idnumerrorPlaceHolder').hide();
+        $('#idnumerror').show();
         $('#idNum').css("border-color", "indianred");
         //This is temporary, you can add this directly to the tag span and just hided/show the tag.
 	}
@@ -109,29 +113,108 @@ function stringIsWord(value) {
  * @param stringField - input field object.
  * @param spanString - span object.
  */
-function checkStringField(stringField, spanString) {
+//onblur function for last name
+function checkStringFieldLastName(stringField, spanString) {
 	var value = stringField.value;
 
 	//Value only all spaces, do this.
 	if(/^\s+$/.test(value)) {
 		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 spanString.innerHTML = "Must consists of letters and/or spaces only.";
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        $('#lnameerrorPlaceHolder').hide();
+        $('#lnameerror').show();
+        $('#lastName').css("border-color", "indianred");
 	}
 	//Contains nothing OR the right value.
 	else if(stringIsWord(value) || value === "") {
 		
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanString.innerHTML = "";
+			//spanString.innerHTML = "";
+             $('#lnameerrorPlaceHolder').show();
+            $('#lnameerror').hide();
+            $('#lastName').css("border-color", "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
 		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 spanString.innerHTML = "Must consists of letters and/or spaces only.";
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        $('#lnameerrorPlaceHolder').hide();
+        $('#lnameerror').show();
+        $('#lastName').css("border-color", "indianred");
 	}
 }
+
+//onblur function for firstname
+function checkStringFieldFirstName(stringField, spanString) {
+	var value = stringField.value;
+
+	//Value only all spaces, do this.
+	if(/^\s+$/.test(value)) {
+		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        $('#fnameerrorPlaceHolder').hide();
+        $('#fnameerror').show();
+        $('#firstName').css("border-color", "indianred");
+	}
+	//Contains nothing OR the right value.
+	else if(stringIsWord(value) || value === "") {
+		
+		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
+			//Add check or something in front end showing that user did iit correctly.
+			//spanString.innerHTML = "";
+             $('#fnameerrorPlaceHolder').show();
+            $('#fnameerror').hide();
+            $('#firstName').css("border-color", "rgba(0, 0, 0, 0.3)");
+		} 
+		
+	}
+	//If not follow, do front end magic to do show this.
+	else {
+		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        $('#fnameerrorPlaceHolder').hide();
+        $('#fnameerror').show();
+        $('#firstName').css("border-color", "indianred");
+	}
+}
+
+//onblur function for middle name
+function checkStringFieldMiddleName(stringField, spanString) {
+	var value = stringField.value;
+
+	//Value only all spaces, do this.
+	if(/^\s+$/.test(value)) {
+		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        $('#mnameerrorPlaceHolder').hide();
+        $('#mnameerror').show();
+        $('#middleName').css("border-color", "indianred");
+	}
+	//Contains nothing OR the right value.
+	else if(stringIsWord(value) || value === "") {
+		
+		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
+			//Add check or something in front end showing that user did iit correctly.
+			//spanString.innerHTML = "";
+             $('#mnameerrorPlaceHolder').show();
+            $('#mnameerror').hide();
+            $('#middleName').css("border-color", "rgba(0, 0, 0, 0.3)");
+		} 
+		
+	}
+	//If not follow, do front end magic to do show this.
+	else {
+		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        $('#mnameerrorPlaceHolder').hide();
+        $('#mnameerror').show();
+        $('#middleName').css("border-color", "indianred");
+	}
+}
+
 
 /**
  * onBlur function for input field emailField
@@ -147,13 +230,19 @@ function checkEmailField(emailField, spanEmail) {
 		
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanEmail.innerHTML ="";
+			//spanEmail.innerHTML ="";
+            $('#emailerrorPlaceHolder').show();
+            $('#emailerror').hide();
+            $('#email').css("border-color", "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
-		spanEmail.innerHTML = "Must be valid email."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+		//spanEmail.innerHTML = "Must be valid email."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+        $('#emailerrorPlaceHolder').hide();
+        $('#emailerror').show();
+        $('#email').css("border-color", "indianred");
 	}
 }
 
@@ -184,13 +273,19 @@ function checkPasswordField(passwordField, spanPassword) {
 		
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanPassword.innerHTML ="";
+			//spanPassword.innerHTML ="";
+            $('#pwerrorPlaceHolder').show();
+            $('#pwerror').hide();
+            $('#password').css("border-color", "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
-		spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+        $('#pwerrorPlaceHolder').show();
+        $('#pwerror').show();
+        $('#password').css("border-color", "indianred");
 	}
 }
 

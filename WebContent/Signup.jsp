@@ -35,7 +35,7 @@
        <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
                 <p id="lol">ID Number</p>
-                <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" onblur="checkIdNumber(this, getElementById('idError'))">
+                <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" onblur="checkIdNumber(this)">
                     <p id="idnumerrorPlaceHolder">_______________________________________</p>
                     <p id="idnumerror" class="errors">*Invalid ID Number*</p>
                   
@@ -54,7 +54,7 @@
                         <p>College</p>
                         <div class="input-field">
                             <select id="dropDownCollege" name="college" class="ddcollege">
-                                <option value="" disabled selected>Select your College:</option>
+                                <option value="0" disabled selected>Select your College:</option>
                                 <option value="1">College of Computer Studies</option>
                                 <option value="2">Ramon V. del Rosario College of Business</option>
                                 <option value="3">Br. Andrew Gonzales College of Education</option>
@@ -75,7 +75,7 @@
                          <p id="mnameerror" class="errors">*Invalid middle name*</p>
                          
                         <p>Course</p>
-                        <input type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseError'))">
+                        <input type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
                         <p id="courseerrorPlaceHolder">___________________________________________________________________</p>
                         <p id="courseerror" class="errors">*Invalid degree code*</p>
                     
@@ -83,14 +83,14 @@
                 </div>
                 
                 <p>Email Address</p>
-                <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))">
+                <input type="text" id="email" name="email" onblur="checkEmailField(this)">
                 <p id="emailerrorPlaceHolder">_________________________________________________________________________________________________________________________________________</p>
                 <p id="emailerror" class="errors">*Invalid email address*</p>
                 
                 <div class="wrap">
                     <div class="f">
                          <p>Password</p>
-                         <input type="password" class="twos" id="password" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))">
+                         <input type="password" class="twos" id="password" name="password" onblur="checkPasswordField(this)">
                          <p id="pwerrorPlaceHolder">_______________________________________________________________</p>
                          <p id="pwerror" class="errors">*Password must contain a capital letter and a symbol*</p>
                     </div>

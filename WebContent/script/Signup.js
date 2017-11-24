@@ -63,9 +63,8 @@ function idNumberChecker(idNum) {
 /**
  * OnBlur function used for input field of id number.
  * @param idInputField = the ID of the input field.
- * @param spanId = the spanId.
  */
-function checkIdNumber(idInputField, spanId) {
+function checkIdNumber(idInputField) {
 	
 	//Check if idNumber follows constraint.
 	if(idNumberChecker(idInputField.value) || idInputField.value == "") {
@@ -111,9 +110,8 @@ function stringIsWord(value) {
 /**
  * onBlur function for input field of lastName, firstName, middleName, and course.
  * @param stringField - input field object.
- * @param spanString - span object.
  */
-function checkStringField(stringField, placeHolder, error, inputField) {
+function checkStringField(stringField, placeHolder, error) {
 	var value = stringField.value;
 
 	//Value only all spaces, do this.
@@ -121,12 +119,12 @@ function checkStringField(stringField, placeHolder, error, inputField) {
         console.log("hi");
         console.log(error);
         console.log(placeHolder);
-        console.log(inputField);
+        console.log(stringField);
 		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
 		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
         placeHolder.style.display = "none";
         error.style.display = "block";
-        inputField.style.borderColor = "indianred";
+        stringField.style.borderColor = "indianred";
 	}
 	//Contains nothing OR the right value.
 	else if(stringIsWord(value) || value === "") {
@@ -136,7 +134,7 @@ function checkStringField(stringField, placeHolder, error, inputField) {
 			//spanString.innerHTML = "";
             placeHolder.style.display = "block";
             error.style.display = "none";
-            inputField.style.borderColor = "rgba(0, 0, 0, 0.3)";
+            stringField.style.borderColor = "rgba(0, 0, 0, 0.3)";
 		} 
 		
 	}
@@ -146,7 +144,7 @@ function checkStringField(stringField, placeHolder, error, inputField) {
 		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
         placeHolder.style.display = "none";
         error.style.display = "block";
-        inputField.style.borderColor = "indianred";
+        stringField.style.borderColor = "indianred";
 	}
 }
 
@@ -154,10 +152,9 @@ function checkStringField(stringField, placeHolder, error, inputField) {
 /**
  * onBlur function for input field emailField
  * @param emailField - the input object for email
- * @param spanEmail - the span object for email errors.
  * @returns
  */
-function checkEmailField(emailField, spanEmail) {
+function checkEmailField(emailField) {
 	var value = emailField.value;
 	
 	//Check if idNumber follows constraint.
@@ -197,9 +194,8 @@ function checkPassword(value) {
 /**
  * onBlue function for the password field.
  * @param passwordField - input field object for password
- * @param spanPassword - span object for password for error message 
  */
-function checkPasswordField(passwordField, spanPassword) {
+function checkPasswordField(passwordField) {
 	var value = passwordField.value;
 	
 	console.log("sendhelp");

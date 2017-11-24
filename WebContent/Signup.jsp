@@ -36,19 +36,19 @@
             <form action="signUp" method="POST" id="signUpForm">
                 <p id="lol">ID Number</p>
                 <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" onblur="checkIdNumber(this)">
-                    <p id="idnumerrorPlaceHolder">_______________________________________</p>
+                    <p id="idnumerrorPlaceHolder" class="errorplaceholder">_______________________________________</p>
                     <p id="idnumerror" class="errors">*Invalid ID Number*</p>
                   
                 <p>Last Name</p>
                 <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lnameerrorPlaceHolder'), getElementById('lnameerror'), getElementById('lastName'))">
-                <p id="lnameerrorPlaceHolder">_________________________________________________________________________________________________________________________________________</p>
+                <p id="lnameerrorPlaceHolder" class="errorplaceholder">_________________________________________________________________________________________________________________________________________</p>
                 <p id="lnameerror" class="errors">*Invalid last name*</p>
 
                 <div class="wrap">
                     <div class="f">
                         <p>First Name</p> 
                         <input type="text" class="twos" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('fnameerrorPlaceHolder'), getElementById('fnameerror'), getElementById('firstName'))">
-                        <p id="fnameerrorPlaceHolder">___________________________________________________________________</p>
+                        <p id="fnameerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                         <p id="fnameerror" class="errors">*Invalid first name*</p>
                         
                         <p>College</p>
@@ -64,19 +64,19 @@
                                 <option value="7">School of Economics</option>
                             </select>
                         </div>
-                        <p id="collegeerrorPlaceHolder">___________________________________________________________________</p>
+                        <p id="collegeerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                         <p id="collegeerror" class="errors">*Invalid selected college*</p>
                     </div>
                     
                      <div class="f">
                         <p>Middle Name</p> 
                         <input type="text" class="twos" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('mnameerrorPlaceHolder'), getElementById('mnameerror'), getElementById('middleName'))">
-                         <p id="mnameerrorPlaceHolder">___________________________________________________________________</p>
+                         <p id="mnameerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                          <p id="mnameerror" class="errors">*Invalid middle name*</p>
                          
                         <p>Course</p>
                         <input type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
-                        <p id="courseerrorPlaceHolder">___________________________________________________________________</p>
+                        <p id="courseerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                         <p id="courseerror" class="errors">*Invalid degree code*</p>
                     
                     </div>
@@ -84,14 +84,14 @@
                 
                 <p>Email Address</p>
                 <input type="text" id="email" name="email" onblur="checkEmailField(this)">
-                <p id="emailerrorPlaceHolder">_________________________________________________________________________________________________________________________________________</p>
+                <p id="emailerrorPlaceHolder" class="errorplaceholder">_________________________________________________________________________________________________________________________________________</p>
                 <p id="emailerror" class="errors">*Invalid email address*</p>
                 
                 <div class="wrap">
                     <div class="f">
                          <p>Password</p>
                          <input type="password" class="twos" id="password" name="password" onblur="checkPasswordField(this)">
-                         <p id="pwerrorPlaceHolder">_______________________________________________________________</p>
+                         <p id="pwerrorPlaceHolder" class="errorplaceholder">_______________________________________________________________</p>
                          <p id="pwerror" class="errors">*Password must contain a capital letter and a symbol*</p>
                     </div>
                     

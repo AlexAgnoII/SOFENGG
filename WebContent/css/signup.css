@@ -217,7 +217,7 @@ div.input-field {
     font-style: italic;
 }
 
-#idnumerrorPlaceHolder, #lnameerrorPlaceHolder, #fnameerrorPlaceHolder, #collegeerrorPlaceHolder, #mnameerrorPlaceHolder, #courseerrorPlaceHolder, #emailerrorPlaceHolder, #pwerrorPlaceHolder {
+.errorplaceholder {
     margin-top: -4px;
     margin-left: 5px;
     font-size: 8px;
@@ -228,4 +228,5 @@ div.input-field {
 
 #pwerror {
     width: 95%;
+    height: 22px;
 }

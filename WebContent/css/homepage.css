@@ -93,9 +93,15 @@ form {
     color: #1f1f1f;
 }
 
-#dnm {
+#dnm, #dne, #dnv {
+    display: none;
     font-size: 10px;
-    color: transparent;
+    color: indianred;
     font-style: italic;
+    text-align: center;
 }
 
+#errorFeed {
+    height: 25px;
+    overflow: hidden;
+}

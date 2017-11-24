@@ -44,7 +44,11 @@
                  </div>
             </form>
          
-            <p id="dnm">Username and password do not match</p>
+            <div id="errorFeed">
+                <p id="dnm" class="center-align">Username and password do not match</p>
+                <p id="dne">Account does not exist</p>
+                <p id="dnv">Account has not been verified yet</p>
+            </div>
             
             <br><br>
             <a class="waves-effect waves-light btn" id="loginb">login</a>
@@ -56,4 +60,7 @@
         
 		<script type="text/javascript" src="script/HomePage.js"></script>
 	</body>
+    <script>
+        // for testing scripts
+    </script>
 </html>

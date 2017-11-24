@@ -104,7 +104,7 @@ function removeExtraWhiteSpaces(value) {
  * @returns true or false
  */
 function stringIsWord(value) {
-	return /^[a-z\s]+$/i.test(value);
+	return /^[a-z\-\s]+$/i.test(value) && !/^[\-\s]+$/.test(value);
 }
 
 /**
@@ -117,7 +117,7 @@ function checkStringField(stringField, placeHolder, error) {
 	var value = stringField.value;
 
 	//Value only all spaces, do this.
-	if(/^\s+$/.test(value)) {
+	if(/^[\-\s]+$/.test(value)) {
         console.log("hi");
         console.log(error);
         console.log(placeHolder);

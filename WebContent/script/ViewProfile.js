@@ -74,7 +74,7 @@ function checkDigitField(inputField, spanString) {
  */
 function checkPIConstraints() {
 	var ready = true; //ready variable to see if its ok to submit form.
-	var stringFieldArray = [$("#address"), $('#city'), $('#country'), $('#prov'), $('#citizen')];
+	var stringFieldArray = [$('#city'), $('#country'), $('#prov'), $('#citizen')];
 	var integerFieldArray = [$('#cell'),$('#tel'),  $('#zip')];
 	var value;
 	

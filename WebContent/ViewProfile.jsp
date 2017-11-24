@@ -89,7 +89,7 @@
 	                            <input id="city" type="text" class="ipfield halfip" name="city" value="${loggedUser.city}" disabled placeholder="Ex: Quezon City, Makati city, etc.">
 	
 	                            <p class="ltags">Country</p> <span id="countrySpan"></span>
-	                            <input id="country" type="text" class="ipfield halfip" value="${loggedUser.country}" disabled placeholder="Ex: Philippines, USA, Singapore, etc.">
+	                            <input id="country" type="text" name="country" class="ipfield halfip" value="${loggedUser.country}" disabled placeholder="Ex: Philippines, USA, Singapore, etc.">
 	
 	                            <p class="ltags">Mobile Number</p> <span id="cellSpan"></span>
 	                            <input id="cell" type="text" class="ipfield halfip" name="cell" value="${loggedUser.celNo}" disabled placeHolder="Ex: 09171234567 (11-digits)">

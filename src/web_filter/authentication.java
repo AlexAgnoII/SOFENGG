@@ -114,6 +114,7 @@ public class authentication implements Filter {
 
 		switch(url) {
 		    /*Public Pagges*/
+		    case "/Verification.jsp": 
 		    case "/ResetPassword.html":
 		    case "/Signup.jsp":
 			case "/HomePage.jsp": //If user, proceed to UserHomePage.

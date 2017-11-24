@@ -110,6 +110,8 @@ function stringIsWord(value) {
 /**
  * onBlur function for input field of lastName, firstName, middleName, and course.
  * @param stringField - input field object.
+ * @param placeHolder - the placeHolder that would contain the error message.
+ * @param errror = the error message.
  */
 function checkStringField(stringField, placeHolder, error) {
 	var value = stringField.value;
@@ -309,6 +311,32 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	}
 	
 	return satisfied;
+}
+
+/**
+ * Checks if password is equal or not.
+ * @param pass2Field - the second verifying password
+ * @param pass1Field - the original passsword.
+ * @returns
+ */
+function checkPasswordEqual(pass2Field, pass1Field) {
+	var pass2Val = pass2Field.value;
+	var pass1Val = pass1Field.value;
+	
+	//Equal!
+	if(pass1Val=== pass2Val) {
+        $('#pwerrorPlaceHolderNotEqual').show();
+        $('#pwNotEqual').hide();
+        $('#password2').css("border-color", "rgba(0, 0, 0, 0.3)");
+	}
+	
+	//Not equal!
+	else {
+		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+        $('#pwerrorPlaceHolderNotEqual').hide();
+        $('#pwNotEqual').show();
+        $('#password2').css("border-color", "indianred");
+	}
 }
 
 

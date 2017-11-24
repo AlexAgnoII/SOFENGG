@@ -35,23 +35,26 @@
        <div id= sufeed>
             <form action="signUp" method="POST" id="signUpForm">
                 <p id="lol">ID Number</p>
-                <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" onblur="checkIdNumber(this, getElementById('idError'))">
-                <p id="idnumerror" class="errors">*Invalid ID Number*</p>
+                <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" onblur="checkIdNumber(this)">
+                    <p id="idnumerrorPlaceHolder" class="errorplaceholder">_______________________________________</p>
+                    <p id="idnumerror" class="errors">*Invalid ID Number*</p>
                   
                 <p>Last Name</p>
-                <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lastNameError'))">
+                <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lnameerrorPlaceHolder'), getElementById('lnameerror'), getElementById('lastName'))">
+                <p id="lnameerrorPlaceHolder" class="errorplaceholder">_________________________________________________________________________________________________________________________________________</p>
                 <p id="lnameerror" class="errors">*Invalid last name*</p>
 
                 <div class="wrap">
                     <div class="f">
                         <p>First Name</p> 
-                        <input type="text" class="twos" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('firstNameError'))">
+                        <input type="text" class="twos" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('fnameerrorPlaceHolder'), getElementById('fnameerror'), getElementById('firstName'))">
+                        <p id="fnameerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                         <p id="fnameerror" class="errors">*Invalid first name*</p>
                         
                         <p>College</p>
                         <div class="input-field">
                             <select id="dropDownCollege" name="college" class="ddcollege">
-                                <option value="" disabled selected>Select your College:</option>
+                                <option value="0" disabled selected>Select your College:</option>
                                 <option value="1">College of Computer Studies</option>
                                 <option value="2">Ramon V. del Rosario College of Business</option>
                                 <option value="3">Br. Andrew Gonzales College of Education</option>
@@ -61,35 +64,42 @@
                                 <option value="7">School of Economics</option>
                             </select>
                         </div>
+                        <p id="collegeerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                         <p id="collegeerror" class="errors">*Invalid selected college*</p>
                     </div>
                     
                      <div class="f">
                         <p>Middle Name</p> 
-                        <input type="text" class="twos" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))">
+                        <input type="text" class="twos" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('mnameerrorPlaceHolder'), getElementById('mnameerror'), getElementById('middleName'))">
+                         <p id="mnameerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                          <p id="mnameerror" class="errors">*Invalid middle name*</p>
                          
                         <p>Course</p>
-                        <input type="text" class="twos" id="course" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseError'))">
+                        <input id="courseName" type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
+                        <p id="courseerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                         <p id="courseerror" class="errors">*Invalid degree code*</p>
                     
                     </div>
                 </div>
                 
                 <p>Email Address</p>
-                <input type="text" id="email" name="email" onblur="checkEmailField(this, getElementById('emailError'))">
+                <input type="text" id="email" name="email" onblur="checkEmailField(this)">
+                <p id="emailerrorPlaceHolder" class="errorplaceholder">_________________________________________________________________________________________________________________________________________</p>
                 <p id="emailerror" class="errors">*Invalid email address*</p>
                 
                 <div class="wrap">
                     <div class="f">
                          <p>Password</p>
-                         <input type="password" id="password" class="twos" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))">
-                         <p id="pwerror" class="errors">*Passwords do not match*</p>
+                         <input type="password" class="twos" id="password" name="password" onblur="checkPasswordField(this)">
+                         <p id="pwerrorPlaceHolder" class="errorplaceholder">_______________________________________________________________</p>
+                         <p id="pwerror" class="errors">*Password must contain a capital letter and a symbol*</p>
                     </div>
                     
                     <div class="f">
                          <p>Re-enter Password</p>
-                         <input type="password" id="password2" class="twos" name="password2">
+                         <input type="password" id="password2" class="twos" name="password2" onblur="checkPasswordEqual(this, getElementById('password'))">
+                         <p id="pwerrorPlaceHolderNotEqual" class="errorplaceholder">___________________________________________________________________</p>
+                         <p id="pwNotEqual" class="errors">*Password did not match*</p>
                     </div>
                 </div>
                 
@@ -115,9 +125,7 @@
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		<script src="script/Signup.js"></script>
         <script>
-            // tests
-            //$('#idNum').css("border-color", "indianred");
- 
+        
         </script>
    	</body>
 </html>

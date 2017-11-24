@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class RemoveCacheFilter
  */
-@WebFilter("*.jsp")
+@WebFilter("*")
 public class RemoveCacheFilter implements Filter {
 
     /**

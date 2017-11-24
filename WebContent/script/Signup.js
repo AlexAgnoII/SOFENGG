@@ -63,9 +63,8 @@ function idNumberChecker(idNum) {
 /**
  * OnBlur function used for input field of id number.
  * @param idInputField = the ID of the input field.
- * @param spanId = the spanId.
  */
-function checkIdNumber(idInputField, spanId) {
+function checkIdNumber(idInputField) {
 	
 	//Check if idNumber follows constraint.
 	if(idNumberChecker(idInputField.value) || idInputField.value == "") {
@@ -73,13 +72,17 @@ function checkIdNumber(idInputField, spanId) {
 		if(idInputField.value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
 			//spanId.innerHTML = "";
+            $('#idnumerrorPlaceHolder').show();
+            $('#idnumerror').hide();
+            $('#idNum').css("border-color" , "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
 		//spanId.innerHTML = "Must be 8 digit integers only.";
-        $('#idnumerror').css("border-color", "indianred");
+        $('#idnumerrorPlaceHolder').hide();
+        $('#idnumerror').show();
         $('#idNum').css("border-color", "indianred");
         //This is temporary, you can add this directly to the tag span and just hided/show the tag.
 	}
@@ -107,15 +110,23 @@ function stringIsWord(value) {
 /**
  * onBlur function for input field of lastName, firstName, middleName, and course.
  * @param stringField - input field object.
- * @param spanString - span object.
+ * @param placeHolder - the placeHolder that would contain the error message.
+ * @param errror = the error message.
  */
-function checkStringField(stringField, spanString) {
+function checkStringField(stringField, placeHolder, error) {
 	var value = stringField.value;
 
 	//Value only all spaces, do this.
 	if(/^\s+$/.test(value)) {
+        console.log("hi");
+        console.log(error);
+        console.log(placeHolder);
+        console.log(stringField);
 		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 spanString.innerHTML = "Must consists of letters and/or spaces only.";
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        placeHolder.style.display = "none";
+        error.style.display = "block";
+        stringField.style.borderColor = "indianred";
 	}
 	//Contains nothing OR the right value.
 	else if(stringIsWord(value) || value === "") {
@@ -123,23 +134,29 @@ function checkStringField(stringField, spanString) {
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
 			//spanString.innerHTML = "";
+            placeHolder.style.display = "block";
+            error.style.display = "none";
+            stringField.style.borderColor = "rgba(0, 0, 0, 0.3)";
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
 		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 spanString.innerHTML = "Must consists of letters and/or spaces only.";
+		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
+        placeHolder.style.display = "none";
+        error.style.display = "block";
+        stringField.style.borderColor = "indianred";
 	}
 }
+
 
 /**
  * onBlur function for input field emailField
  * @param emailField - the input object for email
- * @param spanEmail - the span object for email errors.
  * @returns
  */
-function checkEmailField(emailField, spanEmail) {
+function checkEmailField(emailField) {
 	var value = emailField.value;
 	
 	//Check if idNumber follows constraint.
@@ -148,12 +165,18 @@ function checkEmailField(emailField, spanEmail) {
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
 			//spanEmail.innerHTML ="";
+            $('#emailerrorPlaceHolder').show();
+            $('#emailerror').hide();
+            $('#email').css("border-color", "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
-		spanEmail.innerHTML = "Must be valid email."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+		//spanEmail.innerHTML = "Must be valid email."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+        $('#emailerrorPlaceHolder').hide();
+        $('#emailerror').show();
+        $('#email').css("border-color", "indianred");
 	}
 }
 
@@ -173,9 +196,8 @@ function checkPassword(value) {
 /**
  * onBlue function for the password field.
  * @param passwordField - input field object for password
- * @param spanPassword - span object for password for error message 
  */
-function checkPasswordField(passwordField, spanPassword) {
+function checkPasswordField(passwordField) {
 	var value = passwordField.value;
 	
 	console.log("sendhelp");
@@ -185,12 +207,18 @@ function checkPasswordField(passwordField, spanPassword) {
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
 			//spanPassword.innerHTML ="";
+            $('#pwerrorPlaceHolder').show();
+            $('#pwerror').hide();
+            $('#password').css("border-color", "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
 		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+        $('#pwerrorPlaceHolder').hide();
+        $('#pwerror').show();
+        $('#password').css("border-color", "indianred");
 	}
 }
 
@@ -219,12 +247,10 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	//atleast 1 number, 1 special char
 	if(password.length >= 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$/.test(password)) {
 		////make some sort of indicator near field that it is done correctly.
-		console.log("Correct");
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid Password");
-		console.log("Incorrect");
         $('#pwerror').css("color", "indianred");
         $('#password').css("border-color", "indianred");
 		satisfied = false;
@@ -287,6 +313,32 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	return satisfied;
 }
 
+/**
+ * Checks if password is equal or not.
+ * @param pass2Field - the second verifying password
+ * @param pass1Field - the original passsword.
+ * @returns
+ */
+function checkPasswordEqual(pass2Field, pass1Field) {
+	var pass2Val = pass2Field.value;
+	var pass1Val = pass1Field.value;
+	
+	//Equal!
+	if(pass1Val=== pass2Val) {
+        $('#pwerrorPlaceHolderNotEqual').show();
+        $('#pwNotEqual').hide();
+        $('#password2').css("border-color", "rgba(0, 0, 0, 0.3)");
+	}
+	
+	//Not equal!
+	else {
+		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+        $('#pwerrorPlaceHolderNotEqual').hide();
+        $('#pwNotEqual').show();
+        $('#password2').css("border-color", "indianred");
+	}
+}
+
 
 
 $("document").ready(function(idNum, password, fName, lName) {
@@ -317,12 +369,12 @@ $("document").ready(function(idNum, password, fName, lName) {
         lName = document.getElementById('lastName').value;
         email = document.getElementById('email').value;
         password2 = document.getElementById('password2').value;
-        courseName = document.getElementById('course').value;
+        courseName = document.getElementById('courseName').value;
         select = document.getElementById('dropDownCollege');
         
         college = select.options[select.selectedIndex].value;
         
-        //Removes unnecessary extra white spaces.
+        //Removes unecessary extra white spaces.
         idNum = removeExtraWhiteSpaces(idNum);
         fName = removeExtraWhiteSpaces(fName);
         lName = removeExtraWhiteSpaces(fName);

@@ -125,10 +125,7 @@
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		<script src="script/Signup.js"></script>
         <script>
-            // tests
-//        $('#mnameerrorPlaceholder').hide();
-//        $('#lnameerror').show();
-//        $('#lastName').css("border-color", "indianred");
+        
         </script>
    	</body>
 </html>

@@ -95,6 +95,7 @@ public class authentication implements Filter {
 				}
 			}
 		}
+		
 		System.out.println("***********************AUTHENTICATE FILTER LOG**********************");
 		System.out.println("Url:" + url);
 		System.out.println("Cookie exists: " + user);
@@ -103,127 +104,66 @@ public class authentication implements Filter {
 		if(user) {
 			System.out.println("User");
 		}
-		if(admin) {
+		else if(admin) {
 			System.out.println("Admin");
 		}
+		else {
+			System.out.println("No user!");
+		}
+		
 
 		switch(url) {
-			case "/HomePage.jsp":
-								if(!admin && user) {
-									 //System.out.println("Redirecting to UserHomePage.jsp..");
-									 //res.sendRedirect("UserHomePage.jsp");
-									 System.out.println("Redirecting to ViewProfile.jsp..");
+		    case "/ResetPassword.html":
+		    case "/Signup.jsp":
+			case "/HomePage.jsp": //If user, proceed to UserHomePage.
+				                System.out.println("Access public pages...");
+								if(user) {
+									 System.out.println("Redirecting to ViewProfile.jsp.."); 
 									 res.sendRedirect("viewByStudent"); //Redirect to viewprofile for now.
 								 }
-								 //If not, continue to page.
-								 else if(admin && user) {
+								
+								 //If admin, go to adminHomePage
+								 else if(admin) {
 									 System.out.println("Redirecting to AdminHomePage.jsp..");
 									 res.sendRedirect("AdminHomePage.jsp");
 								 }
+								 //No user, continue.
 								 else {
 									 System.out.println("Continue on this page..");
 									 chain.doFilter(request, response);
 								 }
 								 break; 
-			case "/ResetPassword.html":
-			case "/Signup.jsp":
-								 if(user) {
-									 System.out.println("Redirecting to UserHomePage.jsp..");
-									 res.sendRedirect("UserHomePage.jsp");
-								 }
-								 //If not, continue to page.
-								 else {
-									 System.out.println("Continue on this page..");
-									 chain.doFilter(request, response);
-								 }
-								 break; 
-			case "/UserHomePage.jsp": //if cookie exists, continue
-				                if(user) {
-				               	 System.out.println("Continue on this page..");
-				                   chain.doFilter(request, response);
-								 }
-				                //If not, go to homepage
-				                else {
-				               	 System.out.println("Redirecting to HomePage.jsp..");
-				               	 res.sendRedirect("HomePage.jsp");
-				                }
-								 break; 
-			case "/AdminHomePage.jsp": //if cookie exists, continue
-				                if(user) {
-				               	 System.out.println("Continue on this page..");
-				                   chain.doFilter(request, response);
-								 }
-				                //If not, go to homepage
-				                else {
-				               	 System.out.println("Redirecting to HomePage.jsp..");
-				               	 res.sendRedirect("HomePage.jsp");
-				                }
-								 break;
-			case "/ViewStudents.jsp": //if cookie exists, continue
-				                if(user) {
-				               	 System.out.println("Continue on this page..");
-				                   chain.doFilter(request, response);
-								 }
-				                //If not, go to homepage
-				                else {
-				               	 System.out.println("Redirecting to HomePage.jsp..");
-				               	 res.sendRedirect("HomePage.jsp");
-				                }
-								 break;
-			case "/EditProfile.jsp": //if cookie exists, continue
-				                if(user) {
-					               	 System.out.println("Continue on this page..");
-					                   chain.doFilter(request, response);
-									 }
-					                //If not, go to homepage
-					                else {
-					               	 System.out.println("Redirecting to HomePage.jsp..");
-					               	 res.sendRedirect("HomePage.jsp");
-					                }
-				                break;
-			case "/SearchResult.jsp": //if cookie exists, continue
-				                if(user) {
-					               	 System.out.println("Continue on this page..");
-					                   chain.doFilter(request, response);
-									 }
-					                //If not, go to homepage
-					                else {
-					               	 System.out.println("Redirecting to HomePage.jsp..");
-					               	 res.sendRedirect("HomePage.jsp");
-					                }
-				                break;
-			case "/AdminSearchForStudents.jsp": 
-                if(user && admin) {
-	               	 System.out.println("Continue on this page..");
-	                   chain.doFilter(request, response);
-					 }
-	                else {
-	               	 System.out.println("Redirecting to HomePage.jsp..");
-	               	 res.sendRedirect("HomePage.jsp");
-	                }
-                break;
-			case "/ViewProfile.jsp": //if cookie exists, continue
-					                if(user) {
-						               	 System.out.println("Continue on this page..");
-						                   chain.doFilter(request, response);
-										 }
-						                //If not, go to homepage
-						                else {
-						               	 System.out.println("Redirecting to HomePage.jsp..");
-						               	 res.sendRedirect("HomePage.jsp");
-						                }
-					               break;
 			case "/UserAnnouncements.jsp": //if cookie exists, continue
-                if(user) {
-	               	 System.out.println("Continue on this page..");
-	                   chain.doFilter(request, response);
-					 }
-	                //If not, go to homepage
-	                else {
-	               	 System.out.println("Redirecting to HomePage.jsp..");
-	               	 res.sendRedirect("HomePage.jsp");
-	                }
-               break;
+			case "/ViewProfile.jsp":
+			case "/ViewStudents.jsp":
+			case "/UserHomePage.jsp": //if cookie exists, continue
+								System.out.println("Access user pages..");
+				                if(user) {
+				               	   System.out.println("Continue on this page..");
+				                   chain.doFilter(request, response);
+								 }
+				                //If not, go to homepage
+				                
+				                else {
+				               	  System.out.println("Redirecting to HomePage.jsp..");
+				               	  res.sendRedirect("HomePage.jsp");
+				                }
+								 break; 
+			case "/AdminSearchForStudents.jsp": 
+			case "/SearchResult.jsp": //if cookie exists, continue
+			case "/AdminHomePage.jsp": //if cookie exists, continue
+								System.out.println("Access admin pages...");
+				                if(admin) {
+				               	   System.out.println("Continue on this page..");
+				                   chain.doFilter(request, response);
+								 }
+				                //If not, go to homepage
+				                else {
+				               	 System.out.println("Redirecting to HomePage.jsp..");
+				               	 res.sendRedirect("HomePage.jsp");
+				                }
+								 break;
+
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
 		}
 		

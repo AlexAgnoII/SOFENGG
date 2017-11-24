@@ -35,7 +35,6 @@ $("document").ready(function() {
 	$("#searchForm").on("submit", function(e) {
 	    e.preventDefault();
 		var name  = document.getElementById('search').value;
-		alert("submitted");
 		loadStudents(name);
 	  })
 });

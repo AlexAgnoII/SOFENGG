@@ -55,8 +55,9 @@ function submitTheForm(title, body) {
         type:'POST',
         cache:false,
         success: function(data){
-        	document.getElementById('materialize-modal-overlay-1').style.display = 'none';
-        	document.getElementById('newannounce').style.display = 'none';
+        	$('#anntitle').val("");
+        	$('#annbody').val("");
+        	$('.modal-overlay').trigger('click');
         	loadPosts();
         },
         error:function(){
@@ -75,9 +76,10 @@ function updateForm(postId, title, body) {
         type:'POST',
         cache:false,
         success: function(data){
-        	document.getElementById('materialize-modal-overlay-3').style.display = 'none';
-        	document.getElementById('materialize-modal-overlay-2').style.display = 'none';
-        	document.getElementById('updateAnnounce').style.display = 'none';
+
+        	$('#updateTitle').val("");
+        	$('#updateBody').val("");
+        	$('.modal-overlay').trigger('click');
         	loadPosts();
         },
         error:function(){

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class authentication implements Filter {
 	private HttpServletRequest req;
 	private HttpServletResponse res;
-	private boolean proceed;
+	private boolean user;
 
     /**
      * Default constructor. 
@@ -44,7 +44,7 @@ public class authentication implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		req = (HttpServletRequest) request;
 		res = (HttpServletResponse) response;
-		proceed = false; //Fixed infinite redirection
+		user = false; //Fixed infinite redirection
 		Boolean admin = false;
 		String url = req.getServletPath(); //
 		String temp;
@@ -65,7 +65,7 @@ public class authentication implements Filter {
 					System.out.println("USER Cookie found!");
 						
 					if(c.getMaxAge() != 0)
-						proceed = true; //if it exists, proceed.
+						user = true; //if it exists, proceed.
 					
 					//Allows session attribute to stay in the website
 					//When user enters exact url.
@@ -80,7 +80,6 @@ public class authentication implements Filter {
 					System.out.println("ADMIN Cookie found!");
 						
 					if(c.getMaxAge() != 0){
-						proceed = true; //if it exists, proceed.
 						admin = true;
 					}
 					
@@ -98,18 +97,26 @@ public class authentication implements Filter {
 		}
 		System.out.println("***********************AUTHENTICATE FILTER LOG**********************");
 		System.out.println("Url:" + url);
-		System.out.println("Cookie exists: " + proceed);
+		System.out.println("Cookie exists: " + user);
+		
+		System.out.println("Is it user or adming?::");
+		if(user) {
+			System.out.println("User");
+		}
+		if(admin) {
+			System.out.println("Admin");
+		}
 
 		switch(url) {
 			case "/HomePage.jsp":
-								if(!admin && proceed) {
+								if(!admin && user) {
 									 //System.out.println("Redirecting to UserHomePage.jsp..");
 									 //res.sendRedirect("UserHomePage.jsp");
 									 System.out.println("Redirecting to ViewProfile.jsp..");
 									 res.sendRedirect("viewByStudent"); //Redirect to viewprofile for now.
 								 }
 								 //If not, continue to page.
-								 else if(admin && proceed) {
+								 else if(admin && user) {
 									 System.out.println("Redirecting to AdminHomePage.jsp..");
 									 res.sendRedirect("AdminHomePage.jsp");
 								 }
@@ -120,7 +127,7 @@ public class authentication implements Filter {
 								 break; 
 			case "/ResetPassword.html":
 			case "/Signup.jsp":
-								 if(proceed) {
+								 if(user) {
 									 System.out.println("Redirecting to UserHomePage.jsp..");
 									 res.sendRedirect("UserHomePage.jsp");
 								 }
@@ -131,7 +138,7 @@ public class authentication implements Filter {
 								 }
 								 break; 
 			case "/UserHomePage.jsp": //if cookie exists, continue
-				                if(proceed) {
+				                if(user) {
 				               	 System.out.println("Continue on this page..");
 				                   chain.doFilter(request, response);
 								 }
@@ -142,7 +149,7 @@ public class authentication implements Filter {
 				                }
 								 break; 
 			case "/AdminHomePage.jsp": //if cookie exists, continue
-				                if(proceed) {
+				                if(user) {
 				               	 System.out.println("Continue on this page..");
 				                   chain.doFilter(request, response);
 								 }
@@ -153,7 +160,7 @@ public class authentication implements Filter {
 				                }
 								 break;
 			case "/ViewStudents.jsp": //if cookie exists, continue
-				                if(proceed) {
+				                if(user) {
 				               	 System.out.println("Continue on this page..");
 				                   chain.doFilter(request, response);
 								 }
@@ -164,7 +171,7 @@ public class authentication implements Filter {
 				                }
 								 break;
 			case "/EditProfile.jsp": //if cookie exists, continue
-				                if(proceed) {
+				                if(user) {
 					               	 System.out.println("Continue on this page..");
 					                   chain.doFilter(request, response);
 									 }
@@ -175,7 +182,7 @@ public class authentication implements Filter {
 					                }
 				                break;
 			case "/SearchResult.jsp": //if cookie exists, continue
-				                if(proceed) {
+				                if(user) {
 					               	 System.out.println("Continue on this page..");
 					                   chain.doFilter(request, response);
 									 }
@@ -186,7 +193,7 @@ public class authentication implements Filter {
 					                }
 				                break;
 			case "/AdminSearchForStudents.jsp": 
-                if(proceed && admin) {
+                if(user && admin) {
 	               	 System.out.println("Continue on this page..");
 	                   chain.doFilter(request, response);
 					 }
@@ -196,7 +203,7 @@ public class authentication implements Filter {
 	                }
                 break;
 			case "/ViewProfile.jsp": //if cookie exists, continue
-					                if(proceed) {
+					                if(user) {
 						               	 System.out.println("Continue on this page..");
 						                   chain.doFilter(request, response);
 										 }
@@ -207,7 +214,7 @@ public class authentication implements Filter {
 						                }
 					               break;
 			case "/UserAnnouncements.jsp": //if cookie exists, continue
-                if(proceed) {
+                if(user) {
 	               	 System.out.println("Continue on this page..");
 	                   chain.doFilter(request, response);
 					 }

@@ -28,12 +28,13 @@ function loadStudents(studentName){
 
 
 $("document").ready(function() {
+    console.log("This happened II");
+    $('select').material_select();
     $('.modal').modal();
     
 	$("#searchForm").on("submit", function(e) {
 	    e.preventDefault();
 		var name  = document.getElementById('search').value;
-		alert("submitted");
 		loadStudents(name);
 	  })
 });

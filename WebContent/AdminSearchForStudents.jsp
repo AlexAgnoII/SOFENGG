@@ -9,10 +9,7 @@
 	        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
 	        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	        
-	        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-	        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-			<script type="text/javascript" src="script/AdminHomePage.js"></script>
-			<script type="text/javascript" src="script/AdminSearch.js"></script>
+	        <!-- Moved some scripts right before the end of body. -->
 	        
 	        <!-- INSERT CORRECT STYLESHEET BELOW -->
         	<link rel = "stylesheet" type="text/css" href="css/adminsearchforstudents.css">
@@ -52,15 +49,34 @@
                 </div>
             </div>
         </nav> 
-      	
-		<div id = "searchDiv" class="input-field z-depth-1" id = "searchDiv">
-			<form id = "searchForm">
-                <input type="search" id="search" name="searchbar" >
-                <label class="label-icon" for="search" style="color: #006f4a"><i class="material-icons">search</i></label>
-            </form>
-		</div>
+        
+      	<div id="searcher">
+            <div id = "searchDiv" class="input-field z-depth-1" id = "searchDiv">
+                <form id = "searchForm">
+                    <input type="search" id="search" name="searchbar" >
+                    <label class="label-icon" for="search" style="color: #006f4a"><i class="material-icons">search</i></label>
+                </form>
+		  </div>
+        		
+            <div id="sorter">
+                <div class="input-field">
+                    <select id="dropDownCollege" name="college" class="ddcollege">
+                        <option value="0" disabled selected>Sort by</option>
+                        <option value="1">Applicants of Gawad Lasalyano</option>
+                        <option value="2">Applicants of Ten Outstanding Students of the Philippines</option>
+                        <option value="3">Applicants of Ayala Young Leaders Congress</option>
+                        <option value="4">Qualified for Gawad Lasalyano</option>
+                        <option value="5">Qualified for Ten Outstanding Students of the Philippines</option>
+                        <option value="6">Qualified for Ayala Young Leaders Congress</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 		
-      	<div id="searchResultFeed"></div> 
+        
+      	<div id="searchResultFeed">
+
+        </div> 
       	
         <div id="newannounce" class="modal">
             <div class = "annhead">[NEW ANNOUNCEMENT]</div>
@@ -90,7 +106,13 @@
 					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>
 					<br>
             </div>
-        </div>      
+        </div>  
         
+        
+        <!-- Scripts originally from head-->
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="script/AdminHomePage.js"></script>
+        <script type="text/javascript" src="script/AdminSearch.js"></script>
 	</body>
 </html>

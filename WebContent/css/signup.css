@@ -96,7 +96,7 @@ nav {
 #sufeed .twos {
     width: 95%;
     height: 20px;
-    margin-top: -10px;
+    /*margin-top: -10px;*/ /*Commented this out since it fixed sign u alignment.*/
     margin-bottom: 5px;
     margin-left: 4px;
     border-radius: 2px;
@@ -208,6 +208,11 @@ div.input-field {
     
 }
 
+/*Delete this if needed.*/
+#sufeed p#courseerror{
+	margin-top: -10px;
+}
+
 #sufeed .errors {
     display: none;
     margin-top: -4px;
@@ -216,6 +221,7 @@ div.input-field {
     color: indianred;
     font-style: italic;
 }
+
 
 .errorplaceholder {
     margin-top: -4px;

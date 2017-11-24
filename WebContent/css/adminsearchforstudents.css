@@ -330,17 +330,22 @@ nav ul a:hover {
 }
 
 #searchDiv{
+    float: left;
     position: relative;
     margin: 0 auto;
-    margin-top:90px;
-    width: 750px;
+    width: 70%;
+    height: 44px;
 }
 
 #searchResultFeed {
     position: relative;
     margin: 0 auto;
-    margin-top:90px;
+    margin-top: 50px;
     width: 750px;
+    border: 0px solid none;
+    padding: 20px;
+    padding-top: 40px;
+    border-radius: 3px;
 }
 
 #sId {
@@ -357,4 +362,56 @@ nav ul a:hover {
 
 #sName {
     width: 400px;
+}
+
+/*This changes the text color of the select options.*/
+ul.dropdown-content.select-dropdown li span {
+	font-size: 11px;
+    color: #1f1f1f;
+    font-family: "Montserrat";
+}
+
+/*This changes the FIRST option of the select (its disabled, so it should be gray)*/
+ul.dropdown-content.select-dropdown li.disabled span {
+	font-size: 11px;
+    color: #888888; 
+    font-family: "Montserrat";
+ 
+}
+
+/*This is for the select tag size customization.*/
+div.input-field {
+	width: 95%;
+    margin-top: -10px;
+    margin-left: 4px;
+    margin-bottom: -19px;
+}
+
+.select-wrapper input.select-dropdown {
+    height: 20px;
+    width: 100%;
+    font-size: 11px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    padding-left: 2px;
+    
+}
+
+#sorter {
+    float: left;
+    margin: auto;
+    text-align: right;
+    width: 30%;
+    margin-top: 33px;
+}
+
+#searcher {
+    padding-top: 50px;
+    margin: 0 auto;
+    position: relative;
+    width: 750px;
+    height: 100px;
 }

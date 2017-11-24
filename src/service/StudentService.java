@@ -150,8 +150,11 @@ public class StudentService {
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
-			PreparedStatement st = conn.prepareStatement("SELECT student.studentId FROM student, involvement WHERE " +
-														 "student.studentId = involvement.idNum AND student.studentId = ?");
+			PreparedStatement st = conn.prepareStatement("SELECT student.studentId FROM sofengg.student, "  +
+														 "sofengg.involvement WHERE studentId = idNum AND " +
+														 "student.studentId = ? " 							+ 
+														 "GROUP BY studentId HAVING COUNT(*) >= 5");
+
 			st.setInt(1, studentDBId);
 			ResultSet rs = st.executeQuery();
 

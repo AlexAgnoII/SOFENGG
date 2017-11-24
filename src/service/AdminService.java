@@ -213,7 +213,7 @@ public class AdminService {
 			Connection conn = DatabaseManager.getConnection();
 
 			PreparedStatement st = conn.prepareStatement("SELECT student.* FROM sofengg.student, sofengg.involvement WHERE " +
-														 "studentId = idNum GROUP BY studentId ");
+														 "studentId = idNum GROUP BY studentId HAVING COUNT(*) >= 5");
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {

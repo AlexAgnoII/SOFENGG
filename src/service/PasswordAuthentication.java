@@ -47,6 +47,10 @@ public final class PasswordAuthentication {
         this(DEFAULT_COST);
     }
     
+    public PasswordAuthentication(String username, String password) {
+        this(DEFAULT_COST);
+    }
+    
 
     public static class Test {
 

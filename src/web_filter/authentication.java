@@ -122,7 +122,7 @@ public class authentication implements Filter {
 			case "/Signup.jsp":
 								 if(proceed) {
 									 System.out.println("Redirecting to UserHomePage.jsp..");
-									 res.sendRedirect("UserHomePage.jsp");
+									 request.getRequestDispatcher("Verification.jsp").forward(request, response);
 								 }
 								 //If not, continue to page.
 								 else {
@@ -217,6 +217,10 @@ public class authentication implements Filter {
 	               	 res.sendRedirect("HomePage.jsp");
 	                }
                break;
+			case "/Verification.jsp":
+				System.out.println("Continue on this page..");
+                chain.doFilter(request, response);
+            break;
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
 		}
 		

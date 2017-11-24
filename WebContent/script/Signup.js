@@ -72,7 +72,7 @@ function checkIdNumber(idInputField, spanId) {
 		
 		if(idInputField.value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanId.innerHTML = "";
+			//spanId.innerHTML = "";
 		} 
 		
 	}
@@ -122,7 +122,7 @@ function checkStringField(stringField, spanString) {
 		
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanString.innerHTML = "";
+			//spanString.innerHTML = "";
 		} 
 		
 	}
@@ -147,7 +147,7 @@ function checkEmailField(emailField, spanEmail) {
 		
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanEmail.innerHTML ="";
+			//spanEmail.innerHTML ="";
 		} 
 		
 	}
@@ -184,13 +184,13 @@ function checkPasswordField(passwordField, spanPassword) {
 		
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
-			spanPassword.innerHTML ="";
+			//spanPassword.innerHTML ="";
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
-		spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
 	}
 }
 
@@ -219,10 +219,12 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	//atleast 1 number, 1 special char
 	if(password.length >= 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$/.test(password)) {
 		////make some sort of indicator near field that it is done correctly.
+		console.log("Correct");
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.
 		//alert("Invalid Password");
+		console.log("Incorrect");
         $('#pwerror').css("color", "indianred");
         $('#password').css("border-color", "indianred");
 		satisfied = false;
@@ -315,12 +317,12 @@ $("document").ready(function(idNum, password, fName, lName) {
         lName = document.getElementById('lastName').value;
         email = document.getElementById('email').value;
         password2 = document.getElementById('password2').value;
-        courseName = document.getElementById('courseName').value;
+        courseName = document.getElementById('course').value;
         select = document.getElementById('dropDownCollege');
         
         college = select.options[select.selectedIndex].value;
         
-        //Removes unecessary extra white spaces.
+        //Removes unnecessary extra white spaces.
         idNum = removeExtraWhiteSpaces(idNum);
         fName = removeExtraWhiteSpaces(fName);
         lName = removeExtraWhiteSpaces(fName);

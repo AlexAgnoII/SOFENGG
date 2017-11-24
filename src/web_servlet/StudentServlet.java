@@ -2,7 +2,11 @@ package web_servlet;
 
 import java.io.IOException;
 
-import java.time.Year;
+import java.util.Properties;  
+import javax.mail.*;  
+import javax.mail.internet.*; 
+import javax.activation.*;  
+
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Map;
@@ -75,6 +79,7 @@ public class StudentServlet extends HttpServlet {
 	 */
 	private void addStudents(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("*****************ADD USER ************************");
+		
 		String idNum = request.getParameter("idNum");
 		String lastname = request.getParameter("lastName");
 		String firstname = request.getParameter("firstName");
@@ -112,7 +117,62 @@ public class StudentServlet extends HttpServlet {
 					  course);
 			
 			StudentService.addStudent(student, newVerificationId);
+			
+			//String host = "localhost";
+			String resultMessage = "";
+			String generatedURL = "http://localhost:8080/SOFENGG/Verification.jsp?verify=" + newVerificationId;
+			String from = "sofenggproject@gmail.com";
+			String pass = "Sofenggproj";
+			String generatedMsg = 	"Hi!"
+									+ "\n\n"
+									+ "Please click the link below to activate/confirm your account."
+									+ "\n\n"
+									+ generatedURL
+									+ "\n\n"
+									+"Thank you!";
+			String subject = "Account Confirmation";
+			Properties properties = System.getProperties();
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			properties.put("mail.smtp.user", from);
+			
+			properties.put("mail.smtp.auth", "true"); 
+			properties.put("mail.smtp.starttls.enable", "true");
+			properties.put("mail.smtp.password", pass);
+	        
+			properties.put("mail.smtp.socketFactory.port", "465");
+			properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			properties.put("mail.smtp.auth", "true");
+			properties.put("mail.smtp.port", "465");
+  
+			
+			Session session = Session.getDefaultInstance(properties,  
+				    new javax.mail.Authenticator() {  
+						@Override
+			      		protected javax.mail.PasswordAuthentication getPasswordAuthentication() {  
+			      			return new javax.mail.PasswordAuthentication(from, pass);  
+			      		}  
+			    });
+			
+			try {
+				MimeMessage message = new MimeMessage(session);
+				message.setFrom(new InternetAddress(from));
+				message.setRecipient(Message.RecipientType.TO, new InternetAddress(username));
+				message.setSubject(subject);
+				message.setContent(generatedMsg, "text/plain");
+				
+	            Transport.send(message, username, password);
+				resultMessage = "Message sent successfully!";
+			} catch (MessagingException e) {
+				resultMessage = "Unable to send message!";
+				e.printStackTrace();
+			} finally {
+				request.setAttribute("Message", resultMessage);
+				//response.sendRedirect("Verification.jsp");
+			}
+			
 			System.out.println("User added!");
+			
+			
 		
 			// TODO Send email with the verificationLink = Verification.jsp# + verificationId
 			

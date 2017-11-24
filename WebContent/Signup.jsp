@@ -66,11 +66,11 @@
                     
                      <div class="f">
                         <p>Middle Name</p> 
-                        <input type="text" class="twos" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))">
+                        <input type="text" class="twos" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('middleNameError'))">
                          <p id="mnameerror" class="errors">*Invalid middle name*</p>
                          
                         <p>Course</p>
-                        <input type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseError'))">
+                        <input type="text" class="twos" id="course" name="course" placeholder="e.g. MKT, CIV, INSYS" onblur="checkStringField(this, getElementById('courseError'))">
                         <p id="courseerror" class="errors">*Invalid degree code*</p>
                     
                     </div>
@@ -83,13 +83,13 @@
                 <div class="wrap">
                     <div class="f">
                          <p>Password</p>
-                         <input type="password" class="twos" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))">
+                         <input type="password" id="password" class="twos" name="password" onblur="checkPasswordField(this, getElementById('passwordError'))">
                          <p id="pwerror" class="errors">*Passwords do not match*</p>
                     </div>
                     
                     <div class="f">
                          <p>Re-enter Password</p>
-                         <input type="password" class="twos" name="password2">
+                         <input type="password" id="password2" class="twos" name="password2">
                     </div>
                 </div>
                 

@@ -102,7 +102,7 @@ public class StudentService {
 	 */
 	public static boolean validateStudent(String username, String password) {
 		boolean found = false;
-		PasswordAuthentication p = new PasswordAuthentication();
+		PasswordAuthentication p = new PasswordAuthentication(username, password);
 		
 		System.out.println();
 		try{
@@ -397,6 +397,34 @@ public class StudentService {
 			
 			stmt.executeUpdate();
 			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+	}
+	
+	public static void verifyStudent(String hash) {
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE student "
+				  + "SET verificationId=? "//1
+				 + "WHERE verificationId=?" //2					
+					);
+			
+			stmt.setString(1, "");
+			stmt.setString(2, hash);
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Student verified!");
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

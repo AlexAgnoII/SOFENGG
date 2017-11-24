@@ -110,8 +110,7 @@ public class StudentService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ? " +
-														 "AND (verificationId IS NULL OR verificationId = \'\')");
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ? ");
 			st.setString(1, username);
 			ResultSet rs = st.executeQuery();
 
@@ -120,6 +119,81 @@ public class StudentService {
 					System.out.println("User found, valid!");
 					found = true;
 					break;
+				}
+			}
+
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return found;
+	}
+	
+	/**
+	 * Checks if the username i validated or not.
+	 * @param username - the username
+	 * @return
+	 */
+	public static boolean isValidated(String username) {
+		boolean validated = false;
+		
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ? " +
+					                                      "AND (verificationId IS NULL OR verificationId = \'\')");
+			st.setString(1, username);
+			ResultSet rs = st.executeQuery();
+
+			while(rs.next()) {
+				//No result was returned. ( Not verified!)
+				if(!rs.isBeforeFirst()) {
+					System.out.println("Not yet Verified!");
+					return true;
+				}
+			}
+
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return validated;
+	}
+	
+	/**
+	 * Checks if the username exist in the database.
+	 * @param username
+	 * @return true or false
+	 */
+	public static boolean isExisiting(String username) {
+		boolean found = false;
+		
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ?");
+			st.setString(1, username);
+			ResultSet rs = st.executeQuery();
+
+			while(rs.next()) {
+				//No result was returned. ( Not verified!)
+				if(!rs.isBeforeFirst()) {
+					System.out.println("Wrong password!");
+					return true;
 				}
 			}
 

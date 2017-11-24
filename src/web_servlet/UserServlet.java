@@ -111,28 +111,37 @@ public class UserServlet extends HttpServlet {
 		
 		//Validate.
 		if(StudentService.validateStudent(email, password)) { 
-			String userID = StudentService.getStudentID(email);
-			//set session attribute
-			s.setAttribute("UN", userID); 
-			System.out.println("Session(UN): " + s.getAttribute("UN"));
 			
+			//check if validated
+			if(StudentService.isValidated(email)) {
+		     	String userID = StudentService.getStudentID(email);
+				//set session attribute
+				s.setAttribute("UN", userID); 
+				System.out.println("Session(UN): " + s.getAttribute("UN"));
 				
-			//This generates the cookie.
-			Cookie theCookie;
-			theCookie = new Cookie("USER", userID); 
-			theCookie.setMaxAge(604800); //1 week expirey.
-		
-			//Checking
-			System.out.println("Cookie placed: " + theCookie.getName());
-			System.out.println("Cookie value: " + theCookie.getValue());
-
-			//Add cookie
-			response.addCookie(theCookie);
-
-			//Redirect inside website
-			//response.sendRedirect("UserHomePage.jsp");
-			//response.sendRedirect("viewByStudent"); //redirect to view profile.jsp
-			response.getWriter().write("PASS-LOGIN-STUDENT");
+					
+				//This generates the cookie.
+				Cookie theCookie;
+				theCookie = new Cookie("USER", userID); 
+				theCookie.setMaxAge(604800); //1 week expirey.
+			
+				//Checking
+				System.out.println("Cookie placed: " + theCookie.getName());
+				System.out.println("Cookie value: " + theCookie.getValue());
+	
+				//Add cookie
+				response.addCookie(theCookie);
+	
+				//Redirect inside website
+				//response.sendRedirect("UserHomePage.jsp");
+				//response.sendRedirect("viewByStudent"); //redirect to view profile.jsp
+				response.getWriter().write("PASS-LOGIN-STUDENT");
+			}
+			
+			else {
+				System.out.println("User not verified!");
+				response.getWriter().write("NOT-VERIFIED");
+			}
 			
 		} else if(AdminService.validateAdmin(email, password)) { 
 			String userID = AdminService.getAdminID(email);
@@ -159,12 +168,23 @@ public class UserServlet extends HttpServlet {
 			
 		}
 		
+		//acc does not exist at all.
 		else {
-			/*Send error*/
-			System.out.println("inValid (User not found)");
-			//send error code.
-			// TODO front end notif
-			response.getWriter().write("FAIL-LOGIN");
+			
+			if(StudentService.isExisiting(email)) {
+				System.out.println("Wrong password/Username");
+				response.getWriter().write("FAIL-LOGIN");
+				
+			}
+			
+			else {
+				/*Send error*/
+				System.out.println("inValid (User not found)");
+				//send error code.
+				// TODO front end notif
+				response.getWriter().write("NOT-EXIST");
+			}
+
 
 		}
 		System.out.println("****************************************\n");

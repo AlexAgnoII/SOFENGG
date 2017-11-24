@@ -46,8 +46,8 @@
          
             <div id="errorFeed">
                 <p id="dnm" class="center-align">Username and password do not match</p>
-                <p id="dne">Account does not exist</p>
-                <p id="dnv">Account has not been verified yet</p>
+                <!-- <p id="dne">Account does not exist</p> -->
+                <!-- <p id="dnv">Account has not been verified yet</p> -->
             </div>
             
             <br><br>

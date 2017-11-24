@@ -21,6 +21,18 @@ function accPassMismatch(data) {
        // Materialize.toast('Username and password do not match', 7000);
 		//$('#dnm').css({"color":"indianred"});
          $('#dnm').show();
+         $('#dnm').html("Username and password did not match");
+	}
+	
+	else if(data === "NOT-EXIST") {
+        $('#dnm').show();
+        $('#dnm').html("Account does not exist.");
+	}
+	
+	else if(data === "NOT-VERIFIED") {
+		console.log("NOT YET VERIFIED!");
+		$('#dnm').show();
+		$('#dnm').html("Account has not been verified yet");
 	}
 	
 	//redirect to adminhomepage.

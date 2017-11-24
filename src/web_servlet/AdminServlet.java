@@ -123,8 +123,7 @@ public class AdminServlet extends HttpServlet {
 		System.out.println("***************** UPDATING POST FEED ************************");
 		String user = request.getParameter("user");
 		ArrayList<Post> postList = AdminService.getPosts();
-		String name 			 = request.getParameter("searchbar"),
-			   htmlPostList 	 = "";
+		String htmlPostList 	 = "";
 		SimpleDateFormat ft = new SimpleDateFormat ("MMMMM dd, yyyy; hh:mm a");
 		
 		
@@ -165,16 +164,35 @@ public class AdminServlet extends HttpServlet {
 	 */
 	private void search(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** SEARCH ************************");
-		String name = request.getParameter("searchbar");
+		String name 			 = request.getParameter("name"),
+			   htmlStudentList 	 = "";
+		
 		System.out.println("SEARCHING: " + name);
 		
 		ArrayList<Student> studentList = AdminService.getStudentByName(name);
-		
+			
+	    for(Student s : studentList){
+			htmlStudentList += "<div class = 'card-panel green darken-3'>" +
+							"	<table>" +
+					        "   	<tr class = 'white-text'>" +
+							"			<td id = 'sId'>"       + s.getStudentId()  + "</td>" +
+							"			<td id = 'sName'>" 	   + s.getFirstName()  + " " +
+																 s.getMiddleName() + " " +
+																 s.getLastName()   + "</td>" +
+							"			<td id = 'sCourse'>"   + s.getCourse()  + "</td>" +
+							"			<td id = 'sCollege'>"  + s.getCollege()  + "</td>" +
+					        "		</tr>" + 
+					        "	</table>" + 
+					        "</div> ";
+	    }
+
 		System.out.println(studentList);
 
-		request.setAttribute("studentList", studentList);
-		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
-		
+//		request.setAttribute("studentList", studentList);
+//		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
+	    response.setContentType("text/html"); 
+	    response.setCharacterEncoding("UTF-8"); 
+	    response.getWriter().write(htmlStudentList);    
 		System.out.println("*******************************************");
 	}
 

@@ -12,6 +12,7 @@
 	        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
 	        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 			<script type="text/javascript" src="script/AdminHomePage.js"></script>
+			<script type="text/javascript" src="script/AdminSearch.js"></script>
 	        
 	        <!-- INSERT CORRECT STYLESHEET BELOW -->
         	<link rel = "stylesheet" type="text/css" href="css/adminsearchforstudents.css">
@@ -53,46 +54,13 @@
         </nav> 
       	
 		<div id = "searchDiv" class="input-field z-depth-1" id = "searchDiv">
-			<form action="search" method="GET" id = "searchForm">
+			<form id = "searchForm">
                 <input type="search" id="search" name="searchbar" >
                 <label class="label-icon" for="search" style="color: #006f4a"><i class="material-icons">search</i></label>
             </form>
 		</div>
 		
-      	<div id="searchResultFeed">
-            <div class="card-panel green darken-3">
-                <table>
-                    <tr class="white-text">
-                        <td id="sId">11926004</td>
-                        <td id="sName">Carl Carlo C. Carlos</td>
-                        <td id="sCourse">BS CHM</td>
-                        <td id="sCollege">COS</td>
-                    </tr>
-                </table>
-            </div>
-            
-            <div class="card-panel green darken-3">
-                <table id="cardTable">
-                    <tr class="white-text">
-                        <td id="sId">100115468</td>
-                        <td id="sName">Marcelita Gonzales R. Yvarnadez y Llaverde</td>
-                        <td id="sCourse">AB PSM</td>
-                        <td id="sCollege">CLA</td>
-                    </tr>
-                </table>
-            </div>
-            
-            <div class="card-panel green darken-3">
-                <table id="cardTable">
-                    <tr class="white-text">
-                        <td id="sId">10465122</td>
-                        <td id="sName">Ma. Franchesca Gianina G. Chua</td>
-                        <td id="sCourse">BS MGT</td>
-                        <td id="sCollege">SOM</td>
-                    </tr>
-                </table>
-            </div>
-        </div> 
+      	<div id="searchResultFeed"></div> 
       	
         <div id="newannounce" class="modal">
             <div class = "annhead">[NEW ANNOUNCEMENT]</div>

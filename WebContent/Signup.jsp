@@ -40,14 +40,14 @@
                     <p id="idnumerror" class="errors">*Invalid ID Number*</p>
                   
                 <p>Last Name</p>
-                <input type="text" id="lastName" name="lastName" onblur="checkStringFieldLastName(this, getElementById('lastNameError'))">
+                <input type="text" id="lastName" name="lastName" onblur="checkStringField(this, getElementById('lnameerrorPlaceHolder'), getElementById('lnameerror'), getElementById('lastName'))">
                 <p id="lnameerrorPlaceHolder">_________________________________________________________________________________________________________________________________________</p>
                 <p id="lnameerror" class="errors">*Invalid last name*</p>
 
                 <div class="wrap">
                     <div class="f">
                         <p>First Name</p> 
-                        <input type="text" class="twos" id="firstName" name="firstName" onblur="checkStringFieldFirstName(this, getElementById('firstNameError'))">
+                        <input type="text" class="twos" id="firstName" name="firstName" onblur="checkStringField(this, getElementById('fnameerrorPlaceHolder'), getElementById('fnameerror'), getElementById('firstName'))">
                         <p id="fnameerrorPlaceHolder">___________________________________________________________________</p>
                         <p id="fnameerror" class="errors">*Invalid first name*</p>
                         
@@ -70,7 +70,7 @@
                     
                      <div class="f">
                         <p>Middle Name</p> 
-                        <input type="text" class="twos" id="middleName" name="middleName"  onblur="checkStringFieldMiddleName(this, getElementById('middleNameError'))">
+                        <input type="text" class="twos" id="middleName" name="middleName"  onblur="checkStringField(this, getElementById('mnameerrorPlaceHolder'), getElementById('mnameerror'), getElementById('middleName'))">
                          <p id="mnameerrorPlaceHolder">___________________________________________________________________</p>
                          <p id="mnameerror" class="errors">*Invalid middle name*</p>
                          
@@ -94,6 +94,7 @@
                          <p id="pwerrorPlaceHolder">_______________________________________________________________</p>
                          <p id="pwerror" class="errors">*Password must contain a capital letter and a symbol*</p>
                     </div>
+                    
                     <div class="f">
                          <p>Re-enter Password</p>
                          <input type="password" class="twos" name="password2">

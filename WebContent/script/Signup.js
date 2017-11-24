@@ -113,17 +113,20 @@ function stringIsWord(value) {
  * @param stringField - input field object.
  * @param spanString - span object.
  */
-//onblur function for last name
-function checkStringFieldLastName(stringField, spanString) {
+function checkStringField(stringField, placeHolder, error, inputField) {
 	var value = stringField.value;
 
 	//Value only all spaces, do this.
 	if(/^\s+$/.test(value)) {
+        console.log("hi");
+        console.log(error);
+        console.log(placeHolder);
+        console.log(inputField);
 		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
 		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
-        $('#lnameerrorPlaceHolder').hide();
-        $('#lnameerror').show();
-        $('#lastName').css("border-color", "indianred");
+        placeHolder.style.display = "none";
+        error.style.display = "block";
+        inputField.style.borderColor = "indianred";
 	}
 	//Contains nothing OR the right value.
 	else if(stringIsWord(value) || value === "") {
@@ -131,9 +134,9 @@ function checkStringFieldLastName(stringField, spanString) {
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
 			//spanString.innerHTML = "";
-             $('#lnameerrorPlaceHolder').show();
-            $('#lnameerror').hide();
-            $('#lastName').css("border-color", "rgba(0, 0, 0, 0.3)");
+            placeHolder.style.display = "block";
+            error.style.display = "none";
+            inputField.style.borderColor = "rgba(0, 0, 0, 0.3)";
 		} 
 		
 	}
@@ -141,77 +144,9 @@ function checkStringFieldLastName(stringField, spanString) {
 	else {
 		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
 		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
-        $('#lnameerrorPlaceHolder').hide();
-        $('#lnameerror').show();
-        $('#lastName').css("border-color", "indianred");
-	}
-}
-
-//onblur function for firstname
-function checkStringFieldFirstName(stringField, spanString) {
-	var value = stringField.value;
-
-	//Value only all spaces, do this.
-	if(/^\s+$/.test(value)) {
-		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
-        $('#fnameerrorPlaceHolder').hide();
-        $('#fnameerror').show();
-        $('#firstName').css("border-color", "indianred");
-	}
-	//Contains nothing OR the right value.
-	else if(stringIsWord(value) || value === "") {
-		
-		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
-			//Add check or something in front end showing that user did iit correctly.
-			//spanString.innerHTML = "";
-             $('#fnameerrorPlaceHolder').show();
-            $('#fnameerror').hide();
-            $('#firstName').css("border-color", "rgba(0, 0, 0, 0.3)");
-		} 
-		
-	}
-	//If not follow, do front end magic to do show this.
-	else {
-		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
-        $('#fnameerrorPlaceHolder').hide();
-        $('#fnameerror').show();
-        $('#firstName').css("border-color", "indianred");
-	}
-}
-
-//onblur function for middle name
-function checkStringFieldMiddleName(stringField, spanString) {
-	var value = stringField.value;
-
-	//Value only all spaces, do this.
-	if(/^\s+$/.test(value)) {
-		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
-        $('#mnameerrorPlaceHolder').hide();
-        $('#mnameerror').show();
-        $('#middleName').css("border-color", "indianred");
-	}
-	//Contains nothing OR the right value.
-	else if(stringIsWord(value) || value === "") {
-		
-		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
-			//Add check or something in front end showing that user did iit correctly.
-			//spanString.innerHTML = "";
-             $('#mnameerrorPlaceHolder').show();
-            $('#mnameerror').hide();
-            $('#middleName').css("border-color", "rgba(0, 0, 0, 0.3)");
-		} 
-		
-	}
-	//If not follow, do front end magic to do show this.
-	else {
-		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 //spanString.innerHTML = "Must consists of letters and/or spaces only.";
-        $('#mnameerrorPlaceHolder').hide();
-        $('#mnameerror').show();
-        $('#middleName').css("border-color", "indianred");
+        placeHolder.style.display = "none";
+        error.style.display = "block";
+        inputField.style.borderColor = "indianred";
 	}
 }
 
@@ -283,7 +218,7 @@ function checkPasswordField(passwordField, spanPassword) {
 	//If not follow, do front end magic to do show this.
 	else {
 		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
-        $('#pwerrorPlaceHolder').show();
+        $('#pwerrorPlaceHolder').hide();
         $('#pwerror').show();
         $('#password').css("border-color", "indianred");
 	}

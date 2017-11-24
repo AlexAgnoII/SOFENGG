@@ -43,7 +43,6 @@
                 
                 <div id="dp2">
                      <ul>
-                        <li><a href="ViewStudents.jsp">View Students</a></li>
                         <li><a class="modal-trigger" href="#newannounce"> New Announcement</a></li>
                     </ul>
                 </div>
@@ -60,8 +59,8 @@
         		
             <div id="sorter">
                 <div class="input-field">
-                    <select id="dropDownCollege" name="college" class="ddcollege">
-                        <option value="0" disabled selected>Sort by</option>
+                    <select id="dropDownFilterAwards" name="filterAwards" class="dropDown">
+                        <option value="0" >No Filter</option>
                         <option value="1">Applicants of Gawad Lasalyano</option>
                         <option value="2">Applicants of Ten Outstanding Students of the Philippines</option>
                         <option value="3">Applicants of Ayala Young Leaders Congress</option>

@@ -204,7 +204,7 @@ public class AdminService {
 	 * Retrieves a list of student who are eligible for an award.
 	 * @return List of student or NULL should there be no student found.
 	 */
-	public static ArrayList<Student> getStudentsEligibleAward() {
+	public static ArrayList<Student> getStudentsEligibleAward(String name) {
 		System.out.println();
 		ArrayList<Student> students = new ArrayList<>();
 		try{
@@ -213,7 +213,11 @@ public class AdminService {
 			Connection conn = DatabaseManager.getConnection();
 
 			PreparedStatement st = conn.prepareStatement("SELECT student.* FROM sofengg.student, sofengg.involvement WHERE " +
-														 "studentId = idNum GROUP BY studentId HAVING COUNT(*) >= 5");
+														 "studentId = idNum AND (firstName LIKE ? OR middleName " +
+														 "LIKE ? OR lastName LIKE ?) GROUP BY studentId HAVING COUNT(*) >= 5");
+			st.setString(1, name + "%");
+			st.setString(2, name + "%");
+			st.setString(3, name + "%");
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {

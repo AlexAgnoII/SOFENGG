@@ -42,7 +42,6 @@
                 
                 <div id="dp2">
                      <ul>
-                        <li><a href="ViewStudents.jsp">View Students</a></li>
                         <li><a class="modal-trigger" href="#newannounce"> New Announcement</a></li>
                     </ul>
                 </div>

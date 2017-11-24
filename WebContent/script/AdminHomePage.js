@@ -1,18 +1,32 @@
 
 //This function handles the front-end effects/notice when user does not place the correct input.
-function enterValidInput() {
-	var title = document.getElementById('anntitle').value;
-    var body = document.getElementById('annbody').value;
+function enterValidInput(type) {
+
+	var title;
+    var body;
+    var boolean = true;
     
-    if(title === null || title === ""){
+    if(type == "new"){
+		title = document.getElementById('anntitle').value;
+	    body = document.getElementById('annbody').value;
+    } else if(type == "update"){
+		title = document.getElementById('updateTitle').value;
+	    body = document.getElementById('updateBody').value;
+    }
+    
+    if(title === null || title === "" || title.length > 50){
     	// TODO title input error notif
-    	alert("Title");
+    	alert("Title should not be empty and not be more than 50 characters");
+    	boolean = false;
     }
     	
-	if(body === null || body === ""){
+	if(body === null || body === "" || body.length > 1000){
 		// TODO body input error notif
-		alert("Body");
+		alert("Body should not be empty and not be more than 1000 characters");
+    	boolean = false;
 	}
+	
+	return boolean;
 }
 
 /*******************************************/
@@ -61,6 +75,7 @@ function submitTheForm(title, body) {
         	loadPosts();
         },
         error:function(){
+        	alert("Exceeded number of allowed characters.")
         	console.log("error createPost URL");
         }
      });
@@ -83,6 +98,7 @@ function updateForm(postId, title, body) {
         	loadPosts();
         },
         error:function(){
+        	alert("Exceeded number of allowed characters.")
         	console.log("error updatePost URL");
         }
      });
@@ -97,14 +113,9 @@ $("document").ready(function() {
 		
 		var title = document.getElementById('anntitle').value;
         var body = document.getElementById('annbody').value;
-        
-        if(title !== null && title !== "" &&
-		   body !== null && body !== ""){
+
+        if(enterValidInput("new")){
         	submitTheForm(title, body);
-        	 
-        //Error checking for front page happens here:
-        } else{
-        	enterValidInput();
         }
 	});
 
@@ -115,13 +126,8 @@ $("document").ready(function() {
 		var title  = document.getElementById('updateTitle').value;
         var body   = document.getElementById('updateBody').value;
         
-        if(title !== null && title !== "" &&
-		   body !== null && body !== ""){
+        if(enterValidInput("update")){
         	updateForm(postId, title, body);
-        	 
-        //Error checking for front page happens here:
-        } else{
-        	enterValidInput();
         }
 	});
 });

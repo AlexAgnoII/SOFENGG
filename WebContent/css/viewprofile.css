@@ -230,7 +230,8 @@ nav ul a:hover {
 }
 
 #PIsave, #FBsave, #IIsave, #EIsave, 
-#PIcancel, #FBcancel, #IIcancel, #EIcancel, #addSibling, #imInternal, #imExternal {
+#PIcancel, #FBcancel, #IIcancel, #EIcancel, 
+#addSibling, #imInternal, #imExternal {
     display: none;
     margin-right: 5px;
 }
@@ -268,7 +269,8 @@ nav ul a:hover {
     margin-left: 10px;
 }
 
-form#PIform input.ipfield[disabled], form#FBform input.ipfield[disabled], 
+form#PIform input.ipfield[disabled], 
+form#FBform input.ipfield[disabled], 
 form#intInv input.ipfield[disabled],
 form#extInv input.ipfield[disabled]{
     border-color: transparent;  
@@ -315,6 +317,7 @@ form#extInv input.threeip{
 form#intInv input.threeip,
 form#extInv input.threeip {
     width: 270px;
+    margin-top: 0px;
 }
 
 form#extInv input.threeipyear, 
@@ -322,7 +325,6 @@ form#intInv input.threeipyear {
     width: 90px;
     height: 20px;
     color: black;
-    margin-top: -10px;
     margin-bottom: 5px;
     margin-left: 10px;
     border-radius: 2px;

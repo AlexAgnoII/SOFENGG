@@ -477,7 +477,11 @@ public class AdminService {
 		return email;
 	}
 
-	
+	/**
+	 * rESET admin password
+	 * @param email
+	 * @param password
+	 */
 	public static void resetPassword(String email, String password) {
 		PasswordAuthentication p = new PasswordAuthentication();
 		
@@ -498,7 +502,7 @@ public class AdminService {
 			
 			stmt.executeUpdate();
 			
-			System.out.println("Change password success!");
+			System.out.println("Change password success(ADMIN)!");
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

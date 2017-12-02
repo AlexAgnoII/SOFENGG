@@ -18,6 +18,7 @@
 		    	  
 		    	  else if(data === "DOES-NOT-EXIST") {
 		    		  console.log("does not exists")
+		    		  alert("User does not exist");
 		    		  return false;
 		    	  }
 		    	  

@@ -1126,7 +1126,7 @@ public class StudentService {
 	}
 	
 	/**
-	 * 
+	 * reset admin password
 	 * @param email
 	 * @param password
 	 */
@@ -1150,7 +1150,7 @@ public class StudentService {
 			
 			stmt.executeUpdate();
 			
-			System.out.println("Change password success!");
+			System.out.println("Change password success(STUDENT)!");
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

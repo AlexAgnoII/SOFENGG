@@ -11,17 +11,20 @@
 		      success: function(data){
 		    	  console.log("Success ResetPasswordHTML.js");
 		    	  console.log(data);
+		    	  //User exist, no constraint.
 		    	  if(data === "EXISTS") {
 		    		  console.log("exists")
 		    		  return true;
 		    	  }
 		    	  
+		    	  //User does NOT exist, put your magic here.
 		    	  else if(data === "DOES-NOT-EXIST") {
 		    		  console.log("does not exists")
 		    		  alert("User does not exist");
 		    		  return false;
 		    	  }
 		    	  
+		    	  //Something went wrong if it goes here, don't do anything.
 		    	  else {
 		    		  alert("Something went wrong with Resetting Password Email!");
 		    	  }

@@ -15,6 +15,7 @@
 		      },
 		      
 		      error:function(){
+		    	//This is server error, just add something that states that server is having issue.
 		      	console.log("error ResetPassword.js");
 		      	alert("Something went wrong (ResetPassword.js)")
 		      }
@@ -32,7 +33,8 @@
 			//Check for password constraint first..
 			
 			//if nothing wrong with constraint, send update.
-			if(true) {
+			if(true) { //<<<<----- please create a function or something that returns true if constraint is accomplished. or it was done wrong.
+				       //kayo na bahala mag implement, you may change the code if u wish.
 				submitUpdate(password, token);
 			}
 			

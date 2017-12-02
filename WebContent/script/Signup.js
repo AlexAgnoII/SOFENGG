@@ -393,8 +393,10 @@ $("document").ready(function(idNum, password, fName, lName) {
         	
         	//if all fields valid, proceed. if not, place front end effects of what field is not ok.
         	if(constraintChecker(password, idNum, fName, lName, mName, courseName)) {
-        		$('.modal').modal();
-        		submitTheForm();
+        		$('.modal').modal({
+        			dismissible: false //makes modal unclickable on background.
+        		});
+        		//submitTheForm();
         	}
         	
 

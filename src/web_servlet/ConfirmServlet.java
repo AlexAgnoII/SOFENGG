@@ -12,7 +12,7 @@ import service.StudentService;
 /**
  * Servlet implementation class ConfirmServlet
  */
-@WebServlet("/Verification.jsp")
+@WebServlet("/verification")
 public class ConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,9 +32,11 @@ public class ConfirmServlet extends HttpServlet {
 		request.getQueryString();
 		String hash = request.getParameter("verify");
 		
+		System.out.println("****************VERIFICATION SERVLET*******************");
 		StudentService.verifyStudent(hash);
+		System.out.println("******************************************************");
 		
-		response.sendRedirect("HomePage.jsp");
+		response.sendRedirect("Verified.html");
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

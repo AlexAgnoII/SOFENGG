@@ -41,6 +41,9 @@ public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String duplicateError;
 	
+	private static final String SOFFENG_EMAIL = "sofenggproject@gmail.com";
+	private static final String SOFFENG_PASS = "Sofenggproj";
+	
     public StudentServlet() {
         super();
     }
@@ -120,9 +123,11 @@ public class StudentServlet extends HttpServlet {
 			
 			//String host = "localhost";
 			String resultMessage = "";
-			String generatedURL = "http://localhost:8080/SOFENGG/Verification.jsp?verify=" + newVerificationId;
-			String from = "sofenggproject@gmail.com";
-			String pass = "Sofenggproj";
+			int port = request.getServerPort(); //get port of the server.
+			String name = request.getServerName(); //get name of server.
+			String generatedURL = "http://" + name + ":" + port +"/SOFENGG/verification?verify=" + newVerificationId;
+			String from = SOFFENG_EMAIL;
+			String pass = SOFFENG_PASS;
 			String generatedMsg = 	"Hi!"
 									+ "\n\n"
 									+ "Please click the link below to activate/confirm your account."
@@ -170,7 +175,7 @@ public class StudentServlet extends HttpServlet {
 				//response.sendRedirect("Verification.jsp");
 			}
 			
-			System.out.println("User added!");
+			System.out.println("User added but needs verification!");
 			
 			
 		

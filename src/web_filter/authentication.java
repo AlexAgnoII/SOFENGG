@@ -114,7 +114,8 @@ public class authentication implements Filter {
 
 		switch(url) {
 		    /*Public Pagges*/
-		    case "/Verification.jsp": 
+		    case "/Verification.jsp":
+		    case "/Verified.html":
 		    case "/ResetPassword.html":
 		    case "/Signup.jsp":
 			case "/HomePage.jsp": //If user, proceed to UserHomePage.
@@ -166,8 +167,10 @@ public class authentication implements Filter {
 				               	 res.sendRedirect("HomePage.jsp");
 				                }
 								 break;
-
+				 
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
+
+				    
 		}
 		
 		System.out.println("*********************************************\n\n");

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import service.AdminService;
+import service.PasswordAuthentication;
 import service.StudentService;
 
 @WebServlet(urlPatterns = {"/login",	
@@ -49,7 +50,8 @@ public class UserServlet extends HttpServlet {
 		}
 	}
 	
-	
+
+
 	/**
 	 * Performs logout.
 	 * Kills the cookie and the session.
@@ -170,8 +172,8 @@ public class UserServlet extends HttpServlet {
 		
 		//acc does not exist at all.
 		else {
-			
-			if(StudentService.isExisiting(email)) {
+			System.out.println(StudentService.isExisiting(email) + " | " + AdminService.isExisting(email));
+			if(StudentService.isExisiting(email) || AdminService.isExisting(email)) {
 				System.out.println("Wrong password/Username");
 				response.getWriter().write("FAIL-LOGIN");
 				

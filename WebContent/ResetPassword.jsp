@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -35,7 +39,7 @@
                     <!-- TENTATIVE: constraint divs -->
                     <p class="center-align" id="error1">Passwords does not match</p>
                     <p class="center-align" id="error2">Password is the same with your old password</p>
-                    
+      
                     <p class="ltags">New Password</p>	
                       <input type="password" id="nPassword" name="nPassword">
                     <p class="ltags">Confirm New Password</p>	
@@ -45,35 +49,11 @@
                 <br><br>           
             
         </div>
-        
+        <input id="token" type="hidden" name="token" value="${U}">
          <!-- Originally from head. -->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js">            
         </script>
+        <script type="text/javascript" src="script/ResetPassword.js"></script>
    	</body>
 </html>
-
-
-
-
-
-
-                <!-- <div class="row"> -->
-                <!-- another padding -->
-                <!-- <br>
-                <form action="resetpassword" method="POST" id="resetPasswordForm">
-                    
-                    <div class="input-field col s10 offset-s1">
-                        <input type="password" id="newPassword">
-                        <label class="validate" for="newPassword">New Password</label> 
-                    </div>
-                    <div class="input-field col s10 offset-s1">
-                        <input type="password" id="newPasswordConfirm">
-                        <label class="validate" for="newPasswordConfirm">Confirm New Password</label>
-                    </div>
-                </form>                
-            </div>
-            <div align="center">
-                <br><br>
-                <a class="btn waves-effect waves-light center-align" id="btnResetPassword">reset password</a>
-            </div> -->

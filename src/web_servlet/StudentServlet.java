@@ -126,7 +126,6 @@ public class StudentServlet extends HttpServlet {
 			
 			//Perform sending verification link.
 			request.setAttribute("email", username);
-			request.setAttribute("password", password);
 			request.setAttribute("verificationId", newVerificationId);
 			request.getRequestDispatcher("sendVerification").forward(request, response);
 

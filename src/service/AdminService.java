@@ -396,4 +396,118 @@ public class AdminService {
 		return post;
 		
 	}
+	
+	/**
+	 * Checks if email is existing in the admin table.
+	 * @param email
+	 * @return
+	 */
+	public static boolean isExisting(String email) {
+		boolean found = true;
+		
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM admin WHERE email = ?");
+			st.setString(1, email);
+			ResultSet rs = st.executeQuery();
+
+
+		    //Email does not exist.
+			if(!rs.isBeforeFirst()) {
+				System.out.println("Email does not exist!");
+				return false;
+			}
+			
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return found;
+	}
+
+	public static String convertTokenToEmail(String token) {
+		// TODO Auto-generated method stub
+		String email = "NONE";
+		
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM admin");
+			ResultSet rs = st.executeQuery();
+
+
+			//Email does not exist.
+			if(!rs.isBeforeFirst()) {
+				System.out.println("Email does not exist!");
+				return email;
+			}
+			else {
+				
+				PasswordAuthentication p = new PasswordAuthentication();
+				while(rs.next()) {
+					if(p.authenticate(rs.getString("email").toCharArray(), token)) {
+						System.out.println("Matches!!!");
+						email = rs.getString("email");
+						break;
+					}
+				}
+
+			}
+
+
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return email;
+	}
+
+	
+	public static void resetPassword(String email, String password) {
+		PasswordAuthentication p = new PasswordAuthentication();
+		
+		String hashPass = p.hash(password.toCharArray());
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE admin "
+				  + "SET hashedPass=? "//1
+				 + "WHERE email=?" //2					
+					);
+			
+			stmt.setString(1, hashPass);
+			stmt.setString(2, email);
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Change password success!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+
+	}
+
+
 }

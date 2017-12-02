@@ -55,7 +55,7 @@
             
             <br>
             <a  id="signupb" href="Signup.jsp">Create Account</a>
-            <a id="forgotpw" href="#!">Forgot password?</a>
+            <a id="forgotpw" href="ResetPasswordEmail.html">Forgot password?</a>
         </div>
         
 		<script type="text/javascript" src="script/HomePage.js"></script>

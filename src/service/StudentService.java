@@ -139,7 +139,7 @@ public class StudentService {
 	 * @return
 	 */
 	public static boolean isValidated(String username) {
-		boolean validated = false;
+		boolean validated = true;
 		
 		System.out.println();
 		try{
@@ -152,13 +152,13 @@ public class StudentService {
 			st.setString(1, username);
 			ResultSet rs = st.executeQuery();
 
-			while(rs.next()) {
-				//No result was returned. ( Not verified!)
-				if(!rs.isBeforeFirst()) {
-					System.out.println("Not yet Verified!");
-					return true;
-				}
+
+			//No result was returned. ( Not verified!)
+			if(!rs.isBeforeFirst()) {
+				System.out.println("Not yet Verified!");
+				validated =  false;
 			}
+
 
 			conn.close();
 			
@@ -172,12 +172,12 @@ public class StudentService {
 	}
 	
 	/**
-	 * Checks if the username exist in the database.
-	 * @param username
+	 * Checks if the email exist in the database.
+	 * @param email
 	 * @return true or false
 	 */
-	public static boolean isExisiting(String username) {
-		boolean found = false;
+	public static boolean isExisiting(String email) {
+		boolean found = true;
 		
 		System.out.println();
 		try{
@@ -186,16 +186,16 @@ public class StudentService {
 			Connection conn = DatabaseManager.getConnection();
 
 			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ?");
-			st.setString(1, username);
+			st.setString(1, email);
 			ResultSet rs = st.executeQuery();
 
-			while(rs.next()) {
-				//No result was returned. ( Not verified!)
-				if(!rs.isBeforeFirst()) {
-					System.out.println("Wrong password!");
-					return true;
-				}
+
+			//Email does not exist.
+			if(!rs.isBeforeFirst()) {
+				System.out.println("Email does not exist!");
+				found =  false;
 			}
+
 
 			conn.close();
 			
@@ -1074,6 +1074,91 @@ public class StudentService {
 		}
 		
 		return sum;
+	}
+	
+	/**
+	 * Converts the token into an email if it exists.
+	 * @param token
+	 * @return
+	 */
+	public static String convertTokenToEmail(String token) {
+		// TODO Auto-generated method stub
+		String email = "NONE";
+		
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student");
+			ResultSet rs = st.executeQuery();
+
+
+			//Email does not exist.
+			if(!rs.isBeforeFirst()) {
+				System.out.println("Email does not exist!");
+				return email;
+			}
+			else {
+				
+				PasswordAuthentication p = new PasswordAuthentication();
+				while(rs.next()) {
+					if(p.authenticate(rs.getString("email").toCharArray(), token)) {
+						System.out.println("Matches!!!");
+						email = rs.getString("email");
+						break;
+					}
+				}
+
+			}
+
+
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return email;
+	}
+	
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 */
+	public static void resetPassword(String email, String password) {
+		PasswordAuthentication p = new PasswordAuthentication();
+		
+		String hashPass = p.hash(password.toCharArray());
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE student "
+				  + "SET hashedPass=? "//1
+				 + "WHERE email=?" //2					
+					);
+			
+			stmt.setString(1, hashPass);
+			stmt.setString(2, email);
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Change password success!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		
 	}
 
 

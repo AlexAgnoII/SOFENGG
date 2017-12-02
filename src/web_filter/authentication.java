@@ -116,7 +116,8 @@ public class authentication implements Filter {
 		    /*Public Pagges*/
 		    case "/Verification.jsp":
 		    case "/Verified.html":
-		    case "/ResetPassword.html":
+		    case "/ResetPassword.jsp":
+		    case "/ResetPasswordEmail.html":
 		    case "/Signup.jsp":
 			case "/HomePage.jsp": //If user, proceed to UserHomePage.
 				                System.out.println("Access public pages...");

@@ -110,6 +110,8 @@ public class StudentServlet extends HttpServlet {
 			String newPass 			 = p.hash(password.toCharArray()),
 				   newVerificationId = p.hash(verificationId.toCharArray());
 			
+			
+			
 			Student student = new Student(idnum, 
 					  lastname,
 					  firstname,
@@ -120,73 +122,14 @@ public class StudentServlet extends HttpServlet {
 					  course);
 			
 			StudentService.addStudent(student, newVerificationId);
-			
-			//String host = "localhost";
-			String resultMessage = "";
-			int port = request.getServerPort(); //get port of the server.
-			String name = request.getServerName(); //get name of server.
-			String generatedURL = "http://" + name + ":" + port +"/SOFENGG/verification?verify=" + newVerificationId;
-			String from = SOFFENG_EMAIL;
-			String pass = SOFFENG_PASS;
-			String generatedMsg = 	"Hi!"
-									+ "\n\n"
-									+ "Please click the link below to activate/confirm your account."
-									+ "\n\n"
-									+ generatedURL
-									+ "\n\n"
-									+"Thank you!";
-			String subject = "Account Confirmation";
-			Properties properties = System.getProperties();
-			properties.put("mail.smtp.host", "smtp.gmail.com");
-			properties.put("mail.smtp.user", from);
-			
-			properties.put("mail.smtp.auth", "true"); 
-			properties.put("mail.smtp.starttls.enable", "true");
-			properties.put("mail.smtp.password", pass);
-	        
-			properties.put("mail.smtp.socketFactory.port", "465");
-			properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-			properties.put("mail.smtp.auth", "true");
-			properties.put("mail.smtp.port", "465");
-  
-			
-			Session session = Session.getDefaultInstance(properties,  
-				    new javax.mail.Authenticator() {  
-						@Override
-			      		protected javax.mail.PasswordAuthentication getPasswordAuthentication() {  
-			      			return new javax.mail.PasswordAuthentication(from, pass);  
-			      		}  
-			    });
-			
-			try {
-				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress(from));
-				message.setRecipient(Message.RecipientType.TO, new InternetAddress(username));
-				message.setSubject(subject);
-				message.setContent(generatedMsg, "text/plain");
-				
-	            Transport.send(message, username, password);
-				resultMessage = "Message sent successfully!";
-			} catch (MessagingException e) {
-				resultMessage = "Unable to send message!";
-				e.printStackTrace();
-			} finally {
-				request.setAttribute("Message", resultMessage);
-				//response.sendRedirect("Verification.jsp");
-			}
-			
 			System.out.println("User added but needs verification!");
 			
-			
-		
-			// TODO Send email with the verificationLink = Verification.jsp# + verificationId
-			
-			/* I guess sa authentication.java redirect nalnag to login page pagka entered diyan????? 
-			 * after ma confirm sa db na same verificationId and ma change yung value ng verificationId to null
-			 */
-			
-			//response.sendRedirect("HomePage.jsp");
-			response.getWriter().write("VALID-SIGNUP");
+			//Perform sending verification link.
+			request.setAttribute("email", username);
+			request.setAttribute("password", password);
+			request.setAttribute("verificationId", newVerificationId);
+			request.getRequestDispatcher("sendVerification").forward(request, response);
+
 		}
 		System.out.println("*******************************************");
 	}

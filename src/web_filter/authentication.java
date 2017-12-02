@@ -168,7 +168,17 @@ public class authentication implements Filter {
 				               	 res.sendRedirect("HomePage.jsp");
 				                }
 								 break;
-				 
+		    //Both pages has this
+			case "/ChangePassword.jsp": //if user/admin exist, continue
+				                         if(admin || user) {
+							               	   System.out.println("Continue on this page..");
+							                   chain.doFilter(request, response);
+										 }
+				                         else {
+							               	 System.out.println("Redirecting to HomePage.jsp..");
+							               	 res.sendRedirect("HomePage.jsp");
+				                         }
+				                         break;
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
 
 				    

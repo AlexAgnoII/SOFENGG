@@ -11,6 +11,7 @@
 		      cache:false,
 		      success: function(data){
 		        console.log("Success ResetPassword.js")
+		        alert(data);
 		        //Show modal that its successful.
 		      },
 		      

@@ -418,7 +418,7 @@ public class AdminService {
 
 		    //Email does not exist.
 			if(!rs.isBeforeFirst()) {
-				System.out.println("Email does not exist!");
+				System.out.println("Email does not exist!(ADMIN)");
 				return false;
 			}
 			

@@ -56,8 +56,9 @@ public class PasswordServlet extends HttpServlet {
 	 * updates the password, given the token and the new password.
 	 * @param request
 	 * @param response
+	 * @throws IOException 
 	 */
-	private void updatePassword(HttpServletRequest request, HttpServletResponse response) {
+	private void updatePassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		String password = request.getParameter("password");
 		String token = request.getParameter("token");
@@ -90,6 +91,8 @@ public class PasswordServlet extends HttpServlet {
 				System.out.println("problem encountered. (PASSWORD SERVLET, RESET PASSWORD FUNC");
 			}
 		}
+		
+		response.getWriter().write("SUCCESS-CHANGE");
 		
 	}
 	

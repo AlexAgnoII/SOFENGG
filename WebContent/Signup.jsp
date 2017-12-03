@@ -92,7 +92,7 @@
                          <p>Password</p>
                          <input type="password" class="twos" id="password" name="password" onblur="checkPasswordField(this)">
                          <p id="pwerrorPlaceHolder" class="errorplaceholder">_______________________________________________________________</p>
-                         <p id="pwerror" class="errors">*Password must contain a capital letter and a symbol*</p>
+                         <p id="pwerror" class="errors">*Password must contain a capital letter, a number and a symbol*</p>
                     </div>
                     
                     <div class="f">

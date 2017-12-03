@@ -89,9 +89,12 @@
                 
                 <div class="wrap">
                     <div class="f">
-                         <p>Password</p>
+                         <div id="passwordInfo">
+                             <p id="pPassword">Password</p>
+                             <i class="tiny material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Your password should contain a capital letter, a number, and a symbol." id="iPassword">info_outline</i>
+                         </div>
                          <input type="password" class="twos" id="password" name="password" onblur="checkPasswordField(this)">
-                         <p id="pwerrorPlaceHolder" class="errorplaceholder">_______________________________________________________________</p>
+                         <p id="pwerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                          <p id="pwerror" class="errors">*Password must contain a capital letter, a number and a symbol*</p>
                     </div>
                     

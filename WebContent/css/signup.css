@@ -236,3 +236,23 @@ div.input-field {
     width: 95%;
     height: 22px;
 }
+
+#pPassword {
+    float: left;
+    width: 50px;
+}
+
+#iPassword {
+    position: absolute;
+    margin-left: 10px;
+    padding-bottom: 20px;
+    line-height: -30px;
+    float: left;
+    top: 317px;
+    cursor: help;
+}
+
+.material-tooltip {
+    font-size: 10px;
+    min-height: 10px;
+}

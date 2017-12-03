@@ -2,21 +2,16 @@
 
 
 
-	function submitNewPassword(password, newPass) {
+	function submitNewPassword(newPass) {
 		$.ajax({
 			  context: this,
 		      url:'sendChangePassword',
-		      data: {"password":password,
-		    	      "newPass":newPass},
+		      data: {"newPass":newPass},
 		      type:'POST',
 		      cache:false,
 		      success: function(data){
-		        console.log("Success ChangePassword.js")
-		        
-		        //Password is wrong.
-		        if(data === "WRONG") {
-		        	
-		        }
+		    	  //Email sent
+		        alert("Success ChangePassword.js")
 		      },
 		      
 		      error:function(){
@@ -28,34 +23,34 @@
 	}
 	
 	function validateUser(password) {
-		$.ajax({
-			  context: this,
-		      url:'checkPasswordMatch',
-		      data: {"password":password},
-		      type:'POST',
-		      cache:false,
-		      success: function(data){
-		        console.log("Success ChangePassword.js")
-		        
-		        //Password is wrong.
-		        if(data === "WRONG") {
-		        	alert("Password not matching");
-		        	return false;
-		        }
-		        
-		        else {
-		        	alert("Password matching");
-		        	return true;
-		        }
-		      },
-		      
-		      error:function(){
-		    	//This is server error, just add something that states that server is having issue.
-		      	console.log("error ResetPassword.js");
-		      	alert("Something went wrong (ChangePassword.js)")
-		      	return false;
-		      }
-		   });
+		return $.ajax({
+				  context: this,
+			      url:'checkPasswordMatch',
+			      data: {"password":password},
+			      type:'POST',
+			      cache:false,
+			      success: function(data){
+			        console.log("Success ChangePassword.js")
+			        
+			        //Password is wrong.
+			        if(data === "WRONG") {
+			        	alert("Password not matching");
+			        	return false;
+			        }
+			        
+			        else {
+			        	alert("Password matching wtf");
+			        	return true;
+			        }
+			      },
+			      
+			      error:function(){
+			    	//This is server error, just add something that states that server is having issue.
+			      	console.log("error ResetPassword.js");
+			      	alert("Something went wrong (ChangePassword.js)")
+			      	return false;
+			      }
+			   });
 	}
 	
 	
@@ -71,16 +66,11 @@
 	//This is where the checking happens.
 	function constraintPassword(password, newPass, newPassRe) {
 		var proceed = true;
-		
-		//check password if it's correct.
-		if(!checkPassword(password)) {
-			
-			//Check if password matches.
-			if(!validateUser(password)) {
-				proceed = false;
-				alert("Passowrd failed!")
-			}
-
+					
+		//Check if password matches.
+		if(!validateUser(password)) {
+			proceed = false;
+			alert("Passowrd failed!!!!!")
 		}
 		
 		//Check newPass if its correct.
@@ -93,6 +83,11 @@
 		if(!checkPassword(newPassRe)) {
 			proceed = false;
 			alert("Confirm new password failed!")
+		}
+		
+		if(password === newPass) {
+			proceed = false
+			alert("Old and new password are the same.")
 		}
 		
 		
@@ -112,7 +107,7 @@
     			
     			//Only do this if all constraint is followeed.
     			if(constraintPassword(password, newPass, newPassRe)) {
-    				submitNewPassword(password, newPass);
+    				submitNewPassword(newPass);
     			}
     			
     		}

@@ -20,7 +20,7 @@ import service.StudentService;
 		                  "/resetPassword",  //redirecting to reset password page
 		                  "/resetPasswordAction",//action itself to update DB of the new password (Forgotten). 
 		                  "/checkPasswordMatch",
-		                  "/changePassowrd"}) //action itself to update DB of the new password (Changing). 
+		                  "/changePassword"}) //action itself to update DB of the new password (Changing). 
 public class PasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,6 +37,7 @@ public class PasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		switch(request.getServletPath()) {
 		    case "/resetPassword": resetPassword(request, response); break;
+		    case "/changePassword": changePassword(request, response); break;
 		    default: System.out.println("(GET)PasswordServlet error (URL NOT FOUND)");
 		}
 	}
@@ -46,25 +47,108 @@ public class PasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		switch(request.getServletPath()) {
 		    case "/resetPassCheckEmail": resetPassCheckEmail(request, response); break;
-		    case "/resetPasswordAction":
-		    case "/changePassword": updatePassword(request, response); break;
+		    case "/resetPasswordAction": updatePassword(request, response); break;
 		    case "/checkPasswordMatch": checkPasswordMatch(request, response); break;
 		    default: System.out.println("(POST)PasswordServlet error (URL NOT FOUND)");
 		}
 	}
+	
+
+
+	private void changePassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// TODO Auto-generated method stub
+		System.out.println("chaning password********************************");
+		String token = request.getParameter("change");
+		String[] container = token.split(" ");
+		boolean user=false,
+				admin=false;
+		String id = "";
+		
+		System.out.println(token);
+		System.out.println(container.length);
+		System.out.println(container[0]);
+		System.out.println(container[1]);
+		System.out.println(container[2]);
+		
+		//Check whether user is admin OR student
+				Cookie[] cookieList = request.getCookies();
+				if(cookieList != null) {
+					for(Cookie c : cookieList) {	
+						//Its a user!
+						if(c.getName().equals("USER")) {
+							System.out.println("USER Cookie found!");
+							user = true; //if it exists, proceed.
+							id = c.getValue();
+							break; //get out of loop once cookie is found.
+						//Its an admin!
+						} else if(c.getName().equals("ADMIN")) {
+							System.out.println("ADMIN Cookie found!");
+							admin = true;
+							id = c.getValue();
+							break; //get out of loop once cookie is found.
+						}
+						else {
+							System.out.println("ERROR, NO USER/ADMIN FOUND");
+						}
+					}
+				}
+				else {
+					System.out.println("Cookielist is empty.(NO USER LOGGED IN)");
+				}
+		
+		if(user || admin) {
+			System.out.println("USER ID: " + id);
+			
+			if(id.equals(container[1])) {
+				
+				if(container[2].equals("S")) {
+					StudentService.changePassword(id, container[0]);
+					response.sendRedirect("HomePage.jsp");//do not change.
+				}
+				else if (container[2].equals("A")) {
+					AdminService.changePassword(id, container[0]);
+					response.sendRedirect("HomePage.jsp");//do not change
+				}
+				
+				else {
+					System.out.println("TYPE DID NOT MATCH ANYTHING");
+					response.sendRedirect("HomePage.jsp"); //Temporary, pls change to error page
+				}
+				
+			}
+			
+			else {
+				//abort mission to update password (not matching account)
+				response.sendRedirect("HomePage.jsp"); //Temporary, pls change to error page
+			}
+		}
+		
+		else {
+			//Must redirect to some sort of error page regarding change password
+			System.out.println("NO USERS LOGGED ON FAIL.");
+			response.sendRedirect("HomePage.jsp"); //Temporary, pls change to error page
+		}
+		
+		System.out.println("************************************************");
+		
+		
+	}
+
 	
 	
 	/**
 	 * Check if given password matches the currently logged in user's password.
 	 * @param request
 	 * @param response
+	 * @throws IOException 
 	 */
-	private void checkPasswordMatch(HttpServletRequest request, HttpServletResponse response) {
+	private void checkPasswordMatch(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String password = request.getParameter("password");
 		boolean user = false, 
 				admin = false;
+		String id = null;
 		
-		String message = "WRONG";
+		String reply = "WRONG";
 		System.out.println("********* CHECK PASSWORD MATCH ********************");
 		System.out.println("Entered password: " + password);
 		
@@ -76,11 +160,13 @@ public class PasswordServlet extends HttpServlet {
 				if(c.getName().equals("USER")) {
 					System.out.println("USER Cookie found!");
 					user = true; //if it exists, proceed.
+					id = c.getValue();
 					break; //get out of loop once cookie is found.
 				//Its an admin!
 				} else if(c.getName().equals("ADMIN")) {
 					System.out.println("ADMIN Cookie found!");
 					admin = true;
+					id = c.getValue();
 					break; //get out of loop once cookie is found.
 				}
 				else {
@@ -96,11 +182,24 @@ public class PasswordServlet extends HttpServlet {
 		//User found.
 		if(user) {
 			System.out.println("Performing checking user password..");
+			System.out.println("ID: " + id);
+			
+			//Matches, do this
+			if(StudentService.checkIfPasswordMatches(id, password)) {
+				System.out.println("Password Matching!(user)");
+				reply = "MATCHES";
+			}
 		}
 		
 		//Admin found.
 		else if (admin) {
 			System.out.println("Performing checking admin password..");
+			System.out.println("ID: " + id);
+			
+			if(AdminService.checkIfPasswordMatches(id, password)) {
+				System.out.println("Passowrd matching!(admin)");
+				reply = "MATCHES";
+			}
 		}
 		
 		else {
@@ -108,10 +207,7 @@ public class PasswordServlet extends HttpServlet {
 		}
 		
 		
-		
-		
-		
-		
+		response.getWriter().write(reply);
 		System.out.println("***************************************************");
 		
 	}
@@ -200,7 +296,7 @@ public class PasswordServlet extends HttpServlet {
 		System.out.println("New version.");
 		System.out.println("Email: " + email);
 		//Check student OR Admin
-		if(StudentService.isExisiting(email) || AdminService.isExisting(email)) {
+		if(StudentService.isEmailTaken(email) || AdminService.isExisting(email)) {
 			System.out.println("Email exists!");
 			//Encode email.
 			PasswordAuthentication p = new PasswordAuthentication();

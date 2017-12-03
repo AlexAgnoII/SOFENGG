@@ -172,8 +172,8 @@ public class UserServlet extends HttpServlet {
 		
 		//acc does not exist at all.
 		else {
-			System.out.println(StudentService.isExisiting(email) + " | " + AdminService.isExisting(email));
-			if(StudentService.isExisiting(email) || AdminService.isExisting(email)) {
+			System.out.println(StudentService.isEmailTaken(email) + " | " + AdminService.isExisting(email));
+			if(StudentService.isEmailTaken(email) || AdminService.isExisting(email)) {
 				System.out.println("Wrong password/Username");
 				response.getWriter().write("FAIL-LOGIN");
 				

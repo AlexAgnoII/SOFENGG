@@ -41,7 +41,7 @@ public class StudentService {
 			
 			//Checks if result set has any data returned.
 			if (!rs.isBeforeFirst()) {    
-			    System.out.println("Email not yet taken."); 
+			    System.out.println("Email not yet taken / not existing"); 
 			} 
 			else {
 				System.out.println("Email is taken.");
@@ -171,42 +171,6 @@ public class StudentService {
 		return validated;
 	}
 	
-	/**
-	 * Checks if the email exist in the database.
-	 * @param email
-	 * @return true or false
-	 */
-	public static boolean isExisiting(String email) {
-		boolean found = true;
-		
-		System.out.println();
-		try{
-			String driver = "com.mysql.jdbc.Driver";
-			Class.forName(driver);
-			Connection conn = DatabaseManager.getConnection();
-
-			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE email = ?");
-			st.setString(1, email);
-			ResultSet rs = st.executeQuery();
-
-
-			//Email does not exist.
-			if(!rs.isBeforeFirst()) {
-				System.out.println("Email does not exist!(STUDENT)");
-				found =  false;
-			}
-
-
-			conn.close();
-			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-		System.out.println();
-		return found;
-	}
 	
 
 	/**
@@ -1126,7 +1090,7 @@ public class StudentService {
 	}
 	
 	/**
-	 * reset admin password
+	 * reset password
 	 * @param email
 	 * @param password
 	 */
@@ -1147,6 +1111,131 @@ public class StudentService {
 			
 			stmt.setString(1, hashPass);
 			stmt.setString(2, email);
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Change password success(STUDENT)!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		
+	}
+
+	/**
+	 * Checks if the entered password is equal to the logged account.
+	 * @param id
+	 * @param password
+	 */
+	public static boolean checkIfPasswordMatches(String id, String password) {
+		boolean matches = true;
+		
+		PasswordAuthentication p;
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student "
+					+ "WHERE id = ? ");
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+			
+			//Account DOESNT exist for some reason
+			if(!rs.isBeforeFirst()) {
+				System.out.println("No Account exist ERROR!!");
+				matches = false;
+			}
+			
+			//Account exist, proceed to check if its pass is equal t
+			else {
+				while(rs.next()) {
+					String email = rs.getString("email");
+					System.out.println("Email: " + email);
+					p = new PasswordAuthentication(email, password);
+					
+					//If false returned, it didnt match.
+					if(!p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
+						System.out.println("Password did not match..");
+						matches = false;
+						break;
+					}
+					
+				}
+			}
+
+			
+
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return matches;
+	}
+
+	public static String getEmailViaID(String id) {
+		String email = "ERROR";
+		
+		PasswordAuthentication p;
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student "
+					+ "WHERE id = ? ");
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+			
+			//Account DOESNT exist for some reason
+			if(!rs.isBeforeFirst()) {
+				System.out.println("No Account exist ERROR!!");
+			}
+			
+			//Account exist, proceed to check if its pass is equal t
+			else {
+				while(rs.next()) {
+					email = rs.getString("email");
+					System.out.println("Email for sending: " + email);
+					break;
+				}
+					
+			}
+			
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return email;
+	}
+
+	public static void changePassword(String id, String hashedPass) {
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE student "
+				  + "SET hashedPass=? "//1
+				 + "WHERE id=?" //2					
+					);
+			
+			stmt.setString(1, hashedPass);
+			stmt.setString(2, id);
 			
 			stmt.executeUpdate();
 			

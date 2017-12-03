@@ -514,4 +514,130 @@ public class AdminService {
 	}
 
 
+	/**
+	 * Checks if the entered password is equal to the logged account.
+	 * @param id
+	 * @param password
+	 */
+	public static boolean checkIfPasswordMatches(String id, String password) {
+		boolean matches = true;
+		
+		PasswordAuthentication p;
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM admin "
+					+ "WHERE id = ? ");
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+			
+			//Account DOESNT exist for some reason
+			if(!rs.isBeforeFirst()) {
+				System.out.println("No Account exist ERROR!!");
+				matches = false;
+			}
+			
+			//Account exist, proceed to check if its pass is equal t
+			else {
+				while(rs.next()) {
+					String email = rs.getString("email");
+					System.out.println("Email: " + email);
+					p = new PasswordAuthentication(email, password);
+					
+					//If false returned, it didnt match.
+					if(!p.authenticate(password.toCharArray(), rs.getString("hashedPass"))) {
+						System.out.println("Password did not match..");
+						matches = false;
+						break;
+					}
+					
+				}
+			}
+
+			
+
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return matches;
+	}
+
+	public static String getEmailViaID(String id) {
+		String email = "ERROR";
+		
+		PasswordAuthentication p;
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM admin "
+					+ "WHERE id = ? ");
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+			
+			//Account DOESNT exist for some reason
+			if(!rs.isBeforeFirst()) {
+				System.out.println("No Account exist ERROR!!");
+			}
+			
+			//Account exist, proceed to check if its pass is equal t
+			else {
+				while(rs.next()) {
+					email = rs.getString("email");
+					System.out.println("Email for sending: " + email);
+					break;
+				}
+					
+			}
+			
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return email;
+	}
+
+	public static void changePassword(String id, String hashedPass) {
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement stmt =  conn.prepareStatement(
+					"UPDATE admin "
+				  + "SET hashedPass=? "//1
+				 + "WHERE id=?" //2					
+					);
+			
+			stmt.setString(1, hashedPass);
+			stmt.setString(2, id);
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Change password success(ADMIN)!");
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		
+	}
+
+
 }

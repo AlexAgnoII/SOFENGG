@@ -11,14 +11,19 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.AdminService;
+import service.PasswordAuthentication;
+import service.StudentService;
+
 /**
  * Servlet that handles everything related to email sending.
  */
-@WebServlet(urlPatterns= {"/sendVerification", "/sendResetPassConfirm"})
+@WebServlet(urlPatterns= {"/sendVerification", "/sendResetPassConfirm", "/sendChangePassword"})
 public class EmailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -35,6 +40,7 @@ public class EmailServlet extends HttpServlet {
 		switch(request.getServletPath()) {
 		   case "/sendVerification":sendVerificationEmail(request, response); break;
 		   case "/sendResetPassConfirm":sendResetPassConfirm(request, response); break;
+		   case "/sendChangePassword": sendChangePassword(request, response); break;
 		   default: System.out.println("Inside EmailServlet: URL NOT FOUND.");
 		}
 		
@@ -44,6 +50,129 @@ public class EmailServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+
+
+
+	private void sendChangePassword(HttpServletRequest request, HttpServletResponse response) {
+		PasswordAuthentication p = new PasswordAuthentication();
+		String newPass = request.getParameter("newPass");
+		String token = p.hash(newPass.toCharArray());
+		String resultMessage = "";		
+		String id = "";
+		String finalToken;
+		String email = "";
+		String type = "N"; //A for admins, S for students
+		boolean user = false, admin = false;
+		
+
+		
+		//Identify if admin OR user
+		Cookie[] cookieList = request.getCookies();
+		if(cookieList != null) {
+			for(Cookie c : cookieList) {	
+				//Its a user!
+				if(c.getName().equals("USER")) {
+					System.out.println("USER Cookie found!");
+					user = true; //if it exists, proceed.
+					id = c.getValue();
+					type = "S";
+					break; //get out of loop once cookie is found.
+				//Its an admin!
+				} else if(c.getName().equals("ADMIN")) {
+					System.out.println("ADMIN Cookie found!");
+					admin = true;
+					id = c.getValue();
+					type = "A";
+					break; //get out of loop once cookie is found.
+				}
+				else {
+					System.out.println("ERROR, NO USER/ADMIN FOUND");
+				}
+			}
+		}
+		else {
+			System.out.println("Cookielist is empty.");
+		}
+		
+		//Check whether given password is equal to what the useer has entered
+				//User found.
+		if(user) {
+			//get email from user
+			email = StudentService.getEmailViaID(id);
+		}
+				
+		//Admin found.
+		else if (admin) {
+			//get email from admin
+			email = AdminService.getEmailViaID(id);
+		}
+				
+		else {
+			System.out.println("No user found ERROR");
+		}
+		
+		System.out.println("*********************** SEND CHANGE PASSWORD CONFIRM EMAIL******************************");
+		finalToken = token + "+" + id + "+" + type;
+		System.out.println("The email: " + email);
+		System.out.println("ID of email to be sent: " + id);
+		System.out.println("Final token: " + finalToken);
+
+
+		int port = request.getServerPort(); //get port of the server.
+		String name = request.getServerName(); //get name of server.
+		String generatedURL = "http://" + name + ":" + port +"/SOFENGG/changePassword?change=" + finalToken;
+		String generatedMsg = 	"Hi!\n\n"
+				                + "If you did NOT issue this change password request, please disregard this message."
+								+ "\n\n"
+								+ "However if you did, please click the link below to reset your password."
+								+ "\n\n"
+								+ generatedURL
+								+ "\n\n"
+								+"Thank you!";
+		String subject = "Change Password";
+		Properties properties = System.getProperties();
+		properties.put("mail.smtp.host", "smtp.gmail.com");
+		properties.put("mail.smtp.user", SYSTEM_EMAIL);
+		
+		properties.put("mail.smtp.auth", "true"); 
+		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.smtp.password", SYSTEM_PASSWORD);
+        
+		properties.put("mail.smtp.socketFactory.port", "465");
+		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.port", "465");
+
+		
+		Session session = Session.getDefaultInstance(properties,  
+			    new javax.mail.Authenticator() {  
+					@Override
+		      		protected javax.mail.PasswordAuthentication getPasswordAuthentication() {  
+		      			return new javax.mail.PasswordAuthentication(SYSTEM_EMAIL, SYSTEM_PASSWORD);  
+		      		}  
+		    });
+		
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(SYSTEM_EMAIL));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+			message.setSubject(subject);
+			message.setContent(generatedMsg, "text/plain");
+			
+            Transport.send(message/*, username, password*/);
+			resultMessage = "Message sent successfully!";
+		} catch (MessagingException e) {
+			resultMessage = "Unable to send message!";
+			e.printStackTrace();
+		} finally {
+			request.setAttribute("Message", resultMessage);
+			//response.sendRedirect("Verification.jsp");
+		}
+		
+		System.out.println("Sending of change password confirmation email done!");
+		System.out.println("***************************************************************************************");
 	}
 	
 

@@ -31,28 +31,34 @@
                </a>
             </div>
         </nav>
-        
-        <div id="changepwfeed">
             
-            <!-- insert form below -->
+        <div id="changepwwrapper">
+            <p id="cptitle">Change password</p>
+            <ul><li><div class="divider"></div></li></ul>
             
-            <form action="changePassword" method="POST" id="changePasswordForm">
-                    <br>
+            <div id="changepwform">
+                <form action="changePassword" method="POST" id="changePasswordForm">
+
                     <!-- TENTATIVE: constraint divs -->
-                    <p class="center-align" id="error1">Passwords does not match</p>
+                    <p class="center-align" id="error1">Passwords don't match</p>
                     <p class="center-align" id="error2">Password is the same with your old password</p>
-                    <p class="center-align" id="error3">Old password is invalid</p>
-                    
-                    <p class="ltags">Old Password</p>	
-                      <input type="password" id="oldPassword" name="oldPassword">
+                    <p class="center-align" id="error3">The current password you've entered is incorrect.</p>
+
+                    <p class="ltags">Current Password</p>	
+                    <input type="password" id="oldPassword" name="oldPassword">
+
                     <p class="ltags">New Password</p>	
-                      <input type="password" id="newPassword" name="newPassword">
-                    <p class="ltags">Confirm New Password</p>	
-                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm"><br>
-                <br><br>
-                <a class="waves-effect waves-light btn" id="ResetPassword">Change Password</a>
-                <br><br>
-            </form>    
+                    <input type="password" id="newPassword" name="newPassword">
+
+                    <p class="ltags">Verify Password</p>	
+                    <input type="password" id="nPasswordConfirm" name="nPasswordConfirm"><br>
+
+                    <br><br>
+                    <a class="waves-effect waves-light btn" id="btnHome">Home</a>
+                    <a class="waves-effect waves-light btn" id="ResetPassword">Save Changes</a>
+                    <br>
+                </form> 
+            </div>
         </div>
         
          <!-- Originally from head. -->

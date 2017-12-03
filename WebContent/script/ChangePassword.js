@@ -69,13 +69,18 @@
 	}
 	
 	//This is where the checking happens.
-	function constraintPassword(passowrd, newPass, newPassRe) {
+	function constraintPassword(password, newPass, newPassRe) {
 		var proceed = true;
 		
 		//check password if it's correct.
-		if(!checkPassword(password) && validateUser(password)) {
-			proceed = false;
-			alert("Passowrd failed!")
+		if(!checkPassword(password)) {
+			
+			//Check if password matches.
+			if(!validateUser(password)) {
+				proceed = false;
+				alert("Passowrd failed!")
+			}
+
 		}
 		
 		//Check newPass if its correct.

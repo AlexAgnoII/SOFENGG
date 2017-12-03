@@ -76,10 +76,12 @@ public class PasswordServlet extends HttpServlet {
 				if(c.getName().equals("USER")) {
 					System.out.println("USER Cookie found!");
 					user = true; //if it exists, proceed.
+					break; //get out of loop once cookie is found.
 				//Its an admin!
 				} else if(c.getName().equals("ADMIN")) {
 					System.out.println("ADMIN Cookie found!");
 					admin = true;
+					break; //get out of loop once cookie is found.
 				}
 				else {
 					System.out.println("ERROR, NO USER/ADMIN FOUND");
@@ -93,12 +95,12 @@ public class PasswordServlet extends HttpServlet {
 		//Check whether given password is equal to what the useer has entered
 		//User found.
 		if(user) {
-			
+			System.out.println("Performing checking user password..");
 		}
 		
 		//Admin found.
 		else if (admin) {
-			
+			System.out.println("Performing checking admin password..");
 		}
 		
 		else {

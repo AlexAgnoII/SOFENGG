@@ -3,6 +3,7 @@ package web_servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import service.StudentService;
 @WebServlet(urlPatterns= {"/resetPassCheckEmail",
 		                  "/resetPassword",  //redirecting to reset password page
 		                  "/resetPasswordAction",//action itself to update DB of the new password (Forgotten). 
+		                  "/checkPasswordMatch",
 		                  "/changePassowrd"}) //action itself to update DB of the new password (Changing). 
 public class PasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,7 +37,6 @@ public class PasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		switch(request.getServletPath()) {
 		    case "/resetPassword": resetPassword(request, response); break;
-
 		    default: System.out.println("(GET)PasswordServlet error (URL NOT FOUND)");
 		}
 	}
@@ -47,10 +48,71 @@ public class PasswordServlet extends HttpServlet {
 		    case "/resetPassCheckEmail": resetPassCheckEmail(request, response); break;
 		    case "/resetPasswordAction":
 		    case "/changePassword": updatePassword(request, response); break;
+		    case "/checkPasswordMatch": checkPasswordMatch(request, response); break;
 		    default: System.out.println("(POST)PasswordServlet error (URL NOT FOUND)");
 		}
 	}
 	
+	
+	/**
+	 * Check if given password matches the currently logged in user's password.
+	 * @param request
+	 * @param response
+	 */
+	private void checkPasswordMatch(HttpServletRequest request, HttpServletResponse response) {
+		String password = request.getParameter("password");
+		boolean user = false, 
+				admin = false;
+		
+		String message = "WRONG";
+		System.out.println("********* CHECK PASSWORD MATCH ********************");
+		System.out.println("Entered password: " + password);
+		
+		//Check whether user is admin OR student
+		Cookie[] cookieList = request.getCookies();
+		if(cookieList != null) {
+			for(Cookie c : cookieList) {	
+				//Its a user!
+				if(c.getName().equals("USER")) {
+					System.out.println("USER Cookie found!");
+					user = true; //if it exists, proceed.
+				//Its an admin!
+				} else if(c.getName().equals("ADMIN")) {
+					System.out.println("ADMIN Cookie found!");
+					admin = true;
+				}
+				else {
+					System.out.println("ERROR, NO USER/ADMIN FOUND");
+				}
+			}
+		}
+		else {
+			System.out.println("Cookielist is empty.");
+		}
+		
+		//Check whether given password is equal to what the useer has entered
+		//User found.
+		if(user) {
+			
+		}
+		
+		//Admin found.
+		else if (admin) {
+			
+		}
+		
+		else {
+			System.out.println("No user found ERROR");
+		}
+		
+		
+		
+		
+		
+		
+		System.out.println("***************************************************");
+		
+	}
 
 	/**
 	 * updates the password, given the token and the new password.
@@ -60,11 +122,16 @@ public class PasswordServlet extends HttpServlet {
 	 */
 	private void updatePassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
 		String password = request.getParameter("password");
 		String token = request.getParameter("token");
 		String email = "NONE";
 		
 		email = StudentService.convertTokenToEmail(token);
+		
+		//Remove session attribute "U"
+		session.removeAttribute("U");
+		
 		//Success for student
 		if(!email.equals("NONE")) {
 			System.out.println("Success!");

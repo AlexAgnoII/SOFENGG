@@ -36,7 +36,7 @@
                 
                 <div id="dp1">
                     <ul>
-                        <li><a href="ChangePassword.jsp"> Settings</a></li>
+                        <li><a href="#!"> Settings</a></li>
                         <li><a href="logout"> Logout</a></li>
                     </ul>
                 </div>
@@ -56,26 +56,76 @@
                     <label class="label-icon" for="search" style="color: #006f4a"><i class="material-icons">search</i></label>
                 </form>
 		  </div>
-        		
-            <div id="sorter">
-                <div class="input-field">
-                    <select id="dropDownFilterAwards" name="filterAwards" class="dropDown">
-                        <option value="0" >No Filter</option>
-                        <option value="1">Applicants of Gawad Lasalyano</option>
-                        <option value="2">Applicants of Ten Outstanding Students of the Philippines</option>
-                        <option value="3">Applicants of Ayala Young Leaders Congress</option>
-                        <option value="4">Qualified for Gawad Lasalyano</option>
-                        <option value="5">Qualified for Ten Outstanding Students of the Philippines</option>
-                        <option value="6">Qualified for Ayala Young Leaders Congress</option>
-                    </select>
+        
+        	
+            <div id="filterContainer">
+                <div id="dropAward">
+                    <div class="input-field">
+                        <select id="dropDownFilterAwards" name="filterAwards" class="dropDown">
+                            <option value="0" disabled selected>Award</option>
+                            <option value="1">GL<!--Gawad Lasalyano--></option>
+                            <option value="2">TOSP<!--Ten Outstanding Students of the Philippines--></option>
+                            <option value="3">AYLC<!--Ayala Young Leaders Congress--></option>
+                            <!--
+                            <option value="4">Qualified for Gawad Lasalyano</option>
+                            <option value="5">Qualified for Ten Outstanding Students of the Philippines</option>
+                            <option value="6">Qualified for Ayala Young Leaders Congress</option>
+                            -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="dropCollege">
+                    
+                    <div class="input-field">
+                        <select id="dropDownFilterCollege" name="filterCollege" class="dropDown">
+                            <option value="0" disabled selected>College</option>
+                            <option value="1">CCS<!--College of Computer Studies--></option>
+                            <option value="2">RVRCOB<!--Ramon V. del Rosario College of Business--></option>
+                            <option value="3">BAGCED<!--Br. Andrew Gonzales College of Education--></option>
+                            <option value="4">GCOE<!--Gokongwei College of Engineering--></option>
+                            <option value="5">CLA<!--College of Liberal Arts--></option>
+                            <option value="6">COS<!--College of Science--></option>
+                            <option value="7">SOE<!--School of Economics--></option>
+                        </select>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-		
-        
-      	<div id="searchResultFeed">
-
         </div> 
+		
+        <div id="searchResultInfo" class="left-align">
+            <p id="searchResultText"></p>
+        </div>
+        
+      	<div id="searchResultFeed" class="z-depth-2">
+            <div id="tableHeader" class="z-depth-1">
+                <table>
+                    <tr>
+                        <th class="tableIdNum center-align white-text">ID Number</th>
+                        <th class="tableName center-align white-text">Name</th>
+                        <th class="tableCollege center-align white-text">College</th>
+                        <th class="tableAward center-align white-text">Award</th>
+                        </tr>
+                </table>
+            </div>
+            
+                <table id="tableDetails">
+                    <tr>
+                        <td class="tableIdNum center-align">11436166</td>
+                        <td class="tableName left-align">Juan Johann John J. Johannes</td>
+                        <td class="tableCollege center-align">BAGCED</td>
+                        <td class="tableAward center-align"> GL</td>
+                    </tr>
+                    <tr>
+                        <td class="tableIdNum center-align">11440716</td>
+                        <td class="tableName left-align">Ma. Concepion Soledad R. Crecendo</td>
+                        <td class="tableCollege center-align">GCOE</td>
+                        <td class="tableAward center-align"> AYLC</td>
+                    </tr>
+                </table>
+            
+            </div> 
       	
         <div id="newannounce" class="modal">
             <div class = "annhead">[NEW ANNOUNCEMENT]</div>
@@ -113,5 +163,9 @@
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
         <script type="text/javascript" src="script/AdminHomePage.js"></script>
         <script type="text/javascript" src="script/AdminSearch.js"></script>
+        
+        <script>
+        $('#searchResultText').text("Found # students")
+        </script>
 	</body>
 </html>

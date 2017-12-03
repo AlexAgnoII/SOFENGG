@@ -330,21 +330,17 @@ nav ul a:hover {
 }
 
 #searchDiv{
-    float: left;
     position: relative;
     margin: 0 auto;
-    width: 70%;
     height: 44px;
 }
 
 #searchResultFeed {
     position: relative;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 10px;
     width: 750px;
     border: 0px solid none;
-    padding: 20px;
-    padding-top: 40px;
     border-radius: 3px;
 }
 
@@ -385,33 +381,92 @@ div.input-field {
     margin-top: -10px;
     margin-left: 4px;
     margin-bottom: -19px;
+    text-overflow: clip;
 }
 
 .select-wrapper input.select-dropdown {
     height: 20px;
-    width: 100%;
+    width: 200px;
     font-size: 11px;
     border-radius: 2px;
     border-style: solid;
     border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.3);
+    border-color: transparent;
     opacity: 0.9;
     padding-left: 2px;
     
 }
 
-#sorter {
-    float: left;
+#dropAward {
     margin: auto;
-    text-align: right;
-    width: 30%;
-    margin-top: 33px;
+    float: left;
+    width: 60px;
+}
+
+#dropCollege {
+    margin: auto;
+    float: left;
+    width: 70px;
+    margin-left: 30px;
 }
 
 #searcher {
     padding-top: 50px;
     margin: 0 auto;
     position: relative;
-    width: 750px;
+    width: 600px;
     height: 100px;
+    border: 1px solid none;
+}
+
+#searchResultInfo {
+    font-size: 15px;
+    position: relative;
+    margin: auto;
+    width: 750px;
+    margin-top: 60px;
+    height: 50px;
+    border: 1px solid transparent;
+}
+
+#searchHeader {
+    background: #006f4a;
+    color: white;
+}
+
+#tableHeader {
+    background: #006f4a;
+    height: 70px;
+    margin: auto;
+    padding-top: 12px;
+}
+
+#tableDetails {
+    height: 20px;
+}
+
+.tableIdNum {
+    width: 120px;
+}
+
+.tableName {
+    width: 400px;
+}
+
+.tableCollege {
+    width: 50px;
+}
+
+.tableAward {
+    width: 100px;
+}
+
+#filterContainer {
+    margin: auto;
+    border: 1px solid none;
+    margin-top: 30px;
+    position: relative;
+    width: 550px;
+    float:left;
+    margin-left: 10px;
 }

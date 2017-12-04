@@ -41,9 +41,20 @@
                     <p class="center-align" id="error2">Password is the same with your old password</p>
       
                     <p class="ltags">New Password</p>	
-                      <input type="password" id="nPassword" name="nPassword">
+                      <input type="password" id="nPassword" name="nPassword" onblur="checkPasswordField(this)">
+            
+                    <div class="errorPlaceholder">
+                        <div class="errors" id="pwError1">*Password must contain a capital letter, a number and a symbol*</div>
+                        <div class="errors" id="pwError2">*This password is already in use*</div>
+                    </div>
+            
                     <p class="ltags">Confirm New Password</p>	
-                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm"><br>
+                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('nPassword'))">
+            
+                    <div class="errorPlaceholder">
+                        <div class="errors" id="cpwError1">*Password did not match*</div>
+                    </div>
+            
                 <br><br>
                 <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a>
                 <br><br>           

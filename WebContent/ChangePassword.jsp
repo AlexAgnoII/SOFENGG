@@ -46,12 +46,25 @@
 
                     <p class="ltags">Current Password</p>	
                     <input type="password" id="oldPassword" name="oldPassword">
+                    
+                    <div class="errorPlaceholder">
+                        <div class="errors" id="cpwError1">*Invalid password*</div>
+                    </div>
 
                     <p class="ltags">New Password</p>	
-                    <input type="password" id="newPassword" name="newPassword">
+                    <input type="password" id="newPassword" name="newPassword" onblur="checkPasswordField(this)">
+                    
+                    <div class="errorPlaceholder">
+                        <div class="errors" id="npwError1">*Password must contain a capital letter, a number and a symbol*</div>
+                        <div class="errors" id="npwError2">*This password is already in use*</div>
+                    </div>
 
                     <p class="ltags">Verify Password</p>	
-                    <input type="password" id="nPasswordConfirm" name="nPasswordConfirm"><br>
+                    <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('newPassword'))">
+                    
+                    <div class="errorPlaceholder">
+                        <div class="errors" id="npwcError1">*Password did not match*</div>
+                    </div>
 
                     <br><br>
                     <a class="waves-effect waves-light btn" id="btnHome">Home</a>

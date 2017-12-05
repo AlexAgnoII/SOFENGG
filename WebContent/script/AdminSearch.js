@@ -1,13 +1,36 @@
+function getCollegeValue(collegeAbbreviate){
+	
+	switch(collegeAbbreviate){
+		case "College": return "";
+						break;
+		case "CCS":     return "College of Computer Studies";
+					    break;
+		case "RVRCOB":  return "College of Business";
+					    break;
+		case "BAGCED":  return "College of Education";
+					    break;
+		case "GCOE":    return "College of Engineering";
+					    break;
+		case "CLA":     return "College of Liberal Arts";
+					    break;
+		case "COS":     return "College of Science";
+					    break;
+		case "SOE":     return "School of Economics";
+					    break;
+	    default   :     return "";
+	}
+}
 
 /*******************************************/
 
-function loadStudents(studentName){
+function loadStudents(studentName, collegeVal){
 	
-	var searchFeed = document.getElementById("searchResultFeed");
+	var searchFeed = document.getElementById("tableDetails");
 	$.ajax({
  	    context: this,
         url:'search',
-        data:{'name': studentName},
+        data:{'name': studentName,
+        	  'collegeVal': collegeVal},
         type: 'GET',
         cache:false,
         success: function(data){
@@ -16,6 +39,9 @@ function loadStudents(studentName){
         	
         	// Append html snippet
     	    $(searchFeed).append(data);
+
+            $('#searchResultText').text("Found " + $(searchFeed).children().length + " students");
+    	    
     	},
         error:function(){
             console.log("URL get search does not exist");
@@ -24,13 +50,13 @@ function loadStudents(studentName){
 }
 
 
-function loadQualifiedStudents(studentName){
+function loadQualifiedStudents(studentName, collegeVal){
 	
-	var searchFeed = document.getElementById("searchResultFeed");
+	var searchFeed = document.getElementById("tableDetails");
 	$.ajax({
  	    context: this,
         url:'searchQualifiedStudents',
-        data:{'name': studentName},
+        data:{'name': studentName, 'collegeVal' : collegeVal},
         type: 'GET',
         cache:false,
         success: function(data){
@@ -39,6 +65,7 @@ function loadQualifiedStudents(studentName){
         	
         	// Append html snippet
     	    $(searchFeed).append(data);
+            $('#searchResultText').text("Found " + $(searchFeed).children().length + " students");
     	},
         error:function(){
             console.log("URL get search does not exist");
@@ -53,26 +80,44 @@ $("document").ready(function() {
 
     $('select').material_select();
     $('.modal').modal();
-    
+
 	$("#searchForm").on("submit", function(e) {
 	    e.preventDefault();
-		var name  = document.getElementById('search').value;
+	    
+		var dropDownCollege = document.getElementById('dropDownFilterCollege');
+		var name	   		= document.getElementById('search').value,
+			collegeVal 		= getCollegeValue(dropDownCollege.options[dropDownCollege.selectedIndex].text);
 		
 		switch(document.getElementById('dropDownFilterAwards').value){
-			case "0"			: loadStudents(name);
+			case "0"			: loadStudents(name, collegeVal);
 								  break;
-			default				: loadQualifiedStudents(name);
+			default				: loadQualifiedStudents(name, collegeVal);
 		}
-	  })
+	})
 	  
 
 	$("#dropDownFilterAwards").on("change", function(e) {
+		
 		console.log(this.value);
-		var name  = document.getElementById('search').value;
+		var dropDownCollege = document.getElementById('dropDownFilterCollege');
+		var name	   		= document.getElementById('search').value,
+			collegeVal 		= getCollegeValue(dropDownCollege.options[dropDownCollege.selectedIndex].text);
+		
 		switch(this.value){
-			case "0"			: loadStudents(name);
+			case "0"			: loadStudents(name, collegeVal);
 								  break;
-			default				: loadQualifiedStudents(name);
+			default				: loadQualifiedStudents(name, collegeVal);
+		}
+	});
+	
+	$("#dropDownFilterCollege").on("change", function(e) {
+		console.log(this.value);
+		var name  	   = document.getElementById('search').value,
+			collegeVal = getCollegeValue(this.options[this.selectedIndex].text);
+		switch(document.getElementById('dropDownFilterAwards').value){
+			case "0"			: loadStudents(name, collegeVal);
+								  break;
+			default				: loadQualifiedStudents(name, collegeVal);
 		}
 	});
 });

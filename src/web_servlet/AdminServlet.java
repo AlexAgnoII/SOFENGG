@@ -167,25 +167,26 @@ public class AdminServlet extends HttpServlet {
 	private void search(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** SEARCH ************************");
 		String name 			 = request.getParameter("name"),
+			   collegeVal 		 = request.getParameter("collegeVal"),
 			   htmlStudentList 	 = "";
 		
 		System.out.println("SEARCHING: " + name);
 		
-		ArrayList<Student> studentList = AdminService.getStudentByName(name);
+		if(collegeVal.equals("College"))
+			collegeVal = "";
+		
+		ArrayList<Student> studentList = AdminService.getStudent(name, collegeVal);
 			
 	    for(Student s : studentList){
-			htmlStudentList += "<div class = 'card-panel green darken-3'>" +
-							"	<table>" +
-					        "   	<tr class = 'white-text'>" +
-							"			<td id = 'sId'>"       + s.getStudentId()  + "</td>" +
-							"			<td id = 'sName'>" 	   + s.getFirstName()  + " " +
-																 s.getMiddleName() + " " +
-																 s.getLastName()   + "</td>" +
-							"			<td id = 'sCourse'>"   + s.getCourse()  + "</td>" +
-							"			<td id = 'sCollege'>"  + s.getCollege()  + "</td>" +
-					        "		</tr>" + 
-					        "	</table>" + 
-					        "</div> ";
+
+			htmlStudentList += "<tr>" + 
+				               "	<td class='tableIdNum center-align'>"   + s.getStudentId() + "</td>" +
+				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
+																		      s.getMiddleName() + " " +
+																		      s.getLastName()   + "</td>" +
+				               "	<td class='tableCollege center-align'>" + s.getCollege() +"</td>" +
+				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>" +
+				               "</tr>";
 	    }
 
 		System.out.println(studentList);
@@ -208,25 +209,22 @@ public class AdminServlet extends HttpServlet {
 	private void searchQualifiedStudents(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** SEARCH QUALIFIED STUDENTS ************************");
 		String name 			 = request.getParameter("name"),
+			   collegeVal 		 = request.getParameter("collegeVal"),
 			   htmlStudentList 	 = "";
 		
 		System.out.println("SEARCHING: " + name);
 		
-		ArrayList<Student> studentList = AdminService.getStudentsEligibleAward(name);
+		ArrayList<Student> studentList = AdminService.getStudentsEligibleAward(name, collegeVal);
 			
 	    for(Student s : studentList){
-			htmlStudentList += "<div class = 'card-panel green darken-3'>" +
-							"	<table>" +
-					        "   	<tr class = 'white-text'>" +
-							"			<td id = 'sId'>"       + s.getStudentId()  + "</td>" +
-							"			<td id = 'sName'>" 	   + s.getFirstName()  + " " +
-																 s.getMiddleName() + " " +
-																 s.getLastName()   + "</td>" +
-							"			<td id = 'sCourse'>"   + s.getCourse()  + "</td>" +
-							"			<td id = 'sCollege'>"  + s.getCollege()  + "</td>" +
-					        "		</tr>" + 
-					        "	</table>" + 
-					        "</div> ";
+			htmlStudentList += "<tr>" + 
+				               "	<td class='tableIdNum center-align'>"   + s.getStudentId() + "</td>" +
+				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
+																		      s.getMiddleName() + " " +
+																		      s.getLastName()   + "</td>" +
+				               "	<td class='tableCollege center-align'>" + s.getCollege() +"</td>" +
+				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>" +
+				               "</tr>";
 	    }
 
 		System.out.println(studentList);

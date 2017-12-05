@@ -91,7 +91,7 @@
                     <div class="f">
                          <div id="passwordInfo">
                              <p id="pPassword">Password</p>
-                             <i class="tiny material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Your password should contain a capital letter, a number, and a symbol." id="iPassword">info_outline</i>
+                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Password should contain a capital letter, a number, and a symbol." id="iPassword">info_outline</i>
                          </div>
                          <input type="password" class="twos" id="password" name="password" tabindex=8 onblur="checkPasswordField(this)">
                          <p id="pwerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>

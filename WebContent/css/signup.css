@@ -30,12 +30,11 @@ nav {
     border-style: solid;
     border-width: 10px;
     border-color: #006f4a;
-    border-bottom: 0px;
-    
+    border-bottom: 0px;  
 }
 
 #wrapper {
-	margin-top: 35px;
+	margin-top: 20px;
     width: 250px;
     display: inline-flex;
 }
@@ -71,7 +70,7 @@ nav {
     position: relative;
     margin: 0 auto;
     text-align: left;
-    top: 135px;
+    top: 155px;
     width: 600px;
     padding: 20px;
     padding-top: 40px;
@@ -79,25 +78,23 @@ nav {
     border-style: solid;
     border-width: 0px;
     border-color: none;
-  /*  background-color: #fbfbfb; 
-    box-shadow: 0 5px 5px -5px #333; */
 }
 
 .wrap {
     width: 100%; /* ** */
     display: inline-flex;
-    margin-bottom: 11px;
 }
 
 .f {
     width: 100%; /* ** */
+    margin-bottom: -15px;
 }
 
 #sufeed .twos {
     width: 95%;
     height: 20px;
-    /*margin-top: -10px;*/ /*Commented this out since it fixed sign u alignment.*/
-    margin-bottom: 5px;
+    margin-top: -10px;
+    margin-bottom: 2px;
     margin-left: 4px;
     border-radius: 2px;
     border-style: solid;
@@ -105,8 +102,11 @@ nav {
     border-color: rgba(0, 0, 0, 0.3);
     opacity: 0.9;
     font-size: 11px;
-    padding-left: 2px;
-    
+    padding-left: 2px;  
+}
+
+#sufeed #courseName {
+    margin-top: 0px;
 }
 
 #lastName, #email, #idNum {
@@ -192,7 +192,6 @@ div.input-field {
 	width: 95%;
     margin-top: -10px;
     margin-left: 4px;
-    margin-bottom: -19px;
 }
 
 .select-wrapper input.select-dropdown {
@@ -243,16 +242,14 @@ div.input-field {
 }
 
 #iPassword {
-    position: absolute;
-    margin-left: 10px;
-    padding-bottom: 20px;
-    line-height: -30px;
+    color: darkslategray;
     float: left;
-    top: 317px;
-    cursor: help;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-left: 6px;
 }
 
 .material-tooltip {
     font-size: 10px;
-    min-height: 10px;
+ 	height: 20px;
 }

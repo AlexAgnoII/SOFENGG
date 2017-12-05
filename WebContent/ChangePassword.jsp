@@ -55,7 +55,7 @@
                     <input type="password" id="newPassword" name="newPassword" onblur="checkPasswordField(this)">
                     
                     <div class="errorPlaceholder">
-                        <div class="errors" id="npwError1">*Password must contain a capital letter, a number and a symbol*</div>
+                        <div class="errors" id="npwError1">*Password must contain an uppercase letter, lowercase letter, a number and a symbol*</div>
                         <div class="errors" id="npwError2">*This password is already in use*</div>
                     </div>
 

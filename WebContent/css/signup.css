@@ -252,4 +252,5 @@ div.input-field {
 .material-tooltip {
     font-size: 10px;
  	height: 20px;
+    cursor: help;
 }

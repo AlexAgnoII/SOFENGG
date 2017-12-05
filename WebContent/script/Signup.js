@@ -402,7 +402,45 @@ $("document").ready(function(idNum, password, fName, lName) {
 
         } else{
         	// TODO front end notif
-        	alert("Please fill up all important fields.");
+        	//alert("Please fill up all important fields.");
+            if (idNum == "") {
+                $('#idnumerrorPlaceHolder').hide();
+                $('#idnumerror').show();
+                $('#idNum').css("border-color", "indianred");
+            }
+            if (lName == "") {
+                $('#lnameerrorPlaceHolder').hide();
+                $('#lnameerror').show();
+                $('#lastName').css("border-color", "indianred");
+            }
+            if (fName == "") {
+                $('#fnameerrorPlaceHolder').hide();
+                $('#fnameerror').show();
+                $('#firstName').css("border-color", "indianred");
+            }
+            if (mName == "") {
+                $('#mnameerrorPlaceHolder').hide();
+                $('#mnameerror').show();
+                $('#middleName').css("border-color", "indianred");
+            }
+            if (college == "0") {
+                //send help
+            }
+            if (courseName == "") {
+                $('#courseerrorPlaceHolder').hide();
+                $('#courseerror').show();
+                $('#courseName').css("border-color", "indianred");
+            }
+            if (email == "") {
+                $('#emailerrorPlaceHolder').hide();
+                $('#emailerror').show();
+                $('#email').css("border-color", "indianred");
+            }
+            if (password == "") {
+                $('#pwerrorPlaceHolder').hide();
+                $('#pwerror').show();
+                $('#password').css("border-color", "indianred");
+            }
         }
 	});
 	

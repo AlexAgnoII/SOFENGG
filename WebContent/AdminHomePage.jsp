@@ -29,8 +29,8 @@
                 </div>   
                </a>
                 
-                <a class='dropdown-button btn' href='#' data-activates='dp2' id="menu"><i class="medium material-icons" id="mb">menu</i>MENU</a>
-                <a class='dropdown-button btn' href='#' data-activates='dp1' id="drop"><i class="large material-icons" id="dc">arrow_drop_down_circle</i></a>
+                <a class='dropdown-button btn' data-activates='dp2' id="menu"><i class="medium material-icons" id="mb">menu</i>MENU</a>
+                <a class='dropdown-button btn' data-activates='dp1' id="drop"><i class="large material-icons" id="dc">arrow_drop_down_circle</i></a>
                 <a class='dropdown-button btn' href='AdminSearchForStudents.jsp' id="searchIcon"><i class="large material-icons" id="sb">search</i></a>
                 
                 <div id="dp1">

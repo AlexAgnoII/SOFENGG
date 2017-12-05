@@ -15,7 +15,7 @@
 		<title>Signup</title>
 	</head>
 	
-	<body>
+	<body onkeypress="enterKeyEvent(event)">
 		<div id="left"></div>
 		<div id="right"></div>
 		<div id="top"></div>
@@ -32,7 +32,7 @@
             </div>
         </nav>
         
-       <div id= sufeed>
+       <div id="sufeed">
             <form action="signUp" method="POST" id="signUpForm">
                 <p id="lol">ID Number</p>
                 <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" tabindex=1 onblur="checkIdNumber(this)">

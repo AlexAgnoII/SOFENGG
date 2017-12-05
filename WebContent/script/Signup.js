@@ -220,6 +220,8 @@ function checkPasswordField(passwordField) {
         $('#pwerror').show();
         $('#password').css("border-color", "indianred");
 	}
+    
+    checkPasswordEqual(document.getElementById('password2'), value);
 }
 
 

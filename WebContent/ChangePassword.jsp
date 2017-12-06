@@ -67,7 +67,7 @@
                     </div>
 
                     <br><br>
-                    <a class="waves-effect waves-light btn" id="btnHome">Home</a>
+                    <a class="waves-effect waves-light btn" id="btnHome" href="HomePage.jsp">Home</a>
                     <a class="waves-effect waves-light btn" id="ResetPassword">Save Changes</a>
                     <br>
                 </form> 

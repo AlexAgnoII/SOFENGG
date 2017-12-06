@@ -52,7 +52,7 @@
 	function submitNewPassword(newPass) {
 		$.ajax({
 			  context: this,
-		      url:'sendChangePassword',
+		      url:'changePassword',
 		      data: {"newPass":newPass},
 		      type:'POST',
 		      cache:false,
@@ -120,6 +120,14 @@
 			alert("Passowrd failed!!!!!")
 		}
 		
+		else {
+			//Check if its equal with the newPassword.
+			if(password === newPass) {
+				proceed = false
+				alert("Old and new password are the same.");
+			}
+		}
+		
 		//Check newPass if its correct.
 		if (!checkPassword(newPass)) {
 			proceed = false;
@@ -132,10 +140,7 @@
 			alert("Confirm new password failed!")
 		}
 		
-		if(password === newPass) {
-			proceed = false
-			alert("Old and new password are the same.")
-		}
+
 		
 		
 		return proceed;

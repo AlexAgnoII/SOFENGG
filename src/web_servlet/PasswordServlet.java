@@ -37,7 +37,6 @@ public class PasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		switch(request.getServletPath()) {
 		    case "/resetPassword": resetPassword(request, response); break;
-		    case "/changePassword": changePassword(request, response); break;
 		    default: System.out.println("(GET)PasswordServlet error (URL NOT FOUND)");
 		}
 	}
@@ -49,84 +48,75 @@ public class PasswordServlet extends HttpServlet {
 		    case "/resetPassCheckEmail": resetPassCheckEmail(request, response); break;
 		    case "/resetPasswordAction": updatePassword(request, response); break;
 		    case "/checkPasswordMatch": checkPasswordMatch(request, response); break;
+		    case "/changePassword": changePassword(request, response); break;
 		    default: System.out.println("(POST)PasswordServlet error (URL NOT FOUND)");
 		}
 	}
 	
 
-
+	//TODO Updaate changepassword so that it would support ChangePassword.js (send new password) 
 	private void changePassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		System.out.println("chaning password********************************");
-		String token = request.getParameter("change");
-		String[] container = token.split(" ");
-		boolean user=false,
-				admin=false;
+		PasswordAuthentication p = new PasswordAuthentication();
+		System.out.println("changing password********************************");
+		String newPassword =request.getParameter("newPass");
+		String hashedPassword = p.hash(newPassword.toCharArray());
 		String id = "";
 		
-		System.out.println(token);
-		System.out.println(container.length);
-		System.out.println(container[0]);
-		System.out.println(container[1]);
-		System.out.println(container[2]);
+		System.out.println("New password is: " + newPassword);
+		boolean user=false,
+				admin=false;
+
 		
 		//Check whether user is admin OR student
-				Cookie[] cookieList = request.getCookies();
-				if(cookieList != null) {
-					for(Cookie c : cookieList) {	
-						//Its a user!
-						if(c.getName().equals("USER")) {
-							System.out.println("USER Cookie found!");
-							user = true; //if it exists, proceed.
-							id = c.getValue();
-							break; //get out of loop once cookie is found.
-						//Its an admin!
-						} else if(c.getName().equals("ADMIN")) {
-							System.out.println("ADMIN Cookie found!");
-							admin = true;
-							id = c.getValue();
-							break; //get out of loop once cookie is found.
-						}
-						else {
-							System.out.println("ERROR, NO USER/ADMIN FOUND");
-						}
-					}
-				}
-				else {
-					System.out.println("Cookielist is empty.(NO USER LOGGED IN)");
-				}
-		
-		if(user || admin) {
-			System.out.println("USER ID: " + id);
-			
-			if(id.equals(container[1])) {
+		Cookie[] cookieList = request.getCookies();
+		if(cookieList != null) {
+			for(Cookie c : cookieList) {	
+					
+				 //Its a user!
+				if(c.getName().equals("USER")) {
+					System.out.println("USER Cookie found!");
+					user = true; //if it exists, proceed.
+					id = c.getValue();
+					break; //get out of loop once cookie is found.
 				
-				if(container[2].equals("S")) {
-					StudentService.changePassword(id, container[0]);
-					response.sendRedirect("HomePage.jsp");//do not change.
-				}
-				else if (container[2].equals("A")) {
-					AdminService.changePassword(id, container[0]);
-					response.sendRedirect("HomePage.jsp");//do not change
+				//Its an admin!
+				} else if(c.getName().equals("ADMIN")) {
+					System.out.println("ADMIN Cookie found!");
+					admin = true;
+					id = c.getValue();
+					break; //get out of loop once cookie is found.
 				}
 				
 				else {
-					System.out.println("TYPE DID NOT MATCH ANYTHING");
-					response.sendRedirect("HomePage.jsp"); //Temporary, pls change to error page
+					System.out.println("ERROR, NO USER/ADMIN FOUND");
 				}
-				
-			}
-			
-			else {
-				//abort mission to update password (not matching account)
-				response.sendRedirect("HomePage.jsp"); //Temporary, pls change to error page
 			}
 		}
 		
 		else {
-			//Must redirect to some sort of error page regarding change password
+			System.out.println("Cookielist is empty.(NO USER LOGGED IN)");
+		}
+		
+		if(user || admin) {
+			System.out.println("ID is: " + id);
+			if(user) {
+				System.out.println("its a user!");
+				StudentService.changePassword(id, hashedPassword);
+			}
+			
+			else if(admin) {
+				System.out.println("its an admin1");
+				AdminService.changePassword(id, hashedPassword);
+			}
+			
+			else {
+				System.out.println("ERROR! CANT DETERMINE WHO'S LOGGED ON.");
+			}
+		}
+		
+		else {
 			System.out.println("NO USERS LOGGED ON FAIL.");
-			response.sendRedirect("HomePage.jsp"); //Temporary, pls change to error page
 		}
 		
 		System.out.println("************************************************");

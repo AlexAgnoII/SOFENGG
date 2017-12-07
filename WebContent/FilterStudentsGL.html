@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Admin Filter</title>
+	
+	        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
+	        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	        
+	        <!-- Moved some scripts right before the end of body. -->
+	        
+	        <!-- INSERT CORRECT STYLESHEET BELOW -->
+        	<link rel = "stylesheet" type="text/css" href="css/adminfilterstudents.css">
+	        
+	</head>
+	<body>
+        <div id="left"></div>
+		<div id="right"></div>
+		<div id="top"></div>
+		<div id="bottom"></div>
+        
+       <nav>
+            <div class="nav-wrapper">
+               <a class='brand-logo center' data-activates='dp2' href='AdminHomePage.jsp' id="tbox">
+                <div id="wrapper">
+                    <img src="css/arrow.png" id="arrow">
+                    <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>
+                </div>   
+               </a>
+                
+                <a class='dropdown-button btn' data-activates='dp2' id="menu"><i class="medium material-icons" id="mb">menu</i>MENU</a>
+                <a class='dropdown-button btn' data-activates='dp1' id="drop"><i class="large material-icons" id="dc">arrow_drop_down_circle</i></a>
+                <a class='dropdown-button btn' href="AdminSearchForStudents.jsp" id="searchIcon"><i class="large material-icons" id="sb">search</i></a>
+                
+                <div id="dp1">
+                    <ul>
+                        <li><a href="#!"> Settings</a></li>
+                        <li><a href="logout"> Logout</a></li>
+                    </ul>
+                </div>
+                
+                <div id="dp2">
+                     <ul>
+                        <li><a class="modal-trigger" href="#newannounce"> New Announcement</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav> 
+        
+      	<div id="searcher" class="center-align">
+            Qualified for Gawad Lasalyano
+        </div> 
+		
+        <div id="searchResultInfo" class="left-align">
+            <p id="searchResultText"></p>
+        </div>
+        
+      	<div id="searchResultFeed" class="z-depth-2">
+            <div id="tableHeader" class="z-depth-1">
+                <table>
+                    <tr>
+                        <th class="tableIdNum center-align white-text">ID Number</th>
+                        <th class="tableName center-align white-text">Name</th>
+                        <th class="tableCollege center-align white-text">College</th>
+                        <th class="tableAward center-align white-text">Award</th>
+                        </tr>
+                </table>
+            </div>
+            
+                <table id="tableDetails">
+                    <!-- <tr>
+                        <td class="tableIdNum center-align">11436166</td>
+                        <td class="tableName left-align">Juan Johann John J. Johannes</td>
+                        <td class="tableCollege center-align">BAGCED</td>
+                        <td class="tableAward center-align"> GL</td>
+                    </tr> -->
+                </table>
+            
+            </div> 
+      	
+        <div id="newannounce" class="modal">
+            <div class = "annhead">[NEW ANNOUNCEMENT]</div>
+            <div class ="annwrap">
+                <form action="createPost" method="POST" id="createPostForm">
+					<p class="ltags">Title</p>
+					<input type="text" id="anntitle" name = "anntitle">
+					<p class="ltags">Description</p>
+					<textarea type="text" id="annbody" name = "annbody"></textarea>
+           		</form>
+					<br>	
+					<button class="waves-effect waves-light btn" id="ANpost" >POST</button>
+					<br>
+            </div>
+        </div>
+
+        <div id="updateAnnounce" class="modal">
+            <div class = "annhead">[UPDATE ANNOUNCEMENT]</div>
+            <div class = "annwrap">
+                <form action="createPost" method="POST" id="createPostForm">
+					<p class="ltags">Title</p>
+					<input type="text" id="updateTitle" name = "anntitle">
+					<p class="ltags">Description</p>
+					<input type="text" id="updateBody" name = "annbody">
+           		</form>
+					<br>	
+					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>
+					<br>
+            </div>
+        </div>  
+        
+        
+        <!-- Scripts originally from head-->
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="script/AdminHomePage.js"></script>
+        <script type="text/javascript" src=""></script>
+        
+	</body>
+</html>

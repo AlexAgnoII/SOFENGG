@@ -436,9 +436,9 @@ div.input-field {
 
 #tableHeader {
     background: #006f4a;
-    height: 70px;
+    height: 50px;
     margin: auto;
-    padding-top: 12px;
+    padding-top: 2px;
 }
 
 #tableDetails {

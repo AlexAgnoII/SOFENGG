@@ -76,10 +76,10 @@
                          
     
                         <div id="passwordInfo">
-                             <p id="pCourse">Course</p>
-                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Course must be written without spaces and dashes (-) like CIV, MKT, INSYS and so on" id="iPassword">info_outline</i>
+                             <p id="pCourse">Degree</p>
+                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Course should be written without spaces and dashes (-) like CIV, MKT, INSYS and so on" id="iPassword">info_outline</i>
                          </div>
-                        <input id="courseName" type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" tabindex=6 onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
+                        <input id="courseName" type="text" class="twos" name="course" tabindex=6 onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
                         <p id="courseerror" class="errors">*Invalid degree code*</p>
                     
                     </div>
@@ -98,7 +98,7 @@
                          </div>
                          <input type="password" class="twos" id="password" name="password" tabindex=8 onblur="checkPasswordField(this)">
                          <p id="pwerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
-                         <p id="pwerror" class="errors">*Password must contain a capital letter, a number and a symbol*</p>
+                         <p id="pwerror" class="errors">*Password must contain a capital letter, a number and a symbol along with lowercase letters*</p>
                     </div>
                     
                     <div class="f">

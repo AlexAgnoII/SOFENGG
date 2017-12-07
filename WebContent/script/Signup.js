@@ -72,10 +72,14 @@ function idNumberChecker(idNum) {
 
 //function to check college
 function checkCollege(college) {
-    if (college.value != 0) {
+   //college = select.options[select.selectedIndex].value;
+    college = college.options[college.selectedIndex].value;
+    
+    console.log(college);
+    if (college != 0) {
         $('#collegeerrorPlaceHolder').show();
         $('#collegeerror').hide();
-        $('#dropDownCollege').css("border-color" , "rgba(0, 0, 0, 0.3)");
+        $('.select-dropdown').css("border-color" , "rgba(0, 0, 0, 0.3)");
     }
 }
 
@@ -466,6 +470,7 @@ $("document").ready(function(idNum, password, fName, lName) {
                 $('#collegeerrorPlaceHolder').hide();
                 $('#collegeerror').show();
                 $('.select-dropdown').css("border-color", "indianred");
+                console.log("college is " + college);
             }
         }
 	});

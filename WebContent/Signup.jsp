@@ -53,7 +53,7 @@
                         
                         <p>College</p>
                         <div class="input-field">
-                            <select id="dropDownCollege" name="college" class="ddcollege" tabindex=5 onblur="checkCollege(this)">
+                            <select id="dropDownCollege" name="college" class="ddcollege" tabindex=5 onchange="checkCollege(this)">
                                 <option value="0" disabled selected>Select your College:</option>
                                 <option value="1">College of Computer Studies</option>
                                 <option value="2">Ramon V. del Rosario College of Business</option>

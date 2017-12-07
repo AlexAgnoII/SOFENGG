@@ -7,7 +7,7 @@ import java.util.Date;
 //TODO Need to fix student class (Especially how we use it) for consistent codes on other classes (Like userservice)
 public class Student {
 	private int dbID; //the ID of user in the DB
-	private int studentId, zip, age;
+	private int studentId, zip, age, nInvolvements;
 	private Date birthday;
 	private Year yEnrolled;
 	private String firstName,
@@ -26,7 +26,7 @@ public class Student {
 				   city,
 				   province,
 				   country;
-	
+
 	//This is used for updating date (Birthday).
 	private java.sql.Date tempDate;
 	
@@ -355,9 +355,13 @@ public class Student {
 	public void setTempDate(java.sql.Date tempDate) {
 		this.tempDate = tempDate;
 	}
-	
-	
 
-	
+	public int getNInvolvements() {
+		return nInvolvements;
+	}
 
+	public void setNInvolvements(int nInvolvements) {
+		this.nInvolvements = nInvolvements;
+	}
+	
 }

@@ -207,27 +207,23 @@ public class AdminService {
 	public static String getStudentAwards(Student s) {
 		System.out.println();
 		String awards = "";
-		try{
-			String driver = "com.mysql.jdbc.Driver";
-			Class.forName(driver);
-			Connection conn = DatabaseManager.getConnection();
-
-			PreparedStatement st = conn.prepareStatement("SELECT student.* FROM sofengg.student, sofengg.involvement WHERE " +
-														 "studentId = idNum AND (studentId = ?) GROUP BY studentId HAVING COUNT(*) >= 5");
-			st.setInt(1, s.getStudentId());
-			
-			ResultSet rs = st.executeQuery();
-			
-			if(rs.next()){
-				awards += "AYLC, GL, TOSP";
-			}
-			conn.close();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
+		int nInvolvements = s.getNInvolvements();
 		
+		// Check each award through number of involvements per student
+		
+		if (nInvolvements >= 5)
+			awards += "AYLC";
+		
+		if (nInvolvements >= 5)
+			if(awards.equals(""))	
+				 awards += "GL";
+			else awards += ", GL";
+		
+		if (nInvolvements >= 5)
+			if(awards.equals(""))	
+				 awards += "TOSP";
+			else awards += ", TOSP";
+
 		System.out.println();
 		return awards;
 		
@@ -240,12 +236,14 @@ public class AdminService {
 	public static ArrayList<Student> getStudentsEligibleAward(String name, String collegeVal) {
 		System.out.println();
 		ArrayList<Student> students = new ArrayList<>();
+		int nInvolvements = 0;
 		try{
 			String driver = "com.mysql.jdbc.Driver";
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 
-			PreparedStatement st = conn.prepareStatement("SELECT student.* FROM sofengg.student, sofengg.involvement WHERE " +
+			PreparedStatement st = conn.prepareStatement("SELECT student.*, COUNT(*) AS 'nInvolvements' FROM " +
+														 "sofengg.student, sofengg.involvement WHERE " +
 														 "studentId = idNum AND (firstName LIKE ? OR middleName " +
 														 "LIKE ? OR lastName LIKE ?) GROUP BY studentId HAVING COUNT(*) >= 5");
 			st.setString(1, name + "%");
@@ -282,9 +280,11 @@ public class AdminService {
 												  rs.getString("civil"),
 												  rs.getString("citizen"),
 												  rs.getString("gender"));
-					
+
+					nInvolvements = rs.getInt("nInvolvements");
 					student.setCollege(college);
 					students.add(student);
+					student.setNInvolvements(nInvolvements);
 					System.out.println("Student " + rs.getString("firstName") + " Found!");
 				}
 			} 

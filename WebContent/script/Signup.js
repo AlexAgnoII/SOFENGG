@@ -244,7 +244,9 @@ function checkPasswordField(passwordField) {
         $('#password').css("border-color", "indianred");
 	}
     
-    checkPasswordEqual(document.getElementById('password2'), value);
+    if (document.getElementById('password2').value != "") {
+        checkPasswordEqual(document.getElementById('password2'), value);
+    }
 }
 
 

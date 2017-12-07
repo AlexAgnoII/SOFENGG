@@ -35,6 +35,7 @@ function duplicateHandler(data) {
 	
 }
 
+
 //This function handles submitting the data.
 function submitTheForm() {
 	$.ajax({
@@ -66,6 +67,16 @@ function submitTheForm() {
  */
 function idNumberChecker(idNum) {
 	return idNum.length == 8 && /^\d+$/.test(idNum)
+}
+
+
+//function to check college
+function checkCollege(college) {
+    if (college.value != 0) {
+        $('#collegeerrorPlaceHolder').show();
+        $('#collegeerror').hide();
+        $('#dropDownCollege').css("border-color" , "rgba(0, 0, 0, 0.3)");
+    }
 }
 
 /**
@@ -450,6 +461,11 @@ $("document").ready(function(idNum, password, fName, lName) {
                 $('#pwerrorPlaceHolder').hide();
                 $('#pwerror').show();
                 $('#password').css("border-color", "indianred");
+            }
+            if (college == 0) {
+                $('#collegeerrorPlaceHolder').hide();
+                $('#collegeerror').show();
+                $('.select-dropdown').css("border-color", "indianred");
             }
         }
 	});

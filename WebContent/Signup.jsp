@@ -53,7 +53,7 @@
                         
                         <p>College</p>
                         <div class="input-field">
-                            <select id="dropDownCollege" name="college" class="ddcollege" tabindex=5>
+                            <select id="dropDownCollege" name="college" class="ddcollege" tabindex=5 onblur="checkCollege(this)">
                                 <option value="0" disabled selected>Select your College:</option>
                                 <option value="1">College of Computer Studies</option>
                                 <option value="2">Ramon V. del Rosario College of Business</option>
@@ -74,9 +74,12 @@
                          <p id="mnameerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                          <p id="mnameerror" class="errors">*Invalid middle name*</p>
                          
-                        <p>Course</p>
+    
+                        <div id="passwordInfo">
+                             <p id="pCourse">Course</p>
+                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Course must be written without spaces and dashes (-) like CIV, MKT, INSYS and so on" id="iPassword">info_outline</i>
+                         </div>
                         <input id="courseName" type="text" class="twos" name="course" placeholder="e.g. MKT, CIV, INSYS" tabindex=6 onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
-                        <p id="courseerrorPlaceHolder" class="errorplaceholder">___________________________________________________________________</p>
                         <p id="courseerror" class="errors">*Invalid degree code*</p>
                     
                     </div>

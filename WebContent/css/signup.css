@@ -204,7 +204,7 @@ div.input-field {
     border-color: rgba(0, 0, 0, 0.3);
     opacity: 0.9;
     padding-left: 2px;
-    
+    margin-bottom: 3px;
 }
 
 /*Delete this if needed.*/
@@ -247,10 +247,35 @@ div.input-field {
     font-size: 12px;
     margin-top: -8px;
     margin-left: 6px;
+    cursor: help;
 }
 
 .material-tooltip {
     font-size: 10px;
  	height: 20px;
+    cursor: help;
+}
+
+#collegeerrorPlaceHolder {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#collegeerror {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#pCourse {
+    float: left;
+    width: 35px;
+}
+
+#iCourse {
+    color: darkslategray;
+    float: left;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-left: 6px;
     cursor: help;
 }

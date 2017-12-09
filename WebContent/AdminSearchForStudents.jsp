@@ -62,7 +62,7 @@
                 <div id="dropAward">
                     <div class="input-field">
                         <select id="dropDownFilterAwards" name="filterAwards" class="dropDown">
-                            <option value="0">Award</option>
+                            <option value="0">All Awards</option>
                             <option value="1">GL<!--Gawad Lasalyano--></option>
                             <option value="2">TOSP<!--Ten Outstanding Students of the Philippines--></option>
                             <option value="3">AYLC<!--Ayala Young Leaders Congress--></option>
@@ -79,7 +79,7 @@
                     
                     <div class="input-field">
                         <select id="dropDownFilterCollege" name="filterCollege" class="dropDown">
-                            <option value="0">College</option>
+                            <option value="0">All Colleges</option>
                             <option value="1">CCS<!--College of Computer Studies--></option>
                             <option value="2">RVRCOB<!--Ramon V. del Rosario College of Business--></option>
                             <option value="3">BAGCED<!--Br. Andrew Gonzales College of Education--></option>

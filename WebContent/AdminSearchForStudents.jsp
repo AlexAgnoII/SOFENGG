@@ -152,7 +152,7 @@
         
         <!-- Scripts originally from head-->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="sorttable.js"></script>
+        <script type="text/javascript" src="script/sorttable.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
         <script type="text/javascript" src="script/AdminHomePage.js"></script>
         <script type="text/javascript" src="script/AdminSearch.js"></script>

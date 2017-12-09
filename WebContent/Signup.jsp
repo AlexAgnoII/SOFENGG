@@ -15,7 +15,7 @@
 		<title>Signup</title>
 	</head>
 	
-	<body onkeypress="enterKeyEvent(event)">
+	<body>
 		<div id="left"></div>
 		<div id="right"></div>
 		<div id="top"></div>
@@ -77,9 +77,10 @@
     
                         <div id="passwordInfo">
                              <p id="pCourse">Degree</p>
-                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Course should be written without spaces and dashes (-) like CIV, MKT, INSYS and so on" id="iPassword">info_outline</i>
+                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Course should be written without spaces and dashes (-) like CIV, MKT, INSYS and so on." id="iPassword">info_outline</i>
                          </div>
                         <input id="courseName" type="text" class="twos" name="course" tabindex=6 onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
+                        <p id="courseerrorPlaceHolder"></p>
                         <p id="courseerror" class="errors">*Invalid degree code*</p>
                     
                     </div>

@@ -34,8 +34,8 @@ function loadStudents(studentName, collegeVal){
         type: 'GET',
         cache:false,
         success: function(data){
-        	while (searchFeed.firstChild) 
-        		searchFeed.removeChild(searchFeed.firstChild);
+        	while (searchFeed.secondChild) 
+        		searchFeed.removeChild(searchFeed.secondChild);
         	
         	// Append html snippet
     	    $(searchFeed).append(data);
@@ -60,8 +60,8 @@ function loadQualifiedStudents(studentName, collegeVal){
         type: 'GET',
         cache:false,
         success: function(data){
-        	while (searchFeed.firstChild) 
-        		searchFeed.removeChild(searchFeed.firstChild);
+        	while (searchFeed.secondChild) 
+        		searchFeed.removeChild(searchFeed.secondChild);
         	
         	// Append html snippet
     	    $(searchFeed).append(data);

@@ -100,17 +100,14 @@
         
       	<div id="searchResultFeed" class="z-depth-2">
             <div id="tableHeader" class="z-depth-1">
-                <table>
+                <table id="tableDetails" class = "sortable">
                     <tr>
                         <th class="tableIdNum center-align white-text">ID Number</th>
                         <th class="tableName center-align white-text">Name</th>
                         <th class="tableCollege center-align white-text">College</th>
                         <th class="tableAward center-align white-text">Award</th>
                         </tr>
-                </table>
-            </div>
-            
-                <table id="tableDetails">
+                        
                     <!-- <tr>
                         <td class="tableIdNum center-align">11436166</td>
                         <td class="tableName left-align">Juan Johann John J. Johannes</td>
@@ -118,6 +115,7 @@
                         <td class="tableAward center-align"> GL</td>
                     </tr> -->
                 </table>
+            </div>
             
             </div> 
       	
@@ -154,6 +152,7 @@
         
         <!-- Scripts originally from head-->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="sorttable.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
         <script type="text/javascript" src="script/AdminHomePage.js"></script>
         <script type="text/javascript" src="script/AdminSearch.js"></script>

@@ -77,7 +77,7 @@
     
                         <div id="passwordInfo">
                              <p id="pCourse">Degree</p>
-                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Course should be written without spaces and dashes (-) like CIV, MKT, INSYS and so on." id="iPassword">info_outline</i>
+                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="ex. CSST, MKT, CIV; should not contain space or dashes" id="iPassword">info_outline</i>
                          </div>
                         <input id="courseName" type="text" class="twos" name="course" tabindex=6 onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))">
                         <p id="courseerrorPlaceHolder"></p>

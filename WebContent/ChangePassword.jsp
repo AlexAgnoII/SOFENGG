@@ -31,49 +31,42 @@
                </a>
             </div>
         </nav>
-            
-        <div id="changepwwrapper">
-            <p id="cptitle">Change password</p>
-            <ul><li><div class="divider"></div></li></ul>
-            
-            <div id="changepwform">
-                <form action="changePassword" method="POST" id="changePasswordForm">
-
+        
+        <div id="changepwfeed">
+            <!-- insert form below -->
+                    <br>
                     <!-- TENTATIVE: constraint divs -->
-                    <p class="center-align" id="error1">Passwords don't match</p>
+                    <p class="center-align" id="error1">Passwords does not match</p>
                     <p class="center-align" id="error2">Password is the same with your old password</p>
-                    <p class="center-align" id="error3">The current password you've entered is incorrect.</p>
-
+                    
                     <p class="ltags">Current Password</p>	
-                    <input type="password" id="oldPassword" name="oldPassword">
+                    <input type="password" id="oPassword" name="oPassword">
                     
                     <div class="errorPlaceholder">
-                        <div class="errors" id="cpwError1">*Invalid password*</div>
+                        <div class="errors" id="opwError1">*Invalid password*</div>
                     </div>
-
+      
                     <p class="ltags">New Password</p>	
-                    <input type="password" id="newPassword" name="newPassword" onblur="checkPasswordField(this)">
-                    
+                      <input type="password" id="newPassword" name="newPassword" onblur="checkPasswordField(this)">
+            
                     <div class="errorPlaceholder">
-                        <div class="errors" id="npwError1">*Password must contain an uppercase letter, lowercase letter, a number and a symbol*</div>
-                        <div class="errors" id="npwError2">*This password is already in use*</div>
+                        <div class="errors" id="npwError1">*Password must contain a capital letter, a number and a symbol*</div>
+                        <div class="errors" id="pwError2">*This password is already in use*</div>
                     </div>
-
-                    <p class="ltags">Verify Password</p>	
-                    <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('newPassword'))">
-                    
+            
+                    <p class="ltags">Confirm New Password</p>	
+                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('newPassword'))">
+            
                     <div class="errorPlaceholder">
                         <div class="errors" id="npwcError1">*Password did not match*</div>
                     </div>
-
-                    <br><br>
-                    <a class="waves-effect waves-light btn" id="btnHome" href="HomePage.jsp">Home</a>
-                    <a class="waves-effect waves-light btn" id="ResetPassword">Save Changes</a>
-                    <br>
-                </form> 
-            </div>
+            
+                <br><br>
+                <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a>
+                <br><br>           
+            
         </div>
-        
+        <input id="token" type="hidden" name="token" value="${U}">
          <!-- Originally from head. -->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js">            

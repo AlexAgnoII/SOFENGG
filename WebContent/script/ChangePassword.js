@@ -25,6 +25,10 @@
                 $('#newPassword').css("border-color", "indianred");
                 console.log("password_invalid_1")
             }
+        
+        if (document.getElementById('nPasswordConfirm').value != "") {
+            checkPasswordEqual(document.getElementById('nPasswordConfirm'), value);
+        }
     }
 
     function checkPasswordEqual(pass2Field, pass1Field) {

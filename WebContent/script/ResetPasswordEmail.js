@@ -47,7 +47,13 @@
 			//Check email exist.
 			sendResetPassEmail(email);
 
-		});
-		
-		
+		});		
 	});
+	
+	 $(document).ready(function(){
+		    $('#modal1').modal({
+		    	endingTop: '41.5%'
+		    });
+		  });
+	 
+	        

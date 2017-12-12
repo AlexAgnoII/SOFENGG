@@ -70,7 +70,7 @@ nav {
     position: relative;
     margin: 0 auto;
     text-align: left;
-    top: 155px;
+    top: 140px;
     width: 600px;
     padding: 20px;
     padding-top: 40px;
@@ -159,9 +159,7 @@ p {
 }
 
 #signupb:hover, #backb:hover {
-	background-color: dimgrey;
-	border-color: #1c1c1c;
-	color: snow;
+	transform: translate(0px, 2px);
 }
 
 #modal1 {

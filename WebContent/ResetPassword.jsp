@@ -57,6 +57,7 @@
             
                 <br><br>
                 <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a>
+                
                 <br><br>           
             
         </div>

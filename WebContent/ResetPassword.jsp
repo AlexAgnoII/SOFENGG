@@ -35,7 +35,7 @@
         
         <div id="changepwfeed">
             <!-- insert form below -->
-                    <br>
+                    <br><h1 class="center-align">Reset Password</h1>
                     <!-- TENTATIVE: constraint divs -->
                     <p class="center-align" id="error1">Passwords does not match</p>
                     <p class="center-align" id="error2">Password is the same with your old password</p>
@@ -56,7 +56,8 @@
                     </div>
             
                 <br><br>
-                <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a>
+                <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a> <br>
+                <a id="btnBack" class="center-align">Back</a>
                 
                 <br><br>           
             

@@ -32,12 +32,17 @@
             </div>
         </nav>
         
+        
         <div id="changepwfeed">
             <!-- insert form below -->
                     <br>
                     <!-- TENTATIVE: constraint divs -->
+<!--
                     <p class="center-align" id="error1">Passwords does not match</p>
                     <p class="center-align" id="error2">Password is the same with your old password</p>
+-->
+            
+                    <h1>Change Password</h1>
                     
                     <p class="ltags">Current Password</p>	
                     <input type="password" id="oPassword" name="oPassword">
@@ -62,7 +67,8 @@
                     </div>
             
                 <br><br>
-                <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a>
+                <a class="waves-effect waves-light btn" id="ResetPassword">Change Password</a> <br>
+                <a id="btnBack">Back</a>
                 <br><br>           
             
         </div>

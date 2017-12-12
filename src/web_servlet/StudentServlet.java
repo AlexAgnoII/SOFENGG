@@ -268,6 +268,8 @@ public class StudentServlet extends HttpServlet {
 		
 		else {
 			System.out.println("ERROR! (RETRIEVESTUDENT in studentserlvet");
+			System.out.println("No cookies found");
+			response.sendRedirect("HomePage.jsp");
 		}
 		System.out.println("***********************************************************************************");
 	}

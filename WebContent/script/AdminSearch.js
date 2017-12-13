@@ -26,6 +26,8 @@ function getCollegeValue(collegeAbbreviate){
 function loadStudents(studentName, collegeVal){
 	
 	var searchFeed = document.getElementById("tableDetails");
+	$('tr.tableDataRow').remove();
+	
 	$.ajax({
  	    context: this,
         url:'search',
@@ -34,13 +36,11 @@ function loadStudents(studentName, collegeVal){
         type: 'GET',
         cache:false,
         success: function(data){
-        	while (searchFeed.secondChild) 
-        		searchFeed.removeChild(searchFeed.secondChild);
         	
         	// Append html snippet
     	    $(searchFeed).append(data);
 
-            $('#searchResultText').text("Found " + $(searchFeed).children().length + " students");
+            $('#searchResultText').text("Found " + $("tbody").children().length + " students");
     	    
     	},
         error:function(){
@@ -53,6 +53,7 @@ function loadStudents(studentName, collegeVal){
 function loadQualifiedStudents(studentName, collegeVal){
 	
 	var searchFeed = document.getElementById("tableDetails");
+	$('tr.tableDataRow').remove();
 	$.ajax({
  	    context: this,
         url:'searchQualifiedStudents',
@@ -60,12 +61,11 @@ function loadQualifiedStudents(studentName, collegeVal){
         type: 'GET',
         cache:false,
         success: function(data){
-        	while (searchFeed.secondChild) 
-        		searchFeed.removeChild(searchFeed.secondChild);
+        	$( "tr:first" ).nextAll().remove();
         	
         	// Append html snippet
     	    $(searchFeed).append(data);
-            $('#searchResultText').text("Found " + $(searchFeed).children().length + " students");
+            $('#searchResultText').text("Found " + $("tbody").children().length + " students");
     	},
         error:function(){
             console.log("URL get search does not exist");

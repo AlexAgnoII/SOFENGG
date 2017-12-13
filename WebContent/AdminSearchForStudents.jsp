@@ -106,7 +106,7 @@
                         <th class="tableName center-align white-text">Name</th>
                         <th class="tableCollege center-align white-text">College</th>
                         <th class="tableAward center-align white-text">Award</th>
-                        </tr>
+                    </tr>
                         
                     <!-- <tr>
                         <td class="tableIdNum center-align">11436166</td>

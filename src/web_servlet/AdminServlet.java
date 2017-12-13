@@ -179,7 +179,7 @@ public class AdminServlet extends HttpServlet {
 			
 	    for(Student s : studentList){
 
-			htmlStudentList += "<tr>" + 
+			htmlStudentList += "<tr class = 'tableDataRow'>" + 
 				               "	<td class='tableIdNum center-align'>"   + s.getStudentId() + "</td>" +
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
@@ -217,7 +217,7 @@ public class AdminServlet extends HttpServlet {
 		ArrayList<Student> studentList = AdminService.getStudentsEligibleAward(name, collegeVal);
 			
 	    for(Student s : studentList){
-			htmlStudentList += "<tr>" + 
+			htmlStudentList += "<tr class = 'tableDataRow'>" + 
 				               "	<td class='tableIdNum center-align'>"   + s.getStudentId() + "</td>" +
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +

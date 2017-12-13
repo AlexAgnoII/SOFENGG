@@ -1,4 +1,3 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
@@ -61,7 +60,7 @@
                 <li>
                   <div class="collapsible-header active"><i class="large material-icons">star</i>PROFILE OVERVIEW</div>
                   <div class="collapsible-body active">
-                      
+                      <a class="waves-effect waves-light btn" id="printBtn">PRINT YOUR FORM</a>
                       <p id="stname">${loggedUser.firstName} ${loggedUser.middleName} ${loggedUser.lastName}</p>
                       <p class="profow">${loggedUser.studentId}</p>
                       <p class="profow">${loggedUser.email}</p>

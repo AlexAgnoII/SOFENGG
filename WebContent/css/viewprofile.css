@@ -359,3 +359,19 @@ form#intInv input.threeipyear {
     font-size: 12px; 
     border-color: transparent;  
 }
+#printBtn{
+	margin-top: -15px;
+    background-color: #006f4a;
+    color: #fff;
+    line-height: 180%;
+    height: 30px;
+    //padding: 0 20px;
+    float: right;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 5px 5px -6px #333;
+    border-style: solid;
+    border-width: 0.6px;
+    border-radius: 2px;
+    border-color: dimgrey;
+}

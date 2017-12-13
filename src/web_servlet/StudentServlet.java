@@ -35,7 +35,8 @@ import service.StudentService;
 		                   "/add", //Student
 		                   "/viewByStudent",
 		                   "/addIntInv", //Student
-		                   "/addExtInv"} //Student
+		                   "/addExtInv", // Student
+		                   "/displayStudentData"} //Student
 )
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -53,7 +54,8 @@ public class StudentServlet extends HttpServlet {
 		System.out.println("I am called. (DoGet data servlet)");
 		switch(request.getServletPath()) {
 		    //case "/view2edit":
-			case "/viewByStudent": retrieveStudent(request, response); break; 
+			case "/viewByStudent"	  : retrieveStudent(request, response); break; 
+			case "/displayStudentData": displayStudentData(request, response); break; 
 			default: System.out.println("ERROR(Inside dataServlet *doGet*): url pattern doesn't match existing patterns.");
 		}
 	}
@@ -268,6 +270,111 @@ public class StudentServlet extends HttpServlet {
 		
 		else {
 			System.out.println("ERROR! (RETRIEVESTUDENT in studentserlvet");
+			System.out.println("No cookies found");
+			response.sendRedirect("HomePage.jsp");
+		}
+		System.out.println("***********************************************************************************");
+	}
+	
+
+	/**
+	 * Retrieves the data of the user currently logged in.
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void displayStudentData(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie[] cookies = request.getCookies();
+		Cookie userCookie = null;
+		Student student = null;
+		ArrayList<Relative> relativeList = null, 
+				            siblingList = null;
+		Relative mother = null, father = null;
+		ArrayList<Relative> sibilings = null;
+		ArrayList<Involvement> internalList = null,
+				               externalList = null;
+		int siblingCount = 0;
+		int internalSize = 0;
+		int externalSize = 0;
+		
+		System.out.println("************************************Retrieve User (User side)**********************************");
+		for (Cookie c: cookies) {
+			if(c.getName().equals("USER")) {
+				System.out.println("Cookie found!");
+				System.out.println("Cookie name: " +  c.getName());
+				System.out.println("Cookie Value: " + c.getValue());
+				userCookie = c;
+			}
+		}
+		
+		if(userCookie != null){
+			student = StudentService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
+			System.out.println("Relatives:");
+			relativeList = StudentService.getRelatives(Integer.parseInt(userCookie.getValue()));
+			internalList = StudentService.getSpecificStudentInvolvement(Integer.parseInt(userCookie.getValue()), 1);
+			externalList = StudentService.getSpecificStudentInvolvement(Integer.parseInt(userCookie.getValue()), 0);
+			
+			if(relativeList != null) {
+				for(Relative r : relativeList) {
+					System.out.println(r.toString());
+				}
+				mother = StudentService.getMother(relativeList);
+			    father = StudentService.getFather(relativeList);
+			    siblingList = StudentService.getSiblings(relativeList);
+			    siblingCount = StudentService.getSiblingCount(relativeList);
+			}
+			else {
+				System.out.println("No relatives.");
+			}
+			
+			if(mother == null) 
+				System.out.println("No mother.");
+			if(father == null)
+				System.out.println("No father");
+			if (siblingList == null || siblingList.size() ==0)
+				System.out.println("No Siblings.");
+			
+			
+			System.out.println("Involvements:");
+			if(internalList != null) {
+				System.out.println("Internal: ");
+				for(Involvement i : internalList) {
+					System.out.println(i.toString());
+				}
+				internalSize = StudentService.getCountInvolvements(internalList);
+			}
+			else System.out.println("No internal");
+			
+			System.out.println();
+			if(externalList != null) {
+				System.out.println("External:");
+				for(Involvement i : externalList) {
+					System.out.println(i.toString());
+				}
+				externalSize = StudentService.getCountInvolvements(externalList);
+			}
+			else System.out.println("No external.");
+			
+			
+			request.setAttribute("loggedUser", student);
+		    request.setAttribute("relativeList", relativeList);
+			request.setAttribute("siblingList", siblingList);
+			request.setAttribute("mother", mother);
+			request.setAttribute("father", father);
+			request.setAttribute("siblingSize", siblingCount-1); //deduct 1 due to index for setting the fields.
+			request.setAttribute("internalList", internalList);
+			request.setAttribute("externalList", externalList);
+			request.setAttribute("internalSize", internalSize-1); //deduct 1 due to index for setting the fields.
+			request.setAttribute("externalSize", externalSize-1); //deduct 1 due to index for setting the fields.
+			System.out.println("Viewing via printStudentData..");
+			
+			request.getRequestDispatcher("PrintStudentData.jsp").forward(request, response);
+
+		}
+		
+		else {
+			System.out.println("ERROR! (DISPLAYSTUDENTDATA in studentserlvet");
 			System.out.println("No cookies found");
 			response.sendRedirect("HomePage.jsp");
 		}

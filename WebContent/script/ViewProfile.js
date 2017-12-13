@@ -259,6 +259,8 @@ function addFieldsInvolvement(placeYear, //Div id to append year
 }
 
 $(document).ready(function() {
+	 $("#printBtn").printPage();
+	
 	FBctr = getDynamicCount($("form#FBform div.wrap div.f input").last().attr("name"));
 	INctr = getDynamicCount($("form#intInv div.wrap div.f input").last().attr("name"));
 	EXctr = getDynamicCount($("form#extInv div.wrap div.f input").last().attr("name"));

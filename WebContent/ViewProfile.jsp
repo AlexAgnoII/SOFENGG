@@ -5,6 +5,7 @@
         
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="http://www.position-absolute.com/creation/print/jquery.printPage.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
         <link rel = "stylesheet" type="text/css" href="css/viewprofile.css">
@@ -60,7 +61,7 @@
                 <li>
                   <div class="collapsible-header active"><i class="large material-icons">star</i>PROFILE OVERVIEW</div>
                   <div class="collapsible-body active">
-                      <a class="waves-effect waves-light btn" id="printBtn">PRINT YOUR FORM</a>
+                      <a class="waves-effect waves-light btn" id="printBtn" href = 'displayStudentData'>PRINT YOUR FORM</a>
                       <p id="stname">${loggedUser.firstName} ${loggedUser.middleName} ${loggedUser.lastName}</p>
                       <p class="profow">${loggedUser.studentId}</p>
                       <p class="profow">${loggedUser.email}</p>

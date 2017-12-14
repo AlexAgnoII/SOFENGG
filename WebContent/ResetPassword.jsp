@@ -24,7 +24,7 @@
 		
         <nav>
             <div class="nav-wrapper">
-               <a class='brand-logo center' data-activates='dp2' href='#' id="tbox">
+               <a class='brand-logo center' data-activates='dp2' href='HomePage.jsp' id="tbox">
                 <div id="wrapper">
                     <img src="css/arrow.png" id="arrow">
                     <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>
@@ -57,7 +57,7 @@
             
                 <br><br>
                 <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a> <br>
-                <a id="btnBack" class="center-align">Back</a>
+                <a id="btnBack" class="center-align" href="HomePage.jsp">Back</a>
                 
                 <br><br>           
             

@@ -214,7 +214,7 @@ public class PasswordServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String token = request.getParameter("token");
 		String email = "NONE";
-		
+		System.out.println("Token: " + token);
 		email = StudentService.convertTokenToEmail(token);
 		
 		//Remove session attribute "U"

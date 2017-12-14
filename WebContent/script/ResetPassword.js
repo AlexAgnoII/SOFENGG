@@ -56,17 +56,15 @@
 		      type:'POST',
 		      cache:false,
 		      success: function(data){
-		        console.log("Success ResetPassword.js")
-
+		        console.log("Success ResetPassword.js");
 	        	document.getElementById('modver').innerHTML = data;
 		        $('#modal1').modal("open");
-		        
-		        //Show modal that its successful.
-		      },
+		      },	
 		      
-		      error:function(){
+		      error:function(error){
 		    	//This is server error, just add something that states that server is having issue.
 		      	console.log("error ResetPassword.js");
+		      	console.log(error);
 	        	document.getElementById('modver').innerHTML = "Update was unsuccessful; Please try again";
 		        $('#modal1').modal("open");
 		      }

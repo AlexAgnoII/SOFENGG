@@ -13,7 +13,7 @@ function getCollegeValue(collegeAbbreviate){
 					    break;
 		case "CLA":     return "College of Liberal Arts";
 					    break;
-		case "COS":     return "College of Studies";
+		case "COS":     return "College of Science";
 					    break;
 		case "SOE":     return "School of Economics";
 					    break;

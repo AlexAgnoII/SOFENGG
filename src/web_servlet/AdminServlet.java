@@ -12,6 +12,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans_model.Post;
 import beans_model.Student;
@@ -35,29 +36,69 @@ public class AdminServlet extends HttpServlet {
     public AdminServlet() {
         super();
     }
-
+    
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoGet  AdminServlet)");
-		switch(request.getServletPath()) {
-	    	case "/viewByAdmin"			   : retrieveStudentForAdmin(request, response); break;
-			case "/search"				   : search(request, response); break;
-			case "/searchQualifiedStudents": searchQualifiedStudents(request, response); break;
-			case "/getPosts"			   : getPosts(request, response); break;
-	    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern doesn't match existing patterns.");
-		}
+		
+		if(loggedAdmin(request))
+			switch(request.getServletPath()) {
+		    	case "/viewByAdmin"			   : retrieveStudentForAdmin(request, response); break;
+				case "/search"				   : search(request, response); break;
+				case "/searchQualifiedStudents": searchQualifiedStudents(request, response); break;
+		    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern doesn't match existing patterns.");
+			}
+		else {
+			// For the other functions that other users also access
+			switch(request.getServletPath()) {
+				case "/getPosts": getPosts(request, response); break;
+		    	default			: System.out.println("Redirecting to HomePage.jsp..");
+	         	 				  response.sendRedirect("HomePage.jsp");
+
+			}
+       }
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("I am called. (DoPost  AdminServlet)");
-		switch(request.getServletPath()) {
-			case "/createPost":  createPost(request, response); break;
-			case "/updatePost":  updatePost(request, response); break;
-			default: System.out.println("ERROR(Inside AdminServlet *doPost*): url pattern doesn't match existing patterns.");
-		}
+		if(loggedAdmin(request))
+			switch(request.getServletPath()) {
+				case "/createPost":  createPost(request, response); break;
+				case "/updatePost":  updatePost(request, response); break;
+				default: System.out.println("ERROR(Inside AdminServlet *doPost*): url pattern doesn't match existing patterns.");
+			}
+		else {
+          	 System.out.println("Redirecting to HomePage.jsp..");
+          	 response.sendRedirect("HomePage.jsp");
+        }
 	}
 
+    private boolean loggedAdmin(HttpServletRequest req){
+    	System.out.println("Checking if an admin is logged in.");
+		//check if session attribute exists
+		HttpSession theSession = req.getSession();
+		Boolean admin = false;
+		System.out.println("Session attribute(UN): " + theSession.getAttribute("UN"));
+		
+		//Check if the cookie "USER" exists.
+		Cookie[] cookieList = req.getCookies();
+		if(cookieList != null) {
+			for(Cookie c : cookieList) {
+				if(c.getName().equals("ADMIN")) {
+					System.out.println("ADMIN Cookie found!");
+						
+					if(c.getMaxAge() != 0){
+						admin = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		return admin;
+    }
+    
 	/**
 	 * Updates a post by the admin
 	 * @param request
@@ -157,6 +198,24 @@ public class AdminServlet extends HttpServlet {
 		
 	}
 
+	/** Converts the college to its abbreviated form
+	 * 
+	 * @param college
+	 * @return The abbreviated college text
+	 */
+	private String getAbbreviatedCollege(String college){
+		switch(college){
+			case "College of Computer Studies": return "CCS";
+			case "College of Business":  		return "RVRCOB";
+			case "College of Education":  		return "BAGCED";
+			case "College of Engineering":  	return "GCOE";
+			case "College of Liberal Arts": 	return "CLA";
+			case "College of Science":      	return "COS";
+			case "School of Economics": 		return "SOE";
+		    default   :     					return college;
+		}
+	}
+		
 	/**
 	 * Searches for and retrieves the necessary information searched by admin.
 	 * @param request
@@ -184,7 +243,7 @@ public class AdminServlet extends HttpServlet {
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
 																		      s.getLastName()   + "</td>" +
-				               "	<td class='tableCollege center-align'>" + s.getCollege() +"</td>" +
+				               "	<td class='tableCollege center-align'>" + getAbbreviatedCollege(s.getCollege()) +"</td>" +
 				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>" +
 				               "</tr>";
 	    }
@@ -222,7 +281,7 @@ public class AdminServlet extends HttpServlet {
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
 																		      s.getLastName()   + "</td>" +
-				               "	<td class='tableCollege center-align'>" + s.getCollege() +"</td>" +
+				               "	<td class='tableCollege center-align'>" + getAbbreviatedCollege(s.getCollege()) +"</td>" +
 				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>" +
 				               "</tr>";
 	    }

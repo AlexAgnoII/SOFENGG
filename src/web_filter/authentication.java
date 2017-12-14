@@ -138,7 +138,6 @@ public class authentication implements Filter {
 								 }
 								 break; 
 			/*Private Pagges*/
-			case "/UserAnnouncements.jsp": //if cookie exists, continue
 			case "/ViewProfile.jsp":
 			case "/UserHomePage.jsp": //if cookie exists, continue
 								System.out.println("Access user pages..");

@@ -115,7 +115,6 @@ public class authentication implements Filter {
 		switch(url) {
 		    /*Public Pagges*/
 		    case "/Verification.jsp":
-		    case "/Verified.html":
 		    case "/ResetPassword.jsp":
 		    case "/ResetPasswordEmail.html":
 		    case "/Signup.jsp":
@@ -168,6 +167,7 @@ public class authentication implements Filter {
 				                }
 								 break;
 		    //Both pages has this
+		    case "/Verified.html":
 			case "/ChangePassword.jsp": //if user/admin exist, continue
 				                         if(admin || user) {
 							               	   System.out.println("Continue on this page..");

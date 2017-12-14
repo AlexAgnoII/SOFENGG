@@ -13,13 +13,14 @@
 		    	  console.log(data);
 		    	  //User exist, no constraint.
 		    	  if(data === "EXISTS") {
-		    		  console.log("exists")
+		    		  console.log("exists");
+		    		  document.location.href = 'EmailSent.html';
 		    		  return true;
 		    	  }
 		    	  
 		    	  //User does NOT exist, put your magic here.
 		    	  else if(data === "DOES-NOT-EXIST") {
-		    		  console.log("does not exists")
+		    		  console.log("does not exists");
 		    		  alert("User does not exist");
 		    		  return false;
 		    	  }

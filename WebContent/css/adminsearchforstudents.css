@@ -60,6 +60,7 @@ nav {
     width: 45%;
     margin-top: 0px;
     color: #1f1f1f;
+    position: relative;
 }
 
 #tbox:hover #title {
@@ -372,7 +373,6 @@ ul.dropdown-content.select-dropdown li.disabled span {
 	font-size: 11px;
     color: #888888; 
     font-family: "Montserrat";
- 
 }
 
 /*This is for the select tag size customization.*/
@@ -436,9 +436,8 @@ div.input-field {
 
 #tableHeader {
     background: #006f4a;
-    height: 50px;
+    height: 45px;
     margin: auto;
-    padding-top: 2px;
 }
 
 #tableDetails {

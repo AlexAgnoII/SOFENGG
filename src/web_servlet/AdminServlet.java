@@ -157,6 +157,24 @@ public class AdminServlet extends HttpServlet {
 		
 	}
 
+	/** Converts the college to its abbreviated form
+	 * 
+	 * @param college
+	 * @return The abbreviated college text
+	 */
+	private String getAbbreviatedCollege(String college){
+		switch(college){
+			case "College of Computer Studies": return "CCS";
+			case "College of Business":  		return "RVRCOB";
+			case "College of Education":  		return "BAGCED";
+			case "College of Engineering":  	return "GCOE";
+			case "College of Liberal Arts": 	return "CLA";
+			case "College of Science":      	return "COS";
+			case "School of Economics": 		return "SOE";
+		    default   :     					return college;
+		}
+	}
+		
 	/**
 	 * Searches for and retrieves the necessary information searched by admin.
 	 * @param request
@@ -184,7 +202,7 @@ public class AdminServlet extends HttpServlet {
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
 																		      s.getLastName()   + "</td>" +
-				               "	<td class='tableCollege center-align'>" + s.getCollege() +"</td>" +
+				               "	<td class='tableCollege center-align'>" + getAbbreviatedCollege(s.getCollege()) +"</td>" +
 				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>" +
 				               "</tr>";
 	    }
@@ -222,7 +240,7 @@ public class AdminServlet extends HttpServlet {
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
 																		      s.getLastName()   + "</td>" +
-				               "	<td class='tableCollege center-align'>" + s.getCollege() +"</td>" +
+				               "	<td class='tableCollege center-align'>" + getAbbreviatedCollege(s.getCollege()) +"</td>" +
 				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>" +
 				               "</tr>";
 	    }

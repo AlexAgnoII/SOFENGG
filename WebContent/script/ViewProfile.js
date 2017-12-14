@@ -372,16 +372,6 @@ $(document).ready(function() {
 			$('#FBsave').hide();
 			$('#FBcancel').hide();
 			$('#addSibling').hide();
-			
-			$('#papa').val('Papa Bear');
-			$('#mama').val('Mama Bear');
-			$('#kapatid').val('Ate Bear');
-			$('#papawork').val('Bear');
-			$('#mamawork').val('Bear');
-			$('#kapatidwork').val('Bear');
-			$('#papaday').val('2000-12-01');
-			$('#mamaday').val('2000-12-01');
-			$('#kapatidday').val('2000-12-01');
 	})
 
 	$('#FBsave').click(function() {

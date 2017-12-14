@@ -136,8 +136,7 @@ public class authentication implements Filter {
 									 chain.doFilter(request, response);
 								 }
 								 break; 
-			/*Private Pagges*/
-			case "/ViewProfile.jsp":
+			/*Private Pages*/
 			case "/UserHomePage.jsp": //if cookie exists, continue
 								System.out.println("Access user pages..");
 				                if(user) {
@@ -167,6 +166,7 @@ public class authentication implements Filter {
 				                }
 								 break;
 		    //Both pages has this
+			case "/ViewProfile.jsp":
 			case "/ChangePassword.jsp": //if user/admin exist, continue
 				                         if(admin || user) {
 							               	   System.out.println("Continue on this page..");

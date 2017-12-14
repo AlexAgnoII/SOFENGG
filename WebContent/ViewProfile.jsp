@@ -170,39 +170,39 @@
 			                        <c:when test="${empty relativeList}"> <!-- Conditional to check if relative list is empty or not. -->
 			                            <div class="f" id="FBname">
 			                                <p class="ltags">Father's Name</p>
-			                                <input type="text" id="papa" class="ipfield threeip" name="dadName-0" value="Papa bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="dadName-0" value="Papa bear" disabled>
 			                                
 			                                <p class="ltags">Mother's Name</p>
-			                                <input type="text" id="mama" class="ipfield threeip" name="momName-0" value="Mama bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="momName-0" value="Mama bear" disabled>
 		
 			                                <p class="ltags">Sibling/s' Name</p>
-			                                <input type="text" id="kapatid" class="sname ipfield threeip" name="sibName-0-0" value="Ate bear" disabled>
+			                                <input type="text" class="sname ipfield threeip" name="sibName-0-0" value="Ate bear" disabled>
 			                                
 			                                <!--<p id="FBname"></p>-->
 			                            </div>
 			                            
 			                            <div class="f" id="FBocc">
 			                                <p class="ltags">Occupation</p>
-			                                <input type="text" id="papawork" class="ipfield threeip" name="dadWork-0" value="Bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="dadWork-0" value="Bear" disabled>
 			                                
 			                                <p class="ltags">Occupation</p>
-			                                <input type="text" id="mamawork" class="ipfield threeip" name="momWork-0" value="Bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="momWork-0" value="Bear" disabled>
 			                                
 			                                <p class="ltags">Occupation</p>
-			                                <input type="text" id="kapatidwork" class="swork ipfield threeip" name="sibWork-0-0" value="Bear" disabled>
+			                                <input type="text" class="swork ipfield threeip" name="sibWork-0-0" value="Bear" disabled>
 		
 			                                <!--<p id="FBocc"></p>-->
 			                            </div>
 			                            
 			                            <div class="f" id="FBbday">
 			                                <p class="ltags">Birthday</p>
-			                                <input type="date" id="papaday" class="ipfield threeip" name="dadBday-0" value="2000-12-01" disabled>
+			                                <input type="date" class="ipfield threeip" name="dadBday-0" value="2000-12-01" disabled>
 			                                
 			                                <p class="ltags">Birthday</p>
-			                                <input type="date" id="mamaday" class="ipfield threeip" name="momBday-0" value="2000-12-01" disabled>
+			                                <input type="date" class="ipfield threeip" name="momBday-0" value="2000-12-01" disabled>
 		
 			                                <p class="ltags">Birthday</p>
-			                                <input type="date" id="kapatidday" class="sbday ipfield threeip" name="sibBday-0-0" value="2000-12-01" disabled>
+			                                <input type="date" class="sbday ipfield threeip" name="sibBday-0-0" value="2000-12-01" disabled>
 			                                <!-- <p id="FBbday"></p>-->
 			                            </div>
 			                   		</c:when>

@@ -10,7 +10,7 @@ function enterKeyEvent(event) {
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
+  return email.length <= 50 && re.test(email);
 }
 
 function duplicateHandler(data) {
@@ -141,7 +141,7 @@ function removeExtraWhiteSpaces(value) {
  * @returns true or false
  */
 function stringIsWord(value) {
-	return /^[a-z\-\s]+$/i.test(value) && !/^[\-\s]+$/.test(value);
+	return value.length <=50 && /^[a-z\-\s]+$/i.test(value) && !/^[\-\s]+$/.test(value);
 }
 
 /**
@@ -205,15 +205,25 @@ function checkEmailField(emailField) {
             $('#emailerrorPlaceHolder').show();
             $('#emailerror1').hide();
             $('#emailerror2').hide();
+            $('#emailerror3').hide();
             $('#email').css("border-color", "rgba(0, 0, 0, 0.3)");
 		} 
 		
 	}
+	
+	else if(value.length > 50){
+		$('#emailerrorPlaceHolder').hide();
+        $('#emailerror1').hide();
+        $('#emailerror3').show();
+        $('#email').css("border-color", "indianred");
+	}
+	
 	//If not follow, do front end magic to do show this.
 	else {
 		//spanEmail.innerHTML = "Must be valid email."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
         $('#emailerrorPlaceHolder').hide();
         $('#emailerror1').show();
+        $('#emailerror3').hide();
         $('#email').css("border-color", "indianred");
 	}
 }
@@ -316,6 +326,12 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	if(stringIsWord(lName)) {
 		
 	////make some sort of indicator near field that it is done correctly.
+	}
+	
+	else if(lname.length > 50){
+		$('#lnameerror').css("color", "indianred");
+        $('#lastName').css("border-color", "indianred");
+		satisfied = false;
 	}
 	else {
 	////make some sort of indicator near field that it is done incorrectly.

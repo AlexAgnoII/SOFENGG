@@ -50,10 +50,3 @@
 		});		
 	});
 	
-	 $(document).ready(function(){
-		    $('#modal1').modal({
-		    	endingTop: '41.5%'
-		    });
-		  });
-	 
-	        

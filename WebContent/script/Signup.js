@@ -415,7 +415,7 @@ $("document").ready(function(idNum, password, fName, lName) {
     	   fName && 
     	   lName &&
     	   courseName &&
-    	   college != "" &&
+    	   college != "0" &&
     	   password2 === password ){
         	
         	//if all fields valid, proceed. if not, place front end effects of what field is not ok.

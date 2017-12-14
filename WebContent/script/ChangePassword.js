@@ -105,7 +105,7 @@
 		      cache:false,
 		      success: function(data){
 		    	  //Email sent
-		        alert("Success ChangePassword.js")
+		     //   alert("Success ChangePassword.js")
 		      },
 		      
 		      error:function(){
@@ -282,7 +282,7 @@
     			}
     			
     			if(newPass != newPassRe) {
-    				alert("Re and New pass is equal so no continuino")
+    				//alert("Re and New pass is equal so no continuino")
     				PROCEED_CHANGING_PASS = false;
     			}
     			
@@ -294,14 +294,14 @@
             		if(password != newPass && FLAG_IS_MY_PASS)
             			submitNewPassword(newPass);
             		else {
-            			alert("Current and New Password matches, not proceeding po.");
+            		//	alert("Current and New Password matches, not proceeding po.");
             			$('#npwError2').show();
                         $('#newPassword').css("border-color", "indianred");
             		}
             	}
             			
             	else {
-            		alert("Constraint password did not allow you through");
+            		//alert("Constraint password did not allow you through");
             	}	
     		});
     		

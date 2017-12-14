@@ -374,3 +374,50 @@ form#intInv input.threeipyear {
     border-radius: 2px;
     border-color: dimgrey;
 }
+
+.material-tooltip {
+    font-size: 10px;
+ 	height: 20px;
+}
+
+#pAccumulation {
+    float: left;
+    width: 90px;
+}
+
+#iAccumulation {
+    color: darkslategray;
+    float: left;
+    font-size: 12px;
+    cursor: help;
+    position: relative;
+    margin-top: 15px
+}
+
+#iInternalInvolvements {
+    color: darkslategray;
+    float: left;
+    font-size: 12px;
+    cursor: help;
+    position: relative;
+    margin-top: -10px
+}
+
+#IIinfo {
+    width: 75px;
+    float: right;
+}
+
+#iExternalInvolvements {
+    color: darkslategray;
+    float: left;
+    font-size: 12px;
+    cursor: help;
+    position: relative;
+    margin-top: -10px
+}
+
+#EIinfo {
+    width: 75px;
+    float: right;
+}

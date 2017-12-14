@@ -62,6 +62,14 @@
                 <br><br>           
             
         </div>
+        
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+            	<br>
+                <p id="modver">--Status--</p>
+            </div>
+        </div>
+        
         <input id="token" type="hidden" name="token" value="${U}">
          <!-- Originally from head. -->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>

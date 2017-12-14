@@ -84,29 +84,35 @@
                      <form id="PIform" action="updatePersonal" method="POST">
 	                     <p class="ltags">Address</p> 
 	                     <input id="address" type="text" class="ipfield fullip" name="address" value="${loggedUser.address}" disabled placeholder="Ex: #10 Scout Fire st, Barangay Always Ready">
-	
+						<span id="span" class="iSpan">Hi</span><p> </p>
 	                     <div class="wrap">
 	                        <div class="f">
-	                            <p class="ltags">City</p> <span id="citySpan" class="iSpan"></span><p> </p>
+	                            <p class="ltags">City</p>
 	                            <input id="city" type="text" class="ipfield halfip" name="city" value="${loggedUser.city}" disabled placeholder="Ex: Quezon City, Makati city, etc.">
-	
-	                            <p class="ltags">Country</p> <span id="countrySpan" class="iSpan"></span><p> </p>
+								<span id="citySpan" class="iSpan"></span><p> </p>
+								
+	                            <p class="ltags">Country</p> 
 	                            <input id="country" type="text" name="country" class="ipfield halfip" value="${loggedUser.country}" disabled placeholder="Ex: Philippines, USA, Singapore, etc.">
+								<span id="countrySpan" class="iSpan"></span><p> </p>
 	
-	                            <p class="ltags">Mobile Number</p> <span id="cellSpan" class="iSpan"></span><p> </p>
+	                            <p class="ltags">Mobile Number</p> 
 	                            <input id="cell" type="text" class="ipfield halfip" name="cell" value="${loggedUser.celNo}" disabled placeHolder="Ex: 09171234567 (11-digits)">
+								<span id="cellSpan" class="iSpan"></span><p> </p>
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Province</p> <span id="provSpan" class="iSpan"></span><p> </p>
+	                            <p class="ltags">Province</p> 
 	                            <input id="prov" type="text" class="ipfield halfip" name="prov" value="${loggedUser.province}" disabled placeholder="Ex: Batangas, Manhattan, etc.">
-	
-	                            <p class="ltags">Zip Code</p> <span id="zipSpan" class="iSpan"></span><p> </p>
+								<span id="provSpan" class="iSpan"></span><p> </p>
+								
+	                            <p class="ltags">Zip Code</p> 
 	                            <input id="zip" type="text" class="ipfield halfip" name="zip" value="${loggedUser.zip}" disabled placeholder="Ex: 1101, 2231, 1000, etc">
-	
-	                            <p class="ltags">Telephone Number</p> <span id="telSpan" class="iSpan"></span><p> </p>
+								<span id="zipSpan" class="iSpan"></span><p> </p>
+								
+	                            <p class="ltags">Telephone Number</p> 
 	                            <input id="tel" type="text" class="ipfield halfip" name="tel" value="${loggedUser.telNo}" disabled placeholder="Ex: 108999, etc">
-	                        </div>
+								<span id="telSpan" class="iSpan"></span><p> </p>
+							</div>
 	                    </div>
 	
 	                    <!-- <br><br><li><div class="divider"></div></li><br> -->  
@@ -116,22 +122,25 @@
 	                            <p class="ltags">Birthday</p>
 	                            <input type="date" id = 'bDayField' class = "ipfield threeip" name="bday" value="${loggedUser.birthday}" disabled>
 	
-	                            <p class="ltags">Civil Status</p> <span id="statusSpan" class="iSpan"></span><p> </p>
+	                            <p class="ltags">Civil Status</p> 
 	                            <input id="status" type="text" class="ipfield threeip" name="civil" value="${loggedUser.civil}" disabled placeholder="Single, Married">
-	                        </div>
+								<span id="statusSpan" class="iSpan"></span><p> </p>
+							</div>
 	
 	                        <div class="f">
 	                            <p class="ltags">Age</p> 
 	                            <input type="text" id="specialAge" name="age" value="${loggedUser.age}" disabled>
 	
-	                            <p class="ltags">Nationality</p> <span id="nationSpan" class="iSpan"></span><p> </p>
+	                            <p class="ltags">Nationality</p> 
 	                            <input id="citizen" type="text" class="ipfield threeip" name="citizen" value="${loggedUser.citizen}" disabled placeholder="Ex: Filipino, American, Chinese, etc.">
-	                        </div>
+								<span id="nationSpan" class="iSpan"></span><p> </p>
+						   </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Sex</p> <span id="genderSpan" class="iSpan"></span><p> </p>
+	                            <p class="ltags">Sex</p> 
 	                            <input id="gender" type="text" class="ipfield threeip" name="gender" value="${loggedUser.gender}" disabled placeholder="Male or Female">
-
+								<span id="genderSpan" class="iSpan"></span><p> </p>
+								
 	                        </div>
 	                     </div>
 	                     

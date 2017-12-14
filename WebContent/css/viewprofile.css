@@ -337,9 +337,14 @@ form#intInv input.threeipyear {
 }
 
 .iSpan{
-    font-size: 13px;
+    margin-left: 5px;
+    font-size: 8px;
     color: indianred;
     font-style: italic;
+}
+
+#span{
+	display:none;
 }
 
 #specialAge {

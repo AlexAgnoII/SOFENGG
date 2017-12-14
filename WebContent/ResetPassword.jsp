@@ -56,8 +56,8 @@
                     </div>
             
                 <br><br>
-                <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a> <br>
-                <a id="btnBack" class="center-align" href="HomePage.jsp">Back</a>
+                    <a class="waves-effect waves-light btn" id="ResetPassword">Reset Password</a>
+                    <a class="waves-effect waves-light btn" id="btnBack" href="HomePage.jsp">Back</a>
                 
                 <br><br>           
             

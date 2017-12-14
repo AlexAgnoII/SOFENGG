@@ -54,7 +54,7 @@ public class PasswordServlet extends HttpServlet {
 	}
 	
 
-	//TODO Updaate changepassword so that it would support ChangePassword.js (send new password) 
+
 	private void changePassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		PasswordAuthentication p = new PasswordAuthentication();

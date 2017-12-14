@@ -263,8 +263,10 @@
                     <div class="collapsible-body">
                         <a class="waves-effect waves-light btn" id="FBedit">EDIT</a>
                         
-                     
-                        <p class="ltags">Accumulation</p>
+                        
+                            <p class="ltags" id="pAccumulation">Accumulation</p>
+                            <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="Total units failed." id="iAccumulation">info_outline</i>
+                        
                         <input type="text" id="failed" name="failed" value="0" disabled>
                 
                         
@@ -275,7 +277,10 @@
                     <div class="collapsible-header"><i class="large material-icons">book</i>INTERNAL INVOLVEMENT</div>
                     
                     <div class="collapsible-body">
-                        <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
+                        <div id="IIInfo">
+                            <i class="tiny material-icons tooltipped" data-position="left" data-delay="50" data-tooltip="Involvements within the university (organizations, etc.)" id="iInternalInvolvements">info_outline</i>
+                            <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
+                        </div>
                         <a class="waves-effect waves-light btn addMoreInvolvments" id="imInternal">Add involvement</a>
                         <form action = "addIntInv" method = "POST" id = "intInv">
 	                        <c:choose>
@@ -338,7 +343,10 @@
                     <div class="collapsible-header"><i class="large material-icons">nature_people</i>EXTERNAL INVOLVEMENT</div>
                     
                     <div class="collapsible-body">
-                        <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
+                        <div id="EIInfo">
+                            <i class="tiny material-icons tooltipped" data-position="left" data-delay="50" data-tooltip="Involvements outside the university (seminars, contests, etc.)" id="iExternalInvolvements">info_outline</i>
+                            <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
+                        </div>
                         <a class="waves-effect waves-light btn addMoreInvolvments" id="imExternal">Add involvement</a>
                         <form action = "addExtInv" method = "POST" id = "extInv">
                         <c:choose>

@@ -73,21 +73,21 @@
 					<tr>
 						<td><p>Father:</p></td>
 						<td><p>${father.name}</p></td>
-						<td><p>${father.age}</p></td>
+						<td><p>${father.birthday}</p></td>
 						<td><p>${father.occupation}</p></td>
 					</tr>
 					<tr>
 						<td><p>Mother:</p></td>
 						<td><p>${mother.name}</p></td>
-						<td><p>${mother.name}</p></td>
-						<td><p>${mother.name}</p></td>
+						<td><p>${mother.birthday}</p></td>
+						<td><p>${mother.occupation}</p></td>
 					</tr>
 					
 					<c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
 						<tr>
 							<td><p>${s.type}</p></td>
 							<td><p>${s.name}</p></td>
-							<td><p>${s.age}</p></td>
+							<td><p>${s.birthday}</p></td>
 							<td><p>${s.occupation}</p></td>
 						</tr>
                     </c:forEach>

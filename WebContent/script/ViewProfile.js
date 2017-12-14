@@ -261,7 +261,6 @@ function getDynamicCount(value) {
 	var number = value.split("-");
 	console.log(number[1]);
 	return number[1];
-	
 }
 
 /**
@@ -373,7 +372,16 @@ $(document).ready(function() {
 			$('#FBsave').hide();
 			$('#FBcancel').hide();
 			$('#addSibling').hide();
-		   
+			
+			$('#papa').val('Papa Bear');
+			$('#mama').val('Mama Bear');
+			$('#kapatid').val('Ate Bear');
+			$('#papawork').val('Bear');
+			$('#mamawork').val('Bear');
+			$('#kapatidwork').val('Bear');
+			$('#papaday').val('2000-12-01');
+			$('#mamaday').val('2000-12-01');
+			$('#kapatidday').val('2000-12-01');
 	})
 
 	$('#FBsave').click(function() {
@@ -445,7 +453,8 @@ $(document).ready(function() {
 		$('#EIedit').show();
 		$('#imExternal').hide();
 		$('#EIsave').hide();
-		$('#EIcancel').hide();	
+		$('#EIcancel').hide();
+		
 	})
 
 	$('#EIsave').click(function() {

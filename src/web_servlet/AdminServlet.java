@@ -46,16 +46,16 @@ public class AdminServlet extends HttpServlet {
 		    	case "/viewByAdmin"			   : retrieveStudentForAdmin(request, response); break;
 				case "/search"				   : search(request, response); break;
 				case "/searchQualifiedStudents": searchQualifiedStudents(request, response); break;
-		    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern doesn't match existing patterns.");
+				case "/getPosts": getPosts(request, response); break;
+		    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern || " +
+		    			request.getServletPath() + " || doesn't match existing patterns.");
 			}
-		
-		// For the other functions that other users also access
-		switch(request.getServletPath()) {
-			case "/getPosts": getPosts(request, response); break;
-	    	default			: System.out.println("Redirecting to HomePage.jsp..");
-         	 				  response.sendRedirect("HomePage.jsp");
-
-		}
+		else // For the other functions that other users also access
+			switch(request.getServletPath()) {
+				case "/getPosts": getPosts(request, response); break;
+		    	default			: System.out.println("Redirecting to HomePage.jsp..");
+	         	 				  response.sendRedirect("HomePage.jsp");
+			}
 	}
 
 	@Override
@@ -75,10 +75,8 @@ public class AdminServlet extends HttpServlet {
 
     private boolean loggedAdmin(HttpServletRequest req){
     	System.out.println("Checking if an admin is logged in.");
-		//check if session attribute exists
-		HttpSession theSession = req.getSession();
+		
 		Boolean admin = false;
-		System.out.println("Session attribute(UN): " + theSession.getAttribute("UN"));
 		
 		//Check if the cookie "USER" exists.
 		Cookie[] cookieList = req.getCookies();
@@ -94,7 +92,7 @@ public class AdminServlet extends HttpServlet {
 				}
 			}
 		}
-		
+
 		return admin;
     }
     
@@ -151,7 +149,7 @@ public class AdminServlet extends HttpServlet {
 		AdminService.createPost(title, body);
 		post = AdminService.createPost(title, body);
 		postId = post.getPostId();
-		AdminService.addNotif(postId, title, body);
+//		AdminService.addNotif(postId, title, body);
 
 		
 		
@@ -243,7 +241,18 @@ public class AdminServlet extends HttpServlet {
 			
 	    for(Student s : studentList){
 
-			htmlStudentList += "<tr class = 'tableDataRow'>" + 
+			htmlStudentList += "<tr class = 'tableDataRow' onClick = \"(function(){"
+							   + "	$.ajax({"
+							   + " 		context: this,"
+							   + " 		url:'viewByAdmin',"
+							   + " 		data:{'idNum': " + s.getStudentId() + ", 'food': true},"
+							   + " 		type: 'GET',"
+							   + "		dataType: 'json',"
+							   + " 		cache:false,"
+							   + " 		success: function(data){"
+					   		   + " 		}, error:function(){"
+			   				   + " 	  }});" +
+							   "    })();return false;\">" +
 				               "	<td class='tableIdNum center-align'>"   + s.getStudentId() + "</td>" +
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
@@ -281,7 +290,19 @@ public class AdminServlet extends HttpServlet {
 		ArrayList<Student> studentList = AdminService.getStudentsEligibleAward(name, collegeVal);
 			
 	    for(Student s : studentList){
-			htmlStudentList += "<tr class = 'tableDataRow'>" + 
+			htmlStudentList += "<tr class = 'tableDataRow' onClick = \"(function(){"+
+							   "	$.ajax({"
+							   + " 		context: this,"
+							   + " 		url:'viewByAdmin',"
+							   + " 		data:{'idNum': '" + s.getStudentId() + "'},"
+							   + " 		type: 'GET',"
+							   + "		dataType: 'json',"
+							   + " 		cache:false,"
+							   + " 		success: function(data){"
+					   		   + " 		}, error:function(){"
+			   				   + " 	  }});" +
+							   "    return false;" +
+							   "    })();return false;\">" +
 				               "	<td class='tableIdNum center-align'>"   + s.getStudentId() + "</td>" +
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
@@ -311,7 +332,7 @@ public class AdminServlet extends HttpServlet {
 		Cookie[] cookies = request.getCookies();
 		Cookie userCookie = null;
 		Student student = null;
-		
+		boolean b =  (boolean) request.getAttribute("food");
 		System.out.println("************************************Retrieve User (Viewing student through admin)**********************************");
 		for (Cookie c: cookies) {
 			if(c.getName().equals("ADMIN")) {
@@ -323,6 +344,7 @@ public class AdminServlet extends HttpServlet {
 		}
 		
 		if(userCookie == null || userCookie.getName().equals("ADMIN")){
+			System.out.println("Student Food: "+ b);
 			student = AdminService.getStudentByIdNum((Integer)request.getAttribute("idNum"));
 			request.setAttribute("loggedUser", student);
 			

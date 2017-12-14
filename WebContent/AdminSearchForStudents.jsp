@@ -133,22 +133,6 @@
 					<br>
             </div>
         </div>
-
-        <div id="updateAnnounce" class="modal">
-            <div class = "annhead">[UPDATE ANNOUNCEMENT]</div>
-            <div class = "annwrap">
-                <form action="createPost" method="POST" id="createPostForm">
-					<p class="ltags">Title</p>
-					<input type="text" id="updateTitle" name = "anntitle">
-					<p class="ltags">Description</p>
-					<input type="text" id="updateBody" name = "annbody">
-           		</form>
-					<br>	
-					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>
-					<br>
-            </div>
-        </div>  
-        
         
         <!-- Scripts originally from head-->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>

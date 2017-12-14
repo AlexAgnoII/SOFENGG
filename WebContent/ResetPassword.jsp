@@ -41,7 +41,7 @@
                     <p class="center-align" id="error2">Password is the same with your old password</p>
       
                     <p class="ltags">New Password</p>	
-                      <input type="password" id="nPassword" name="nPassword" onblur="checkPasswordField(this)">
+                      <input type="password" id="nPassword" name="nPassword" onblur="checkPasswordField(this)"  maxlength="50">
             
                     <div class="errorPlaceholder">
                         <div class="errors" id="pwError1">*Password must contain a capital letter, a number and a symbol*</div>
@@ -49,7 +49,7 @@
                     </div>
             
                     <p class="ltags">Confirm New Password</p>	
-                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('nPassword'))">
+                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('nPassword'))"  maxlength="50">
             
                     <div class="errorPlaceholder">
                         <div class="errors" id="cpwError1">*Password did not match*</div>

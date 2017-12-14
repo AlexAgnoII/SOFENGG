@@ -45,7 +45,7 @@
                     <h1>Change Password</h1>
                     
                     <p class="ltags">Current Password</p>	
-                    <input type="password" id="oPassword" name="oPassword" onblur="checkCurrentPasswordField(this)">
+                    <input type="password" id="oPassword" name="oPassword" onblur="checkCurrentPasswordField(this)" maxlength="50">
                     
                     <div class="errorPlaceholder">
                         <div class="errors" id="opwError1">*Wrong Password*</div>
@@ -53,7 +53,7 @@
                     </div>
       
                     <p class="ltags">New Password</p>	
-                      <input type="password" id="newPassword" name="newPassword" onblur="checkPasswordField(this)">
+                      <input type="password" id="newPassword" name="newPassword" onblur="checkPasswordField(this)"  maxlength="50">
             
                     <div class="errorPlaceholder">
                         <div class="errors" id="npwError1">*Password must contain a capital letter, a number and a symbol*</div>
@@ -61,7 +61,7 @@
                     </div>
             
                     <p class="ltags">Confirm New Password</p>	
-                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('newPassword'))">
+                      <input type="password" id="nPasswordConfirm" name="nPasswordConfirm" onblur="checkPasswordEqual(this, getElementById('newPassword'))"  maxlength="50">
             
                     <div class="errorPlaceholder">
                         <div class="errors" id="npwcError1">*Password did not match*</div>

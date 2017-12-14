@@ -68,7 +68,7 @@
             
                 <br><br>
                 <a class="waves-effect waves-light btn" id="ResetPassword">Change Password</a> <br>
-                <a id="btnBack" href="ViewProfile.jsp">Back</a>
+                <a id="btnBack" href="HomePage.jsp">Back</a>
                 <br><br>           
             
         </div>

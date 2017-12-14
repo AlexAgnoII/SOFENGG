@@ -301,7 +301,20 @@ function addFieldsInvolvement(placeYear, //Div id to append year
 }
 
 $(document).ready(function() {
-	 $("#printBtn").printPage();
+	$('#bDayField').on('input', function() {
+
+		var today = new Date();
+		var birthDate = new Date(document.getElementById('bDayField').value);
+	    var age = today.getFullYear() - birthDate.getFullYear();
+	    var m = today.getMonth() - birthDate.getMonth();
+	    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+	        age--;
+	    }
+		
+		$('#specialAge').val(age >= 0 ? age : 0);
+	});
+	
+	 $("#printBtn").printPage();	
 	
 	FBctr = getDynamicCount($("form#FBform div.wrap div.f input").last().attr("name"));
 	INctr = getDynamicCount($("form#intInv div.wrap div.f input").last().attr("name"));

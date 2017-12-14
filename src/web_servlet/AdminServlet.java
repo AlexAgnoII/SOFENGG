@@ -36,6 +36,43 @@ public class AdminServlet extends HttpServlet {
     public AdminServlet() {
         super();
     }
+    
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("I am called. (DoGet  AdminServlet)");
+		
+		if(loggedAdmin(request))
+			switch(request.getServletPath()) {
+		    	case "/viewByAdmin"			   : retrieveStudentForAdmin(request, response); break;
+				case "/search"				   : search(request, response); break;
+				case "/searchQualifiedStudents": searchQualifiedStudents(request, response); break;
+		    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern doesn't match existing patterns.");
+			}
+		else {
+			// For the other functions that other users also access
+			switch(request.getServletPath()) {
+				case "/getPosts": getPosts(request, response); break;
+		    	default			: System.out.println("Redirecting to HomePage.jsp..");
+	         	 				  response.sendRedirect("HomePage.jsp");
+
+			}
+       }
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("I am called. (DoPost  AdminServlet)");
+		if(loggedAdmin(request))
+			switch(request.getServletPath()) {
+				case "/createPost":  createPost(request, response); break;
+				case "/updatePost":  updatePost(request, response); break;
+				default: System.out.println("ERROR(Inside AdminServlet *doPost*): url pattern doesn't match existing patterns.");
+			}
+		else {
+          	 System.out.println("Redirecting to HomePage.jsp..");
+          	 response.sendRedirect("HomePage.jsp");
+        }
+	}
 
     private boolean loggedAdmin(HttpServletRequest req){
     	System.out.println("Checking if an admin is logged in.");
@@ -62,39 +99,6 @@ public class AdminServlet extends HttpServlet {
 		return admin;
     }
     
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("I am called. (DoGet  AdminServlet)");
-		
-		if(loggedAdmin(request))
-			switch(request.getServletPath()) {
-		    	case "/viewByAdmin"			   : retrieveStudentForAdmin(request, response); break;
-				case "/search"				   : search(request, response); break;
-				case "/searchQualifiedStudents": searchQualifiedStudents(request, response); break;
-				case "/getPosts"			   : getPosts(request, response); break;
-		    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern doesn't match existing patterns.");
-			}
-		else {
-         	 System.out.println("Redirecting to HomePage.jsp..");
-         	 response.sendRedirect("HomePage.jsp");
-       }
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("I am called. (DoPost  AdminServlet)");
-		if(loggedAdmin(request))
-			switch(request.getServletPath()) {
-				case "/createPost":  createPost(request, response); break;
-				case "/updatePost":  updatePost(request, response); break;
-				default: System.out.println("ERROR(Inside AdminServlet *doPost*): url pattern doesn't match existing patterns.");
-			}
-		else {
-          	 System.out.println("Redirecting to HomePage.jsp..");
-          	 response.sendRedirect("HomePage.jsp");
-        }
-	}
-
 	/**
 	 * Updates a post by the admin
 	 * @param request

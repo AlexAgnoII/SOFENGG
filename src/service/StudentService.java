@@ -1065,10 +1065,9 @@ public class StudentService {
 				return email;
 			}
 			else {
-				
 				PasswordAuthentication p = new PasswordAuthentication();
 				while(rs.next()) {
-					if(p.authenticate(rs.getString("email").toCharArray(), token)) {
+					if(rs.getString("email") != null && p.authenticate(rs.getString("email").toCharArray(), token)) {
 						System.out.println("Matches!!!");
 						email = rs.getString("email");
 						break;

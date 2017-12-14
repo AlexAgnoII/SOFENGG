@@ -57,14 +57,18 @@
 		      cache:false,
 		      success: function(data){
 		        console.log("Success ResetPassword.js")
-		        alert(data);
+
+	        	document.getElementById('modver').innerHTML = data;
+		        $('#modal1').modal("open");
+		        
 		        //Show modal that its successful.
 		      },
 		      
 		      error:function(){
 		    	//This is server error, just add something that states that server is having issue.
 		      	console.log("error ResetPassword.js");
-		      	alert("Something went wrong (ResetPassword.js)")
+	        	document.getElementById('modver').innerHTML = "Update was unsuccessful; Please try again";
+		        $('#modal1').modal("open");
 		      }
 		   });
 	}
@@ -72,6 +76,7 @@
 
 
     $("document").ready(function() {
+        $('.modal').modal();
 		$("#ResetPassword").click(function() {
 			var token = $("#token").val();
 			var password = $("#nPassword").val();

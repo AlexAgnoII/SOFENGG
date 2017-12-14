@@ -1289,6 +1289,22 @@ public class StudentService {
 		return sum;
 	}
 
+	/**
+	 * Deletes an involvement of the user.
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void deleteInvolvement(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+
+		System.out.println("***************** DELETING INVOLVEMENT ************************");
+		
+		System.out.println("Involvement " + " Deleted!");
+		System.out.println("***********************************************************************************");
+
+	}
 
 
 }

@@ -1,17 +1,20 @@
 
-//Global Variable
-var FLAG_IS_MY_PASS;
-var PROCEED_CHANGING_PASS;
+	//Global Variable
+	var FLAG_IS_MY_PASS;
+	var PROCEED_CHANGING_PASS;
 
-function checkPassword(value) {
+	function checkPassword(value) {
 	   return value.length >= 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$/.test(value);
     }
 
     function checkPasswordField(passwordField) {
         var value = passwordField.value;
 
-        console.log("sendhelp");
-        //Check if idNumber follows constraint.
+        console.log("Start here xd");
+        console.log("CheckPasswordField");
+        console.log("Value of new password: " + value);
+        console.log(" ");
+        //Check if password follows constraint.
         if(checkPassword(value)|| value == "") {
 
  
@@ -28,7 +31,6 @@ function checkPassword(value) {
 		else if(value.length < 8){
 			$('#npwError1').hide();
 			$('#npwError2').hide();
-			$('#npwError3').show();
             $('#newPassword').css("border-color", "indianred");
             console.log("password_invalid_1")
 		}
@@ -37,19 +39,24 @@ function checkPassword(value) {
                 //spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
                 $('#npwError1').show();
 				$('#npwError2').hide();
-				$('#npwError3').hide();
                 $('#newPassword').css("border-color", "indianred");
                 console.log("password_invalid_1")
             }
         
         if (document.getElementById('nPasswordConfirm').value != "") {
-            checkPasswordEqual(document.getElementById('nPasswordConfirm'), value);
+    	console.log("WWTF: " + document.getElementById('nPasswordConfirm').value);
+            checkPasswordEqual(document.getElementById('nPasswordConfirm'), passwordField);
         }
     }
 
     function checkPasswordEqual(pass2Field, pass1Field) {
         var pass2Val = pass2Field.value;
         var pass1Val = pass1Field.value;
+        
+        console.log("CHeckPasswordEqual");
+        console.log("pass1: " + pass1Val);
+        console.log("pass2: " + pass2Val);
+        console.log(" ");
 
         //Equal!
         if(pass1Val=== pass2Val) {
@@ -92,7 +99,12 @@ function checkPassword(value) {
     function checkOldPassword(idPassword) {
         var oldPassword = idPassword.value;
         
-        validateUser(oldPassword);
+        if(oldPassword != "")
+        	validateUser(oldPassword);
+        else {
+            $('#opwError1').hide();
+            $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
+        }
     }
 
 	function validateUser(password) {
@@ -109,7 +121,7 @@ function checkPassword(value) {
 			        if(data === "WRONG") {
 			        	//alert("Password not matching");
 			        	console.log("This is not the user's current password");
-                        $('opwError1').show();
+                        $('#opwError1').show();
                         $('#oPassword').css("border-color", "indianred");
 			        	FLAG_IS_MY_PASS = false;
 			        }
@@ -117,7 +129,7 @@ function checkPassword(value) {
 			        else {
 			        	console.log("Ths is the user's password!")
 			        	//alert("Password matching wtf");
-                        $('opwError1').hide();
+                        $('#opwError1').hide();
                         $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
 			        	FLAG_IS_MY_PASS = true;
 			        }

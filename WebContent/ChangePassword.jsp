@@ -57,7 +57,6 @@
                     <div class="errorPlaceholder">
                         <div class="errors" id="npwError1">*Password must contain a capital letter, a number and a symbol*</div>
                         <div class="errors" id="npwError2">*This password is already in use*</div>
-                        <div class="errors" id="npwError3">*Password must be at least 8 characters*</div>
                     </div>
             
                     <p class="ltags">Confirm New Password</p>	

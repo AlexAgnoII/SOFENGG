@@ -23,7 +23,7 @@ function checkStringField(stringField, spanString) {
 	//Value only all spaces, do this.
 	if(/^\s+$/.test(value)) {
 		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 spanString.html("Must consists of letters and/or spaces only.");
+		 spanString.html("Must consist of letters and/or spaces only.");
 	}
 	//Contains nothing OR the right value.
 	else if(stringIsWord(value) || value === "") {
@@ -37,7 +37,7 @@ function checkStringField(stringField, spanString) {
 	//If not follow, do front end magic to do show this.
 	else {
 		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
-		 spanString.html("Must consists of letters and/or spaces only.");
+		 spanString.html("Must consist of letters and/or spaces only.");
 	}
 }
 
@@ -66,7 +66,49 @@ function checkDigitField(inputField, spanString) {
 	}
 }
 
+/**
+ * Checks if the field contains digits only.
+ * @param inputField - the input field
+ * @param spanString - the span tag to use for constraint.
+ * @returns
+ */
+function checkCellField(inputField, spanString) {
+	var value = inputField.val();
+	if(value.length == 11)
+		checkDigitField(inputField, spanString);
+	else
+		if(value != "")
+			spanString.html("Must be valid cellphone number. (11 digits)");
+}
 
+/**
+ * Checks if the field contains digits only.
+ * @param inputField - the input field
+ * @param spanString - the span tag to use for constraint.
+ * @returns
+ */
+function checkGenderField(inputField, spanString) {
+	var value = inputField.val();
+	//Value only all spaces, do this.
+	if(/^\s+$/.test(value)) {
+		//This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
+		 spanString.html("Must only be Male or Female.");
+	}
+	//Contains nothing OR the right value.
+	else if(value == "Male" || value == "Female" || value == "male" || value == "female" ) {
+		
+		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
+			//Add check or something in front end showing that user did iit correctly.
+			spanString.html("");
+		} 
+		
+	}
+	//If not follow, do front end magic to do show this.
+	else {
+		 //This is temporary, you can add these messages directly to the tag span and just hided/show the tag.
+		 spanString.html("Must only be Male or Female.");
+	}
+}
 
 /**
  * Checks if all fields in the given form has the correct answer.
@@ -443,6 +485,13 @@ $(document).ready(function() {
 		checkStringField(provField, provSpan);
 	});
 	
+	$('#status').blur(function(){
+		var statusField = $("input#status");
+		var statusSpan = $("#statusSpan");
+		
+		checkStringField(statusField, statusSpan);
+	});
+	
 	$('#citizen').blur(function(){
 		var citizenField = $("input#citizen");
 		var citizenSpan = $("#nationSpan");
@@ -454,11 +503,14 @@ $(document).ready(function() {
 		var cellField = $("#cell");
 		var cellSpan = $("#cellSpan");
 		
-		if(cellField.val().length == 11)
-			checkDigitField(cellField, cellSpan);
-		else
-			if(cellField.val() != "")
-				alert("Must be valid cellphone number! (11 digits)");
+		checkCellField(cellField, cellSpan);
+	});
+	
+	$('#gender').blur(function(){
+		var genderField = $("input#gender");
+		var genderSpan = $("#genderSpan");
+		
+		checkGenderField(genderField, genderSpan);
 	});
 	
 	$('#zip').blur(function(){

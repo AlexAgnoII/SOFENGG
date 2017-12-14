@@ -336,9 +336,8 @@ form#intInv input.threeipyear {
     font-size: 12px;
 }
 
-#dig8, #dig11, #digonly, #invcode{
-    display: none;
-    font-size: 10px;
+.iSpan{
+    font-size: 13px;
     color: indianred;
     font-style: italic;
 }

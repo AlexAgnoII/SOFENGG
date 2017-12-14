@@ -83,21 +83,21 @@
                      <form id="PIform" action="updatePersonal" method="POST">
 	                     <p class="ltags">Address</p> 
 	                     <input id="address" type="text" class="ipfield fullip" name="address" value="${loggedUser.address}" disabled placeholder="Ex: #10 Scout Fire st, Barangay Always Ready">
-						<span id="span" class="iSpan">Hi</span><p> </p>
+	
 	                     <div class="wrap">
 	                        <div class="f">
-	                            <p class="ltags">City</p>
+	                            <p class="ltags">City</p> 
 	                            <input id="city" type="text" class="ipfield halfip" name="city" value="${loggedUser.city}" disabled placeholder="Ex: Quezon City, Makati city, etc.">
 								<span id="citySpan" class="iSpan"></span><p> </p>
 								
 	                            <p class="ltags">Country</p> 
 	                            <input id="country" type="text" name="country" class="ipfield halfip" value="${loggedUser.country}" disabled placeholder="Ex: Philippines, USA, Singapore, etc.">
 								<span id="countrySpan" class="iSpan"></span><p> </p>
-	
-	                            <p class="ltags">Mobile Number</p> 
+							
+	                            <p class="ltags">Mobile Number</p>
 	                            <input id="cell" type="text" class="ipfield halfip" name="cell" value="${loggedUser.celNo}" disabled placeHolder="Ex: 09171234567 (11-digits)">
-								<span id="cellSpan" class="iSpan"></span><p> </p>
-	                        </div>
+								 <span id="cellSpan" class="iSpan"></span><p> </p>
+						   </div>
 	
 	                        <div class="f">
 	                            <p class="ltags">Province</p> 
@@ -111,7 +111,7 @@
 	                            <p class="ltags">Telephone Number</p> 
 	                            <input id="tel" type="text" class="ipfield halfip" name="tel" value="${loggedUser.telNo}" disabled placeholder="Ex: 108999, etc">
 								<span id="telSpan" class="iSpan"></span><p> </p>
-							</div>
+	                        </div>
 	                    </div>
 	
 	                    <!-- <br><br><li><div class="divider"></div></li><br> -->  
@@ -124,7 +124,8 @@
 	                            <p class="ltags">Civil Status</p> 
 	                            <input id="status" type="text" class="ipfield threeip" name="civil" value="${loggedUser.civil}" disabled placeholder="Single, Married">
 								<span id="statusSpan" class="iSpan"></span><p> </p>
-							</div>
+								
+	                        </div>
 	
 	                        <div class="f">
 	                            <p class="ltags">Age</p> 
@@ -133,7 +134,8 @@
 	                            <p class="ltags">Nationality</p> 
 	                            <input id="citizen" type="text" class="ipfield threeip" name="citizen" value="${loggedUser.citizen}" disabled placeholder="Ex: Filipino, American, Chinese, etc.">
 								<span id="nationSpan" class="iSpan"></span><p> </p>
-						   </div>
+								
+							</div>
 	
 	                        <div class="f">
 	                            <p class="ltags">Sex</p> 

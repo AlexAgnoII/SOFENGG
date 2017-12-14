@@ -37,7 +37,8 @@
                 <p id="lol">ID Number</p>
                 <input type="text" id="idNum" name="idNum" placeholder="e.g.11134516" tabindex=1 onblur="checkIdNumber(this)">
                     <p id="idnumerrorPlaceHolder" class="errorplaceholder">_______________________________________</p>
-                    <p id="idnumerror" class="errors">*Invalid ID Number*</p>
+                    <p id="idnumerror1" class="errors">*Invalid ID Number*</p>
+                    <p id="idnumerror2" class="errors">*ID Number has already been taken*</p>
                   
                 <p>Last Name</p>
                 <input type="text" id="lastName" name="lastName" tabindex=2 onblur="checkStringField(this, getElementById('lnameerrorPlaceHolder'), getElementById('lnameerror'), getElementById('lastName'))">
@@ -89,7 +90,8 @@
                 <p>Email Address</p>
                 <input type="text" id="email" name="email" tabindex=7 onblur="checkEmailField(this)">
                 <p id="emailerrorPlaceHolder" class="errorplaceholder">_________________________________________________________________________________________________________________________________________</p>
-                <p id="emailerror" class="errors">*Invalid email address*</p>
+                <p id="emailerror1" class="errors">*Invalid email address*</p>
+                <p id="emailerror2" class="errors">*Email is already taken*</p>
                 
                 <div class="wrap">
                     <div class="f">
@@ -132,7 +134,6 @@
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		<script src="script/Signup.js"></script>
         <script>
-        
         </script>
    	</body>
 </html>

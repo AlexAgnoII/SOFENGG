@@ -18,17 +18,30 @@ function duplicateHandler(data) {
 	//front end handling constraint done here (create functions for them so we can reuse it on the 3rd case in the switch-case)
 	switch(data) {
 		case "EMAIL-TAKEN": 
-                            break;
-            alert("Email is already taken."); break;
+//                            break;
+            //alert("Email is already taken."); break;
+            $('#emailerrorPlaceHolder').hide();
+            $('#emailerror2').show();
+            $('#email').css("border-color", "indianred"); break;
             //only email
 		case "IDNUM-TAKEN": 
-                            break;
-            alert("ID-number is already taken."); break; 
+//                            break;
+            //alert("ID-number is already taken."); break; 
+            $('#idnumerrorPlaceHolder').hide();
+            $('#idnumerror2').show();
+            $('#idNum').css("border-color", "indianred"); break;
             //only idnum
 		case "EMAIL-TAKEN|IDNUM-TAKEN": 
-            alert("ID-number is already taken.");
+            //alert("ID-number is already taken.");
+            $('#emailerrorPlaceHolder').hide();
+            $('#emailerror2').show();
+            $('#email').css("border-color", "indianred");
+            
+            $('#idnumerrorPlaceHolder').hide();
+            $('#idnumerror1').show();
+            $('#idNum').css("border-color", "indianred");
                                     
-            alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
+            //alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
 		default: document.location.href = 'HomePage.jsp'; //redirect to homepage.
 		
 	}
@@ -96,7 +109,8 @@ function checkIdNumber(idInputField) {
 			//Add check or something in front end showing that user did iit correctly.
 			//spanId.innerHTML = "";
             $('#idnumerrorPlaceHolder').show();
-            $('#idnumerror').hide();
+            $('#idnumerror1').hide();
+            $('#idnumerror2').hide();
             $('#idNum').css("border-color" , "rgba(0, 0, 0, 0.3)");
 		} 
 		
@@ -105,7 +119,7 @@ function checkIdNumber(idInputField) {
 	else {
 		//spanId.innerHTML = "Must be 8 digit integers only.";
         $('#idnumerrorPlaceHolder').hide();
-        $('#idnumerror').show();
+        $('#idnumerror1').show();
         $('#idNum').css("border-color", "indianred");
         //This is temporary, you can add this directly to the tag span and just hided/show the tag.
 	}
@@ -189,7 +203,8 @@ function checkEmailField(emailField) {
 			//Add check or something in front end showing that user did iit correctly.
 			//spanEmail.innerHTML ="";
             $('#emailerrorPlaceHolder').show();
-            $('#emailerror').hide();
+            $('#emailerror1').hide();
+            $('#emailerror2').hide();
             $('#email').css("border-color", "rgba(0, 0, 0, 0.3)");
 		} 
 		
@@ -198,7 +213,7 @@ function checkEmailField(emailField) {
 	else {
 		//spanEmail.innerHTML = "Must be valid email."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
         $('#emailerrorPlaceHolder').hide();
-        $('#emailerror').show();
+        $('#emailerror1').show();
         $('#email').css("border-color", "indianred");
 	}
 }

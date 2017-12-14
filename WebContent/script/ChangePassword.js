@@ -21,31 +21,51 @@
           //Add check or something in front end showing that user did iit correctly.
           //spanPassword.innerHTML ="";
           $('#npwError1').hide();
-          $('#npwError2').hide();
+          
+          //Only remove
+          if($("#newPassword").val() != $("#oPassword").val())
+        	  $('#npwError2').hide();
+          
           $('#newPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
           console.log("password_valid");
 
 
         }
-		
-		else if(value.length < 8){
-			$('#npwError1').hide();
-			$('#npwError2').hide();
+        //If not follow, do front end magic to do show this.
+        else {
+            //spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+            $('#npwError1').show();
+		    $('#npwError2').hide();
             $('#newPassword').css("border-color", "indianred");
             console.log("password_invalid_1")
-		}
-            //If not follow, do front end magic to do show this.
-            else {
-                //spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
-                $('#npwError1').show();
-				$('#npwError2').hide();
-                $('#newPassword').css("border-color", "indianred");
-                console.log("password_invalid_1")
-            }
+        }
         
         if (document.getElementById('nPasswordConfirm').value != "") {
     	console.log("WWTF: " + document.getElementById('nPasswordConfirm').value);
             checkPasswordEqual(document.getElementById('nPasswordConfirm'), passwordField);
+        }
+    }
+
+    function checkCurrentPasswordField(passwordField) {
+        var value = passwordField.value;
+
+        //Check if password follows constraint.
+        if(checkPassword(value)|| value == "") {
+
+          //Add check or something in front end showing that user did iit correctly.
+          //spanPassword.innerHTML ="";
+          $('#opwError2').hide();
+          $("#opwError1").hide();
+          $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
+
+        }
+        //If not follow, do front end magic to do show this.
+        else {
+            //spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+            $('#opwError2').show();
+		    $('#opwError1').hide();
+            $('#oPassword').css("border-color", "indianred");
+            console.log("password_invalid_1")
         }
     }
 
@@ -96,16 +116,25 @@
 		   });
 	}
 
-    function checkOldPassword(idPassword) {
-        var oldPassword = idPassword.value;
-        
-        if(oldPassword != "")
-        	validateUser(oldPassword);
-        else {
-            $('#opwError1').hide();
-            $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
-        }
-    }
+//    function checkOldPassword(idPassword) {
+//        var oldPassword = idPassword.value;
+//        
+//        if(oldPassword != "")
+//        	validateUser(oldPassword);
+//        else {
+//            $('#opwError1').hide();
+//            $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
+//        }
+//    }
+	
+	function checkMyPassword(idPassword) {
+		var myPass = idPassword.value;
+		
+		if(myPass != "") {
+          $('#opwError1').hide();
+          $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
+		}
+	}
 
 	function validateUser(password) {
 		return $.ajax({
@@ -155,52 +184,52 @@
 	}
 	
 	//This is where the checking happens.
-	function constraintPassword(password, newPass, newPassRe) {
-		var proceed = true;
-		var promise = new Promise(function(resolve, reject){
-			console.log("I do this first..");
-			resolve("Done!");
-			validateUser(password); //Check if entered password matches account	
-		});
-		
-		//Promises are made so that this happens before that.
-		promise.then(function(result) {
-			console.log("Then i Do this...");
-			console.log("FLAG_MY_PASS: " + FLAG_IS_MY_PASS);
-			if(!FLAG_IS_MY_PASS) {
-				//Password did not match the current user's password.
-				proceed = false;
-				//alert("Passowrd failed!!!!!");
-	            $('opwError1').show();
-	            $('#oPassword').css("border-color", "indianred");
-	            
-			}
-			
-			//Check newPass if its correct.
-			if (!checkPassword(newPass)) {
-				proceed = false;
-				//alert("New password failed!")
-	            
-			}
-				
-			//Check newPassRe if its correct.
-			if(!checkPassword(newPassRe)) {
-				proceed = false;
-				//alert("Confirm new password failed!")
-	            $('npwError1').show();
-	            $('#newPassword').css("border-color", "indianred");
-			}
-			
-			if(newPass != newPassRe) {
-				alert("Re and New pass is equal so no continuino")
-				proceed = false;
-			}
-			
-			console.log("Proceed: " + proceed);
-			return proceed;
-		});
-			
-	}
+//	function constraintPassword(password, newPass, newPassRe) {
+//		var proceed = true;
+//		var promise = new Promise(function(resolve, reject){
+//			console.log("I do this first..");
+//			resolve("Done!");
+//			validateUser(password); //Check if entered password matches account	
+//		});
+//		
+//		//Promises are made so that this happens before that.
+//		promise.then(function(result) {
+//			console.log("Then i Do this...");
+//			console.log("FLAG_MY_PASS: " + FLAG_IS_MY_PASS);
+//			if(!FLAG_IS_MY_PASS) {
+//				//Password did not match the current user's password.
+//				proceed = false;
+//				//alert("Passowrd failed!!!!!");
+//	            $('opwError1').show();
+//	            $('#oPassword').css("border-color", "indianred");
+//	            
+//			}
+//			
+//			//Check newPass if its correct.
+//			if (!checkPassword(newPass)) {
+//				proceed = false;
+//				//alert("New password failed!")
+//	            
+//			}
+//				
+//			//Check newPassRe if its correct.
+//			if(!checkPassword(newPassRe)) {
+//				proceed = false;
+//				//alert("Confirm new password failed!")
+//	            $('npwError1').show();
+//	            $('#newPassword').css("border-color", "indianred");
+//			}
+//			
+//			if(newPass != newPassRe) {
+//				alert("Re and New pass is equal so no continuino")
+//				proceed = false;
+//			}
+//			
+//			console.log("Proceed: " + proceed);
+//			return proceed;
+//		});
+//			
+//	}
 
     $("document").ready(function() {
 	   
@@ -208,6 +237,7 @@
     		var password = $("#oPassword").val(); 
     		var newPass = $("#newPassword").val();
     		var newPassRe = $("#nPasswordConfirm").val();
+    		
     		FLAG_IS_MY_PASS = true;
     		PROCEED_CHANGING_PASS = true;
     		
@@ -261,10 +291,12 @@
     		}).then(function(result) {
     			console.log("Can I change my password?: " + result);
             	if(PROCEED_CHANGING_PASS) {
-            		if(password != newPass)
+            		if(password != newPass && FLAG_IS_MY_PASS)
             			submitNewPassword(newPass);
             		else {
             			alert("Current and New Password matches, not proceeding po.");
+            			$('#npwError2').show();
+                        $('#newPassword').css("border-color", "indianred");
             		}
             	}
             			

@@ -45,10 +45,11 @@
                     <h1>Change Password</h1>
                     
                     <p class="ltags">Current Password</p>	
-                    <input type="password" id="oPassword" name="oPassword" onblur="checkOldPassword(this)">
+                    <input type="password" id="oPassword" name="oPassword" onblur="checkCurrentPasswordField(this)">
                     
                     <div class="errorPlaceholder">
-                        <div class="errors" id="opwError1">*Invalid Password*</div>
+                        <div class="errors" id="opwError1">*Wrong Password*</div>
+                        <div class="errors" id="opwError2">*Password must contain a capital letter, a number and a symbol*</div>
                     </div>
       
                     <p class="ltags">New Password</p>	

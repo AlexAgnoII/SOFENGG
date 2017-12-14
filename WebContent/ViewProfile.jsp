@@ -266,7 +266,7 @@
                     </div> <!-- end of div tag Family Background -->    
                 </li>
                 
-                <li>
+                <!-- <li>
                     <div class="collapsible-header"><i class="large material-icons">school</i>ACADEMIC BACKGROUND</div>
                     
                     <div class="collapsible-body">
@@ -279,8 +279,9 @@
                         <input type="text" id="failed" name="failed" value="0" disabled>
                 
                         
-                    </div> <!-- end of div tag Academic Background --> 
-                </li>
+                    </div>  
+                </li> --> <!-- end of div tag Academic Background -->
+           
                 
                 <li>
                     <div class="collapsible-header"><i class="large material-icons">book</i>INTERNAL INVOLVEMENT</div>

@@ -92,6 +92,7 @@
                 <p id="emailerrorPlaceHolder" class="errorplaceholder">_________________________________________________________________________________________________________________________________________</p>
                 <p id="emailerror1" class="errors">*Invalid email address*</p>
                 <p id="emailerror2" class="errors">*Email is already taken*</p>
+                <p id="emailerror3" class="errors">*Email address too long*</p>
                 
                 <div class="wrap">
                     <div class="f">

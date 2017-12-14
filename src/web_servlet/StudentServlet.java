@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans_model.Involvement;
+import beans_model.Notification;
 import beans_model.Relative;
 import beans_model.Student;
 import service.PasswordAuthentication;
@@ -37,7 +38,7 @@ import service.StudentService;
 		                   "/addIntInv", //Student
 		                   "/addExtInv", // Student
 		                   "/displayStudentData",
-		                   "/deleteInv"} //Student
+		                   "/getNotifs"} //Student
 )
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -56,7 +57,8 @@ public class StudentServlet extends HttpServlet {
 		switch(request.getServletPath()) {
 		    //case "/view2edit":
 			case "/viewByStudent"	  : retrieveStudent(request, response); break; 
-			case "/displayStudentData": displayStudentData(request, response); break; 
+			case "/displayStudentData": displayStudentData(request, response); break;
+			case "/getNotifs"		  : getNotifications(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doGet*): url pattern doesn't match existing patterns.");
 		}
 	}
@@ -72,7 +74,6 @@ public class StudentServlet extends HttpServlet {
 			case "/updateFamily": updateFamily(request, response); break;
 			case "/addIntInv": addInvolvements(request, response, 1); break;
 			case "/addExtInv": addInvolvements(request, response, 0); break;
-			case "/deleteInv": deleteInvolvement(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
@@ -664,20 +665,12 @@ public class StudentServlet extends HttpServlet {
 		System.out.println("***********************************************************************************");
 	}
 	
-
-	/**
-	 * Deletes an involvement of the user.
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void deleteInvolvement(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-
-		System.out.println("***************** DELETING INVOLVEMENT ************************");
+	public void getNotifications(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+		ArrayList<Notification> notificationList = null;
+		int notificationCount = 0;
 		
-		System.out.println("Involvement " + " Deleted!");
-		System.out.println("***********************************************************************************");
+		notificationList = StudentService.getNotificationList();
+		
+		notificationCount = StudentService.getCountNotifications(notificationList);
 	}
 }

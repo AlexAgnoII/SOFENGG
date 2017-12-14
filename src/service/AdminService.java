@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import beans_model.Notification;
 import beans_model.Post;
 import beans_model.Student;
 
@@ -378,6 +379,7 @@ public class AdminService {
 	 */
 	public static Post createPost(String title, String body) {
 		System.out.println();
+		int postId = 0;
 		Post post = null;
 		long timeNow = Calendar.getInstance().getTimeInMillis();
 		Timestamp ts = new Timestamp(timeNow);
@@ -388,14 +390,21 @@ public class AdminService {
 			Connection conn = DatabaseManager.getConnection();
 
 			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`post` (`title`, `body`, `date`) " +
-													     "VALUES (?, ?, ?);");
+															"VALUES (?, ?, ?);", PreparedStatement.RETURN_GENERATED_KEYS);
+			
 			st.setString(1, title);
 			st.setString(2, body);
 			st.setTimestamp(3, ts);
 			st.executeUpdate();
 			
+			ResultSet rs = st.getGeneratedKeys();
+			if (rs.next()){
+			    postId = rs.getInt(1);
+			}
+			
 			System.out.println("Posted: " + title +"!"); 
 			post = new Post(title, body, new Date(timeNow));
+			post.setPostId(postId);
 			conn.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -687,6 +696,40 @@ public class AdminService {
 		}
 		System.out.println();
 		
+	}
+	
+	/**
+	 * Creates a new notification
+	 * @param postId - id of the new post
+	 * @param title - title of the post
+	 * @param body  - body of the post
+	 * @return the post that was created or NULL if no post was created.
+	 */
+	public static Notification addNotif(int postId, String title, String body) {
+		System.out.println();
+		Notification notification = null;
+		try {
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`notification` (`postId`, `title`, `body`) " +
+													     "VALUES (?, ?, ?);");
+			st.setInt(1, postId);
+			st.setString(2, title);
+			st.setString(3, body);
+			st.setInt(4, 0);
+			
+			System.out.println("Notif Added!");
+			notification = new Notification(postId, title, body, 0);
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return notification;
 	}
 
 

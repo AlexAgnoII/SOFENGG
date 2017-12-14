@@ -48,15 +48,14 @@ public class AdminServlet extends HttpServlet {
 				case "/searchQualifiedStudents": searchQualifiedStudents(request, response); break;
 		    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern doesn't match existing patterns.");
 			}
-		else {
-			// For the other functions that other users also access
-			switch(request.getServletPath()) {
-				case "/getPosts": getPosts(request, response); break;
-		    	default			: System.out.println("Redirecting to HomePage.jsp..");
-	         	 				  response.sendRedirect("HomePage.jsp");
+		
+		// For the other functions that other users also access
+		switch(request.getServletPath()) {
+			case "/getPosts": getPosts(request, response); break;
+	    	default			: System.out.println("Redirecting to HomePage.jsp..");
+         	 				  response.sendRedirect("HomePage.jsp");
 
-			}
-       }
+		}
 	}
 
 	@Override

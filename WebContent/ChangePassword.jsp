@@ -45,10 +45,10 @@
                     <h1>Change Password</h1>
                     
                     <p class="ltags">Current Password</p>	
-                    <input type="password" id="oPassword" name="oPassword">
+                    <input type="password" id="oPassword" name="oPassword" onblur="checkOldPassword(this)">
                     
                     <div class="errorPlaceholder">
-                        <div class="errors" id="opwError1">*Invalid password*</div>
+                        <div class="errors" id="opwError1">*Invalid Password*</div>
                     </div>
       
                     <p class="ltags">New Password</p>	
@@ -56,7 +56,7 @@
             
                     <div class="errorPlaceholder">
                         <div class="errors" id="npwError1">*Password must contain a capital letter, a number and a symbol*</div>
-                        <div class="errors" id="pwError2">*This password is already in use*</div>
+                        <div class="errors" id="npwError2">*This password is already in use*</div>
                     </div>
             
                     <p class="ltags">Confirm New Password</p>	
@@ -68,7 +68,7 @@
             
                 <br><br>
                 <a class="waves-effect waves-light btn" id="ResetPassword">Change Password</a> <br>
-                <a id="btnBack">Back</a>
+                <a id="btnBack" href="ViewProfile.jsp">Back</a>
                 <br><br>           
             
         </div>

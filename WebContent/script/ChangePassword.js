@@ -13,6 +13,7 @@
                 //Add check or something in front end showing that user did iit correctly.
                 //spanPassword.innerHTML ="";
                 $('#npwError1').hide();
+                $('#npwError2').hide();
                 $('#newPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
                 console.log("password_valid");
             } 
@@ -72,7 +73,13 @@
 		      }
 		   });
 	}
-	
+
+    function checkOldPassword(idPassword) {
+        var oldPassword = idPassword.value;
+        
+        validateUser(oldPassword);
+    }
+
 	function validateUser(password) {
 		return $.ajax({
 				  context: this,
@@ -85,12 +92,16 @@
 			        
 			        //Password is wrong.
 			        if(data === "WRONG") {
-			        	alert("Password not matching");
+			        	//alert("Password not matching");
+                        $('opwError1').show();
+                        $('#oPassword').css("border-color", "indianred");
 			        	return false;
 			        }
 			        
 			        else {
-			        	alert("Password matching wtf");
+			        	//alert("Password matching wtf");
+                        $('opwError1').hide();
+                        $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
 			        	return true;
 			        }
 			      },
@@ -121,27 +132,35 @@
 		//Check if password matches.
 		if(!validateUser(password)) {
 			proceed = false;
-			alert("Passowrd failed!!!!!")
+			//alert("Passowrd failed!!!!!");
+            $('opwError1').show();
+            $('#oPassword').css("border-color", "indianred");
+            
 		}
 		
 		else {
 			//Check if its equal with the newPassword.
 			if(password === newPass) {
 				proceed = false
-				alert("Old and new password are the same.");
+				//alert("Old and new password are the same.");
+                $('npwError2').show();
+                $('#newPassword').css("border-color", "indianred");
 			}
 		}
 		
 		//Check newPass if its correct.
 		if (!checkPassword(newPass)) {
 			proceed = false;
-			alert("New password failed!")
+			//alert("New password failed!")
+            
 		}
 			
 		//Check newPassRe if its correct.
 		if(!checkPassword(newPassRe)) {
-			proceed = false;
-			alert("Confirm new password failed!")
+			//proceed = false;
+			//alert("Confirm new password failed!")
+            $('npwError1').show();
+            $('#newPassword').css("border-color", "indianred");
 		}
 		
 
@@ -154,7 +173,7 @@
     $("document").ready(function() {
 	   
     	$("#ResetPassword").click(function() {
-    		var password = $("#oldPassword").val(); 
+    		var password = $("#oPassword").val(); 
     		var newPass = $("#newPassword").val();
     		var newPassRe = $("#nPasswordConfirm").val();
     		
@@ -168,7 +187,9 @@
     			
     		}
     		else { //Design chuchu for not equal password here
-    			alert("New password and re-enter password not equal!");
+    			//alert("New password and re-enter password not equal!");
+                checkPassword(newPass);
+                checkPasswordEqual(newPassRe, newPass);
     		}
     		
     	});

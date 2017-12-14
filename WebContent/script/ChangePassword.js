@@ -24,10 +24,20 @@ function checkPassword(value) {
 
 
         }
+		
+		else if(value.length < 8){
+			$('#npwError1').hide();
+			$('#npwError2').hide();
+			$('#npwError3').show();
+            $('#newPassword').css("border-color", "indianred");
+            console.log("password_invalid_1")
+		}
             //If not follow, do front end magic to do show this.
             else {
                 //spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
                 $('#npwError1').show();
+				$('#npwError2').hide();
+				$('#npwError3').hide();
                 $('#newPassword').css("border-color", "indianred");
                 console.log("password_invalid_1")
             }

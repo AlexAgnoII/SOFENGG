@@ -74,7 +74,7 @@ function checkPassword(value) {
 		      error:function(){
 		    	//This is server error, just add something that states that server is having issue.
 		      	console.log("error ResetPassword.js");
-		      	alert("Something went wrong (ChangePassword.js)")
+		      	//alert("Something went wrong (ChangePassword.js)")
 		      }
 		   });
 	}
@@ -116,7 +116,7 @@ function checkPassword(value) {
 			      error:function(){
 			    	//This is server error, just add something that states that server is having issue.
 			      	console.log("Error ChangePassword validateUser.");
-			      	alert("Something went wrong (ChangePassword.js)")
+			      	//alert("Something went wrong (ChangePassword.js)")
 			      	FLAG_IS_MY_PASS = false;
 			      }
 			   });

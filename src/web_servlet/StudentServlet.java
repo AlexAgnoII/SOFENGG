@@ -36,7 +36,8 @@ import service.StudentService;
 		                   "/viewByStudent",
 		                   "/addIntInv", //Student
 		                   "/addExtInv", // Student
-		                   "/displayStudentData"} //Student
+		                   "/displayStudentData",
+		                   "/deleteInv"} //Student
 )
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -71,6 +72,7 @@ public class StudentServlet extends HttpServlet {
 			case "/updateFamily": updateFamily(request, response); break;
 			case "/addIntInv": addInvolvements(request, response, 1); break;
 			case "/addExtInv": addInvolvements(request, response, 0); break;
+			case "/deleteInv": deleteInvolvement(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
@@ -659,6 +661,23 @@ public class StudentServlet extends HttpServlet {
 		
 		
 		System.out.println("Involvements addeed/Updated!");
+		System.out.println("***********************************************************************************");
+	}
+	
+
+	/**
+	 * Deletes an involvement of the user.
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void deleteInvolvement(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+
+		System.out.println("***************** DELETING INVOLVEMENT ************************");
+		
+		System.out.println("Involvement " + " Deleted!");
 		System.out.println("***********************************************************************************");
 	}
 }

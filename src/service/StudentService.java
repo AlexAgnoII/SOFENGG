@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Date;
 
 import beans_model.Involvement;
+import beans_model.Notification;
+import beans_model.Post;
 import beans_model.Relative;
 import beans_model.Student;
 
@@ -1249,10 +1252,59 @@ public class StudentService {
 		
 	}
 
+	public static ArrayList<Notification> getNotificationList() {
+		ArrayList<Notification> notifications = new ArrayList<Notification> ();
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
 
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.notification WHERE notificationRead = ? ORDER BY notificationId DESC;");
+			st.setInt(1, 0);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				notifications.add(new Notification(rs.getInt("postId"), rs.getString("notificationTitle"), rs.getString("notificationContent"), rs.getInt("notificationRead")));
+				System.out.println("Notification: " + rs.getString("notificationTitle"));
+			} 
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		
+		return notifications;
+	}
 
+	public static int getCountNotifications(ArrayList<Notification> notificationList) {
+		int sum = 0;
+		for(Notification n : notificationList) {
+			sum++;
+		}
+		
+		return sum;
+	}
 
+	/**
+	 * Deletes an involvement of the user.
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void deleteInvolvement(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 
+		System.out.println("***************** DELETING INVOLVEMENT ************************");
+		
+		System.out.println("Involvement " + " Deleted!");
+		System.out.println("***********************************************************************************");
+
+	}
 
 
 }

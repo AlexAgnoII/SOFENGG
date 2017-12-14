@@ -167,7 +167,6 @@ public class authentication implements Filter {
 				                }
 								 break;
 		    //Both pages has this
-		    case "/Verified.html":
 			case "/ChangePassword.jsp": //if user/admin exist, continue
 				                         if(admin || user) {
 							               	   System.out.println("Continue on this page..");
@@ -178,6 +177,10 @@ public class authentication implements Filter {
 							               	 res.sendRedirect("HomePage.jsp");
 				                         }
 				                         break;
+		    case "/Verified.html" :
+		    case "/EmailSent.html":	 System.out.println("Continue on this page..");
+            						 chain.doFilter(request, response);
+						          	 break;
 			default: System.out.println("ERORR (In authentication filter): Path does not exist ");
 
 				    

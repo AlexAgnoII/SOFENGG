@@ -133,6 +133,8 @@ public class AdminServlet extends HttpServlet {
 	 */
 	private void createPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 		System.out.println("***************** Create Post ************************");
+		Post post = null;
+		int postId = 0;
 		String title = request.getParameter("title"),
 			   body  = request.getParameter("body"),
 			   id 	 = "";
@@ -145,7 +147,11 @@ public class AdminServlet extends HttpServlet {
 //			}
 //		}
 		System.out.println("Posting: " + title);
+		System.out.println("Posting: " + title);
 		AdminService.createPost(title, body);
+		post = AdminService.createPost(title, body);
+		postId = post.getPostId();
+		AdminService.addNotif(postId, title, body);
 
 		
 		

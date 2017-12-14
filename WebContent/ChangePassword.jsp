@@ -70,7 +70,16 @@
                 <br><br>
                 <a class="waves-effect waves-light btn" id="btnBack" href="HomePage.jsp">Back</a>
                 <a class="waves-effect waves-light btn" id="ResetPassword">Change Password</a>
-                <br><br>           
+                <br><br>
+            
+            <div id="modal1" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                  <p id="modver">Success changing password!</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
+                </div>
+              </div>
             
         </div>
         <input id="token" type="hidden" name="token" value="${U}">

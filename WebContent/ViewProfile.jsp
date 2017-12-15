@@ -249,7 +249,7 @@
 			                                <p class="ltags">Birthday</p>
 			                                <c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
 			                                		<input type="date" class="sbday ipfield threeip" name="sibBday-${loop.index}-${s.relativeId}" value="${s.birthday}" disabled>
-			                                		<a class="waves-effect waves-light btn delete" data-index="sibDELETE-${loop.index}">DELETE</a>
+			                                		<a class="waves-effect waves-light btn delete deleteSIB" data-index="sibDELETE-${loop.index}">DELETE</a>
 			                                </c:forEach>
 			                                <!-- <p id="FBbday"></p>-->
 			                            </div>
@@ -334,7 +334,7 @@
 			                                <p class="ltags">Position</p>
 			                                <c:forEach items="${internalList}" begin="0" end="${internalSize}" var="i" varStatus="loop">
 			                               		<input type="text" class="ipfield threeip" name="inPos-${loop.index}-${i.id}" value="${i.position}" disabled>
-			                               		<a class="waves-effect waves-light btn delete" data-index="inDELETE-${loop.index}">DELETE</a>
+			                               		<a class="waves-effect waves-light btn delete deleteINTERNAL" data-index="inDELETE-${loop.index}">DELETE</a>
 			                               	</c:forEach>  
 			                            </div>
 			                        </div>
@@ -401,7 +401,7 @@
 		                                <p class="ltags">Position</p>
 		                                <c:forEach items="${externalList}" begin="0" end="${externalSize}" var="i" varStatus="loop">
 		                                	<input type="text" class="ipfield threeip" name="exPos-${loop.index}-${i.id}" value="${i.position}" disabled>
-		                            		<a class="waves-effect waves-light btn delete" data-index="exDELETE-${loop.index}">DELETE</a>
+		                            		<a class="waves-effect waves-light btn delete deleteEXTERNAL" data-index="exDELETE-${loop.index}">DELETE</a>
 		                            	</c:forEach>
 		                            </div>
 		                        </div>

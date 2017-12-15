@@ -2,6 +2,7 @@
 var FBctr; //counting for the names of the dynamic family members field.
 var INctr; //counting for the names of the dynamic internal fields
 var EXctr; //counting for the names of the dynamic external fields
+var ToBeDeleted = [];
 
 /**
  * Checks if string field input is valid.
@@ -172,12 +173,12 @@ function submitPIform() {
 	      success: function(data){
 	    	  
 	      	//Front end stating success
-	    	 alert("Update successful!")
+	    	 //alert("Update successful!")
 	      	
 	      },
 	      error:function(){
 	      	console.log("error searchResult.js");
-	      	alert("Update Failed!")
+	      	//alert("Update Failed!")
 	      }
 	   });
 }
@@ -196,12 +197,12 @@ function submitFBform() {
 	      success: function(data){
 	    	  
 	      	//Front end stating success
-	    	 alert("Update successful!")
+	    	 //alert("Update successful!")
 	      	
 	      },
 	      error:function(){
 	      	console.log("error searchResult.js");
-	      	alert("Update Failed!")
+	      	//alert("Update Failed!")
 	      }
 	   });
 }
@@ -220,12 +221,12 @@ function sendIntInvForm() {
 	      success: function(data){
 	    	  
 	      	//Front end stating success
-	    	 alert("Update successful!")
+	    	 //alert("Update successful!")
 	      	
 	      },
 	      error:function(){
 	      	console.log("error searchResult.js");
-	      	alert("Update Failed!")
+	      	//alert("Update Failed!")
 	      }
 	   });
 }
@@ -243,12 +244,12 @@ function sendExtInvForm() {
 	      success: function(data){
 	    	  
 	      	//Front end stating success
-	    	 alert("Update successful!")
+	    	 //alert("Update successful!")
 	      	
 	      },
 	      error:function(){
 	      	console.log("error searchResult.js");
-	      	alert("Update Failed!")
+	      	//alert("Update Failed!")
 	      }
 	   });
 }
@@ -363,44 +364,53 @@ function searchForField(fieldForm, index) {
 	return value;
 }
 
-function performDelete(name) {
-	var container = name.split("-");
-	var theName = container[0];
-	var index = container[1];
-	var dbID = container[2];
-	
-	console.log("Name: " + theName);
-	console.log("Index: " + index);
-	console.log("DB id: " + dbID);
+function performDelete(type) {
+
+	var container;
+	var theName;
+	var index;
+	var dbID;
 	
 	
-	
-	
-	$.ajax({
-		  context: this,
-	      url:'deleteInformation',
-	      data:{'name':theName,
-	    	    'dbID':dbID},
-	      type:'POST',
-	      cache:false,
-	      success: function(data){
-	    	  
-	      	//Front end stating success
-	    	 alert("Update successful!")
-	      	
-	      },
-	      error:function(){
-	      	console.log("error searchResult.js");
-	      	alert("Update Failed!")
-	      }
-	   });
-	
+	for(var i = 0; i < ToBeDeleted.length; i++) {
+		container = ToBeDeleted[i].split("-");
+		theName = container[0];
+		index = container[1];
+		dbID = container[2];
+		
+		console.log("Name: " + theName);
+		console.log("Index: " + index);
+		console.log("DB id: " + dbID);
+		
+		if(theName.includes(type)) {
+			$.ajax({
+				  context: this,
+			      url:'deleteInformation',
+			      data:{'name':theName,
+			    	    'dbID':dbID},
+			      type:'POST',
+			      cache:false,
+			      success: function(data){
+			    	  
+			      	//Front end stating success
+			    	 //alert("Update successful!")
+			      	
+			      },
+			      error:function(){
+			      	console.log("error searchResult.js");
+			      	//alert("Update Failed!")
+			      }
+			   });
+		}
+	}
+		
 	
 }
 
 $(document).ready(function() {
+	$("div form div div a.delete").hide();
 	$('#bDayField').on('input', function() {
-
+		
 		var today = new Date();
 		var birthDate = new Date(document.getElementById('bDayField').value);
 	    var age = today.getFullYear() - birthDate.getFullYear();
@@ -451,14 +461,14 @@ $(document).ready(function() {
 		}
 		
 		else {
-			alert("Please make sure all fields has valid inputs!");
+			//alert("Please make sure all fields has valid inputs!");
 		}
 		
 	})
 
 	$('#FBedit').click(function() {
 		$('form#FBform input.ipfield').removeAttr('disabled');
-
+		$("div form div div a.deleteSIB").show();
 		$('#FBedit').hide();
 		$('#FBsave').show();
 		$('#FBcancel').show();
@@ -467,6 +477,7 @@ $(document).ready(function() {
 	
 	$("#FBcancel").click(function() {
 		   $('form#FBform input.ipfield').attr('disabled', 'disabled');
+		   $("div form div div a.deleteSIB").hide();
 			$('#FBedit').show();
 			$('#FBsave').hide();
 			$('#FBcancel').hide();
@@ -479,6 +490,7 @@ $(document).ready(function() {
 			
 		   //submit the forms
 		   submitFBform();
+		   performDelete("sib");
 		   $('form#FBform input.ipfield').attr('disabled', 'disabled');
 			
 			$('#FBedit').show();
@@ -488,13 +500,13 @@ $(document).ready(function() {
 		}
 		//Constraints violdated.
 		else {
-			alert("Something went wrong sir!")
+			//alert("Something went wrong sir!")
 		}
 	})
 
 	$('#IIedit').click(function() {
 		$('form#intInv input.ipfield').removeAttr('disabled');
-
+		$("div form div div a.deleteINTERNAL").show();
 		$('#IIedit').hide();
 		$('#imInternal').show();
 		$('#IIsave').show();
@@ -503,6 +515,7 @@ $(document).ready(function() {
 	
 	$("#IIcancel").click(function() {
 		$('form#intInv input.ipfield').attr('disabled', 'disabled');
+		$("div form div div a.deleteINTERNAL").hide();
 		$('#IIedit').show();
 		$('#imInternal').hide();
 		$('#IIsave').hide();
@@ -514,6 +527,7 @@ $(document).ready(function() {
 		//Constraints handling soon
 		if(true) {
 			sendIntInvForm();
+			performDelete("in");
 			$('form#intInv input.ipfield').attr('disabled', 'disabled');
 
 			$('#IIedit').show();
@@ -529,7 +543,7 @@ $(document).ready(function() {
 
 	$('#EIedit').click(function() {
 		$('form#extInv input.ipfield').removeAttr('disabled');
-
+		$("div form div div a.deleteEXTERNAL").show();
 		$('#EIedit').hide();
 		$('#imExternal').show();
 		$('#EIsave').show();
@@ -538,7 +552,7 @@ $(document).ready(function() {
 	
 	$("#EIcancel").click(function() {
 		$('form#extInv input.ipfield').attr('disabled', 'disabled');
-
+		$("div form div div a.deleteEXTERNAL").hide();
 		$('#EIedit').show();
 		$('#imExternal').hide();
 		$('#EIsave').hide();
@@ -551,8 +565,9 @@ $(document).ready(function() {
 		//constraints handler
 		if(true) {
 			sendExtInvForm();
+			performDelete("ex");
 			$('form#extInv input.ipfield').attr('disabled', 'disabled');
-
+			
 			$('#EIedit').show();
 			$('#imExternal').hide();
 			$('#EIsave').hide();
@@ -793,7 +808,8 @@ $(document).ready(function() {
 		
 		
 		//Save delete at DB 
-		performDelete(name);
+		//performDelete(name);
+		ToBeDeleted.push(name);
 		
 	});
 	

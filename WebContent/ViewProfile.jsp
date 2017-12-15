@@ -119,7 +119,7 @@
 	                    <div class="wrap">
 	                        <div class="f">
 	                            <p class="ltags">Birthday</p>
-	                            <input type="date" id = 'bDayField' class = "ipfield threeip" name="bday" value="${loggedUser.birthday}" disabled>
+	                            <input type="date" id = 'bDayField' class = "ipfield threeip" name="bday" value="${loggedUser.birthday}" disabled  placeholder="mm/dd/yyyy">
 	
 	                            <p class="ltags">Civil Status</p> 
 	                            <input id="status" type="text" class="ipfield threeip" name="civil" value="${loggedUser.civil}" disabled placeholder="Single, Married">

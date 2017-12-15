@@ -577,7 +577,7 @@ public class StudentService {
 				}
 				
 				else year = rs.getDate("yearEnrolled").getYear();
-				
+				System.out.println("BDAY: " + rs.getDate("birthday") + " || ZIP: " + rs.getInt("zip"));
 				student = new Student(rs.getInt("studentId"), 
 						              rs.getDate("birthday"),
 						              Year.of(year), 
@@ -597,7 +597,12 @@ public class StudentService {
 				student.setCity(rs.getString("city"));
 				student.setProvince(rs.getString("province"));
 				student.setCountry(rs.getString("country"));
-				student.setZip(rs.getInt("zip"));
+				int zip = 0;
+				zip = rs.getInt("zip");
+				if (!rs.wasNull()){
+					System.out.println(rs.wasNull() + " || " + zip);
+					student.setZip(rs.getInt("zip"));
+				}
 				student.calculateAge(rs.getDate("birthday"));
 			}
 			

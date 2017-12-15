@@ -38,7 +38,8 @@ import service.StudentService;
 		                   "/addIntInv", //Student
 		                   "/addExtInv", // Student
 		                   "/displayStudentData",
-		                   "/getNotifs"} //Student
+		                   "/getNotifs",
+		                   "/sendEmailForVerification"} //Student
 )
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -74,20 +75,13 @@ public class StudentServlet extends HttpServlet {
 			case "/updateFamily": updateFamily(request, response); break;
 			case "/addIntInv": addInvolvements(request, response, 1); break;
 			case "/addExtInv": addInvolvements(request, response, 0); break;
+			case "/sendEmailForVerification": sendEmailVerification(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
+	
 
-	/**
-	 * Add students
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void addStudents(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
-		System.out.println("*****************ADD USER ************************");
-		
+	private void sendEmailVerification(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idNum = request.getParameter("idNum");
 		String lastname = request.getParameter("lastName");
 		String firstname = request.getParameter("firstName");
@@ -103,36 +97,90 @@ public class StudentServlet extends HttpServlet {
 	    System.out.println("uuid = " + verificationId);
 	    
 		int idnum = Integer.parseInt(idNum);
+		
+		//Perform hashing here//
+		PasswordAuthentication p = new PasswordAuthentication();
+        
+		String newPass 			 = p.hash(password.toCharArray()),
+			   newVerificationId = p.hash(verificationId.toCharArray());
+		
+		
+		
+		Student student = new Student(idnum, 
+				  lastname,
+				  firstname,
+				  middlename,
+				  username, //Username is email.
+				  newPass,
+				  college,
+				  course);
+		
+		StudentService.addStudent(student, newVerificationId);
+		System.out.println("User added but needs verification!");
+		
+		//Perform sending verification link.
+		request.setAttribute("email", username);
+		request.setAttribute("verificationId", newVerificationId);
+		request.getRequestDispatcher("sendVerification").forward(request, response);
+	}
+
+
+	/**
+	 * Add students
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void addStudents(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+		System.out.println("*****************ADD USER ************************");
+		
+		String idNum = request.getParameter("idNum");
+//		String lastname = request.getParameter("lastName");
+//		String firstname = request.getParameter("firstName");
+//		String middlename = request.getParameter("middleName");
+		String username = request.getParameter("email"); //Email
+//		String password = request.getParameter("password");
+//		String rePassword = request.getParameter("password2");
+//		String college = request.getParameter("college");
+//		String course = request.getParameter("course");
+		
+	    //String verificationId = UUID.randomUUID().toString().replace("-", "");
+	    
+	    //System.out.println("uuid = " + verificationId);
+	    
+		int idnum = Integer.parseInt(idNum);
 
 		//if username OR idnumber OR both has a duplicate in DP, send error message.
 		if(checkDuplicates(username, idnum)) {
 			response.getWriter().write(duplicateError);
 		}
 		else {
-			//Perform hashing here//
-			PasswordAuthentication p = new PasswordAuthentication();
-	        
-			String newPass 			 = p.hash(password.toCharArray()),
-				   newVerificationId = p.hash(verificationId.toCharArray());
-			
-			
-			
-			Student student = new Student(idnum, 
-					  lastname,
-					  firstname,
-					  middlename,
-					  username, //Username is email.
-					  newPass,
-					  college,
-					  course);
-			
-			StudentService.addStudent(student, newVerificationId);
-			System.out.println("User added but needs verification!");
-			
-			//Perform sending verification link.
-			request.setAttribute("email", username);
-			request.setAttribute("verificationId", newVerificationId);
-			request.getRequestDispatcher("sendVerification").forward(request, response);
+			response.getWriter().write("GO-SIGNAL");
+//			//Perform hashing here//
+//			PasswordAuthentication p = new PasswordAuthentication();
+//	        
+//			String newPass 			 = p.hash(password.toCharArray()),
+//				   newVerificationId = p.hash(verificationId.toCharArray());
+//			
+//			
+//			
+//			Student student = new Student(idnum, 
+//					  lastname,
+//					  firstname,
+//					  middlename,
+//					  username, //Username is email.
+//					  newPass,
+//					  college,
+//					  course);
+//			
+//			StudentService.addStudent(student, newVerificationId);
+//			System.out.println("User added but needs verification!");
+//			
+//			//Perform sending verification link.
+//			request.setAttribute("email", username);
+//			request.setAttribute("verificationId", newVerificationId);
+//			request.getRequestDispatcher("sendVerification").forward(request, response);
 
 		}
 		System.out.println("*******************************************");

@@ -39,13 +39,31 @@ function duplicateHandler(data) {
             
             $('#idnumerrorPlaceHolder').hide();
             $('#idnumerror1').show();
-            $('#idNum').css("border-color", "indianred");
-                                    
-            //alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
-		default: document.location.href = 'HomePage.jsp'; //redirect to homepage.
+            $('#idNum').css("border-color", "indianred"); break;
+            
+		case "GO-SIGNAL": submitForSending();
+						  document.location.href = 'VerifyLink.html';
+						  break;
+		default:console.log("CANNOT READ RESPOND FROM SERVLET ( SIGNUP.JS )");
 		
 	}
 	
+}
+
+function submitForSending() {
+	$.ajax({
+		   context: this,
+	      url:'sendEmailForVerification',
+	      data:$("form#signUpForm").serialize(),
+	      type:'POST',
+	      cache:false,
+	      success: function(data){
+	      	
+	      },
+	      error:function(){
+	      	console.log("error searchResult.js");
+	      }
+	   });
 }
 
 
@@ -451,10 +469,11 @@ $("document").ready(function(idNum, password, fName, lName) {
         	
         	//if all fields valid, proceed. if not, place front end effects of what field is not ok.
         	if(constraintChecker(password, idNum, fName, lName, mName, courseName)) {
-        		$('.modal').modal({
-        			dismissible: false //makes modal unclickable on background.
-        		});
+//        		$('.modal').modal({
+//        			dismissible: false //makes modal unclickable on background.
+//        		});
         		//submitTheForm();
+        		submitTheForm();
         	}
         	
 
@@ -509,10 +528,10 @@ $("document").ready(function(idNum, password, fName, lName) {
 	});
 	
 	//Send verification link here.
-	$("#proceedModal").click(function() {
-        // TODO update once verified mail
-		//$("form#signUpForm").submit();
-		submitTheForm();
-	});
+//	$("#proceedModal").click(function() {
+//        // TODO update once verified mail
+//		//$("form#signUpForm").submit();
+//		submitTheForm();
+//	});
 
 });

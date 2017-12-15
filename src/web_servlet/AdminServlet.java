@@ -149,7 +149,7 @@ public class AdminServlet extends HttpServlet {
 		AdminService.createPost(title, body);
 		post = AdminService.createPost(title, body);
 		postId = post.getPostId();
-//		AdminService.addNotif(postId, title, body);
+		AdminService.addNotif(postId, title, body);
 
 		
 		

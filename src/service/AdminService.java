@@ -245,7 +245,7 @@ public class AdminService {
 
 			PreparedStatement st = conn.prepareStatement("SELECT student.*, COUNT(*) AS 'nInvolvements' FROM " +
 														 "sofengg.student, sofengg.involvement WHERE " +
-														 "studentId = idNum AND (firstName LIKE ? OR middleName " +
+														 "student.id = involvement.studentDBId AND (firstName LIKE ? OR middleName " +
 														 "LIKE ? OR lastName LIKE ?) GROUP BY studentId HAVING COUNT(*) >= 5");
 			st.setString(1, name + "%");
 			st.setString(2, name + "%");

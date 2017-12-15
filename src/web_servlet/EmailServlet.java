@@ -53,9 +53,9 @@ public class EmailServlet extends HttpServlet {
 	
 
 	private void sendResetPassConfirm(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String email = (String) request.getAttribute("email");
-		String token = (String) request.getAttribute("token");
-		
+		String email = request.getParameter("email");
+		String token = request.getParameter("token");
+
 		System.out.println("*********************** SEND RESET PASSWORD CONFIRM EMAIL******************************");
 		System.out.println("Email: " + email);
 		System.out.println("Token: " + token);
@@ -114,7 +114,7 @@ public class EmailServlet extends HttpServlet {
 		
 		System.out.println("Sending of reset password confirmation email done!");
 		System.out.println("***************************************************************************************");
-		response.getWriter().write("EXISTS");
+		//response.getWriter().write("EXISTS");
 	}
 	
 	

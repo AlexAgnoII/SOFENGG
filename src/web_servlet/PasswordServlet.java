@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import service.AdminService;
+import service.ExpiringLinkService;
 import service.PasswordAuthentication;
 import service.StudentService;
 
@@ -263,10 +264,26 @@ public class PasswordServlet extends HttpServlet {
 		
 		System.out.println("*****************RESET PASSWORD *******************************");
 		System.out.println("Token: " + token);
-	
 		
-		session.setAttribute("U", token);
-		response.sendRedirect("ResetPassword.jsp");
+		//Existing token
+		if(ExpiringLinkService.isPendingToken(token)) {		
+			//If token is less than 5 mins, continue
+			if(ExpiringLinkService.isBelow(token)) {
+				session.setAttribute("U", token);
+				response.sendRedirect("ResetPassword.jsp");			
+			}
+			
+			//Else, kill that row, and redirect to error page
+			else {
+				ExpiringLinkService.kill(token);
+				response.sendRedirect("ExpiredReset.html");
+			}
+		}
+		
+		else { //Expired already
+			response.sendRedirect("ExpiredReset.html");
+		}
+
 		System.out.println("***************************************************************");
 	}
 
@@ -294,13 +311,31 @@ public class PasswordServlet extends HttpServlet {
 			System.out.println("Email code: " + token);
 			System.out.println(p.authenticate(email.toCharArray(), token));
 			
+			//Store Exact time and date when this happened.
+//			request.setAttribute("email", email);
+//			request.setAttribute("token", token);
 			
-			request.setAttribute("email", email);
-			request.setAttribute("token", token);
+			//Is it pending
+			if(ExpiringLinkService.isPending(email)) { //true
+				System.out.println("Check email! It has already been sent!");
+				response.getWriter().write("ALREADY-SENT");
+			}
+			
+			else { //false (not even in database yet) 
+				//Add to database and send email.
+				System.out.println("Adding to db....");
+				ExpiringLinkService.save(email, token);
+				response.getWriter().write(token + "|" + email);
+				//request.getRequestDispatcher("sendResetPassConfirm").forward(request, response);
+			}
+				
+	
+
+			
+			
 			
 			//Send comfirmation email
-			request.getRequestDispatcher("sendResetPassConfirm").forward(request, response);
-
+			//request.getRequestDispatcher("sendResetPassConfirm").forward(request, response);
 		}
 			
 		else {

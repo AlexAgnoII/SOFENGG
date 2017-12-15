@@ -272,18 +272,20 @@ function checkPasswordField(passwordField) {
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
 			//spanPassword.innerHTML ="";
-            $('#pwerrorPlaceHolder').show();
-            $('#pwerror').hide();
+            //$('#pwerrorPlaceHolder').show();
+            //$('#pwerror').hide();
             $('#password').css("border-color", "rgba(0, 0, 0, 0.3)");
+            $('#iPassword').css("color", "darkslategrey");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
 		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
-        $('#pwerrorPlaceHolder').hide();
-        $('#pwerror').show();
+        //$('#pwerrorPlaceHolder').hide();
+        //$('#pwerror').show();
         $('#password').css("border-color", "indianred");
+        $('#iPassword').css("color", "indianred");
 	}
     
     if (document.getElementById('password2').value != "") {

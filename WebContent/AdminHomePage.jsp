@@ -55,9 +55,15 @@
             <div class ="annwrap">
                 <form action="createPost" method="POST" id="createPostForm">
 					<p class="ltags">Title</p>
-					<input type="text" id="anntitle" name = "anntitle">
+					<input type="text" id="anntitle" name = "anntitle" maxlength="50" onblur="checkTitle(this, getElementbyId('titleerror'))">
+                    <div class="errorplaceholder">
+                        <p class="errors center-align" id="titleerror">*Title must not be more than 50 characters*</p>
+                    </div>
 					<p class="ltags">Description</p>
-					<textarea type="text" id="annbody" name = "annbody"> </textarea>
+					<textarea type="text" id="annbody" name = "annbody" maxlength="1000" onblur="checkBody(this, getElementById('bodyerror'))"> </textarea>
+                    <div class="errorplaceholder">
+                        <p class="errors center-align" id="bodyerror">*Body must not be more than 1000 characters*</p>
+                    </div>
            		</form>
 					<br>	
 					<button class="waves-effect waves-light btn" id="ANpost" >POST</button>
@@ -70,9 +76,15 @@
             <div class = "annwrap">
                 <form action="createPost" method="POST" id="createPostForm">
 					<p class="ltags">Title</p>
-					<input type="text" id="updateTitle" name = "anntitle">
+					<input type="text" id="updateTitle" name = "anntitle" maxlength="50" onblur="checkTitle(this, getElementById('titleerror'))">
+                    <div class="errorplaceholder">
+                        <p class="errors center-align" id="titleerror">*Title must not be more than 50 characters*</p>
+                    </div>
 					<p class="ltags">Description</p>
-					<textarea type="text" id="updateBody" name = "annbody"></textarea>
+					<textarea type="text" id="updateBody" name = "annbody" maxlength="1000" onblur="checkBody(this, getElementById('bodyerror'))"></textarea>
+                    <div class="errorplaceholder">
+                        <p class="errors center-align" id="bodyerror">*Body must not be more than 1000 characters*</p>
+                    </div>
            		</form>
 					<br>	
 					<button class="waves-effect waves-light btn" id="ANupdate" >Update</button>

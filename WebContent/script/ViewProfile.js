@@ -299,6 +299,105 @@ function addFieldsInvolvement(placeYear, //Div id to append year
 	placePos.append(posInput);
 }
 
+function searchForField(fieldForm, index) {
+	
+	console.log(fieldForm);
+	console.log("Index: " + index);
+	
+	var target = "-" + index  + "-";
+	var elements = fieldForm.elements;
+	var origSize = 0; //Size of the dynamic fields (excluding the static ones)
+	var word = "";
+	var value;
+
+	
+	for(var i = 0; i < elements.length; i++) {
+		if(!/.*mom.*/.test(word) && !/.*dad.*/.test(word) )
+			origSize++;
+	}
+	
+	console.log(target);
+	console.log(elements);
+	console.log("Size: " + elements.length);
+	//Delet the rows
+	for(var i = 0; i < elements.length; i++) {
+		//console.log("checker");
+		word = elements[i].name; 
+		console.log(word);
+		if(word.includes(target)) {
+			value = word;
+			$('input[name=' + value +']').remove();
+		}
+	}
+	
+	var tempCon;
+	//Fix indexing for the affected row
+	
+	console.log("Value: " + value);
+	console.log("Original size: " + origSize)
+	var tempAgain = value.split("-");
+	console.log("Index deleted(+1): " + (parseInt(tempAgain[1])+1));
+	console.log("Size / 3: " + (origSize / 3));
+	
+	//Dont do anything if the last element was targeted.
+	if((parseInt(tempAgain[1])+1) != origSize / 3) {
+		console.log("Not last.");
+		for(var i = 0; i < elements.length; i++) {
+			word = elements[i].name; 
+			tempCon = word.split("-");
+			
+			//Rearrange indexing in the views.
+			//Must decrement indexes greater than deleted index AND must not be a mom or dad.
+			if(tempCon[1] > tempAgain[1] && !(/.*dad.*/.test(tempCon[0])) && !(/.*mom.*/.test(tempCon[0]))) {
+				//console.log("New name: " + tempCon[0] + "-" + (tempCon[1]-1) + "-" + tempCon[2]);
+				//Warning, might need to check if tempCon[1]-1 needs to be parsed or not.
+				elements[i].setAttribute("name", tempCon[0] + "-" + (tempCon[1]-1) + "-" + tempCon[2]); 
+			}
+			console.log(elements[i].name);
+			
+		}
+	}
+	else {
+		console.log("Last element deleted. no do anything.")
+	}
+	return value;
+}
+
+function performDelete(name) {
+	var container = name.split("-");
+	var theName = container[0];
+	var index = container[1];
+	var dbID = container[2];
+	
+	console.log("Name: " + theName);
+	console.log("Index: " + index);
+	console.log("DB id: " + dbID);
+	
+	
+	
+	
+	$.ajax({
+		  context: this,
+	      url:'deleteInformation',
+	      data:{'name':theName,
+	    	    'dbID':dbID},
+	      type:'POST',
+	      cache:false,
+	      success: function(data){
+	    	  
+	      	//Front end stating success
+	    	 alert("Update successful!")
+	      	
+	      },
+	      error:function(){
+	      	console.log("error searchResult.js");
+	      	alert("Update Failed!")
+	      }
+	   });
+	
+	
+}
+
 $(document).ready(function() {
 	$('#bDayField').on('input', function() {
 
@@ -600,7 +699,102 @@ $(document).ready(function() {
 	
 	$("div form div div a.delete").click(function() {
 		
-		console.log("Index: " + $(this).attr("data-index"));
+		var index = $(this).attr("data-index");
+		var container = index.split("-");
+		var name = "";
+		
+		if("sibDELETE" === container[0]) {
+			console.log("Its a sibling deletion");
+			name = searchForField(document.getElementById('FBform'), container[1]);
+		}
+		
+		else if ("inDELETE" === container[0]) {
+			console.log("Its a internal deletion");
+			name = searchForField(document.getElementById('intInv'),container[1]);
+		}
+		
+		else if ("exDELETE" === container[0]) {
+			console.log("Its a external deletion");
+			name = searchForField(document.getElementById('extInv'), container[1]);
+		}
+		
+		else {
+			console.log("What is this deletion?");
+		}
+		
+		//Delete the button
+		console.log("What we delete: " + name);
+		//Fix delete button
+		var list = ($(this).attr("data-index")).split("-");
+		console.log("Deleting this button: " + list[0] + "|" + list[1]);
+		var buttons = document.getElementsByClassName('delete');
+		var siblingGroup = [];
+		var internalGroup = [];
+		var externalGroup = [];
+		var temp;
+		var tempWord;
+		for(var i = 0; i < buttons.length; i++) {
+			temp = $(buttons[i]);
+			console.log(temp.attr("data-index"));
+			tempWord = temp.attr("data-index");
+			
+			if(tempWord.includes("inDELETE")) {
+				internalGroup.push(temp);
+			}
+			else if(tempWord.includes("exDELETE")) {
+				externalGroup.push(temp);
+			}
+			else if(tempWord.includes("sibDELETE")) {
+				siblingGroup.push(temp);
+			}
+			else {
+				console.log("send help");
+			}
+		}
+		
+		console.log("SiblingGroup: " + siblingGroup.length);
+		console.log("internalGroup: " + internalGroup.length);
+		console.log("externalGroup: " + externalGroup.length);
+		var buttonGroup;
+		if(list[0] === "inDELETE") {
+			buttonGroup = internalGroup;
+		}
+		else if(list[0] === "exDELETE") {
+			buttonGroup = externalGroup;
+		}
+		else if(list[0] === "sibDELETE") {
+			buttonGroup = siblingGroup;
+		}
+		else {
+			console.log("send help");
+		}
+		
+		console.log("ButtonGroup");
+		console.log(buttonGroup);
+		console.log(parseInt(list[1])+1);
+		console.log(buttonGroup.length);
+		if((parseInt(list[1])+1) != buttonGroup.length) {
+			var elem;
+			var num;
+			for (var i = 0; i < buttonGroup.length; i++) {
+				elem = buttonGroup[i].attr("data-index").split("-");
+
+				if(elem[1] > list[1]) {
+					buttonGroup[i].attr("data-index", elem[0] + "-" + (elem[1]-1))
+					
+				}
+				
+				
+			}
+		}
+		
+		//Remove button
+		$(this).remove();
+		
+		
+		//Save delete at DB 
+		performDelete(name);
+		
 	});
 	
 	//-----------------------------------------

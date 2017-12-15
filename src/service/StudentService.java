@@ -1341,6 +1341,23 @@ public class StudentService {
 //		System.out.println("***********************************************************************************");
 //
 //	}
-
+	
+	public static void delete(int dbID, String table, String column) {
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("DELETE FROM "+ table + " WHERE "+column+" = ?");
+			st.setInt(1, dbID); 
+			st.execute();
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
 
 }

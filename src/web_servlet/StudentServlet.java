@@ -39,7 +39,8 @@ import service.StudentService;
 		                   "/addExtInv", // Student
 		                   "/displayStudentData",
 		                   "/getNotifs",
-		                   "/sendEmailForVerification"} //Student
+		                   "/sendEmailForVerification",
+		                   "/deleteInformation"} //Student
 )
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -76,10 +77,43 @@ public class StudentServlet extends HttpServlet {
 			case "/addIntInv": addInvolvements(request, response, 1); break;
 			case "/addExtInv": addInvolvements(request, response, 0); break;
 			case "/sendEmailForVerification": sendEmailVerification(request, response); break;
+			case "/deleteInformation": deleteInformation(request, response); break;
 			default: System.out.println("ERROR(Inside dataServlet *doPost*): url pattern doesn't match existing patterns.");
 		}
 	}
 	
+
+	private void deleteInformation(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		String name = request.getParameter("name");
+		String dbID = request.getParameter("dbID");
+		System.out.println("*************************DELETE INFO****************************");
+		System.out.println("Name: " + name);
+		System.out.println("dbID: " + dbID);
+		
+		//Sibling
+		if(name.matches(".*sib.*")) {
+			StudentService.delete(Integer.parseInt(dbID), "relative", "relativeId");
+		}
+		
+		//Internal
+		else if(name.matches(".*in.*")) {
+			System.out.println("Internal delete!");
+			StudentService.delete(Integer.parseInt(dbID), "involvement", "involvementId");
+		}
+		
+		//External
+		else if(name.matches(".*ex.*")) {
+			System.out.println("External delete!");
+			StudentService.delete(Integer.parseInt(dbID), "involvement", "involvementId");
+		}
+		
+		else {
+			System.out.println("What to delete?");
+		}
+		System.out.println("******************************************************************");
+		
+	}
 
 	private void sendEmailVerification(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idNum = request.getParameter("idNum");

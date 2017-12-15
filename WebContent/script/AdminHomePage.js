@@ -49,6 +49,11 @@ function loadPosts(){
 	
 	        	// Append html snippet 
 	    	    $(postFeed).append(data);
+	    	    
+
+	    		$('.postBody').each(function() {
+	    	        $(this).height($(this).prop('scrollHeight'));
+	    	    });
         	}
     	},
         error:function(){
@@ -105,6 +110,7 @@ function updateForm(postId, title, body) {
 }
 
 $("document").ready(function() {
+	
     $('.modal').modal();
     loadPosts();
 	

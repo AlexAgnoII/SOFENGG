@@ -9,6 +9,7 @@
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		<script type="text/javascript" src="script/UserAnnouncements.js"></script>
+        <script type="text/javascript" src="script/UserNotifications.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
         <link rel = "stylesheet" type="text/css" href="css/userhomepage.css">
@@ -51,23 +52,11 @@
                 </div>
                 
                 <div id="dp3">
-                    <p id="ann">Notification here</p>
+                    <p id="ann">No new notification</p>
                 </div>
             </div>
         </nav> 
         
      	<div id="postFeed"> </div> 
-        <script>
-            
-            $('#notif').click( function(event){
-                event.stopPropagation();
-                $('#dp3').slideToggle();
-            });
-            
-            $(document).click( function(){
-                $('#dp3').hide();
-            });
-
-        </script>
     </body>
 </html>

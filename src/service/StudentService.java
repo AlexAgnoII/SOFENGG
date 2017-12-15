@@ -1270,7 +1270,7 @@ public class StudentService {
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
-				notifications.add(new Notification(rs.getInt("postId"), rs.getString("notificationTitle"), rs.getString("notificationContent"), rs.getInt("notificationRead")));
+				notifications.add(new Notification(rs.getInt("notificationId"), rs.getInt("postId"),  rs.getString("notificationTitle"), rs.getString("notificationContent"), rs.getInt("notificationRead")));
 				System.out.println("Notification: " + rs.getString("notificationTitle"));
 			} 
 			

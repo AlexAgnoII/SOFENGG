@@ -713,12 +713,14 @@ public class AdminService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
-			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`notification` (`postId`, `title`, `body`) " +
-													     "VALUES (?, ?, ?);");
+			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`notification` (`postId`, `notificationTitle`, `notificationContent`, `notificationRead`) " +
+				     "VALUES (?, ?, ?, ?);");
+			
 			st.setInt(1, postId);
 			st.setString(2, title);
 			st.setString(3, body);
 			st.setInt(4, 0);
+			st.executeUpdate();
 			
 			System.out.println("Notif Added!");
 			notification = new Notification(postId, title, body, 0);

@@ -8,7 +8,7 @@
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 		<script type="text/javascript" src="http://www.position-absolute.com/creation/print/jquery.printPage.js"></script>
-        
+        <script type="text/javascript" src="script/UserNotifications.js"></script>
         <!-- INSERT CORRECT STYLESHEET BELOW -->
         <link rel = "stylesheet" type="text/css" href="css/viewprofile.css">
     </head>
@@ -49,7 +49,7 @@
                 </div>
                 
                 <div id="dp3">
-                    <p id="ann">Notification here</p>
+                    <p id="ann">No new notification</p>
                 </div>
             </div>
         </nav> 

@@ -465,16 +465,6 @@ $(document).ready(function() {
 
 	})
 	
-	$('#notif').click(function(event) {
-		event.stopPropagation();
-		$('#dp3').slideToggle();
-	});
-
-	$(document).click(function() {
-		$('#dp3').hide();
-	});
-	
-	
 	//Contraints handler here (FOR PI)
 	$('#city').blur(function(){
 		var cityField = $("input#city");

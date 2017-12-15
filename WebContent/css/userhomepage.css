@@ -161,9 +161,8 @@ a#menu.dropdown-button.btn:hover #mb {
 #dp3 {
     display: none;
     float: right;
-    margin-right: -110px;
-    width: 200px;
-    margin-top: 50px;
+    margin-right: -108px;
+    width: 263px;
     background-color: #006f4a; 
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -179,9 +178,22 @@ a#menu.dropdown-button.btn:hover #mb {
 }
 
 #ann {
-    width: 200px;
+    width: 150px;
 }
 
 nav ul a:hover {
      background-color: #01563a;
+}
+
+.nchead{
+	height: 65px;
+    background-color: transparent;
+    border: 1px solid #9C9C9C;
+	width: 100%;
+    font-size: 11px;
+    color: snow;
+}
+
+#text {
+	padding-bottom: 10px;
 }

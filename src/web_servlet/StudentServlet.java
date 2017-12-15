@@ -665,12 +665,28 @@ public class StudentServlet extends HttpServlet {
 		System.out.println("***********************************************************************************");
 	}
 	
-	public void getNotifications(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-		ArrayList<Notification> notificationList = null;
+	private void getNotifications(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+		System.out.println("***************** UPDATING NOTIF FEED ************************");
 		int notificationCount = 0;
 		
-		notificationList = StudentService.getNotificationList();
-		
+		ArrayList<Notification> notificationList = StudentService.getNotificationList();
 		notificationCount = StudentService.getCountNotifications(notificationList);
+		String htmlNotifList 	 = "";
+		
+		
+	    for(Notification n : notificationList){
+	    	htmlNotifList += 
+	    					"<a class='text' href = 'UserHomePage.jsp'>" +
+							"		<button class='nchead' type = 'button' notifId = '" + n.getNotifId() +"'>" +
+					        "   		Vice dean just posted a new announcement." +
+					        "		</button>" + 
+					        "</a>";
+		}
+		
+		System.out.println(htmlNotifList);
+	    response.setContentType("text/html"); 
+	    response.setCharacterEncoding("UTF-8"); 
+	    response.getWriter().write(htmlNotifList);       
+		System.out.println("*******************************************");
 	}
 }

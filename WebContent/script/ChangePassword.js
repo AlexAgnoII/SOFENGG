@@ -153,6 +153,7 @@
 			        	//alert("Password not matching");
 			        	console.log("This is not the user's current password");
                         $('#opwError1').show();
+                        $('#opwError2').hide();
                         $('#oPassword').css("border-color", "indianred");
 			        	FLAG_IS_MY_PASS = false;
 			        }

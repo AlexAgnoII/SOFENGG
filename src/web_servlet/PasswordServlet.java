@@ -248,6 +248,8 @@ public class PasswordServlet extends HttpServlet {
 			}
 		}
 		
+		//kill in db so that it wont keep ressetting passsword.
+		ExpiringLinkService.kill(token);
 		response.getWriter().write("SUCCESS-CHANGE");
 		
 	}
@@ -323,9 +325,7 @@ public class PasswordServlet extends HttpServlet {
 			
 			else { //false (not even in database yet) 
 				//Add to database and send email.
-				System.out.println("Adding to db....");
-				ExpiringLinkService.save(email, token);
-				response.getWriter().write(token + "|" + email);
+				response.getWriter().write("EXISTS");
 				//request.getRequestDispatcher("sendResetPassConfirm").forward(request, response);
 			}
 				

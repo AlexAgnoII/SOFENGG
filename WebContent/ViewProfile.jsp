@@ -128,9 +128,9 @@
 	                        </div>
 	
 	                        <div class="f">
-	                            <p class="ltags">Age</p> 
+	                          <!--   <p class="ltags">Age</p> 
 	                            <input type="text" id="specialAge" name="age" value="${loggedUser.age}" disabled>
-	
+	 						   -->
 	                            <p class="ltags">Nationality</p> 
 	                            <input id="citizen" type="text" class="ipfield threeip" name="citizen" value="${loggedUser.citizen}" disabled placeholder="Ex: Filipino, American, Chinese, etc.">
 								<span id="nationSpan" class="iSpan"></span><p> </p>
@@ -249,6 +249,7 @@
 			                                <p class="ltags">Birthday</p>
 			                                <c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
 			                                		<input type="date" class="sbday ipfield threeip" name="sibBday-${loop.index}-${s.relativeId}" value="${s.birthday}" disabled>
+			                                		<a class="waves-effect waves-light btn delete" data-index="sibDELETE-${loop.index}">DELETE</a>
 			                                </c:forEach>
 			                                <!-- <p id="FBbday"></p>-->
 			                            </div>
@@ -333,6 +334,7 @@
 			                                <p class="ltags">Position</p>
 			                                <c:forEach items="${internalList}" begin="0" end="${internalSize}" var="i" varStatus="loop">
 			                               		<input type="text" class="ipfield threeip" name="inPos-${loop.index}-${i.id}" value="${i.position}" disabled>
+			                               		<a class="waves-effect waves-light btn delete" data-index="inDELETE-${loop.index}">DELETE</a>
 			                               	</c:forEach>  
 			                            </div>
 			                        </div>
@@ -399,6 +401,7 @@
 		                                <p class="ltags">Position</p>
 		                                <c:forEach items="${externalList}" begin="0" end="${externalSize}" var="i" varStatus="loop">
 		                                	<input type="text" class="ipfield threeip" name="exPos-${loop.index}-${i.id}" value="${i.position}" disabled>
+		                            		<a class="waves-effect waves-light btn delete" data-index="exDELETE-${loop.index}">DELETE</a>
 		                            	</c:forEach>
 		                            </div>
 		                        </div>
@@ -408,7 +411,6 @@
 	                        
                             <a class="waves-effect waves-light btn" id="EIcancel">CANCEL</a>
 	                        <a class="waves-effect waves-light btn" id="EIsave">SAVE</a>
-	                     
                         </form> <!-- end extInv -->
                     </div> <!-- end of div tag External Involvement --> 
                 </li>

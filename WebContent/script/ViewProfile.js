@@ -598,6 +598,11 @@ $(document).ready(function() {
 		
 	});
 	
+	$("div form div div a.delete").click(function() {
+		
+		console.log("Index: " + $(this).attr("data-index"));
+	});
+	
 	//-----------------------------------------
 
 });

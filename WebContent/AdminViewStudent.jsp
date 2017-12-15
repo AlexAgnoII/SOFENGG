@@ -1,14 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/materialize/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="materialize/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
-		<script type="text/javascript" src="/script/AdminHomePage.js"></script>
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="script/AdminHomePage.js"></script>
         
         <!-- INSERT CORRECT STYLESHEET BELOW -->
-        <link rel = "stylesheet" type="text/css" href="/css/adminhomepage.css">
+        <link rel = "stylesheet" type="text/css" href="css/adminhomepage.css">
     </head>
     
     <body>
@@ -19,7 +22,7 @@
         
        <nav>
             <div class="nav-wrapper">
-               <a class='brand-logo center' data-activates='dp2' href='#' id="tbox">
+               <a class='brand-logo center' data-activates='dp2' href='AdminHonePage.jsp' id="tbox">
                 <div id="wrapper">
                     <img src="/css/arrow.png" id="arrow">
                     <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>

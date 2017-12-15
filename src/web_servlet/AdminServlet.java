@@ -145,8 +145,6 @@ public class AdminServlet extends HttpServlet {
 //			}
 //		}
 		System.out.println("Posting: " + title);
-		System.out.println("Posting: " + title);
-		AdminService.createPost(title, body);
 		post = AdminService.createPost(title, body);
 		postId = post.getPostId();
 		AdminService.addNotif(postId, title, body);

@@ -254,8 +254,10 @@ function checkEmailField(emailField) {
  * @param value
  * @returns true or false
  */
-function checkPassword(value) {
-	return value.length >= 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$/.test(value);
+function checkPassword(value) { 
+	// Java special char // ["'\]
+	return value.length >= 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]).*$/.test(value);
+	//#?!@$%^&*-
 }
 
 /**
@@ -316,7 +318,7 @@ function constraintChecker(password, idNum, fName, lName, mName, courseName) {
 	//Password//
 	//Must be atleast 8 characters
 	//atleast 1 number, 1 special char
-	if(password.length >= 8 && /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).*$/.test(password)) {
+	if(checkPassword(password)) {
 		////make some sort of indicator near field that it is done correctly.
 	}
 	else {

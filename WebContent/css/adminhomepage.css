@@ -289,6 +289,10 @@ nav ul a:hover {
     -webkit-appearance: caret;
 }
 
+textarea{
+    resize: none;
+}
+
 .postDate{
 	color: #afafaf;
 	font-size: 12px;
@@ -336,4 +340,20 @@ nav ul a:hover {
     margin: 0 auto;
     margin-top:90px;
     width: 750px;
+}
+
+.errorplaceholder {
+    height: 20px;
+    margin: 0px;
+}
+
+.errors {
+    height: 20px;
+    margin: 0px;
+    margin-left: 10px;
+    
+    display: none;
+    font-size: 10px;
+    color: indianred;
+    font-style: italic;
 }

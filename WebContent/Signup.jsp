@@ -121,14 +121,14 @@
 
         </div>
                     
-            <div id="modal1" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                  <p id="modver">A verification link has been sent to the email address you used to create your account. Please click on the link to verify your account and proceed with the registration.</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
-                </div>
-              </div>
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+               <p id="modver">A verification link has been sent to the email address you used to create your account. Please click on the link to verify your account and proceed with the registration.</p>
+            </div>
+            <div class="modal-footer">
+               <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
+            </div>
+        </div>
          
          <!-- Originally from head. -->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>

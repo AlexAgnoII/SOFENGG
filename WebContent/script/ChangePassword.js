@@ -46,28 +46,28 @@
         }
     }
 
-    function checkCurrentPasswordField(passwordField) {
-        var value = passwordField.value;
-
-        //Check if password follows constraint.
-        if(checkPassword(value)|| value == "") {
-
-          //Add check or something in front end showing that user did iit correctly.
-          //spanPassword.innerHTML ="";
-          $('#opwError2').hide();
-          $("#opwError1").hide();
-          $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
-
-        }
-        //If not follow, do front end magic to do show this.
-        else {
-            //spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
-            $('#opwError2').show();
-		    $('#opwError1').hide();
-            $('#oPassword').css("border-color", "indianred");
-            console.log("password_invalid_1")
-        }
-    }
+//    function checkCurrentPasswordField(passwordField) {
+//        var value = passwordField.value;
+//
+//        //Check if password follows constraint.
+//        if(checkPassword(value)|| value == "") {
+//
+//          //Add check or something in front end showing that user did iit correctly.
+//          //spanPassword.innerHTML ="";
+//          $('#opwError2').hide();
+//          $("#opwError1").hide();
+//          $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
+//
+//        }
+//        //If not follow, do front end magic to do show this.
+//        else {
+//            //spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
+//            $('#opwError2').show();
+//		    $('#opwError1').hide();
+//            $('#oPassword').css("border-color", "indianred");
+//            console.log("password_invalid_1")
+//        }
+//    }
 
     function checkPasswordEqual(pass2Field, pass1Field) {
         var pass2Val = pass2Field.value;
@@ -136,7 +136,8 @@
           $('#oPassword').css("border-color", "rgba(0, 0, 0, 0.3)");
 		}
 	}
-
+	
+	
 	function validateUser(password) {
 		return $.ajax({
 				  context: this,
@@ -279,7 +280,7 @@
     			if(!checkPassword(newPassRe)) {
     				PROCEED_CHANGING_PASS = false;
     				//alert("Confirm new password failed!")
-    	            $('npwError1').show();
+    	            $('#npwError1').show();
     	            $('#newPassword').css("border-color", "indianred");
     			}
     			
@@ -293,8 +294,12 @@
     		}).then(function(result) {
     			console.log("Can I change my password?: " + result);
             	if(PROCEED_CHANGING_PASS) {
-            		if(password != newPass && FLAG_IS_MY_PASS)
+            		if(password != newPass && FLAG_IS_MY_PASS) {
             			submitNewPassword(newPass);
+            			$('.modal').modal('open'); //show that success change pass
+            			document.getElementById("passForm").reset();
+            		}
+            			
             		else {
             		//	alert("Current and New Password matches, not proceeding po.");
             			$('#npwError2').show();

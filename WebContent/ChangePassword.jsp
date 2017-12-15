@@ -44,8 +44,10 @@
             
                     <h1>Change Password</h1>
                     
+                    <form id="passForm">
+                    
                     <p class="ltags">Current Password</p>	
-                    <input type="password" id="oPassword" name="oPassword" onblur="checkCurrentPasswordField(this)" maxlength="50">
+                    <input type="password" id="oPassword" name="oPassword" maxlength="50">
                     
                     <div class="errorPlaceholder">
                         <div class="errors" id="opwError1">*Wrong Password*</div>
@@ -66,22 +68,25 @@
                     <div class="errorPlaceholder">
                         <div class="errors" id="npwcError1">*Password did not match*</div>
                     </div>
-            
+                    
+            		</form>
                 <br><br>
                 <a class="waves-effect waves-light btn" id="btnBack" href="HomePage.jsp">Back</a>
                 <a class="waves-effect waves-light btn" id="ResetPassword">Change Password</a>
                 <br><br>
-            
-            <div id="modal1" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                  <p id="modver">Success changing password!</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
-                </div>
-              </div>
-            
         </div>
+            
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <p id="modver">Success changing password!</p>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id = "proceedModal">Proceed</a>
+            </div>
+        </div>
+            
+        
         <input id="token" type="hidden" name="token" value="${U}">
          <!-- Originally from head. -->
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>

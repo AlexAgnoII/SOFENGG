@@ -10,7 +10,7 @@ function enterKeyEvent(event) {
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return email.length <= 50 && re.test(email);
+  return email.length <= 50 && re.test(email) && email.trim().length > 0;
 }
 
 function duplicateHandler(data) {
@@ -44,8 +44,7 @@ function duplicateHandler(data) {
 		case "GO-SIGNAL": submitForSending();
 						  document.location.href = 'VerifyLink.html';
 						  break;
-		default:console.log("CANNOT READ RESPOND FROM SERVLET ( SIGNUP.JS )");
-		
+		default:console.log("CANNOT READ RESPOND FROM SERVLET ( SIGNUP.JS )");		
 	}
 	
 }

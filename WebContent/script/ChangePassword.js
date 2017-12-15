@@ -104,6 +104,7 @@
 		      type:'POST',
 		      cache:false,
 		      success: function(data){
+                  
 		    	  //Email sent
 		     //   alert("Success ChangePassword.js")
 		      },
@@ -232,6 +233,7 @@
 //	}
 
     $("document").ready(function() {
+        $('.modal').modal();
 	   
     	$("#ResetPassword").click(function() {
     		var password = $("#oPassword").val(); 

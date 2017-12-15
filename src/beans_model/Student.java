@@ -176,11 +176,7 @@ public class Student {
 	public void setTelNo(String telNo) {
 		this.telNo = telNo;
 	}
-	public Date getBirthday() {
-		if(this.birthday == null) {
-			return java.sql.Date.valueOf("1990-01-01");
-		}
-		
+	public Date getBirthday() {		
 		return birthday;
 	}
 	

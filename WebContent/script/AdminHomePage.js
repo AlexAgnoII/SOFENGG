@@ -1,3 +1,40 @@
+//this function checks for the length of the title
+//must be <=50
+function checkTitle(titleInput, titleError) {
+    
+    if (titleInput.length > 50) {
+        //$('#titleerror').show();
+        //$('anntitle').css("border-color", "indianred");
+        titleInput.style.borderColor = "indianred";
+        titleError.style.display = "none";
+    }
+    else {
+        //$('#bodyerror').show();
+        //$('anntitle').css("border-color", "rgba(0, 0, 0, 0.3)");
+        titleInput.style.borderColor = "rgba(0, 0, 0, 0.3)";
+        titleError.style.display = "none";
+    }
+}
+
+//this function checks for the length of the body
+//must be <=1000
+function checkBody(bodyInput, bodyError) {
+    
+    if (bodyInput.length > 1000) {
+        //$('#bodyerror').show();
+        //$('anntitle').css("border-color", "indianred");
+        bodyInput.style.borderColor = "indianred";
+        Error.style.display = "none";
+    }
+    else {
+        //$('#bodyerror').show();
+        //$('anntitle').css("border-color", "rgba(0, 0, 0, 0.3)");
+        bodyInput.style.borderColor = "rgba(0, 0, 0, 0.3)";
+        bodyError.style.display = "none";
+    }
+}
+
+
 
 //This function handles the front-end effects/notice when user does not place the correct input.
 function enterValidInput(type) {
@@ -16,13 +53,19 @@ function enterValidInput(type) {
     
     if(title === null || title === "" || title.length > 50){
     	// TODO title input error notif
-    	alert("Title should not be empty and not be more than 50 characters");
+    	//alert("Title should not be empty and not be more than 50 characters");
+        $('#titleerror').show();
+        $('anntitle').css("border-color", "indianred");
+        $('updateTitle').css("border-color", "indianred");
     	boolean = false;
     }
     	
 	if(body === null || body === "" || body.length > 1000){
 		// TODO body input error notif
-		alert("Body should not be empty and not be more than 1000 characters");
+		//alert("Body should not be empty and not be more than 1000 characters");
+        $('#bodyerror').show();
+        $('anntitle').css("border-color", "indianred");
+        $('updateTitle').css("border-color", "indianred");
     	boolean = false;
 	}
 	
@@ -49,6 +92,10 @@ function loadPosts(){
 	
 	        	// Append html snippet 
 	    	    $(postFeed).append(data);
+	    	    
+	    		$('.postBody').each(function() {
+	    	        $(this).height($(this).prop('scrollHeight'));
+	    	    });
         	}
     	},
         error:function(){
@@ -75,7 +122,7 @@ function submitTheForm(title, body) {
         	loadPosts();
         },
         error:function(){
-        	alert("Exceeded number of allowed characters.")
+        	//alert("Exceeded number of allowed characters.")
         	console.log("error createPost URL");
         }
      });
@@ -98,7 +145,7 @@ function updateForm(postId, title, body) {
         	loadPosts();
         },
         error:function(){
-        	alert("Exceeded number of allowed characters.")
+        	//alert("Exceeded number of allowed characters.")
         	console.log("error updatePost URL");
         }
      });

@@ -119,7 +119,7 @@
 	                    <div class="wrap">
 	                        <div class="f">
 	                            <p class="ltags">Birthday</p>
-	                            <input type="date" id = 'bDayField' class = "ipfield threeip" name="bday" value="${loggedUser.birthday}" disabled>
+	                            <input type="date" id = 'bDayField' class = "ipfield threeip" name="bday" value="${loggedUser.birthday}" disabled  placeholder="mm/dd/yyyy">
 	
 	                            <p class="ltags">Civil Status</p> 
 	                            <input id="status" type="text" class="ipfield threeip" name="civil" value="${loggedUser.civil}" disabled placeholder="Single, Married">
@@ -170,39 +170,39 @@
 			                        <c:when test="${empty relativeList}"> <!-- Conditional to check if relative list is empty or not. -->
 			                            <div class="f" id="FBname">
 			                                <p class="ltags">Father's Name</p>
-			                                <input type="text" class="ipfield threeip" name="dadName-0" value="Papa bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="dadName-0" value="" disabled>
 			                                
 			                                <p class="ltags">Mother's Name</p>
-			                                <input type="text" class="ipfield threeip" name="momName-0" value="Mama bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="momName-0" value="" disabled>
 		
 			                                <p class="ltags">Sibling/s' Name</p>
-			                                <input type="text" class="sname ipfield threeip" name="sibName-0-0" value="Ate bear" disabled>
+			                                <input type="text" class="sname ipfield threeip" name="sibName-0-0" value="" disabled>
 			                                
 			                                <!--<p id="FBname"></p>-->
 			                            </div>
 			                            
 			                            <div class="f" id="FBocc">
 			                                <p class="ltags">Occupation</p>
-			                                <input type="text" class="ipfield threeip" name="dadWork-0" value="Bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="dadWork-0" value="" disabled>
 			                                
 			                                <p class="ltags">Occupation</p>
-			                                <input type="text" class="ipfield threeip" name="momWork-0" value="Bear" disabled>
+			                                <input type="text" class="ipfield threeip" name="momWork-0" value="" disabled>
 			                                
 			                                <p class="ltags">Occupation</p>
-			                                <input type="text" class="swork ipfield threeip" name="sibWork-0-0" value="Bear" disabled>
+			                                <input type="text" class="swork ipfield threeip" name="sibWork-0-0" value="" disabled>
 		
 			                                <!--<p id="FBocc"></p>-->
 			                            </div>
 			                            
 			                            <div class="f" id="FBbday">
 			                                <p class="ltags">Birthday</p>
-			                                <input type="date" class="ipfield threeip" name="dadBday-0" value="2000-12-01" disabled>
+			                                <input type="date" class="ipfield threeip" name="dadBday-0" value="" disabled>
 			                                
 			                                <p class="ltags">Birthday</p>
-			                                <input type="date" class="ipfield threeip" name="momBday-0" value="2000-12-01" disabled>
+			                                <input type="date" class="ipfield threeip" name="momBday-0" value="" disabled>
 		
 			                                <p class="ltags">Birthday</p>
-			                                <input type="date" class="sbday ipfield threeip" name="sibBday-0-0" value="2000-12-01" disabled>
+			                                <input type="date" class="sbday ipfield threeip" name="sibBday-0-0" value="" disabled>
 			                                <!-- <p id="FBbday"></p>-->
 			                            </div>
 			                   		</c:when>
@@ -299,17 +299,17 @@
 			                        <div class="wrap">
 			                            <div class="f" id="INyear">
 			                                <p class="ltags">Year</p>
-			                                <input type="text" class="ipfield threeipyear" name="inYear-0-0" value="2017" disabled>
+			                                <input type="text" class="ipfield threeipyear" name="inYear-0-0" value="" disabled>
 			                            </div>
 			                            
 			                            <div class="f" id="INevent">
 			                                <p class="ltags">Event/Organization</p>
-			                                <input type="text" class="ipfield threeip" name="inOrg-0-0" value="Something" disabled>                         
+			                                <input type="text" class="ipfield threeip" name="inOrg-0-0" value="" disabled>                         
 			                            </div>
 			                            
 			                            <div class="f" id="INposition">
 			                                <p class="ltags">Position</p>
-			                                <input type="text" class="ipfield threeip" name="inPos-0-0" value="Someone" disabled>
+			                                <input type="text" class="ipfield threeip" name="inPos-0-0" value="" disabled>
 			                            </div>
 			                        </div>
 		                        </c:when>
@@ -366,17 +366,17 @@
 		                        <div class="wrap">
 		                            <div class="f" id="EXyear">
 		                                <p class="ltags">Year</p>
-		                                <input type="text" class="ipfield threeipyear" name="exYear-0-0" value="2017" disabled>
+		                                <input type="text" class="ipfield threeipyear" name="exYear-0-0" value="" disabled>
 		                            </div>
 		                            
 		                            <div class="f" id="EXevent">
 		                                <p class="ltags">Event/Organization</p>
-		                                <input type="text" class="ipfield threeip" name="exOrg-0-0" value="Something" disabled>    
+		                                <input type="text" class="ipfield threeip" name="exOrg-0-0" value="" disabled>    
 		                            </div>
 		                            
 		                            <div class="f" id="EXposition">
 		                                <p class="ltags">Position</p>
-		                                <input type="text" class="ipfield threeip" name="exPos-0-0" value="Someone" disabled>
+		                                <input type="text" class="ipfield threeip" name="exPos-0-0" value="" disabled>
 		                            </div>
 		                        </div>
 	                        </c:when>

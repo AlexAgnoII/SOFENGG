@@ -10,6 +10,21 @@
 			}
 			.sectionHeader{
 				text-align:left;
+				font-size:20px;
+			}
+			table{
+				border-spacing:10px;
+			}
+			.typing{
+				font-weight:bold;
+			}
+			.infoInput{
+				border-bottom:1px solid #000;
+				padding-right:70px;
+			}
+			.label{
+				font-style:italic;
+				font-size:12px;
 			}
 		</style>
 	</head>
@@ -20,48 +35,48 @@
 				<th colspan="3" class="sectionHeader">Nominee's Personal Data</th>
 			</tr>
 			<tr>
-				<td><p>${loggedUser.lastName}</p></td> 
-				<td><p>${loggedUser.firstName}</p></td> 
-				<td><p>${loggedUser.middleName}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.lastName}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.firstName}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.middleName}</p></td> 
 			</tr>
 			<tr>
-				<td><p>Last Name</p></td> 
-				<td><p>First Name</p></td> 
-				<td><p>Middle Name</p></td> 
+				<td><p class="label">Last Name</p></td> 
+				<td><p class="label">First Name</p></td> 
+				<td><p class="label">Middle Name</p></td> 
 			</tr>
 			<tr>
-				<td colspan="3"><p>${loggedUser.address}; ${loggedUser.city}; ${loggedUser.country}; ${loggedUser.zip}</p></td>
+				<td colspan="3" class="infoInput"><p class="typing">${loggedUser.address}; ${loggedUser.city}; ${loggedUser.country}; ${loggedUser.zip}</p></td>
 			</tr>
 			<tr>
-				<td colspan="3"><p>Address</p></td>
+				<td colspan="3"><p class="label">Address</p></td>
 			</tr>
 			<tr>
-				<td><p>${loggedUser.telNo}</p></td> 
-				<td><p>${loggedUser.celNo}</p></td> 
-				<td><p>${loggedUser.email}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.telNo}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.celNo}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.email}</p></td> 
 			</tr>
 			<tr>
-				<td><p>Telephone Number</p></td> 
-				<td><p>Cellphone Number</p></td> 
-				<td><p>Email Address</p></td> 
+				<td><p class="label">Telephone Number</p></td> 
+				<td><p class="label">Cellphone Number</p></td> 
+				<td><p class="label">Email Address</p></td> 
 			</tr>
 			<tr>
-				<td><p>${loggedUser.birthday}</p></td> 
-				<td><p>${loggedUser.age}</p></td> 
-				<td><p>${loggedUser.civil}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.birthday}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.age}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.civil}</p></td> 
 			</tr>
 			<tr>
-				<td><p>Birthdate</p></td> 
-				<td><p>Age</p></td> 
-				<td><p>Civil Status</p></td> 
+				<td><p class="label">Birthdate</p></td> 
+				<td><p class="label">Age</p></td> 
+				<td><p class="label">Civil Status</p></td> 
 			</tr>
 			<tr>
-				<td><p>${loggedUser.citizen}</p></td> 
-				<td><p>${loggedUser.gender}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.citizen}</p></td> 
+				<td class="infoInput"><p class="typing">${loggedUser.gender}</p></td> 
 			</tr>
 			<tr>
-				<td colspan="2"><p>Citizenship</p></td> 
-				<td><p>Gender</p></td> 
+				<td><p class="label">Citizenship</p></td> 
+				<td colspan="2"><p class="label">Sex</p></td> 
 			</tr>
 		</table>
 		<br>
@@ -69,26 +84,32 @@
 			<tr>
 				<th colspan="4" class="sectionHeader">Family Background</th>
 			</tr>
+			<tr>
+				<th><p>    </p></th>
+				<th><p>Name</p></th>
+				<th><p>Birthdate</p></th>
+				<th><p>Occupation</p></th>
+			</tr>
 
 					<tr>
 						<td><p>Father:</p></td>
-						<td><p>${father.name}</p></td>
-						<td><p>${father.birthday}</p></td>
-						<td><p>${father.occupation}</p></td>
+						<td class="infoInput"><p class="typing">${father.name}</p></td>
+						<td class="infoInput"><p class="typing">${father.birthday}</p></td>
+						<td class="infoInput"><p class="typing">${father.occupation}</p></td>
 					</tr>
 					<tr>
 						<td><p>Mother:</p></td>
-						<td><p>${mother.name}</p></td>
-						<td><p>${mother.birthday}</p></td>
-						<td><p>${mother.occupation}</p></td>
+						<td class="infoInput"><p class="typing">${mother.name}</p></td>
+						<td class="infoInput"><p class="typing">${mother.birthday}</p></td>
+						<td class="infoInput"><p class="typing">${mother.occupation}</p></td>
 					</tr>
 					
 					<c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
 						<tr>
 							<td><p>${s.type}</p></td>
-							<td><p>${s.name}</p></td>
-							<td><p>${s.birthday}</p></td>
-							<td><p>${s.occupation}</p></td>
+							<td class="infoInput"><p class="typing">${s.name}</p></td>
+							<td class="infoInput"><p class="typing">${s.birthday}</p></td>
+							<td class="infoInput"><p class="typing">${s.occupation}</p></td>
 						</tr>
                     </c:forEach>
 		</table>
@@ -111,8 +132,8 @@
 			</tr> -->
 			<tr>
 				<td><p>College:</p></td>
-				<td><p>${loggedUser.college}</p></td>
-				<td><p>${loggedUser.course}</p></td>
+				<td><p class="typing">${loggedUser.college}</p></td>
+				<td><p class="typing">${loggedUser.course}</p></td>
 				<!-- <td><p>*insert inclusiveyrs*</p></td> -->
 			</tr>
 			<!-- <tr>

@@ -186,7 +186,7 @@ public class AdminServlet extends HttpServlet {
 							"	<i class='material-icons editbtn'>edit</i></a>" : "") +
 					        "   <p class = 'postDate' >" + ft.format(p.getDate()) + "</p>" +
 					        "	</div>" + 
-					        "   <p class = 'postBody' >" + p.getBody() + "</p>" + 
+					        "   <textarea class = 'postBody' readonly>" + p.getBody() + "</textarea>" + 
 					        "</div> ";
 		}
 		

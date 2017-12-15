@@ -236,22 +236,23 @@ public class AdminServlet extends HttpServlet {
 			collegeVal = "";
 		
 		ArrayList<Student> studentList = AdminService.getStudent(name, collegeVal);
-			
+		int studentId = 0;
 	    for(Student s : studentList){
-
+	    	studentId = s.getStudentId();
+	    	System.out.println("ID: " + studentId);
 			htmlStudentList += "<tr class = 'tableDataRow' onClick = \"(function(){"
 							   + "	$.ajax({"
 							   + " 		context: this,"
-							   + " 		url:'viewByAdmin',"
-							   + " 		data:{'idNum': " + s.getStudentId() + ", 'food': true},"
-							   + " 		type: 'GET',"
-							   + "		dataType: 'json',"
+							   + " 		url:`viewByAdmin`,"
+							   + " 		data:{idNum: `" + studentId + "`},"
+							   + " 		type: `GET`,"
 							   + " 		cache:false,"
 							   + " 		success: function(data){"
+//							   + "				 window.location.href = data;"
 					   		   + " 		}, error:function(){"
 			   				   + " 	  }});" +
 							   "    })();return false;\">" +
-				               "	<td class='tableIdNum center-align'>"   + s.getStudentId() + "</td>" +
+				               "	<td class='tableIdNum center-align'>"   + studentId + "</td>" +
 				               "	<td class='tableName left-align'>" 	    + s.getFirstName()  + " " +
 																		      s.getMiddleName() + " " +
 																		      s.getLastName()   + "</td>" +
@@ -292,9 +293,9 @@ public class AdminServlet extends HttpServlet {
 							   "	$.ajax({"
 							   + " 		context: this,"
 							   + " 		url:'viewByAdmin',"
-							   + " 		data:{'idNum': '" + s.getStudentId() + "'},"
+							   + " 		data:{idNum: '" + s.getStudentId() + "'},"
 							   + " 		type: 'GET',"
-							   + "		dataType: 'json',"
+					   		   + "	    dataType: 'json',"
 							   + " 		cache:false,"
 							   + " 		success: function(data){"
 					   		   + " 		}, error:function(){"
@@ -327,30 +328,20 @@ public class AdminServlet extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void retrieveStudentForAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie[] cookies = request.getCookies();
-		Cookie userCookie = null;
 		Student student = null;
-		boolean b =  (boolean) request.getAttribute("food");
+
 		System.out.println("************************************Retrieve User (Viewing student through admin)**********************************");
-		for (Cookie c: cookies) {
-			if(c.getName().equals("ADMIN")) {
-				System.out.println("Cookie found!");
-				System.out.println("Cookie name: " +  c.getName());
-				System.out.println("Cookie Value: " + c.getValue());
-				userCookie = c;
-			}
-		}
+		System.out.println("Student idNum: "+ request.getParameter("idNum"));
+		student = AdminService.getStudentByIdNum(Integer.parseInt(request.getParameter("idNum")));
+		request.setAttribute("loggedUser", student);
 		
-		if(userCookie == null || userCookie.getName().equals("ADMIN")){
-			System.out.println("Student Food: "+ b);
-			student = AdminService.getStudentByIdNum((Integer)request.getAttribute("idNum"));
-			request.setAttribute("loggedUser", student);
-			
-			if(request.getServletPath().contentEquals("/view")) {
-				System.out.println("Viewing via viewprofile..");
-				request.getRequestDispatcher("ViewProfile.jsp").forward(request, response);
-			}	
-		}
+		System.out.println("Viewing via AdminViewStudent..");
+		request.getRequestDispatcher("AdminViewStudent.jsp").forward(request, response);
+//		response.sendRedirect("AdminViewStudent.jsp");
+
+//	    response.setContentType("text/html"); 
+//	    response.setCharacterEncoding("UTF-8"); 
+//	    response.getWriter().write("ViewProfile.jsp");  
 		System.out.println("***********************************************************************************");
 	}
 	

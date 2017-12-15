@@ -138,6 +138,7 @@ public class authentication implements Filter {
 								 }
 								 break; 
 			/*Private Pages*/
+			case "/ViewProfile.jsp":
 			case "/UserHomePage.jsp": //if cookie exists, continue
 								System.out.println("Access user pages..");
 				                if(user) {
@@ -152,6 +153,7 @@ public class authentication implements Filter {
 				                }
 								 break; 
 			case "/ViewStudents.jsp":
+			case "/AdminViewStudent.jsp":
 			case "/AdminSearchForStudents.jsp": 
 			case "/SearchResult.jsp": //if cookie exists, continue
 			case "/AdminHomePage.jsp": //if cookie exists, continue
@@ -167,7 +169,6 @@ public class authentication implements Filter {
 				                }
 								 break;
 		    //Both pages has this
-			case "/ViewProfile.jsp":
 			case "/ChangePassword.jsp": //if user/admin exist, continue
 				                         if(admin || user) {
 							               	   System.out.println("Continue on this page..");

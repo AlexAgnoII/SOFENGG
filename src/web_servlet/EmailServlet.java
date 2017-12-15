@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.AdminService;
+import service.ExpiringLinkService;
 import service.PasswordAuthentication;
 import service.StudentService;
 
@@ -54,11 +55,16 @@ public class EmailServlet extends HttpServlet {
 
 	private void sendResetPassConfirm(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String email = request.getParameter("email");
-		String token = request.getParameter("token");
+		PasswordAuthentication p = new PasswordAuthentication();
+		String token = p.hash(email.toCharArray());
 
 		System.out.println("*********************** SEND RESET PASSWORD CONFIRM EMAIL******************************");
 		System.out.println("Email: " + email);
 		System.out.println("Token: " + token);
+		
+		//Save first to DB.
+		System.out.println("Adding to DB..");
+		ExpiringLinkService.save(email, token);
 		
 		String resultMessage = "";
 		int port = request.getServerPort(); //get port of the server.

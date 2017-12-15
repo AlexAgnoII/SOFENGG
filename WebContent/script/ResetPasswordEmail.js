@@ -1,12 +1,11 @@
 	
 	
 	
-	function sendResetPassEmail(email, token) {
+	function sendResetPassEmail(email) {
 		$.ajax({
 			  context: this,
 		      url:'sendResetPassConfirm',
-		      data: {"email":email,
-		    	     "token": token},
+		      data: {"email":email},
 		      type:'POST',
 		      cache:false,
 		      success: function(data){
@@ -29,13 +28,12 @@
 		      success: function(data){
 		    	  console.log("Success ResetPasswordHTML.js");
 		    	  console.log(data);
-	    		  var container = data.split("|");
-	    		  
+		    	  
 		    	  //User exist, no constraint.
 		    	  if(data === "EXISTS") {
-//		    		  console.log("exists");
-//		    		  sendResetPassEmail(email)
-//		    		  document.location.href = 'EmailSent.html';
+		    		  console.log("exists");
+		    		  sendResetPassEmail(email)
+		    		  document.location.href = 'EmailSent.html';
 		    	  }
 		    	  
 		    	  //User does NOT exist, put your magic here.
@@ -50,13 +48,7 @@
 		    	  
 		    	  //Something went wrong if it goes here, don't do anything.
 		    	  else {
-		    		  //alert("Something went wrong with Resetting Password Email!");
-		    		  console.log("exists");
-		    		  console.log(data);
-
-		    		  
-		    		  sendResetPassEmail(container[1], container[0]);
-		    		  document.location.href = 'EmailSent.html';
+		    		  alert("Something went wrong with Resetting Password Email!");
 		    	  }
 		      },
 		      

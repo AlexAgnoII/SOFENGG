@@ -33,10 +33,19 @@ public class ConfirmServlet extends HttpServlet {
 		String hash = request.getParameter("verify");
 		
 		System.out.println("****************VERIFICATION SERVLET*******************");
-		StudentService.verifyStudent(hash);
+		
+		if(StudentService.verificationIdExisting(hash)) {
+			StudentService.verifyStudent(hash);
+			response.sendRedirect("Verified.html");
+		}
+		else {
+			response.sendRedirect("ExpiredReset.html");
+		}
+		
+		
 		System.out.println("******************************************************");
 		
-		response.sendRedirect("Verified.html");
+		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

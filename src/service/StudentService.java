@@ -491,6 +491,37 @@ public class StudentService {
 		System.out.println();
 	}
 	
+	public static boolean verificationIdExisting(String hash) {
+		boolean exist = false;
+		System.out.println();
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+			
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM student WHERE verificationId = ?");
+			st.setString(1, hash);
+			ResultSet rs = st.executeQuery();
+			
+			//Checks if result set has any data returned.
+			if (!rs.isBeforeFirst()) {    
+			    System.out.println("VerificationId not yet removed!"); 
+			} 
+			else {
+				System.out.println("VerificationId removed!");
+				exist = true;
+			}
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		return exist;
+	}
+	
 	public static void verifyStudent(String hash) {
 		System.out.println();
 		try{

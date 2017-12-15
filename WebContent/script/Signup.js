@@ -10,7 +10,7 @@ function enterKeyEvent(event) {
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return email.length <= 50 && re.test(email);
+  return email.length <= 50 && re.test(email) && email.trim().length > 0;
 }
 
 function duplicateHandler(data) {
@@ -41,7 +41,7 @@ function duplicateHandler(data) {
             $('#idnumerror1').show();
             $('#idNum').css("border-color", "indianred");
                                     
-            //alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
+//            alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
 		default: document.location.href = 'HomePage.jsp'; //redirect to homepage.
 		
 	}

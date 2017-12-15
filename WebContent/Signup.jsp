@@ -78,7 +78,7 @@
     
                         <div id="passwordInfo">
                              <p id="pCourse">Degree</p>
-                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="ex. CSST, MKT, CIV; should not contain space or dashes" id="iPassword">info_outline</i>
+                             <i class="tiny material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="ex. CSST, MKT, CIV; should not contain space or dashes" id="iCourse">info_outline</i>
                          </div>
                         <input id="courseName" type="text" class="twos" name="course" tabindex=6 onblur="checkStringField(this, getElementById('courseerrorPlaceHolder'), getElementById('courseerror'))" maxlength="50">
                         <p id="courseerrorPlaceHolder"></p>

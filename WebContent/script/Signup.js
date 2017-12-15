@@ -10,7 +10,7 @@ function enterKeyEvent(event) {
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return email.length <= 50 && re.test(email) && email.trim().length > 0;
+  return email.length <= 50 && re.test(email);
 }
 
 function duplicateHandler(data) {
@@ -39,30 +39,13 @@ function duplicateHandler(data) {
             
             $('#idnumerrorPlaceHolder').hide();
             $('#idnumerror1').show();
-            $('#idNum').css("border-color", "indianred"); break;
-            
-		case "GO-SIGNAL": submitForSending();
-						  document.location.href = 'VerifyLink.html';
-						  break;
-		default:console.log("CANNOT READ RESPOND FROM SERVLET ( SIGNUP.JS )");		
+            $('#idNum').css("border-color", "indianred");
+                                    
+            //alert("EMAIL-number is already taken."); break; //both (use functions made in email and inum)
+		default: document.location.href = 'HomePage.jsp'; //redirect to homepage.
+		
 	}
 	
-}
-
-function submitForSending() {
-	$.ajax({
-		   context: this,
-	      url:'sendEmailForVerification',
-	      data:$("form#signUpForm").serialize(),
-	      type:'POST',
-	      cache:false,
-	      success: function(data){
-	      	
-	      },
-	      error:function(){
-	      	console.log("error searchResult.js");
-	      }
-	   });
 }
 
 
@@ -272,18 +255,22 @@ function checkPasswordField(passwordField) {
 		if(value != "") { //ONLY remove the error if user places the correct input (This is why there is an IF here.).
 			//Add check or something in front end showing that user did iit correctly.
 			//spanPassword.innerHTML ="";
-            $('#pwerrorPlaceHolder').show();
-            $('#pwerror').hide();
+            //$('#pwerrorPlaceHolder').show();
+            //$('#pwerror').hide();
             $('#password').css("border-color", "rgba(0, 0, 0, 0.3)");
+            $('#iPassword').css("color", "darkslategray");
+            console.log("('#iPassword').css(color, darkslategray);");
 		} 
 		
 	}
 	//If not follow, do front end magic to do show this.
 	else {
 		//spanPassword.innerHTML = "Must follow constraint."; //This is temporary, you can add this directly to the tag span and just hided/show the tag.
-        $('#pwerrorPlaceHolder').hide();
-        $('#pwerror').show();
+        //$('#pwerrorPlaceHolder').hide();
+        //$('#pwerror').show();
         $('#password').css("border-color", "indianred");
+        $('#iPassword').css("color", "indianred");
+        console.log("('#iPassword').css(color, indianred);");
 	}
     
     if (document.getElementById('password2').value != "") {
@@ -468,11 +455,10 @@ $("document").ready(function(idNum, password, fName, lName) {
         	
         	//if all fields valid, proceed. if not, place front end effects of what field is not ok.
         	if(constraintChecker(password, idNum, fName, lName, mName, courseName)) {
-//        		$('.modal').modal({
-//        			dismissible: false //makes modal unclickable on background.
-//        		});
+        		$('.modal').modal({
+        			dismissible: false //makes modal unclickable on background.
+        		});
         		//submitTheForm();
-        		submitTheForm();
         	}
         	
 
@@ -527,10 +513,10 @@ $("document").ready(function(idNum, password, fName, lName) {
 	});
 	
 	//Send verification link here.
-//	$("#proceedModal").click(function() {
-//        // TODO update once verified mail
-//		//$("form#signUpForm").submit();
-//		submitTheForm();
-//	});
+	$("#proceedModal").click(function() {
+        // TODO update once verified mail
+		//$("form#signUpForm").submit();
+		submitTheForm();
+	});
 
 });

@@ -289,6 +289,10 @@ nav ul a:hover {
     -webkit-appearance: caret;
 }
 
+textarea{
+    resize: none;
+}
+
 .postDate{
 	color: #afafaf;
 	font-size: 12px;

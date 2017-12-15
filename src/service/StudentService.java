@@ -597,10 +597,7 @@ public class StudentService {
 				student.setCity(rs.getString("city"));
 				student.setProvince(rs.getString("province"));
 				student.setCountry(rs.getString("country"));
-				int zip = 0;
-				zip = rs.getInt("zip");
 				if (!rs.wasNull()){
-					System.out.println(rs.wasNull() + " || " + zip);
 					student.setZip(rs.getInt("zip"));
 				}
 				student.calculateAge(rs.getDate("birthday"));

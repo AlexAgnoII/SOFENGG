@@ -338,7 +338,7 @@ form#intInv input.threeipyear {
     width: 90px;
     height: 20px;
     color: black;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
     margin-left: 10px;
     border-radius: 2px;
     border-style: solid;
@@ -418,7 +418,7 @@ form#intInv input.threeipyear {
     font-size: 12px;
     cursor: help;
     position: relative;
-    margin-top: 0px
+    margin-top: -10px;
 }
 
 #IIinfo {
@@ -433,7 +433,7 @@ form#intInv input.threeipyear {
     font-size: 12px;
     cursor: help;
     position: relative;
-    margin-top: 0px
+    margin-top: -10px;
 }
 
 #EIinfo {

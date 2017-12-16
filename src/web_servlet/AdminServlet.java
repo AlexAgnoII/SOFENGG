@@ -284,7 +284,19 @@ public class AdminServlet extends HttpServlet {
 							   + " 		type: `GET`,"
 							   + " 		cache:false,"
 							   + " 		success: function(data){"
-//							   + "				 window.location.href = data;"
+							   + "			$(`#form" + studentId + "`).submit();"
+//							   + " 			var jsp = data.split('#')[0]; "
+//							   + "			var idNum = data.split('#')[1]; "
+//									   + "	$.ajax({"
+//									   + " 		context: this,"
+//									   + " 		url: jsp,"
+//									   + " 		data:{idNum: idNum},"
+//									   + " 		type: `POST`,"
+//									   + " 		cache:false,"
+//									   + " 		success: function(data2){"
+									   + "				 window.location.href = `AdminViewStudent.jsp`;"
+//							   		   + " 		}, error:function(){"
+//					   				   + " 	  }});" 
 					   		   + " 		}, error:function(){"
 			   				   + " 	  }});" +
 							   "    })();return false;\">" +
@@ -293,7 +305,12 @@ public class AdminServlet extends HttpServlet {
 																		      s.getMiddleName() + " " +
 																		      s.getLastName()   + "</td>" +
 				               "	<td class='tableCollege center-align'>" + getAbbreviatedCollege(s.getCollege()) +"</td>" +
-				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>" +
+				               "	<td class='tableAward center-align'>"   + AdminService.getStudentAwards(s) + "</td>"
+		               		 + "	<form style=`display: hidden` action=`AdminViewStudent.jsp` "
+		               		 + "		method=`POST` id=`form" + studentId + "`>"
+               		 		 + "		<input type=`hidden` id=`var" + studentId + 
+               		 		 			"`  name=`var" + studentId + "` value=`"+ studentId + "`/>"
+	 		 				 + "	</form>" +
 				               "</tr>";
 	    }
 
@@ -372,12 +389,12 @@ public class AdminServlet extends HttpServlet {
 		request.setAttribute("loggedUser", student);
 		
 		System.out.println("Viewing via AdminViewStudent..");
-		request.getRequestDispatcher("AdminViewStudent.jsp").forward(request, response);
+//		request.getRequestDispatcher("AdminViewStudent.jsp").forward(request, response);
 //		response.sendRedirect("AdminViewStudent.jsp");
 
-//	    response.setContentType("text/html"); 
-//	    response.setCharacterEncoding("UTF-8"); 
-//	    response.getWriter().write("ViewProfile.jsp");  
+	    response.setContentType("text/html"); 
+	    response.setCharacterEncoding("UTF-8"); 
+	    response.getWriter().write("AdminViewStudent.jsp#"+ request.getParameter("idNum"));  
 		System.out.println("***********************************************************************************");
 	}
 	

@@ -22,9 +22,9 @@
         
        <nav>
             <div class="nav-wrapper">
-               <a class='brand-logo center' data-activates='dp2' href='AdminHonePage.jsp' id="tbox">
+               <a class='brand-logo center' data-activates='dp2' href='AdminHomePage.jsp' id="tbox">
                 <div id="wrapper">
-                    <img src="/css/arrow.png" id="arrow">
+                    <img src="css/arrow.png" id="arrow">
                     <p id="title">DLSU <br>STUDENT<br> INFORMATION<br> SYSTEM</p>
                 </div>   
                </a>
@@ -41,7 +41,6 @@
                 
                 <div id="dp2">
                      <ul>
-                        <li><a href="ViewStudents.jsp">View Students</a></li>
                         <li><a class="modal-trigger" href="#newannounce"> New Announcement</a></li>
                     </ul>
                 </div>

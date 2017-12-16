@@ -511,6 +511,7 @@ $(document).ready(function() {
 		$('#imInternal').show();
 		$('#IIsave').show();
 		$('#IIcancel').show();
+        $('#IIinfo').css("width", "171px");
 	})
 	
 	$("#IIcancel").click(function() {
@@ -520,6 +521,7 @@ $(document).ready(function() {
 		$('#imInternal').hide();
 		$('#IIsave').hide();
 		$('#IIcancel').hide();
+        $('#IIinfo').css("width", "75px");
 	})
 
 	$('#IIsave').click(function() {
@@ -534,6 +536,7 @@ $(document).ready(function() {
 			$('#imInternal').hide();
 			$('#IIsave').hide();
 			$('#IIcancel').hide();
+            $('#IIinfo').css("width", "75px");
 		}
 		else {
 			//front end error for constraints.
@@ -548,6 +551,7 @@ $(document).ready(function() {
 		$('#imExternal').show();
 		$('#EIsave').show();
 		$('#EIcancel').show();
+        $('#EIinfo').css("width", "171px");
 	})
 	
 	$("#EIcancel").click(function() {
@@ -557,6 +561,7 @@ $(document).ready(function() {
 		$('#imExternal').hide();
 		$('#EIsave').hide();
 		$('#EIcancel').hide();
+        $('#EIinfo').css("width", "75px");
 		
 	})
 
@@ -571,7 +576,8 @@ $(document).ready(function() {
 			$('#EIedit').show();
 			$('#imExternal').hide();
 			$('#EIsave').hide();
-			$('#EIcancel').hide();	
+			$('#EIcancel').hide();
+            $('#EIinfo').css("width", "75px");
 		}
 		else {
 			

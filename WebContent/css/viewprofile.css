@@ -422,6 +422,7 @@ form#intInv input.threeipyear {
 }
 
 #IIinfo {
+/*    width: 75px;*/
     width: 75px;
     float: right;
 }

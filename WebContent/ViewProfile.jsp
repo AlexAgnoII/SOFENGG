@@ -288,11 +288,12 @@
                     <div class="collapsible-header"><i class="large material-icons">book</i>INTERNAL INVOLVEMENT</div>
                     
                     <div class="collapsible-body">
-                        <div id="IIInfo">
+                        <div id="IIinfo">
                             <i class="tiny material-icons tooltipped" data-position="left" data-delay="50" data-tooltip="Involvements within the university (organizations, etc.)" id="iInternalInvolvements">info_outline</i>
                             <a class="waves-effect waves-light btn" id="IIedit">EDIT</a>
+                        
+                            <a class="waves-effect waves-light btn addMoreInvolvments" id="imInternal">Add involvement</a>
                         </div>
-                        <a class="waves-effect waves-light btn addMoreInvolvments" id="imInternal">Add involvement</a>
                         <form action = "addIntInv" method = "POST" id = "intInv">
 	                        <c:choose>
 	                        	<c:when test="${empty internalList}"> <!-- Internal not existing, do this -->
@@ -355,11 +356,12 @@
                     <div class="collapsible-header"><i class="large material-icons">nature_people</i>EXTERNAL INVOLVEMENT</div>
                     
                     <div class="collapsible-body">
-                        <div id="EIInfo">
+                        <div id="EIinfo">
                             <i class="tiny material-icons tooltipped" data-position="left" data-delay="50" data-tooltip="Involvements outside the university (seminars, contests, etc.)" id="iExternalInvolvements">info_outline</i>
                             <a class="waves-effect waves-light btn" id="EIedit">EDIT</a>
-                        </div>
+                        
                         <a class="waves-effect waves-light btn addMoreInvolvments" id="imExternal">Add involvement</a>
+                        </div>
                         <form action = "addExtInv" method = "POST" id = "extInv">
                         <c:choose>
                         	<c:when test="${empty externalList}">

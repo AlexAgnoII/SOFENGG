@@ -316,7 +316,7 @@ form#extInv input.threeip{
     height: 20px;
     color: black;
     margin-top: 0px;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
     margin-left: 10px;
     border-radius: 2px;
     border-style: solid;
@@ -455,4 +455,5 @@ form#intInv input.threeipyear {
     border-width: 0.6px;
     border-radius: 2px;
     border-color: dimgrey;
+    margin-bottom: 5px;
 }

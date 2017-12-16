@@ -315,7 +315,7 @@ form#extInv input.threeip{
     width: 95%;
     height: 20px;
     color: black;
-    margin-top: -10px;
+    margin-top: 0px;
     margin-bottom: 5px;
     margin-left: 10px;
     border-radius: 2px;
@@ -418,7 +418,7 @@ form#intInv input.threeipyear {
     font-size: 12px;
     cursor: help;
     position: relative;
-    margin-top: -10px
+    margin-top: 0px
 }
 
 #IIinfo {
@@ -433,7 +433,7 @@ form#intInv input.threeipyear {
     font-size: 12px;
     cursor: help;
     position: relative;
-    margin-top: -10px
+    margin-top: 0px
 }
 
 #EIinfo {

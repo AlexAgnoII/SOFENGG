@@ -247,7 +247,7 @@
 			                                <input type="date" class="ipfield threeip" name="momBday-${mother.relativeId}" value="${mother.birthday}" disabled>
 		
 			                                <p class="ltags">Birthday</p>
-			                                <c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop">
+			                                <c:forEach items="${siblingList}" begin="0" end="${siblingSize}" var="s" varStatus="loop"><br>
 			                                		<input type="date" class="sbday ipfield threeip" name="sibBday-${loop.index}-${s.relativeId}" value="${s.birthday}" disabled>
 			                                		<a class="waves-effect waves-light btn delete deleteSIB btdelete" data-index="sibDELETE-${loop.index}">DELETE</a>
 			                                </c:forEach>

@@ -700,7 +700,7 @@ public class AdminService {
 	
 	/**
 	 * Creates a new notification
-	 * @param postId - id of the new post
+	 * @param postId - id of the new post (-999 for notifs that are for both admin and student) 
 	 * @param title - title of the post
 	 * @param body  - body of the post
 	 * @return the post that was created or NULL if no post was created.
@@ -713,13 +713,20 @@ public class AdminService {
 			Class.forName(driver);
 			Connection conn = DatabaseManager.getConnection();
 			
-			PreparedStatement st = conn.prepareStatement("INSERT INTO `sofengg`.`notification` (`postId`, `notificationTitle`, `notificationContent`, `notificationRead`) " +
+			PreparedStatement st;
+			if(postId != -999)
+				 st = conn.prepareStatement("INSERT INTO `sofengg`.`notification` (`postId`, `notificationTitle`, `notificationContent`, `notificationRead`) " +
 				     "VALUES (?, ?, ?, ?);");
-			
+			else st = conn.prepareStatement("INSERT INTO `sofengg`.`notification` (`notificationTitle`, `notificationContent`, `notificationRead`, `adminNotif`) " +
+				     "VALUES (?, ?, ?, ?);");
+			 
 			st.setInt(1, postId);
 			st.setString(2, title);
 			st.setString(3, body);
 			st.setInt(4, 0);
+			if(postId == -999)
+				st.setInt(5, 1);
+			
 			st.executeUpdate();
 			
 			System.out.println("Notif Added!");
@@ -732,6 +739,36 @@ public class AdminService {
 		}
 		System.out.println();
 		return notification;
+	}
+	
+
+	public static ArrayList<Notification> getAdminNotificationList() {
+		ArrayList<Notification> notifications = new ArrayList<Notification> ();
+		
+		try{
+			String driver = "com.mysql.jdbc.Driver";
+			Class.forName(driver);
+			Connection conn = DatabaseManager.getConnection();
+
+			PreparedStatement st = conn.prepareStatement("SELECT * FROM sofengg.notification WHERE "
+													   + "notificationRead = ? AND adminNotif = 1 ORDER BY notificationId DESC;");
+			st.setInt(1, 0);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				notifications.add(new Notification(rs.getInt("notificationId"), rs.getInt("postId"),  rs.getString("notificationTitle"), rs.getString("notificationContent"), rs.getInt("notificationRead")));
+				System.out.println("Notification: " + rs.getString("notificationTitle"));
+			} 
+			
+			conn.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		System.out.println();
+		
+		return notifications;
 	}
 
 

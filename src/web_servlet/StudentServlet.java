@@ -23,6 +23,7 @@ import beans_model.Involvement;
 import beans_model.Notification;
 import beans_model.Relative;
 import beans_model.Student;
+import service.AdminService;
 import service.PasswordAuthentication;
 import service.StudentService;
 
@@ -734,7 +735,8 @@ public class StudentServlet extends HttpServlet {
 			}
 			
 		}
-		
+
+		Student student = StudentService.getLoggedStudent(Integer.parseInt(userCookie.getValue()));
 		for(Involvement i : involvementList) {
 			i.setInternal(type);
 			i.setIdNum(Integer.parseInt(userCookie.getValue()));
@@ -742,7 +744,10 @@ public class StudentServlet extends HttpServlet {
 			StudentService.addOrUpdateInvolvements(i);
 		}
 		
-		
+
+		if(involvementList.size() == 5)
+			AdminService.addNotif(-999, student.getFirstName() + " " + student.getLastName() + 
+									 	" is now qualified for an award", "A Student is now qualified for an award");
 		System.out.println("Involvements addeed/Updated!");
 		System.out.println("***********************************************************************************");
 	}

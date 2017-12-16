@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans_model.Notification;
 import beans_model.Post;
 import beans_model.Student;
 import service.AdminService;
+import service.StudentService;
 
 /**
  * Servlet implementation class AdminServlet
@@ -26,6 +28,7 @@ import service.AdminService;
 						  "/viewByAdmin",
 		                  "/createPost",
 		                  "/getPosts",
+		                  "/getAdminNotifs",
 		                  "/updatePost"})
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -47,6 +50,7 @@ public class AdminServlet extends HttpServlet {
 				case "/search"				   : search(request, response); break;
 				case "/searchQualifiedStudents": searchQualifiedStudents(request, response); break;
 				case "/getPosts": getPosts(request, response); break;
+				case "/getAdminNotifs": getAdminNotifs(request, response); break;
 		    	default: System.out.println("ERROR(Inside AdminServlet *doGet*): url pattern || " +
 		    			request.getServletPath() + " || doesn't match existing patterns.");
 			}
@@ -154,6 +158,38 @@ public class AdminServlet extends HttpServlet {
 		System.out.println("*******************************************");
 	}
 
+	/**
+	 * Retrieves a list of notifs for the admin
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @return List of Posts
+	 */
+	private void getAdminNotifs(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+		System.out.println("***************** UPDATING NOTIF FEED ************************");
+		int notificationCount = 0;
+		
+		ArrayList<Notification> notificationList = AdminService.getAdminNotificationList();
+//		notificationCount = AdminService.getCountNotifications(notificationList);
+		String htmlNotifList 	 = "";
+		
+		
+	    for(Notification n : notificationList){
+	    	htmlNotifList += 
+	    					"<a class='text' href = 'UserHomePage.jsp'>" +
+							"		<button class='nchead' type = 'button' notifId = '" + n.getNotifId() +"'>" +
+					        "   		Vice dean just posted a new announcement." +
+					        "		</button>" + 
+					        "</a>";
+		}
+		
+		System.out.println(htmlNotifList);
+	    response.setContentType("text/html"); 
+	    response.setCharacterEncoding("UTF-8"); 
+	    response.getWriter().write(htmlNotifList);       
+		System.out.println("*******************************************");		
+	}
 
 	/**
 	 * Retrieves a list of posts made by the admin

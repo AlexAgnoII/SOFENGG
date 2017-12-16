@@ -597,6 +597,7 @@ public class StudentService {
 				student.setCity(rs.getString("city"));
 				student.setProvince(rs.getString("province"));
 				student.setCountry(rs.getString("country"));
+				int zip = rs.getInt("zip");
 				if (!rs.wasNull()){
 					student.setZip(rs.getInt("zip"));
 				}
